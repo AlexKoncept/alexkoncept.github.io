@@ -51,6 +51,8 @@
     }
 
     .project {
+      display: flex;
+      align-items: center;
       background-color: #fff;
       border-left: 4px solid #00c9ff;
       padding: 1.5rem;
@@ -58,29 +60,43 @@
       border-radius: 10px;
       box-shadow: 0 5px 20px rgba(0,0,0,0.05);
       transition: transform 0.2s ease;
+      gap: 1.5rem;
+      flex-wrap: wrap;
     }
 
     .project:hover {
       transform: translateY(-4px);
     }
 
-    .project h2 {
+    .project img {
+      width: 140px;
+      height: auto;
+      border-radius: 8px;
+      flex-shrink: 0;
+    }
+
+    .project-content {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    .project-content h2 {
       margin-top: 0;
       font-size: 1.5rem;
       color: #00a5c6;
     }
 
-    .project p {
+    .project-content p {
       margin: 0.5rem 0;
     }
 
-    .project a {
+    .project-content a {
       color: #0077cc;
       text-decoration: none;
       font-weight: 500;
     }
 
-    .project a:hover {
+    .project-content a:hover {
       text-decoration: underline;
     }
 
@@ -94,6 +110,15 @@
     @media (max-width: 600px) {
       header h1 {
         font-size: 2rem;
+      }
+
+      .project {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .project img {
+        margin: 0 auto;
       }
     }
   </style>
@@ -109,27 +134,39 @@
     <p class="intro">Bienvenue dans mon laboratoire numérique. Chaque "Koncept" que je crée explore un futur possible, à travers l’horlogerie, le code, le design et l’imagination augmentée.</p>
 
     <div class="project">
-      <h2>🕰️ Montres Alex Koncept</h2>
-      <p>Création horlogère indépendante, modding artistique, boîtier signature AK.</p>
-      <p><a href="https://alexkoncept.wordpress.com/" target="_blank">Visiter le site</a></p>
+      <img src="LogoAK.png" alt="Montres Alex Koncept">
+      <div class="project-content">
+        <h2>🕰️ Montres Alex Koncept</h2>
+        <p>Création horlogère indépendante, modding artistique, boîtier signature AK.</p>
+        <p><a href="https://alexkoncept.wordpress.com/" target="_blank">Visiter le site</a></p>
+      </div>
     </div>
 
     <div class="project">
-      <h2>🖥️ HyperNormalSites</h2>
-      <p>Sites dystopiques & interactifs conçus pour se questionner sur le futur à travers la technologie, la société et l'absurde qui nous entoure de plus en plus, codés en HTML/CSS.</p>
-      <p><a href="https://alexkoncept.github.io/HyperNormalSites/" target="_blank">Explorer la collection</a></p>
+      <img src="HyperNormalSites.png" alt="HyperNormalSites">
+      <div class="project-content">
+        <h2>🖥️ HyperNormalSites</h2>
+        <p>Sites dystopiques & interactifs conçus pour se questionner sur le futur à travers la technologie, la société et l'absurde qui nous entoure de plus en plus, codés en HTML/CSS.</p>
+        <p><a href="https://alexkoncept.github.io/HyperNormalSites/" target="_blank">Explorer la collection</a></p>
+      </div>
     </div>
 
     <div class="project">
-      <h2>👾 Tamacodechi</h2>
-      <p>Ton Tamagotchi développeur dans le navigateur. Il évolue selon ta façon de t'en occuper.</p>
-      <p><a href="https://alexkoncept.github.io/Tamacodechi/" target="_blank">Voir le projet GitHub</a></p>
+      <img src="Tamacodechi.png" alt="Tamacodechi">
+      <div class="project-content">
+        <h2>👾 Tamacodechi</h2>
+        <p>Ton Tamagotchi développeur dans le navigateur. Il évolue selon ta façon de t'en occuper.</p>
+        <p><a href="https://alexkoncept.github.io/Tamacodechi/" target="_blank">Voir le projet GitHub</a></p>
+      </div>
     </div>
 
     <div class="project">
-      <h2>🪙 World Peace Token (WPT)</h2>
-      <p>Crypto expérimentale lancée sur Polygon. Un projet utopiste, entre rêve et technologie.</p>
-      <p><a href="https://polygonscan.com/address/0x0f6c9ec672c4851d9fb4518145f816d12543f48a#code" target="_blank">Voir sur Polygonscan</a></p>
+      <img src="WorldPeaceToken.jpg" alt="World Peace Token">
+      <div class="project-content">
+        <h2>🪙 World Peace Token (WPT)</h2>
+        <p>Crypto expérimentale lancée sur Polygon. Un projet utopiste, entre rêve et technologie.</p>
+        <p><a href="https://polygonscan.com/address/0x0f6c9ec672c4851d9fb4518145f816d12543f48a#code" target="_blank">Voir sur Polygonscan</a></p>
+      </div>
     </div>
   </div>
 
