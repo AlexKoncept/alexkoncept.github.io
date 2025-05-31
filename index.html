@@ -6,6 +6,40 @@
   <title>Alex Koncept – Créateur de Koncepts</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --body-bg: #f9f9fb;
+      --text-color: #1a1a1a;
+      --header-bg-start: #00c9ff;
+      --header-bg-end: #92fe9d;
+      --header-text-color: #000;
+      --project-bg: #fff;
+      --project-border-color: #00c9ff;
+      --project-shadow-color: rgba(0,0,0,0.05);
+      --project-title-color: #00a5c6;
+      --link-color: #0077cc;
+      --footer-text-color: #666;
+      --theme-toggle-icon: "☀️";
+      --theme-toggle-bg: #fff;
+      --theme-toggle-border: #ddd;
+    }
+
+    body.dark-mode {
+      --body-bg: #1e1e1e;
+      --text-color: #e0e0e0;
+      --header-bg-start: #005c73; /* Darker gradient */
+      --header-bg-end: #2c7a31; /* Darker gradient */
+      --header-text-color: #f0f0f0;
+      --project-bg: #2a2a2a;
+      --project-border-color: #61dafb; /* Lighter blue for dark mode */
+      --project-shadow-color: rgba(255,255,255,0.08);
+      --project-title-color: #80deea; /* Lighter blue for titles */
+      --link-color: #61dafb;
+      --footer-text-color: #aaa;
+      --theme-toggle-icon: "🌙";
+      --theme-toggle-bg: #2a2a2a;
+      --theme-toggle-border: #555;
+    }
+
     * {
       box-sizing: border-box;
     }
@@ -13,16 +47,42 @@
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
-      background-color: #f9f9fb;
-      color: #1a1a1a;
+      background-color: var(--body-bg);
+      color: var(--text-color);
       line-height: 1.6;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
+
+    .theme-toggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background: var(--theme-toggle-bg);
+      color: var(--text-color); /* Use main text color for icon */
+      border: 1px solid var(--theme-toggle-border);
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: background 0.3s, color 0.3s, border-color 0.3s;
+      z-index: 1000;
+    }
+    .theme-toggle::before {
+      content: var(--theme-toggle-icon);
+    }
+
 
     header {
       text-align: center;
       padding: 4rem 2rem 2rem;
-      background: linear-gradient(135deg, #00c9ff 0%, #92fe9d 100%);
-      color: #000;
+      background: linear-gradient(135deg, var(--header-bg-start) 0%, var(--header-bg-end) 100%);
+      color: var(--header-text-color);
+      transition: background 0.3s ease, color 0.3s ease;
     }
 
     header h1 {
@@ -53,13 +113,13 @@
     .project {
       display: flex;
       align-items: center;
-      background-color: #fff;
-      border-left: 4px solid #00c9ff;
+      background-color: var(--project-bg);
+      border-left: 4px solid var(--project-border-color);
       padding: 1.5rem;
       margin-bottom: 2rem;
       border-radius: 10px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-      transition: transform 0.2s ease;
+      box-shadow: 0 5px 20px var(--project-shadow-color);
+      transition: transform 0.2s ease, background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
       gap: 1.5rem;
       flex-wrap: wrap;
     }
@@ -83,7 +143,8 @@
     .project-content h2 {
       margin-top: 0;
       font-size: 1.5rem;
-      color: #00a5c6;
+      color: var(--project-title-color);
+      transition: color 0.3s ease;
     }
 
     .project-content p {
@@ -91,9 +152,10 @@
     }
 
     .project-content a {
-      color: #0077cc;
+      color: var(--link-color);
       text-decoration: none;
       font-weight: 500;
+      transition: color 0.3s ease;
     }
 
     .project-content a:hover {
@@ -104,7 +166,8 @@
       text-align: center;
       padding: 2rem;
       font-size: 0.9rem;
-      color: #666;
+      color: var(--footer-text-color);
+      transition: color 0.3s ease;
     }
 
     @media (max-width: 600px) {
@@ -120,10 +183,16 @@
       .project img {
         margin: 0 auto;
       }
+      .theme-toggle {
+        top: 0.5rem;
+        right: 0.5rem;
+      }
     }
   </style>
 </head>
 <body>
+
+  <button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème"></button>
 
   <header>
     <h1>Alex Koncept</h1>
@@ -138,7 +207,7 @@
       <div class="project-content">
         <h2>Montres Alex Koncept</h2>
         <p>Création horlogère indépendante, modding artistique, boîtier signature AK.</p>
-        <p><a href="https://alexkoncept.wordpress.com/" target="_blank">Visiter le site</a></p>
+        <p><a href="https://alexkoncept.wordpress.com/" target="_blank" rel="noopener noreferrer">Visiter le site</a></p>
       </div>
     </div>
 
@@ -147,7 +216,7 @@
       <div class="project-content">
         <h2>HyperNormalSites</h2>
         <p>Sites dystopiques & interactifs conçus pour se questionner sur le futur à travers la technologie, la société et l'absurde qui nous entoure de plus en plus, codés en HTML/CSS.</p>
-        <p><a href="https://alexkoncept.github.io/HyperNormalSites/" target="_blank">Explorer la collection</a></p>
+        <p><a href="https://alexkoncept.github.io/HyperNormalSites/" target="_blank" rel="noopener noreferrer">Explorer la collection</a></p>
       </div>
     </div>
 
@@ -156,7 +225,7 @@
       <div class="project-content">
         <h2>Tamacodechi</h2>
         <p>Ton Tamagotchi développeur dans ton navigateur, il évolue selon ta façon de t'en occuper. Codés en Javascript/HTML/CSS.</p>
-        <p><a href="https://alexkoncept.github.io/Tamacodechi/" target="_blank">Voir le projet GitHub</a></p>
+        <p><a href="https://alexkoncept.github.io/Tamacodechi/" target="_blank" rel="noopener noreferrer">Voir le projet GitHub</a></p>
       </div>
     </div>
 
@@ -165,7 +234,7 @@
       <div class="project-content">
         <h2>World Peace Token (WPT)</h2>
         <p>Crypto expérimentale lancée sur Polygon. Un projet utopiste, entre rêve et technologie.</p>
-        <p><a href="https://polygonscan.com/address/0x0f6c9ec672c4851d9fb4518145f816d12543f48a#code" target="_blank">Voir sur Polygonscan</a></p>
+        <p><a href="https://polygonscan.com/address/0x0f6c9ec672c4851d9fb4518145f816d12543f48a#code" target="_blank" rel="noopener noreferrer">Voir sur Polygonscan</a></p>
       </div>
     </div>
   </div>
@@ -173,6 +242,35 @@
   <footer>
     © 2025 Alex Koncept — Une idée. Un prototype. Un impact.
   </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const themeToggle = document.getElementById('theme-toggle');
+
+      // Function to apply the theme
+      const applyTheme = (theme) => {
+        if (theme === 'dark') {
+          document.body.classList.add('dark-mode');
+        } else {
+          document.body.classList.remove('dark-mode');
+        }
+      };
+
+      // Check local storage or system preference
+      let storedTheme = localStorage.getItem('theme');
+      if (!storedTheme) {
+        storedTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+      applyTheme(storedTheme);
+      
+      // Toggle theme on button click
+      themeToggle.addEventListener('click', () => {
+        const isDarkMode = document.body.classList.toggle('dark-mode');
+        const newTheme = isDarkMode ? 'dark' : 'light';
+        localStorage.setItem('theme', newTheme);
+      });
+    });
+  </script>
 
 </body>
 </html>
