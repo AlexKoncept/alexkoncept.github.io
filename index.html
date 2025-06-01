@@ -4,12 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Alex Koncept – Créateur de Koncepts</title>
-<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-<link rel="shortcut icon" href="/favicon.ico" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-<link rel="manifest" href="/site.webmanifest" />
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+  <!-- Lien vers Font Awesome pour les icônes (optionnel mais utilisé pour l'icône robot) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
   <style>
     :root {
       --body-bg: #f9f9fb;
@@ -26,29 +29,56 @@
       --theme-toggle-icon: "☀️";
       --theme-toggle-bg: #fff;
       --theme-toggle-border: #ddd;
+      /* Ajouts pour le chatbot modal */
+      --modal-bg: #ffffff;
+      --modal-shadow: rgba(0,0,0,0.15);
+      --chatbox-bg: #f0f0f0;
+      --chatbox-border: #00c9ff;
+      --user-message-bg: #00c9ff;
+      --user-message-text: #fff;
+      --bot-message-bg: #e0e0e0;
+      --bot-message-text: #1a1a1a;
+      --input-bg: #fff;
+      --input-border: #ccc;
+      --button-bg: #00c9ff;
+      --button-text: #fff;
+      --fab-bg: #00c9ff;
+      --fab-icon-color: #fff;
     }
 
     body.dark-mode {
       --body-bg: #1e1e1e;
       --text-color: #e0e0e0;
-      --header-bg-start: #005c73; /* Darker gradient */
-      --header-bg-end: #2c7a31; /* Darker gradient */
+      --header-bg-start: #005c73;
+      --header-bg-end: #2c7a31;
       --header-text-color: #f0f0f0;
       --project-bg: #2a2a2a;
-      --project-border-color: #61dafb; /* Lighter blue for dark mode */
+      --project-border-color: #61dafb;
       --project-shadow-color: rgba(255,255,255,0.08);
-      --project-title-color: #80deea; /* Lighter blue for titles */
+      --project-title-color: #80deea;
       --link-color: #61dafb;
       --footer-text-color: #aaa;
       --theme-toggle-icon: "🌙";
       --theme-toggle-bg: #2a2a2a;
       --theme-toggle-border: #555;
+      /* Ajouts pour le chatbot modal en mode sombre */
+      --modal-bg: #2c2c2c;
+      --modal-shadow: rgba(255,255,255,0.1);
+      --chatbox-bg: #222222;
+      --chatbox-border: #61dafb;
+      --user-message-bg: #61dafb;
+      --user-message-text: #1a1a1a;
+      --bot-message-bg: #3a3a3a;
+      --bot-message-text: #e0e0e0;
+      --input-bg: #383838;
+      --input-border: #555;
+      --button-bg: #61dafb;
+      --button-text: #1a1a1a;
+      --fab-bg: #61dafb;
+      --fab-icon-color: #1e1e1e;
     }
 
-    * {
-      box-sizing: border-box;
-    }
-
+    * { box-sizing: border-box; }
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
@@ -63,7 +93,7 @@
       top: 1rem;
       right: 1rem;
       background: var(--theme-toggle-bg);
-      color: var(--text-color); /* Use main text color for icon */
+      color: var(--text-color);
       border: 1px solid var(--theme-toggle-border);
       border-radius: 50%;
       width: 40px;
@@ -77,10 +107,7 @@
       transition: background 0.3s, color 0.3s, border-color 0.3s;
       z-index: 1000;
     }
-    .theme-toggle::before {
-      content: var(--theme-toggle-icon);
-    }
-
+    .theme-toggle::before { content: var(--theme-toggle-icon); }
 
     header {
       text-align: center;
@@ -89,31 +116,11 @@
       color: var(--header-text-color);
       transition: background 0.3s ease, color 0.3s ease;
     }
+    header h1 { font-family: 'Orbitron', sans-serif; font-size: 3rem; margin-bottom: 0.5rem; }
+    header p { font-size: 1.2rem; max-width: 600px; margin: 0 auto; font-style: italic; }
 
-    header h1 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 3rem;
-      margin-bottom: 0.5rem;
-    }
-
-    header p {
-      font-size: 1.2rem;
-      max-width: 600px;
-      margin: 0 auto;
-      font-style: italic;
-    }
-
-    .container {
-      max-width: 1000px;
-      margin: 3rem auto;
-      padding: 0 2rem;
-    }
-
-    .intro {
-      font-size: 1.1rem;
-      margin-bottom: 2rem;
-      text-align: center;
-    }
+    .container { max-width: 1000px; margin: 3rem auto; padding: 0 2rem; }
+    .intro { font-size: 1.1rem; margin-bottom: 2rem; text-align: center; }
 
     .project {
       display: flex;
@@ -128,70 +135,208 @@
       gap: 1.5rem;
       flex-wrap: wrap;
     }
+    .project:hover { transform: translateY(-4px); }
+    .project img { width: 140px; height: auto; border-radius: 8px; flex-shrink: 0; }
+    .project-content { flex: 1; min-width: 250px; }
+    .project-content h2 { margin-top: 0; font-size: 1.5rem; color: var(--project-title-color); transition: color 0.3s ease; }
+    .project-content p { margin: 0.5rem 0; }
+    .project-content a { color: var(--link-color); text-decoration: none; font-weight: 500; transition: color 0.3s ease; }
+    .project-content a:hover { text-decoration: underline; }
 
-    .project:hover {
-      transform: translateY(-4px);
+    footer { text-align: center; padding: 2rem; font-size: 0.9rem; color: var(--footer-text-color); transition: color 0.3s ease; }
+
+    /* Styles pour le FAB (Floating Action Button) de l'assistant */
+    .koncept-assistant-fab {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        background-color: var(--fab-bg);
+        color: var(--fab-icon-color);
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        border: none;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.8rem; /* Taille de l'icône */
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        z-index: 999;
+    }
+    .koncept-assistant-fab:hover {
+        transform: scale(1.1);
     }
 
-    .project img {
-      width: 140px;
-      height: auto;
-      border-radius: 8px;
-      flex-shrink: 0;
+    /* Styles pour la modale de l'assistant */
+    .koncept-assistant-modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.5);
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+        align-items: center;
+        justify-content: center;
+    }
+    .koncept-assistant-modal.show {
+        display: flex;
+        opacity: 1;
+    }
+    .modal-content-koncept {
+        background-color: var(--modal-bg);
+        margin: auto;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 8px 30px var(--modal-shadow);
+        width: 90%;
+        max-width: 550px; /* Largeur de la modale */
+        position: relative;
+        transform: scale(0.95);
+        transition: transform 0.3s ease-in-out, background-color 0.3s ease;
+    }
+    .koncept-assistant-modal.show .modal-content-koncept {
+        transform: scale(1);
+    }
+    .modal-header-koncept {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--input-border);
+        margin-bottom: 18px;
+    }
+    .modal-header-koncept h2 {
+        margin-bottom: 0;
+        font-size: 1.6rem; /* Taille du titre de la modale */
+        font-family: 'Orbitron', sans-serif; /* Utiliser la police Orbitron */
+        color: var(--project-title-color); /* Utiliser la couleur des titres de projet */
+    }
+    .close-modal-btn-koncept {
+        color: var(--text-color);
+        font-size: 2rem; /* Taille de la croix */
+        font-weight: normal;
+        cursor: pointer;
+        line-height: 1;
+    }
+    .close-modal-btn-koncept:hover {
+        color: var(--project-border-color); /* Utiliser la couleur de bordure de projet pour le survol */
     }
 
-    .project-content {
-      flex: 1;
-      min-width: 250px;
+    /* Styles pour le chatbox dans la modale */
+    .chatbox-koncept {
+        height: 320px; /* Hauteur du chatbox */
+        overflow-y: auto;
+        border: 1px solid var(--chatbox-border);
+        padding: 1rem;
+        margin-bottom: 1rem;
+        border-radius: 8px;
+        background-color: var(--chatbox-bg);
+        transition: background-color 0.3s ease, border-color 0.3s ease;
     }
-
-    .project-content h2 {
-      margin-top: 0;
-      font-size: 1.5rem;
-      color: var(--project-title-color);
-      transition: color 0.3s ease;
+    .user-message-koncept, .bot-message-koncept {
+        padding: 0.6rem 1rem;
+        border-radius: 18px;
+        margin-bottom: 0.75rem;
+        max-width: 85%;
+        word-wrap: break-word;
+        line-height: 1.4;
+        font-size: 0.9rem;
     }
-
-    .project-content p {
-      margin: 0.5rem 0;
+    .user-message-koncept {
+        background-color: var(--user-message-bg);
+        color: var(--user-message-text);
+        margin-left: auto;
+        border-bottom-right-radius: 5px;
     }
-
-    .project-content a {
-      color: var(--link-color);
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s ease;
+    .bot-message-koncept {
+        background-color: var(--bot-message-bg);
+        color: var(--bot-message-text);
+        margin-right: auto;
+        border-bottom-left-radius: 5px;
     }
-
-    .project-content a:hover {
-      text-decoration: underline;
+    .bot-message-koncept small {
+        display: block;
+        font-size: 0.8em;
+        opacity: 0.8;
+        margin-top: 0.3em;
     }
-
-    footer {
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.9rem;
-      color: var(--footer-text-color);
-      transition: color 0.3s ease;
+    .chat-input-area-koncept { display: flex; }
+    .chat-input-area-koncept input[type="text"] {
+        flex-grow: 1;
+        padding: 0.75rem;
+        border: 1px solid var(--input-border);
+        border-right: none;
+        border-radius: 8px 0 0 8px;
+        font-size: 0.95rem;
+        background-color: var(--input-bg);
+        color: var(--text-color);
+        transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+    }
+    .chat-input-area-koncept input[type="text"]:focus {
+        outline: none;
+        border-color: var(--project-border-color);
+    }
+    .chat-input-area-koncept input[type="text"]:disabled {
+        background-color: var(--chatbox-bg); /* Fond légèrement différent quand désactivé */
+        cursor: not-allowed;
+    }
+    .chat-input-area-koncept button {
+        padding: 0.75rem 1.2rem;
+        background-color: var(--button-bg);
+        color: var(--button-text);
+        border: 1px solid var(--button-bg);
+        cursor: pointer;
+        border-radius: 0 8px 8px 0;
+        font-size: 0.95rem;
+        transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+    .chat-input-area-koncept button:hover:not(:disabled) {
+        opacity: 0.85;
+    }
+    .chat-input-area-koncept button:disabled {
+        background-color: var(--input-border);
+        border-color: var(--input-border);
+        cursor: not-allowed;
+        opacity: 0.6;
+    }
+    .model-info-koncept {
+        text-align: center;
+        font-size: 0.8em;
+        color: var(--footer-text-color); /* Utiliser la couleur du texte du footer */
+        opacity: 0.9;
+        margin-top: 10px;
+        padding-top: 10px;
+        border-top: 1px solid var(--input-border);
+    }
+    /* Loading dots animation */
+    .loading-dots-koncept span {
+        animation: blinkKoncept 1.4s infinite both;
+        font-size: 1.3em;
+    }
+    .loading-dots-koncept span:nth-child(2) { animation-delay: .2s; }
+    .loading-dots-koncept span:nth-child(3) { animation-delay: .4s; }
+    @keyframes blinkKoncept {
+        0% { opacity: .2; }
+        20% { opacity: 1; }
+        100% { opacity: .2; }
     }
 
     @media (max-width: 600px) {
-      header h1 {
-        font-size: 2rem;
-      }
-
-      .project {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .project img {
-        margin: 0 auto;
-      }
-      .theme-toggle {
-        top: 0.5rem;
-        right: 0.5rem;
-      }
+      header h1 { font-size: 2rem; }
+      .project { flex-direction: column; text-align: center; }
+      .project img { margin: 0 auto; }
+      .theme-toggle { top: 0.5rem; right: 0.5rem; }
+      .koncept-assistant-fab { bottom: 1rem; right: 1rem; width: 50px; height: 50px; font-size: 1.5rem;}
+      .modal-content-koncept { padding: 15px; max-width: 95%; }
+      .modal-header-koncept h2 { font-size: 1.4rem; }
+      .chatbox-koncept { height: 280px; }
     }
   </style>
 </head>
@@ -207,6 +352,7 @@
   <div class="container">
     <p class="intro">Bienvenue dans mon laboratoire numérique. Chaque "Koncept" que je crée explore un futur possible, à travers l’horlogerie, le code, le design et l’imagination augmentée.</p>
 
+    <!-- Tes projets ici ... -->
     <div class="project">
       <img src="LogoAK.png" alt="Montres Alex Koncept">
       <div class="project-content">
@@ -234,14 +380,14 @@
       </div>
     </div>
 
-<div class="project">
-  <img src="IA-Chatbot.png" alt="IA Chatbot">
-  <div class="project-content">
-    <h2>IA & Chatbot</h2>
-    <p>Un site interactif pour expliquer l'intelligence artificielle, avec un chatbot intégré. Codé en HTML/CSS/JS.</p>
-    <p><a href="https://alexkoncept.github.io/IA-Chatbot/" target="_blank" rel="noopener noreferrer">Voir le projet GitHub</a></p>
-  </div>
-</div>
+    <div class="project">
+      <img src="IA-Chatbot.png" alt="IA Chatbot">
+      <div class="project-content">
+        <h2>IA & Chatbot</h2>
+        <p>Un site interactif pour expliquer l'intelligence artificielle, avec un chatbot intégré. Codé en HTML/CSS/JS.</p>
+        <p><a href="https://alexkoncept.github.io/IA-Chatbot/" target="_blank" rel="noopener noreferrer">Voir le projet GitHub</a></p>
+      </div>
+    </div>
 
     <div class="project">
       <img src="WorldPeaceToken.jpg" alt="World Peace Token">
@@ -257,11 +403,36 @@
     © 2025 Alex Koncept — Vivre. Apprendre. Créer.
   </footer>
 
+  <!-- Bouton flottant pour l'assistant -->
+  <button id="openKonceptAssistantFAB" class="koncept-assistant-fab" aria-label="Ouvrir Koncept Assistant">
+    <i class="fas fa-robot"></i> <!-- Nécessite Font Awesome -->
+  </button>
+
+  <!-- Modale pour l'assistant Koncept -->
+  <div id="konceptAssistantModal" class="koncept-assistant-modal">
+    <div class="modal-content-koncept">
+        <div class="modal-header-koncept">
+            <h2>Koncept Assistant</h2>
+            <span id="closeKonceptAssistantModalBtn" class="close-modal-btn-koncept">×</span>
+        </div>
+        <div id="chatboxKoncept" class="chatbox-koncept">
+            <!-- Messages du chat -->
+        </div>
+        <div class="chat-input-area-koncept">
+            <input type="text" id="userInputKoncept" placeholder="Demandez quelque chose..." aria-label="Votre message au Koncept Assistant" disabled>
+            <button id="sendMessageBtnKoncept" disabled>Envoyer</button>
+        </div>
+        <p class="model-info-koncept">Utilise un modèle IA léger. Le premier chargement peut prendre un moment.</p>
+    </div>
+  </div>
+
+  <!-- Script pour Transformers.js (à héberger localement) -->
+  <script src="js/transformers.min.js"></script> <!-- Créez un dossier 'js' et mettez le fichier dedans -->
+
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      // --- Gestion du thème ---
       const themeToggle = document.getElementById('theme-toggle');
-
-      // Function to apply the theme
       const applyTheme = (theme) => {
         if (theme === 'dark') {
           document.body.classList.add('dark-mode');
@@ -269,22 +440,185 @@
           document.body.classList.remove('dark-mode');
         }
       };
-
-      // Check local storage or system preference
       let storedTheme = localStorage.getItem('theme');
       if (!storedTheme) {
         storedTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
       }
       applyTheme(storedTheme);
-      
-      // Toggle theme on button click
       themeToggle.addEventListener('click', () => {
         const isDarkMode = document.body.classList.toggle('dark-mode');
         const newTheme = isDarkMode ? 'dark' : 'light';
         localStorage.setItem('theme', newTheme);
       });
+
+      // --- Gestion de l'Assistant Koncept (Modal) ---
+      const openFAB = document.getElementById('openKonceptAssistantFAB');
+      const assistantModal = document.getElementById('konceptAssistantModal');
+      const closeModalBtn = document.getElementById('closeKonceptAssistantModalBtn');
+
+      const chatboxKoncept = document.getElementById('chatboxKoncept');
+      const userInputKoncept = document.getElementById('userInputKoncept');
+      const sendMessageBtnKoncept = document.getElementById('sendMessageBtnKoncept');
+      
+      let konceptPipeline = null;
+      let isKonceptModelLoading = false;
+      let konceptModelLoadAttempted = false;
+      let isKonceptModalOpen = false;
+
+      if (openFAB && assistantModal && closeModalBtn) {
+        openFAB.addEventListener('click', () => {
+          assistantModal.classList.add('show');
+          document.body.style.overflow = 'hidden';
+          isKonceptModalOpen = true;
+          if (!konceptPipeline && !isKonceptModelLoading && !konceptModelLoadAttempted) {
+            initializeKonceptChatbot();
+          } else if (userInputKoncept) {
+            userInputKoncept.focus();
+          }
+        });
+
+        closeModalBtn.addEventListener('click', closeKonceptModal);
+        assistantModal.addEventListener('click', (event) => {
+          if (event.target === assistantModal) {
+            closeKonceptModal();
+          }
+        });
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && isKonceptModalOpen) {
+                closeKonceptModal();
+            }
+        });
+      }
+
+      function closeKonceptModal() {
+        assistantModal.classList.remove('show');
+        document.body.style.overflow = 'auto';
+        isKonceptModalOpen = false;
+      }
+
+      function addMessageToKonceptChatbox(message, sender, isHtml = false) {
+        if (!chatboxKoncept) return null;
+        const messageDiv = document.createElement('div');
+        messageDiv.classList.add(sender === 'user' ? 'user-message-koncept' : 'bot-message-koncept');
+        if (isHtml) {
+          messageDiv.innerHTML = message;
+        } else {
+          messageDiv.textContent = message;
+        }
+        chatboxKoncept.appendChild(messageDiv);
+        chatboxKoncept.scrollTop = chatboxKoncept.scrollHeight;
+        return messageDiv;
+      }
+
+      async function initializeKonceptChatbot() {
+        if (isKonceptModelLoading || konceptPipeline || konceptModelLoadAttempted) return;
+        
+        isKonceptModelLoading = true;
+        konceptModelLoadAttempted = true;
+
+        if (typeof Xenova === 'undefined') {
+          addMessageToKonceptChatbox("Erreur: Bibliothèque Transformers.js non chargée.", 'bot');
+          console.error("Xenova is undefined for Koncept Assistant.");
+          isKonceptModelLoading = false;
+          if(userInputKoncept) userInputKoncept.disabled = true;
+          if(sendMessageBtnKoncept) sendMessageBtnKoncept.disabled = true;
+          return;
+        }
+        
+        const { pipeline, env } = Xenova;
+        env.allowLocalModels = true;
+
+        let loadingMsg = addMessageToKonceptChatbox(
+          "Initialisation de l'Assistant... <span class='loading-dots-koncept'><span>.</span><span>.</span><span>.</span></span><br><small>Téléchargement du modèle...</small>", 
+          'bot', true);
+
+        try {
+          konceptPipeline = await pipeline('conversational', 'Xenova/blenderbot_small-90M', {
+            quantized: true,
+            progress_callback: (progress) => {
+              if (loadingMsg && progress.status === 'progress' && progress.file.includes('onnx')) {
+                const MBLoaded = Math.round(progress.loaded / 1024 / 1024 * 10) / 10;
+                const MBTotal = Math.round(progress.total / 1024 / 1024 * 10) / 10;
+                loadingMsg.innerHTML = `Chargement: ${progress.file.split('/').pop()} (${MBLoaded}MB / ${MBTotal}MB) <span class='loading-dots-koncept'><span>.</span><span>.</span><span>.</span></span>`;
+              } else if (loadingMsg && progress.status === 'ready') {
+                loadingMsg.innerHTML = `Modèle prêt. Finalisation... <span class='loading-dots-koncept'><span>.</span><span>.</span><span>.</span></span>`;
+              }
+            }
+          });
+
+          if(loadingMsg) loadingMsg.remove();
+          addMessageToKonceptChatbox("🤖 Salut ! Je suis l'Assistant Koncept. Une question ?", 'bot');
+          if(userInputKoncept) {
+            userInputKoncept.disabled = false;
+            userInputKoncept.focus();
+          }
+          if(sendMessageBtnKoncept) sendMessageBtnKoncept.disabled = false;
+
+        } catch (error) {
+          console.error("Erreur init pipeline Koncept Assistant:", error);
+          if(loadingMsg) loadingMsg.remove();
+          addMessageToKonceptChatbox("Oups ! Erreur de chargement de l'assistant. <br><small>" + error.message + "</small>", 'bot', true);
+          if(userInputKoncept) userInputKoncept.disabled = true;
+          if(sendMessageBtnKoncept) sendMessageBtnKoncept.disabled = true;
+        } finally {
+          isKonceptModelLoading = false;
+        }
+      }
+
+      async function handleSendMessageKoncept() {
+        if (!userInputKoncept || !sendMessageBtnKoncept || !chatboxKoncept) return;
+        if (!konceptPipeline && !isKonceptModelLoading) {
+          addMessageToKonceptChatbox("Assistant non initialisé. Tentative...", 'bot');
+          initializeKonceptChatbot(); return;
+        }
+        if (isKonceptModelLoading) {
+          addMessageToKonceptChatbox("Chargement en cours, patientez...", 'bot'); return;
+        }
+        if (!konceptPipeline) {
+          addMessageToKonceptChatbox("Erreur, l'assistant n'a pas pu être chargé.", 'bot'); return;
+        }
+
+        const message = userInputKoncept.value.trim();
+        if (message === '') return;
+
+        addMessageToKonceptChatbox(message, 'user');
+        userInputKoncept.value = '';
+        userInputKoncept.disabled = true;
+        sendMessageBtnKoncept.disabled = true;
+
+        let thinkingMsg = addMessageToKonceptChatbox("🤖 <span class='loading-dots-koncept'><span>.</span><span>.</span><span>.</span></span>", 'bot', true);
+
+        try {
+          const result = await konceptPipeline(message);
+          let botReply = "Je ne suis pas sûr de bien comprendre.";
+          if (result && result.generated_text) botReply = result.generated_text;
+          else if (typeof result === 'string') botReply = result;
+          
+          if(thinkingMsg) thinkingMsg.remove();
+          addMessageToKonceptChatbox("🤖 " + botReply, 'bot');
+        } catch (error) {
+          console.error("Erreur réponse Koncept Assistant:", error);
+          if(thinkingMsg) thinkingMsg.remove();
+          addMessageToKonceptChatbox("🤖 Désolé, une erreur est survenue. <br><small>" + error.message + "</small>", 'bot', true);
+        } finally {
+          if (isKonceptModalOpen) {
+            userInputKoncept.disabled = false;
+            sendMessageBtnKoncept.disabled = false;
+            userInputKoncept.focus();
+          }
+        }
+      }
+
+      if (sendMessageBtnKoncept && userInputKoncept) {
+        sendMessageBtnKoncept.addEventListener('click', handleSendMessageKoncept);
+        userInputKoncept.addEventListener('keypress', function(event) {
+          if (event.key === 'Enter' && !userInputKoncept.disabled) {
+            event.preventDefault();
+            handleSendMessageKoncept();
+          }
+        });
+      }
     });
   </script>
-
 </body>
 </html>
