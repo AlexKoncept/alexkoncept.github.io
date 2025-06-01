@@ -104,7 +104,7 @@
       align-items: center;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
       transition: background 0.3s, color 0.3s, border-color 0.3s;
-      z-index: 1000;
+      z-index: 1001; /* Au-dessus de la modale si besoin, mais devrait être ok */
     }
     .theme-toggle::before { content: var(--theme-toggle-icon); }
 
@@ -408,13 +408,16 @@
   </button>
 
   <!-- Modale pour l'assistant Koncept -->
-  <div id="konceptAssistantModal" class="koncept-assistant-modal">
+  <!-- AJOUT ARIA: role, aria-modal, aria-labelledby -->
+  <div id="konceptAssistantModal" class="koncept-assistant-modal" role="dialog" aria-modal="true" aria-labelledby="konceptAssistantModalTitle">
     <div class="modal-content-koncept">
         <div class="modal-header-koncept">
-            <h2>Koncept Assistant</h2>
-            <span id="closeKonceptAssistantModalBtn" class="close-modal-btn-koncept">×</span>
+            <!-- AJOUT ARIA: id pour aria-labelledby -->
+            <h2 id="konceptAssistantModalTitle">Koncept Assistant</h2>
+            <span id="closeKonceptAssistantModalBtn" class="close-modal-btn-koncept" role="button" tabindex="0" aria-label="Fermer la fenêtre de l'assistant">×</span>
         </div>
-        <div id="chatboxKoncept" class="chatbox-koncept">
+        <!-- AJOUT ARIA: role="log" aria-live="polite" -->
+        <div id="chatboxKoncept" class="chatbox-koncept" role="log" aria-live="polite">
             <!-- Messages du chat -->
         </div>
         <div class="chat-input-area-koncept">
@@ -425,10 +428,6 @@
     </div>
   </div>
 
-  <!-- La ligne <script src="js/transformers.min.js"></script> a été supprimée. -->
-  <!-- L'import se fait maintenant dynamiquement dans le script ci-dessous. -->
-
-  <!-- MODIFICATION: Ajout de type="module" pour permettre les imports ESM -->
   <script type="module">
     document.addEventListener('DOMContentLoaded', () => {
       // --- Gestion du thème ---
@@ -455,46 +454,55 @@
       const openFAB = document.getElementById('openKonceptAssistantFAB');
       const assistantModal = document.getElementById('konceptAssistantModal');
       const closeModalBtn = document.getElementById('closeKonceptAssistantModalBtn');
-
       const chatboxKoncept = document.getElementById('chatboxKoncept');
       const userInputKoncept = document.getElementById('userInputKoncept');
       const sendMessageBtnKoncept = document.getElementById('sendMessageBtnKoncept');
       
       let konceptPipeline = null;
       let isKonceptModelLoading = false;
-      let konceptModelLoadAttempted = false; // Pour ne pas retenter indéfiniment si ça échoue
+      let konceptModelLoadAttempted = false;
       let isKonceptModalOpen = false;
+      // MODIFICATION: Ajout de la variable pour l'historique de conversation
+      let konceptConversationHistory = { past_user_inputs: [], generated_responses: [] };
 
       if (openFAB && assistantModal && closeModalBtn) {
         openFAB.addEventListener('click', () => {
           assistantModal.classList.add('show');
-          document.body.style.overflow = 'hidden';
+          document.body.style.overflow = 'hidden'; // Empêche le scroll de la page derrière
           isKonceptModalOpen = true;
           // N'initialiser que si ce n'est pas déjà fait ou en cours de chargement, et si la tentative n'a pas déjà échoué.
           if (!konceptPipeline && !isKonceptModelLoading && !konceptModelLoadAttempted) {
             initializeKonceptChatbot();
-          } else if (userInputKoncept) {
-            userInputKoncept.focus(); // Donner le focus si déjà initialisé
+          } else if (konceptPipeline && userInputKoncept) { // Si déjà initialisé et prêt
+            userInputKoncept.focus();
           }
         });
 
-        closeModalBtn.addEventListener('click', closeKonceptModal);
-        assistantModal.addEventListener('click', (event) => {
-          if (event.target === assistantModal) {
-            closeKonceptModal();
-          }
-        });
-        document.addEventListener('keydown', (event) => {
-            if (event.key === 'Escape' && isKonceptModalOpen) {
-                closeKonceptModal();
+        const closeKonceptAssistantModal = () => {
+            assistantModal.classList.remove('show');
+            document.body.style.overflow = 'auto'; // Rétablit le scroll
+            isKonceptModalOpen = false;
+            if (openFAB) openFAB.focus(); // Redonne le focus au bouton FAB pour l'accessibilité
+        };
+
+        closeModalBtn.addEventListener('click', closeKonceptAssistantModal);
+        closeModalBtn.addEventListener('keydown', (event) => { // Permet de fermer avec Entrée/Espace si focus
+            if (event.key === 'Enter' || event.key === ' ') {
+                closeKonceptAssistantModal();
             }
         });
-      }
+        
+        assistantModal.addEventListener('click', (event) => {
+          if (event.target === assistantModal) {
+            closeKonceptAssistantModal();
+          }
+        });
 
-      function closeKonceptModal() {
-        assistantModal.classList.remove('show');
-        document.body.style.overflow = 'auto';
-        isKonceptModalOpen = false;
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && isKonceptModalOpen) {
+                closeKonceptAssistantModal();
+            }
+        });
       }
 
       function addMessageToKonceptChatbox(message, sender, isHtml = false) {
@@ -515,36 +523,34 @@
         if (isKonceptModelLoading || konceptPipeline || konceptModelLoadAttempted) return;
         
         isKonceptModelLoading = true;
-        konceptModelLoadAttempted = true; // Important de le mettre ici pour marquer la tentative
+        konceptModelLoadAttempted = true;
 
         let loadingMsg = addMessageToKonceptChatbox(
           "Initialisation de l'Assistant... <span class='loading-dots-koncept'><span>.</span><span>.</span><span>.</span></span><br><small>Téléchargement de la bibliothèque et du modèle...</small>", 
           'bot', true);
 
         try {
-          // MODIFICATION: Importation dynamique de Transformers.js
-          // Remplace la dépendance à Xenova global
           let { pipeline, env } = await import('https://cdn.jsdelivr.net/npm/@xenova/transformers@2.17.1');
-          
-          // Configure l'environnement (optionnel car allowLocalModels est true par défaut maintenant, mais explicite)
           env.allowLocalModels = true; 
 
           konceptPipeline = await pipeline('conversational', 'Xenova/blenderbot_small-90M', {
-            quantized: true, // Utiliser des modèles optimisés
+            quantized: true,
             progress_callback: (progress) => {
-              if (loadingMsg && progress.status === 'progress' && progress.file.includes('onnx')) { // Se concentrer sur le fichier modèle principal
+              if (loadingMsg && progress.status === 'progress' && progress.file.includes('onnx')) {
                 const MBLoaded = Math.round(progress.loaded / 1024 / 1024 * 10) / 10;
                 const MBTotal = Math.round(progress.total / 1024 / 1024 * 10) / 10;
                 loadingMsg.innerHTML = `Chargement du modèle: ${progress.file.split('/').pop()} (${MBLoaded}MB / ${MBTotal}MB) <span class='loading-dots-koncept'><span>.</span><span>.</span><span>.</span></span>`;
               } else if (loadingMsg && progress.status === 'ready' && progress.name === 'Xenova/blenderbot_small-90M') {
-                 // Le nom du modèle est dans progress.name pour l'événement 'ready'
                 loadingMsg.innerHTML = `Modèle prêt. Finalisation... <span class='loading-dots-koncept'><span>.</span><span>.</span><span>.</span></span>`;
               }
             }
           });
 
-          if(loadingMsg) loadingMsg.remove(); // Enlever le message de chargement
-          addMessageToKonceptChatbox("🤖 Salut ! Je suis l'Assistant Koncept. Une question ?", 'bot');
+          // MODIFICATION: Réinitialiser l'historique de conversation après le chargement du modèle
+          konceptConversationHistory = { past_user_inputs: [], generated_responses: [] };
+
+          if(loadingMsg) loadingMsg.remove();
+          addMessageToKonceptChatbox("🤖 Salut ! Je suis l'Assistant Koncept. Une question sur Alex ou ses projets ?", 'bot');
           if(userInputKoncept) {
             userInputKoncept.disabled = false;
             userInputKoncept.placeholder = "Posez votre question ici...";
@@ -561,7 +567,6 @@
             userInputKoncept.placeholder = "Assistant indisponible";
           }
           if(sendMessageBtnKoncept) sendMessageBtnKoncept.disabled = true;
-          // Ne pas remettre konceptModelLoadAttempted à false ici, pour éviter des tentatives répétées si c'est un problème persistant.
         } finally {
           isKonceptModelLoading = false;
         }
@@ -570,16 +575,14 @@
       async function handleSendMessageKoncept() {
         if (!userInputKoncept || !sendMessageBtnKoncept || !chatboxKoncept) return;
         
-        // Vérifications si l'assistant n'est pas prêt
         if (!konceptPipeline && !isKonceptModelLoading) {
           addMessageToKonceptChatbox("Assistant non initialisé. Veuillez patienter ou rouvrir.", 'bot');
-          // On pourrait tenter une réinitialisation si konceptModelLoadAttempted était false, mais ici on suppose que l'init a échoué ou n'a pas été appelée.
           return;
         }
         if (isKonceptModelLoading) {
           addMessageToKonceptChatbox("Chargement du modèle en cours, veuillez patienter...", 'bot'); return;
         }
-        if (!konceptPipeline) { // Devrait être couvert par le premier if, mais double sécurité
+        if (!konceptPipeline) {
           addMessageToKonceptChatbox("Erreur, l'assistant n'a pas pu être chargé correctement.", 'bot'); return;
         }
 
@@ -594,20 +597,28 @@
         let thinkingMsg = addMessageToKonceptChatbox("🤖 <span class='loading-dots-koncept'><span>.</span><span>.</span><span>.</span></span>", 'bot', true);
 
         try {
-          const result = await konceptPipeline(message);
+          // MODIFICATION: Passer l'historique de conversation au pipeline
+          // Note: Pour des conversations très longues, vous pourriez vouloir limiter la taille de l'historique
+          // ex: en ne gardant que les N derniers échanges.
+          const result = await konceptPipeline(message, konceptConversationHistory);
+          
           let botReply = "Je ne suis pas sûr de bien comprendre.";
-          // La réponse de 'conversational' est directement le texte généré.
-          if (typeof result === 'string') botReply = result; // Cas simple
-          else if (result && result.generated_text) botReply = result.generated_text; // Plus générique
+          if (typeof result === 'string') botReply = result;
+          else if (result && result.generated_text) botReply = result.generated_text;
           
           if(thinkingMsg) thinkingMsg.remove();
           addMessageToKonceptChatbox("🤖 " + botReply, 'bot');
+
+          // MODIFICATION: Mettre à jour l'historique de conversation
+          konceptConversationHistory.past_user_inputs.push(message);
+          konceptConversationHistory.generated_responses.push(botReply);
+
         } catch (error) {
           console.error("Erreur lors de la réponse de l'Assistant Koncept:", error);
           if(thinkingMsg) thinkingMsg.remove();
           addMessageToKonceptChatbox("🤖 Désolé, une erreur est survenue lors de la génération de la réponse. <br><small>" + error.message + "</small>", 'bot', true);
         } finally {
-          if (isKonceptModalOpen) { // Réactiver seulement si la modale est toujours ouverte
+          if (isKonceptModalOpen) {
             userInputKoncept.disabled = false;
             sendMessageBtnKoncept.disabled = false;
             userInputKoncept.focus();
