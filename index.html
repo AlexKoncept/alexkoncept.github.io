@@ -11,7 +11,7 @@
 }
 </script>
   <meta charset="UTF-8" />
-  <meta name="description" content="Découvrez les créations horlogères, projets web dystopiques, crypto World Peace et IA par Alex Koncept." /> 
+  <meta name="description" content="Découvrez les créations horlogères, projets web dystopiques, crypto World Peace et IA par Alex Koncept." />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Alex Koncept – Universe</title>
 <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
@@ -19,7 +19,7 @@
 <link rel="shortcut icon" href="/favicon.ico" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 <link rel="manifest" href="/site.webmanifest" />
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Inter:wght@300;500;700&family=Courier+Prime&family=Special+Elite&display=swap" rel="stylesheet"> <!-- Ajout de Courier Prime et Special Elite pour les thèmes -->
   <style>
     :root {
       --body-bg: #f9f9fb;
@@ -36,18 +36,20 @@
       --theme-toggle-icon: "☀️";
       --theme-toggle-bg: #fff;
       --theme-toggle-border: #ddd;
+      --main-font: 'Inter', sans-serif;
+      --title-font: 'Orbitron', sans-serif;
     }
 
     body.dark-mode {
       --body-bg: #1e1e1e;
       --text-color: #e0e0e0;
-      --header-bg-start: #005c73; /* Darker gradient */
-      --header-bg-end: #2c7a31; /* Darker gradient */
+      --header-bg-start: #005c73;
+      --header-bg-end: #2c7a31;
       --header-text-color: #f0f0f0;
       --project-bg: #2a2a2a;
-      --project-border-color: #61dafb; /* Lighter blue for dark mode */
+      --project-border-color: #61dafb;
       --project-shadow-color: rgba(255,255,255,0.08);
-      --project-title-color: #80deea; /* Lighter blue for titles */
+      --project-title-color: #80deea;
       --link-color: #61dafb;
       --footer-text-color: #aaa;
       --theme-toggle-icon: "🌙";
@@ -55,53 +57,132 @@
       --theme-toggle-border: #555;
     }
 
+    /* --- Koncept Modes --- */
+    body.koncept-matrix {
+      --body-bg: #000000;
+      --text-color: #00ff00;
+      --header-bg-start: #080808;
+      --header-bg-end: #030303;
+      --header-text-color: #00ff00;
+      --project-bg: #050505;
+      --project-border-color: #00ff00;
+      --project-shadow-color: rgba(0, 255, 0, 0.2);
+      --project-title-color: #00dd00;
+      --link-color: #33ff33;
+      --footer-text-color: #00aa00;
+      --main-font: 'Courier Prime', monospace;
+      --title-font: 'Courier Prime', monospace;
+    }
+    body.koncept-matrix header h1, body.koncept-matrix .project-content h2 {
+        text-shadow: 0 0 5px var(--text-color), 0 0 10px var(--text-color);
+    }
+
+    body.koncept-nature {
+      --body-bg: #edf6e5;
+      --text-color: #3c2a21;
+      --header-bg-start: #86a357;
+      --header-bg-end: #c2d9a0;
+      --header-text-color: #f5f5f5;
+      --project-bg: #f5f5ef;
+      --project-border-color: #588157;
+      --project-shadow-color: rgba(91, 124, 79, 0.15);
+      --project-title-color: #3a5a40;
+      --link-color: #588157;
+      --footer-text-color: #54473c;
+      --main-font: 'Special Elite', cursive;
+      --title-font: 'Special Elite', cursive;
+    }
+
+    body.koncept-space {
+      --body-bg: #0b0f19;
+      --text-color: #e0e0e0;
+      --header-bg-start: #1f2a40;
+      --header-bg-end: #36456b;
+      --header-text-color: #ffffff;
+      --project-bg: #1a202c;
+      --project-border-color: #76a9fa;
+      --project-shadow-color: rgba(118, 169, 250, 0.15);
+      --project-title-color: #90caf9;
+      --link-color: #76a9fa;
+      --footer-text-color: #a0aec0;
+      --main-font: 'Orbitron', sans-serif;
+      --title-font: 'Orbitron', sans-serif;
+    }
+    body.koncept-space {
+        background-image: radial-gradient(circle, rgba(255,255,255,0.03) 1px, transparent 1px);
+        background-size: 20px 20px;
+    }
+    /* --- Fin Koncept Modes --- */
+
     * {
       box-sizing: border-box;
     }
 
     body {
       margin: 0;
-      font-family: 'Inter', sans-serif;
+      font-family: var(--main-font);
       background-color: var(--body-bg);
       color: var(--text-color);
       line-height: 1.6;
-      transition: background-color 0.3s ease, color 0.3s ease;
+      transition: background-color 0.5s ease, color 0.5s ease, background-image 0.5s ease;
     }
 
-    .theme-toggle {
+    /* Styles communs pour les boutons de toggle */
+    .common-toggle-button {
       position: fixed;
-      top: 1rem;
-      right: 1rem;
       background: var(--theme-toggle-bg);
-      color: var(--text-color); /* Use main text color for icon */
+      color: var(--text-color);
       border: 1px solid var(--theme-toggle-border);
-      border-radius: 50%;
-      width: 40px;
       height: 40px;
-      font-size: 1.2rem;
       cursor: pointer;
       display: flex;
       justify-content: center;
       align-items: center;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      transition: background 0.3s, color 0.3s, border-color 0.3s;
+      transition: background 0.3s, color 0.3s, border-color 0.3s, width 0.3s ease;
       z-index: 1000;
+    }
+
+    .koncept-mode-toggle {
+      /* Hérite de .common-toggle-button */
+      top: 1rem;
+      left: 1rem; /* Positionné en HAUT À GAUCHE */
+      border-radius: 25px;
+      font-size: 1rem;
+      padding: 0 10px;
+      min-width: 40px;
+    }
+    .koncept-mode-toggle .koncept-mode-icon {
+        margin-right: 5px;
+    }
+    .koncept-mode-toggle .koncept-mode-text {
+        font-size: 0.8rem;
+        white-space: nowrap;
+    }
+
+    .theme-toggle {
+      /* Hérite de .common-toggle-button */
+      top: 1rem;
+      right: 1rem; /* Positionné en HAUT À DROITE */
+      border-radius: 50%;
+      width: 40px;
+      padding: 0;
+      font-size: 1.2rem;
     }
     .theme-toggle::before {
       content: var(--theme-toggle-icon);
     }
-
 
     header {
       text-align: center;
       padding: 4rem 2rem 2rem;
       background: linear-gradient(135deg, var(--header-bg-start) 0%, var(--header-bg-end) 100%);
       color: var(--header-text-color);
-      transition: background 0.3s ease, color 0.3s ease;
+      transition: background 0.5s ease, color 0.5s ease;
     }
 
     header h1 {
-      font-family: 'Orbitron', sans-serif;
+      font-family: var(--title-font);
       font-size: 3rem;
       margin-bottom: 0.5rem;
     }
@@ -134,7 +215,7 @@
       margin-bottom: 2rem;
       border-radius: 10px;
       box-shadow: 0 5px 20px var(--project-shadow-color);
-      transition: transform 0.2s ease, background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+      transition: transform 0.2s ease, background-color 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
       gap: 1.5rem;
       flex-wrap: wrap;
     }
@@ -159,7 +240,8 @@
       margin-top: 0;
       font-size: 1.5rem;
       color: var(--project-title-color);
-      transition: color 0.3s ease;
+      font-family: var(--title-font);
+      transition: color 0.5s ease;
     }
 
     .project-content p {
@@ -170,7 +252,7 @@
       color: var(--link-color);
       text-decoration: none;
       font-weight: 500;
-      transition: color 0.3s ease;
+      transition: color 0.5s ease;
     }
 
     .project-content a:hover {
@@ -182,32 +264,50 @@
       padding: 2rem;
       font-size: 0.9rem;
       color: var(--footer-text-color);
-      transition: color 0.3s ease;
+      transition: color 0.5s ease;
     }
 
     @media (max-width: 600px) {
       header h1 {
         font-size: 2rem;
       }
-
       .project {
         flex-direction: column;
         text-align: center;
       }
-
       .project img {
         margin: 0 auto;
       }
-      .theme-toggle {
+
+      /* Ajustement mobile pour les boutons */
+      .koncept-mode-toggle { /* Reste en haut à gauche */
+        top: 0.5rem;
+        left: 0.5rem;
+      }
+      .theme-toggle { /* Reste en haut à droite */
         top: 0.5rem;
         right: 0.5rem;
+        left: auto; /* Pour s'assurer que 'left' ne l'emporte pas */
+      }
+
+      .koncept-mode-toggle .koncept-mode-text {
+        /* Optionnel: cacher le texte sur mobile pour gagner de la place */
+        /* display: none; */
+      }
+       .koncept-mode-toggle .koncept-mode-icon {
+        /* margin-right: 0; */ /* Si le texte est caché */
       }
     }
   </style>
 </head>
 <body>
 
-  <button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème"></button>
+  <button id="koncept-mode-toggle" class="koncept-mode-toggle common-toggle-button" aria-label="Changer le Koncept Mode">
+    <span class="koncept-mode-icon">🎨</span>
+    <span class="koncept-mode-text">Koncept Mode</span>
+  </button>
+  <button id="theme-toggle" class="theme-toggle common-toggle-button" aria-label="Changer le thème"></button>
+
 
   <header>
     <h1>Alex Koncept</h1>
@@ -244,14 +344,14 @@
       </div>
     </div>
 
-<div class="project">
-  <img src="IA-Chatbot.png" alt="IA Chatbot">
-  <div class="project-content">
-    <h2>IA & Chatbot</h2>
-    <p>Un site interactif pour expliquer l'intelligence artificielle, avec un chatbot intégré. Codé en HTML/CSS/JS.</p>
-    <p><a href="https://alexkoncept.github.io/IA-Chatbot/" target="_blank" rel="noopener noreferrer">Voir le projet GitHub</a></p>
-  </div>
-</div>
+    <div class="project">
+      <img src="IA-Chatbot.png" alt="IA Chatbot">
+      <div class="project-content">
+        <h2>IA & Chatbot</h2>
+        <p>Un site interactif pour expliquer l'intelligence artificielle, avec un chatbot intégré. Codé en HTML/CSS/JS.</p>
+        <p><a href="https://alexkoncept.github.io/IA-Chatbot/" target="_blank" rel="noopener noreferrer">Voir le projet GitHub</a></p>
+      </div>
+    </div>
 
     <div class="project">
       <img src="WorldPeaceToken.jpg" alt="World Peace Token">
@@ -270,28 +370,63 @@
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const themeToggle = document.getElementById('theme-toggle');
+      const konceptModeToggle = document.getElementById('koncept-mode-toggle');
+      const konceptModeTextElement = konceptModeToggle.querySelector('.koncept-mode-text');
+      const body = document.body;
 
-      // Function to apply the theme
-      const applyTheme = (theme) => {
+      // --- Theme Clair/Foncé ---
+      const applyDarkLightMode = (theme) => {
         if (theme === 'dark') {
-          document.body.classList.add('dark-mode');
+          body.classList.add('dark-mode');
         } else {
-          document.body.classList.remove('dark-mode');
+          body.classList.remove('dark-mode');
         }
       };
 
-      // Check local storage or system preference
-      let storedTheme = localStorage.getItem('theme');
-      if (!storedTheme) {
-        storedTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      let storedDarkLightMode = localStorage.getItem('theme');
+      if (!storedDarkLightMode) {
+        storedDarkLightMode = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
       }
-      applyTheme(storedTheme);
+      applyDarkLightMode(storedDarkLightMode);
       
-      // Toggle theme on button click
       themeToggle.addEventListener('click', () => {
-        const isDarkMode = document.body.classList.toggle('dark-mode');
+        const isDarkMode = body.classList.toggle('dark-mode');
         const newTheme = isDarkMode ? 'dark' : 'light';
         localStorage.setItem('theme', newTheme);
+      });
+
+      // --- Koncept Modes ---
+      const konceptModes = ['default', 'matrix', 'nature', 'space'];
+      let currentKonceptModeIndex = 0;
+
+      const applyKonceptMode = (modeName) => {
+        konceptModes.forEach(m => {
+          if (m !== 'default') {
+            body.classList.remove(`koncept-${m}`);
+          }
+        });
+
+        if (modeName && modeName !== 'default') {
+          body.classList.add(`koncept-${modeName}`);
+          konceptModeTextElement.textContent = `Koncept: ${modeName.charAt(0).toUpperCase() + modeName.slice(1)}`;
+        } else {
+          konceptModeTextElement.textContent = 'Koncept Mode';
+        }
+        localStorage.setItem('konceptMode', modeName);
+      };
+      
+      let storedKonceptMode = localStorage.getItem('konceptMode');
+      if (storedKonceptMode && konceptModes.includes(storedKonceptMode)) {
+        currentKonceptModeIndex = konceptModes.indexOf(storedKonceptMode);
+        applyKonceptMode(storedKonceptMode);
+      } else {
+        applyKonceptMode('default');
+      }
+
+      konceptModeToggle.addEventListener('click', () => {
+        currentKonceptModeIndex = (currentKonceptModeIndex + 1) % konceptModes.length;
+        const newKonceptMode = konceptModes[currentKonceptModeIndex];
+        applyKonceptMode(newKonceptMode);
       });
     });
   </script>
