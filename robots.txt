@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://alexkoncept.github.io/sitemap.xml
