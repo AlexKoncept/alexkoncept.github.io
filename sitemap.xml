@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Page d'accueil -->
+  <url>
+    <loc>https://alexkoncept.github.io/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Projets Koncept -->
+  <url>
+    <loc>https://alexkoncept.github.io/HyperNormalSites/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://alexkoncept.github.io/Tamacodechi/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://alexkoncept.github.io/IA-Chatbot/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://alexkoncept.github.io/Opti-Garden-Koncept/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Projet crypto (Polygonscan externe) -->
+  <url>
+    <loc>https://polygonscan.com/address/0x0f6c9ec672c4851d9fb4518145f816d12543f48a#code</loc>
+    <changefreq>never</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+</urlset>
