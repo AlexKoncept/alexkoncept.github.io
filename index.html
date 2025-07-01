@@ -382,7 +382,7 @@
     <div class="project">
       <img src="OpticGardenKoncept.png" alt="Opti Garden Koncept">
       <div class="project-content">
-        <h2>Optic Garden Koncept <span class="badge-new">NEW</span></h2>
+        <h2>Optic Garden Koncept </h2>
         <p>Générateur d’illusions visuelles interactives. Semez une idée, regardez-la éclore.</p>
         <p><a href="https://alexkoncept.github.io/OpticGardenKoncept/" target="_blank" rel="noopener noreferrer">Voir le projet GitHub</a></p>
       </div>
@@ -503,6 +503,72 @@
   <footer>
     © 2025 Alex Koncept — Vivre. Apprendre. Créer.
   </footer>
+
+<div id="soundcloud-floating-player">
+  <iframe id="soundcloud-iframe" width="300" height="80" scrolling="no" frameborder="no" allow="autoplay"></iframe>
+</div>
+
+<script>
+  const soundcloudTracks = [
+  "https://soundcloud.com/l-alex-339757635/lalex-piste-1-m4a?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=6c1c1c8b1b254cf89a5f3ee2fd311016",
+  "https://soundcloud.com/l-alex-339757635/lalex-piste-2-m4a?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=72fb78094df745e79cf05c92da340c06",
+  "https://soundcloud.com/l-alex-339757635/lalex-piste-3_8bit-old-school?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=17e54adcdbbd4b03b5652a7ee9c529f0",
+  "https://soundcloud.com/l-alex-339757635/lalex-piste-4_ambiance-m4a?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=8050eb071b7c4684b4733c675e59b6c2",
+  "https://soundcloud.com/l-alex-339757635/lalex-piste-5_drill-m4a?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=e053db0e8d5a4cea8ed81832f1ea7531",
+  "https://soundcloud.com/l-alex-339757635/lalex-piste-6_daft-p-style-m4a?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=64ba02f04a6a482ba66a459dc4f87c8d",
+  "https://soundcloud.com/l-alex-339757635/lalex-piste-7_techno-back-to?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=46c902dec2d84f0a8907686ca0da45a6"
+  ];
+
+  const randomTrack = soundcloudTracks[Math.floor(Math.random() * soundcloudTracks.length)];
+  const playerUrl = `https://w.soundcloud.com/player/?url=${encodeURIComponent(randomTrack)}&color=%23ff5500&auto_play=true&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false`;
+
+  document.getElementById("soundcloud-iframe").src = playerUrl;
+</script>
+
+<script>
+  const soundcloudTracks = [
+  "https://soundcloud.com/l-alex-339757635/lalex-piste-1-m4a?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=6c1c1c8b1b254cf89a5f3ee2fd311016",
+  "https://soundcloud.com/l-alex-339757635/lalex-piste-2-m4a?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=72fb78094df745e79cf05c92da340c06",
+  "https://soundcloud.com/l-alex-339757635/lalex-piste-3_8bit-old-school?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=17e54adcdbbd4b03b5652a7ee9c529f0",
+  "https://soundcloud.com/l-alex-339757635/lalex-piste-4_ambiance-m4a?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=8050eb071b7c4684b4733c675e59b6c2",
+  "https://soundcloud.com/l-alex-339757635/lalex-piste-5_drill-m4a?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=e053db0e8d5a4cea8ed81832f1ea7531",
+  "https://soundcloud.com/l-alex-339757635/lalex-piste-6_daft-p-style-m4a?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=64ba02f04a6a482ba66a459dc4f87c8d",
+  "https://soundcloud.com/l-alex-339757635/lalex-piste-7_techno-back-to?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=46c902dec2d84f0a8907686ca0da45a6"
+  ];
+
+  const randomTrack = soundcloudTracks[Math.floor(Math.random() * soundcloudTracks.length)];
+  const baseUrl = "https://w.soundcloud.com/player/?url=" + encodeURIComponent(randomTrack) +
+    "&color=%23ff5500&auto_play=true&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false";
+
+  const iframe = document.getElementById("soundcloud-iframe");
+
+  // Charger d’abord sans autoplay
+  iframe.src = baseUrl.replace("auto_play=true", "auto_play=false");
+
+  // Une fois que l’utilisateur interagit avec la page, recharger avec autoplay
+  const enableAutoplay = () => {
+    iframe.src = baseUrl;
+    window.removeEventListener("click", enableAutoplay);
+    window.removeEventListener("scroll", enableAutoplay);
+  };
+
+  window.addEventListener("click", enableAutoplay);
+  window.addEventListener("scroll", enableAutoplay);
+</script>
+
+<style>
+#soundcloud-floating-player {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+  width: 300px;
+  height: 80px;
+  box-shadow: 0 0 10px rgba(255, 85, 0, 0.3);
+  border-radius: 12px;
+  overflow: hidden;
+}
+</style>
 
 </body>
 </html>
