@@ -504,9 +504,12 @@
     © 2025 Alex Koncept — Vivre. Apprendre. Créer.
   </footer>
 
-    <!-- Lecteur SoundCloud flottant -->
-<div id="soundcloud-floating-player" style="display:none;">
-  <iframe id="soundcloud-iframe" width="300" height="80" scrolling="no" frameborder="no" allow="autoplay"></iframe>
+   <!-- Lecteur SoundCloud flottant avec bouton suivant -->
+<div id="soundcloud-floating-player" style="display:none; display: flex; align-items: center; gap: 8px; padding: 6px 12px; background: rgba(255, 85, 0, 0.1); border-radius: 12px; box-shadow: 0 0 10px rgba(255, 85, 0, 0.3); position: fixed; bottom: 20px; right: 20px; z-index: 9999;">
+  <iframe id="soundcloud-iframe" width="250" height="80" scrolling="no" frameborder="no" allow="autoplay"></iframe>
+  <button id="next-track-btn" title="Musique suivante" style="background:#ff5500; border:none; border-radius: 6px; color: white; cursor: pointer; padding: 8px 12px; font-weight: bold; font-family: inherit; font-size: 0.9rem; transition: background 0.3s;">
+    ▶️ Suivante
+  </button>
 </div>
 
 <script>
@@ -520,42 +523,36 @@
   "https://soundcloud.com/l-alex-339757635/lalex-piste-7_techno-back-to?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=189a2a774b9c4108aba634be5ba2a4c3"
   ];
 
-  const getRandomTrack = () => {
-    return soundcloudTracks[Math.floor(Math.random() * soundcloudTracks.length)];
-  };
+  let currentTrackIndex = Math.floor(Math.random() * soundcloudTracks.length);
 
-  const loadSoundcloudPlayer = () => {
-    const trackUrl = getRandomTrack();
+  const loadTrack = (index) => {
+    const trackUrl = soundcloudTracks[index];
     const playerUrl = `https://w.soundcloud.com/player/?url=${encodeURIComponent(trackUrl)}&color=%23ff5500&auto_play=true&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false`;
     const iframe = document.getElementById("soundcloud-iframe");
     iframe.src = playerUrl;
-    document.getElementById("soundcloud-floating-player").style.display = "block";
-    console.log("🎵 SoundCloud player lancé sur scroll/clic :", trackUrl);
+    document.getElementById("soundcloud-floating-player").style.display = "flex";
+    console.log("🎵 Lecture du morceau :", trackUrl);
   };
 
-  // Ne se déclenche qu’une seule fois au premier scroll ou clic
+  // Charger premier morceau au scroll ou clic (une seule fois)
   const triggerOnce = () => {
-    loadSoundcloudPlayer();
+    loadTrack(currentTrackIndex);
     window.removeEventListener("scroll", triggerOnce);
     window.removeEventListener("click", triggerOnce);
   };
 
   window.addEventListener("scroll", triggerOnce, { once: true });
   window.addEventListener("click", triggerOnce, { once: true });
+
+  // Bouton musique suivante
+  document.addEventListener("DOMContentLoaded", () => {
+    const nextBtn = document.getElementById("next-track-btn");
+    nextBtn.addEventListener("click", () => {
+      currentTrackIndex = (currentTrackIndex + 1) % soundcloudTracks.length;
+      loadTrack(currentTrackIndex);
+    });
+  });
 </script>
 
-<style>
-  #soundcloud-floating-player {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 9999;
-    width: 300px;
-    height: 80px;
-    box-shadow: 0 0 10px rgba(255, 85, 0, 0.3);
-    border-radius: 12px;
-    overflow: hidden;
-  }
-</style>
 </body>
 </html>
