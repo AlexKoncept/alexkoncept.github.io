@@ -22,6 +22,20 @@
 <link rel="manifest" href="/site.webmanifest" />
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Inter:wght@300;500;700&family=Courier+Prime&family=Special+Elite&display=swap" rel="stylesheet"> <!-- Ajout de Courier Prime et Special Elite pour les thèmes -->
   <style>
+.project {
+  /* ... vos styles actuels ... */
+  transition: transform 0.4s ease-out, opacity 0.4s ease-out, background-color 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
+  
+  /* On cache les projets par défaut */
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.project.is-visible {
+  /* La classe qui déclenche l'animation */
+  opacity: 1;
+  transform: translateY(0);
+}
     :root {
       --body-bg: #f9f9fb;
       --text-color: #1a1a1a;
@@ -160,18 +174,20 @@ body.dark-mode .common-toggle-button {
   border-color: rgba(255, 255, 255, 0.2);
 }
 
-    .koncept-mode-toggle {
-      /* Hérite de .common-toggle-button */
-      top: 1rem;
-      left: 1rem; /* Positionné en HAUT À GAUCHE */
-      border-radius: 25px;
-      font-size: 1rem;
-      padding: 0 10px;
-      min-width: 40px;
-    }
-    .koncept-mode-toggle .koncept-mode-icon {
-        margin-right: 5px;
-    }
+/* NOUVEAU CSS POUR LE BOUTON ICÔNE */
+.koncept-mode-toggle {
+  top: 1rem;
+  left: 1rem;
+  border-radius: 50%; /* Pour en faire un cercle parfait */
+  width: 40px;         /* On fixe la taille, comme l'autre bouton */
+  padding: 0;          /* Plus besoin de padding horizontal */
+  font-size: 1.2rem;   /* On agrandit un peu l'icône pour remplir l'espace */
+}
+
+/* On s'assure que l'icône est bien centrée */
+.koncept-mode-toggle .koncept-mode-icon {
+    margin-right: 0; /* Plus besoin de marge */
+}
     .koncept-mode-toggle .koncept-mode-text {
         font-size: 0.8rem;
         white-space: nowrap;
@@ -337,7 +353,6 @@ body.dark-mode .common-toggle-button {
 
   <button id="koncept-mode-toggle" class="koncept-mode-toggle common-toggle-button" aria-label="Changer le Koncept Mode">
     <span class="koncept-mode-icon">🎨</span>
-    <span class="koncept-mode-text">Koncept Mode</span>
   </button>
   <button id="theme-toggle" class="theme-toggle common-toggle-button" aria-label="Changer le thème"></button>
 
@@ -431,10 +446,10 @@ body.dark-mode .common-toggle-button {
 </div>
 
   <script>
+
     document.addEventListener('DOMContentLoaded', () => {
       const themeToggle = document.getElementById('theme-toggle');
       const konceptModeToggle = document.getElementById('koncept-mode-toggle');
-      const konceptModeTextElement = konceptModeToggle.querySelector('.koncept-mode-text');
       const body = document.body;
 
       // --- Theme Clair/Foncé ---
@@ -462,21 +477,21 @@ body.dark-mode .common-toggle-button {
       const konceptModes = ['default', 'matrix', 'nature', 'space'];
       let currentKonceptModeIndex = 0;
 
-      const applyKonceptMode = (modeName) => {
-        konceptModes.forEach(m => {
-          if (m !== 'default') {
-            body.classList.remove(`koncept-${m}`);
-          }
-        });
+    // VERSION CORRIGÉE DE LA FONCTION
+const applyKonceptMode = (modeName) => {
+    konceptModes.forEach(m => {
+      if (m !== 'default') {
+        body.classList.remove(`koncept-${m}`);
+      }
+    });
 
-        if (modeName && modeName !== 'default') {
-          body.classList.add(`koncept-${modeName}`);
-          konceptModeTextElement.textContent = `Koncept: ${modeName.charAt(0).toUpperCase() + modeName.slice(1)}`;
-        } else {
-          konceptModeTextElement.textContent = 'Koncept Mode';
-        }
-        localStorage.setItem('konceptMode', modeName);
-      };
+    if (modeName && modeName !== 'default') {
+      body.classList.add(`koncept-${modeName}`);
+    }
+    // Les lignes qui modifiaient le texte ont été supprimées.
+    
+    localStorage.setItem('konceptMode', modeName);
+};
       
       let storedKonceptMode = localStorage.getItem('konceptMode');
       if (storedKonceptMode && konceptModes.includes(storedKonceptMode)) {
@@ -492,6 +507,24 @@ body.dark-mode .common-toggle-button {
         applyKonceptMode(newKonceptMode);
       });
     });
+// (Juste après le code pour les thèmes)
+
+// --- Animation des projets au scroll ---
+const projects = document.querySelectorAll('.project');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('is-visible');
+      observer.unobserve(entry.target); // Optionnel: pour ne l'animer qu'une fois
+    }
+  });
+}, {
+  threshold: 0.1 // L'animation se déclenche quand 10% de l'élément est visible
+});
+
+projects.forEach(project => {
+  observer.observe(project);
+});
   </script>
 
     <!-- Section À propos avec avatar à gauche -->
