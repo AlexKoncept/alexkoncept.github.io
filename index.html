@@ -20,19 +20,15 @@
 <link rel="shortcut icon" href="/favicon.ico" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 <link rel="manifest" href="/site.webmanifest" />
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Inter:wght@300;500;700&family=Courier+Prime&family=Special+Elite&display=swap" rel="stylesheet"> <!-- Ajout de Courier Prime et Special Elite pour les thèmes -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Inter:wght@300;500;700&family=Courier+Prime&family=Special+Elite&display=swap" rel="stylesheet">
   <style>
 .project {
-  /* ... vos styles actuels ... */
   transition: transform 0.4s ease-out, opacity 0.4s ease-out, background-color 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
-  
-  /* On cache les projets par défaut */
   opacity: 0;
   transform: translateY(30px);
 }
 
 .project.is-visible {
-  /* La classe qui déclenche l'animation */
   opacity: 1;
   transform: translateY(0);
 }
@@ -72,7 +68,6 @@
       --theme-toggle-border: #555;
     }
 
-    /* --- Koncept Modes --- */
     body.koncept-matrix {
       --body-bg: #000000;
       --text-color: #00ff00;
@@ -127,7 +122,6 @@
         background-image: radial-gradient(circle, rgba(255,255,255,0.03) 1px, transparent 1px);
         background-size: 20px 20px;
     }
-    /* --- Fin Koncept Modes --- */
 
     * {
       box-sizing: border-box;
@@ -144,18 +138,11 @@
 
 .common-toggle-button {
   position: fixed;
-  /* Fond semi-transparent (blanc pour le thème clair par défaut) */
-  background: rgba(255, 255, 255, 0.2); 
-  
-  /* Effet verre dépoli */
-  -webkit-backdrop-filter: blur(10px); /* Pour Safari */
+  background: rgba(255, 255, 255, 0.2);
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
-  
   color: var(--text-color);
-  
-  /* Bordure aussi semi-transparente */
   border: 1px solid rgba(255, 255, 255, 0.3);
-
   height: 40px;
   cursor: pointer;
   display: flex;
@@ -166,27 +153,22 @@
   z-index: 1000;
 }
 
-/* On ajuste les couleurs pour le mode sombre */
 body.dark-mode .common-toggle-button {
-  /* Fond semi-transparent (gris foncé pour le thème sombre) */
   background: rgba(42, 42, 42, 0.25);
-  /* La bordure reste blanche translucide pour un bon contraste */
   border-color: rgba(255, 255, 255, 0.2);
 }
 
-/* NOUVEAU CSS POUR LE BOUTON ICÔNE */
 .koncept-mode-toggle {
   top: 1rem;
   left: 1rem;
-  border-radius: 50%; /* Pour en faire un cercle parfait */
-  width: 40px;         /* On fixe la taille, comme l'autre bouton */
-  padding: 0;          /* Plus besoin de padding horizontal */
-  font-size: 1.2rem;   /* On agrandit un peu l'icône pour remplir l'espace */
+  border-radius: 50%;
+  width: 40px;
+  padding: 0;
+  font-size: 1.2rem;
 }
 
-/* On s'assure que l'icône est bien centrée */
 .koncept-mode-toggle .koncept-mode-icon {
-    margin-right: 0; /* Plus besoin de marge */
+    margin-right: 0;
 }
     .koncept-mode-toggle .koncept-mode-text {
         font-size: 0.8rem;
@@ -194,9 +176,8 @@ body.dark-mode .common-toggle-button {
     }
 
     .theme-toggle {
-      /* Hérite de .common-toggle-button */
       top: 1rem;
-      right: 1rem; /* Positionné en HAUT À DROITE */
+      right: 1rem;
       border-radius: 50%;
       width: 40px;
       padding: 0;
@@ -311,25 +292,17 @@ body.dark-mode .common-toggle-button {
       .project img {
         margin: 0 auto;
       }
-
-      /* Ajustement mobile pour les boutons */
-      .koncept-mode-toggle { /* Reste en haut à gauche */
+      .koncept-mode-toggle {
         top: 0.5rem;
         left: 0.5rem;
       }
-      .theme-toggle { /* Reste en haut à droite */
+      .theme-toggle {
         top: 0.5rem;
         right: 0.5rem;
-        left: auto; /* Pour s'assurer que 'left' ne l'emporte pas */
+        left: auto;
       }
-
-      .koncept-mode-toggle .koncept-mode-text {
-        /* Optionnel: cacher le texte sur mobile pour gagner de la place */
-        /* display: none; */
-      }
-       .koncept-mode-toggle .koncept-mode-icon {
-        /* margin-right: 0; */ /* Si le texte est caché */
-      }
+      .koncept-mode-toggle .koncept-mode-text {}
+      .koncept-mode-toggle .koncept-mode-icon {}
     }
 .badge-new {
   background-color: #e74c3c;
@@ -446,13 +419,11 @@ body.dark-mode .common-toggle-button {
 </div>
 
   <script>
-
     document.addEventListener('DOMContentLoaded', () => {
       const themeToggle = document.getElementById('theme-toggle');
       const konceptModeToggle = document.getElementById('koncept-mode-toggle');
       const body = document.body;
 
-      // --- Theme Clair/Foncé ---
       const applyDarkLightMode = (theme) => {
         if (theme === 'dark') {
           body.classList.add('dark-mode');
@@ -473,25 +444,21 @@ body.dark-mode .common-toggle-button {
         localStorage.setItem('theme', newTheme);
       });
 
-      // --- Koncept Modes ---
       const konceptModes = ['default', 'matrix', 'nature', 'space'];
       let currentKonceptModeIndex = 0;
 
-    // VERSION CORRIGÉE DE LA FONCTION
-const applyKonceptMode = (modeName) => {
-    konceptModes.forEach(m => {
-      if (m !== 'default') {
-        body.classList.remove(`koncept-${m}`);
-      }
-    });
+      const applyKonceptMode = (modeName) => {
+          konceptModes.forEach(m => {
+            if (m !== 'default') {
+              body.classList.remove(`koncept-${m}`);
+            }
+          });
 
-    if (modeName && modeName !== 'default') {
-      body.classList.add(`koncept-${modeName}`);
-    }
-    // Les lignes qui modifiaient le texte ont été supprimées.
-    
-    localStorage.setItem('konceptMode', modeName);
-};
+          if (modeName && modeName !== 'default') {
+            body.classList.add(`koncept-${modeName}`);
+          }
+          localStorage.setItem('konceptMode', modeName);
+      };
       
       let storedKonceptMode = localStorage.getItem('konceptMode');
       if (storedKonceptMode && konceptModes.includes(storedKonceptMode)) {
@@ -507,34 +474,28 @@ const applyKonceptMode = (modeName) => {
         applyKonceptMode(newKonceptMode);
       });
     });
-// (Juste après le code pour les thèmes)
 
-// --- Animation des projets au scroll ---
-const projects = document.querySelectorAll('.project');
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('is-visible');
-      observer.unobserve(entry.target); // Optionnel: pour ne l'animer qu'une fois
-    }
-  });
-}, {
-  threshold: 0.1 // L'animation se déclenche quand 10% de l'élément est visible
-});
+    const projects = document.querySelectorAll('.project');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
 
-projects.forEach(project => {
-  observer.observe(project);
-});
+    projects.forEach(project => {
+      observer.observe(project);
+    });
   </script>
 
-    <!-- Section À propos avec avatar à gauche -->
 <section id="a-propos" style="background-color: #f7fafc; padding: 2rem 1rem;">
   <div style="max-width: 1000px; margin: auto; display: flex; align-items: center; gap: 1rem;">
-    <!-- Avatar petit rond -->
     <img src="Avatar.png" alt="Avatar Alex"
          style="width: 128px; height: 128px; border-radius: 50%; border: 1px solid #ccc; box-shadow: 0 0 4px rgba(0,0,0,0.1); object-fit: cover;">
-
-    <!-- Texte -->
     <div style="text-align: left; font-family: sans-serif;">
       <h2 style="font-size: 1.25rem; font-weight: bold; color: #2d3748; margin-bottom: 0.5rem;">À propos</h2>
       <p style="font-size: 0.9rem; color: #4a5568; line-height: 1.5;">
@@ -553,22 +514,17 @@ projects.forEach(project => {
     © 2025 Alex Koncept — Vivre. Apprendre. Créer.
   </footer>
 
-<!-- Lecteur SoundCloud flottant (Style "Cadre Lumineux Cyan") -->
 <div 
   id="soundcloud-floating-player" 
   style="
     display: none; 
     display: flex; 
     align-items: center; 
-    gap: 8px; /* On peut remettre un peu d'espace */
-    padding: 4px; /* Un tout petit padding pour que le cadre respire */
-    
-    /* --- LA NOUVELLE APPROCHE --- */
-    background: transparent; /* PLUS DE FOND ! */
-    border: 1px solid #00bcd4; /* Un cadre fin de couleur cyan */
-    box-shadow: 0 0 12px rgba(0, 188, 212, 0.7); /* L'effet de LUEUR cyan */
-    /* --- Fin de la nouvelle approche --- */
-
+    gap: 8px;
+    padding: 4px;
+    background: transparent;
+    border: 1px solid #00bcd4;
+    box-shadow: 0 0 12px rgba(0, 188, 212, 0.7);
     border-radius: 10px; 
     position: fixed; 
     bottom: 20px; 
@@ -585,13 +541,13 @@ projects.forEach(project => {
 
 <script>
   const soundcloudTracks = [
-  "https://soundcloud.com/l-alex-339757635/lalex-piste-1-m4a?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=c8fe8d4be3a54764a0699bade90c75dd",
-  "https://soundcloud.com/l-alex-339757635/lalex-piste-2-m4a?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=e81c8192d9c04af9ab525dd31fdc6213",
-  "https://soundcloud.com/l-alex-339757635/lalex-piste-3_8bit-old-school?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=ecb00c2f996648ac82aa8ed580ff3664",
-  "https://soundcloud.com/l-alex-339757635/lalex-piste-4_ambiance-m4a?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=2ecece16847443fca00f8f27c1ce3f3d",
-  "https://soundcloud.com/l-alex-339757635/lalex-piste-5_drill-m4a?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=aa74ec6b1dda49d1b01d438642bc42f0",
-  "https://soundcloud.com/l-alex-339757635/lalex-piste-6_daft-p-style-m4a?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=07c43f8ea06a45c7897ec491608f74f4",
-  "https://soundcloud.com/l-alex-339757635/lalex-piste-7_techno-back-to?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=148b7dddbf364f6f9151e2ed31c3b636"
+    "https://soundcloud.com/l-alex-339757635/lalex-piste-1-m4a?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=c8fe8d4be3a54764a0699bade90c75dd",
+    "https://soundcloud.com/l-alex-339757635/lalex-piste-2-m4a?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=e81c8192d9c04af9ab525dd31fdc6213",
+    "https://soundcloud.com/l-alex-339757635/lalex-piste-3_8bit-old-school?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=ecb00c2f996648ac82aa8ed580ff3664",
+    "https://soundcloud.com/l-alex-339757635/lalex-piste-4_ambiance-m4a?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=2ecece16847443fca00f8f27c1ce3f3d",
+    "https://soundcloud.com/l-alex-339757635/lalex-piste-5_drill-m4a?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=aa74ec6b1dda49d1b01d438642bc42f0",
+    "https://soundcloud.com/l-alex-339757635/lalex-piste-6_daft-p-style-m4a?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=07c43f8ea06a45c7897ec491608f74f4",
+    "https://soundcloud.com/l-alex-339757635/lalex-piste-7_techno-back-to?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=148b7dddbf364f6f9151e2ed31c3b636"
   ];
 
   let currentTrackIndex = Math.floor(Math.random() * soundcloudTracks.length);
@@ -602,10 +558,8 @@ projects.forEach(project => {
     const iframe = document.getElementById("soundcloud-iframe");
     iframe.src = playerUrl;
     document.getElementById("soundcloud-floating-player").style.display = "flex";
-    console.log("🎵 Lecture du morceau :", trackUrl);
   };
 
-  // Charger premier morceau au scroll ou clic (une seule fois)
   const triggerOnce = () => {
     loadTrack(currentTrackIndex);
     window.removeEventListener("scroll", triggerOnce);
@@ -615,7 +569,6 @@ projects.forEach(project => {
   window.addEventListener("scroll", triggerOnce, { once: true });
   window.addEventListener("click", triggerOnce, { once: true });
 
-  // Bouton musique suivante
   document.addEventListener("DOMContentLoaded", () => {
     const nextBtn = document.getElementById("next-track-btn");
     nextBtn.addEventListener("click", () => {
