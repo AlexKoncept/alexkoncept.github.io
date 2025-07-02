@@ -128,21 +128,37 @@
       transition: background-color 0.5s ease, color 0.5s ease, background-image 0.5s ease;
     }
 
-    /* Styles communs pour les boutons de toggle */
-    .common-toggle-button {
-      position: fixed;
-      background: var(--theme-toggle-bg);
-      color: var(--text-color);
-      border: 1px solid var(--theme-toggle-border);
-      height: 40px;
-      cursor: pointer;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      transition: background 0.3s, color 0.3s, border-color 0.3s, width 0.3s ease;
-      z-index: 1000;
-    }
+.common-toggle-button {
+  position: fixed;
+  /* Fond semi-transparent (blanc pour le thème clair par défaut) */
+  background: rgba(255, 255, 255, 0.2); 
+  
+  /* Effet verre dépoli */
+  -webkit-backdrop-filter: blur(10px); /* Pour Safari */
+  backdrop-filter: blur(10px);
+  
+  color: var(--text-color);
+  
+  /* Bordure aussi semi-transparente */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: background 0.3s, color 0.3s, border-color 0.3s, width 0.3s ease;
+  z-index: 1000;
+}
+
+/* On ajuste les couleurs pour le mode sombre */
+body.dark-mode .common-toggle-button {
+  /* Fond semi-transparent (gris foncé pour le thème sombre) */
+  background: rgba(42, 42, 42, 0.25);
+  /* La bordure reste blanche translucide pour un bon contraste */
+  border-color: rgba(255, 255, 255, 0.2);
+}
 
     .koncept-mode-toggle {
       /* Hérite de .common-toggle-button */
