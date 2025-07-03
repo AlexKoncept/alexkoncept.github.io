@@ -1,480 +1,460 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<link rel="icon" href="/favicon.ico" sizes="any">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "Alex Koncept",
-  "url": "https://alexkoncept.github.io/",
-  "description": "Créations horlogères, projets web futuristes, crypto World Peace et IA par Alex Koncept."
-}
-</script>
-  <meta charset="UTF-8" />
-  <meta name="description" content="Découvrez les créations horlogères, projets web dystopiques, crypto World Peace et IA par Alex Koncept." />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Alex Koncept – Universe</title>
-<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-<link rel="shortcut icon" href="/favicon.ico" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-<link rel="manifest" href="/site.webmanifest" />
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Inter:wght@300;500;700&family=Courier+Prime&family=Special+Elite&display=swap" rel="stylesheet">
-  <style>
-.project {
-  transition: transform 0.4s ease-out, opacity 0.4s ease-out, background-color 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
-  opacity: 0;
-  transform: translateY(30px);
-}
-
-.project.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-    :root {
-      --body-bg: #f9f9fb;
-      --text-color: #1a1a1a;
-      --header-bg-start: #00c9ff;
-      --header-bg-end: #92fe9d;
-      --header-text-color: #000;
-      --project-bg: #fff;
-      --project-border-color: #00c9ff;
-      --project-shadow-color: rgba(0,0,0,0.05);
-      --project-title-color: #00a5c6;
-      --link-color: #0077cc;
-      --footer-text-color: #666;
-      --theme-toggle-icon: "☀️";
-      --theme-toggle-bg: #fff;
-      --theme-toggle-border: #ddd;
-      --main-font: 'Inter', sans-serif;
-      --title-font: 'Orbitron', sans-serif;
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Alex Koncept",
+      "url": "https://alexkoncept.github.io/",
+      "description": "Créations horlogères, projets web futuristes, crypto World Peace et IA par Alex Koncept."
     }
-
-    body.dark-mode {
-      --body-bg: #1e1e1e;
-      --text-color: #e0e0e0;
-      --header-bg-start: #005c73;
-      --header-bg-end: #2c7a31;
-      --header-text-color: #f0f0f0;
-      --project-bg: #2a2a2a;
-      --project-border-color: #61dafb;
-      --project-shadow-color: rgba(255,255,255,0.08);
-      --project-title-color: #80deea;
-      --link-color: #61dafb;
-      --footer-text-color: #aaa;
-      --theme-toggle-icon: "🌙";
-      --theme-toggle-bg: #2a2a2a;
-      --theme-toggle-border: #555;
-    }
-
-    body.koncept-matrix {
-      --body-bg: #000000;
-      --text-color: #00ff00;
-      --header-bg-start: #080808;
-      --header-bg-end: #030303;
-      --header-text-color: #00ff00;
-      --project-bg: #050505;
-      --project-border-color: #00ff00;
-      --project-shadow-color: rgba(0, 255, 0, 0.2);
-      --project-title-color: #00dd00;
-      --link-color: #33ff33;
-      --footer-text-color: #00aa00;
-      --main-font: 'Courier Prime', monospace;
-      --title-font: 'Courier Prime', monospace;
-    }
-    body.koncept-matrix header h1, body.koncept-matrix .project-content h2 {
-        text-shadow: 0 0 5px var(--text-color), 0 0 10px var(--text-color);
-    }
-
-    body.koncept-nature {
-      --body-bg: #edf6e5;
-      --text-color: #3c2a21;
-      --header-bg-start: #86a357;
-      --header-bg-end: #c2d9a0;
-      --header-text-color: #f5f5f5;
-      --project-bg: #f5f5ef;
-      --project-border-color: #588157;
-      --project-shadow-color: rgba(91, 124, 79, 0.15);
-      --project-title-color: #3a5a40;
-      --link-color: #588157;
-      --footer-text-color: #54473c;
-      --main-font: 'Special Elite', cursive;
-      --title-font: 'Special Elite', cursive;
-    }
-
-    body.koncept-space {
-      --body-bg: #0b0f19;
-      --text-color: #e0e0e0;
-      --header-bg-start: #1f2a40;
-      --header-bg-end: #36456b;
-      --header-text-color: #ffffff;
-      --project-bg: #1a202c;
-      --project-border-color: #76a9fa;
-      --project-shadow-color: rgba(118, 169, 250, 0.15);
-      --project-title-color: #90caf9;
-      --link-color: #76a9fa;
-      --footer-text-color: #a0aec0;
-      --main-font: 'Orbitron', sans-serif;
-      --title-font: 'Orbitron', sans-serif;
-    }
-    body.koncept-space {
-        background-image: radial-gradient(circle, rgba(255,255,255,0.03) 1px, transparent 1px);
-        background-size: 20px 20px;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      font-family: var(--main-font);
-      background-color: var(--body-bg);
-      color: var(--text-color);
-      line-height: 1.6;
-      transition: background-color 0.5s ease, color 0.5s ease, background-image 0.5s ease;
-    }
-
-.common-toggle-button {
-  position: fixed;
-  background: rgba(255, 255, 255, 0.2);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
-  color: var(--text-color);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  height: 40px;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
-  transition: background 0.3s, color 0.3s, border-color 0.3s, width 0.3s ease;
-  z-index: 1000;
-}
-
-body.dark-mode .common-toggle-button {
-  background: rgba(42, 42, 42, 0.25);
-  border-color: rgba(255, 255, 255, 0.2);
-}
-
-.koncept-mode-toggle {
-  top: 1rem;
-  left: 1rem;
-  border-radius: 50%;
-  width: 40px;
-  padding: 0;
-  font-size: 1.2rem;
-}
-
-.koncept-mode-toggle .koncept-mode-icon {
-    margin-right: 0;
-}
-    .koncept-mode-toggle .koncept-mode-text {
-        font-size: 0.8rem;
-        white-space: nowrap;
-    }
-
-    .theme-toggle {
-      top: 1rem;
-      right: 1rem;
-      border-radius: 50%;
-      width: 40px;
-      padding: 0;
-      font-size: 1.2rem;
-    }
-    .theme-toggle::before {
-      content: var(--theme-toggle-icon);
-    }
-
-    header {
-      text-align: center;
-      padding: 4rem 2rem 2rem;
-      background: linear-gradient(135deg, var(--header-bg-start) 0%, var(--header-bg-end) 100%);
-      color: var(--header-text-color);
-      transition: background 0.5s ease, color 0.5s ease;
-    }
-
-    header h1 {
-      font-family: var(--title-font);
-      font-size: 3rem;
-      margin-bottom: 0.5rem;
-    }
-
-    header p {
-      font-size: 1.2rem;
-      max-width: 600px;
-      margin: 0 auto;
-      font-style: italic;
-    }
-
-    .container {
-      max-width: 1000px;
-      margin: 3rem auto;
-      padding: 0 2rem;
-    }
-
-    .intro {
-      font-size: 1.1rem;
-      margin-bottom: 2rem;
-      text-align: center;
-    }
-
-    .project {
-      display: flex;
-      align-items: center;
-      background-color: var(--project-bg);
-      border-left: 4px solid var(--project-border-color);
-      padding: 1.5rem;
-      margin-bottom: 2rem;
-      border-radius: 10px;
-      box-shadow: 0 5px 20px var(--project-shadow-color);
-      transition: transform 0.2s ease, background-color 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-    }
-
-    .project:hover {
-      transform: translateY(-4px);
-    }
-
-    .project img {
-      width: 140px;
-      height: auto;
-      border-radius: 8px;
-      flex-shrink: 0;
-    }
-
-    .project-content {
-      flex: 1;
-      min-width: 250px;
-    }
-
-    .project-content h2 {
-      margin-top: 0;
-      font-size: 1.5rem;
-      color: var(--project-title-color);
-      font-family: var(--title-font);
-      transition: color 0.5s ease;
-    }
-
-    .project-content p {
-      margin: 0.5rem 0;
-    }
-
-    .project-content a {
-      color: var(--link-color);
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.5s ease;
-    }
-
-    .project-content a:hover {
-      text-decoration: underline;
-    }
-
-    footer {
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.9rem;
-      color: var(--footer-text-color);
-      transition: color 0.5s ease;
-    }
-
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 2rem;
-      }
-      .project {
-        flex-direction: column;
-        text-align: center;
-      }
-      .project img {
-        margin: 0 auto;
-      }
-      .koncept-mode-toggle {
-        top: 0.5rem;
-        left: 0.5rem;
-      }
-      .theme-toggle {
-        top: 0.5rem;
-        right: 0.5rem;
-        left: auto;
-      }
-      .koncept-mode-toggle .koncept-mode-text {}
-      .koncept-mode-toggle .koncept-mode-icon {}
-    }
-.badge-new {
-  background-color: #e74c3c;
-  color: white;
-  font-size: 0.65rem;
-  padding: 3px 6px;
-  border-radius: 6px;
-  margin-left: 8px;
-  vertical-align: middle;
-  font-weight: bold;
-  animation: pop 1.5s ease-out infinite alternate;
-}
-
-@keyframes pop {
-  0% { transform: scale(1); opacity: 1; }
-  100% { transform: scale(1.1); opacity: 0.8; }
-}
-  </style>
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Découvrez les créations horlogères, projets web dystopiques, crypto World Peace et IA par Alex Koncept." />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alex Koncept – Universe</title>
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Inter:wght@300;500;700&family=Courier+Prime&family=Special+Elite&display=swap" rel="stylesheet">
+    
+    <style>
+        .project {
+          transition: transform 0.4s ease-out, opacity 0.4s ease-out, background-color 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        .project.is-visible {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        :root {
+          --body-bg: #f9f9fb;
+          --text-color: #1a1a1a;
+          --header-bg-start: #00c9ff;
+          --header-bg-end: #92fe9d;
+          --header-text-color: #000;
+          --project-bg: #fff;
+          --project-border-color: #00c9ff;
+          --project-shadow-color: rgba(0,0,0,0.05);
+          --project-title-color: #00a5c6;
+          --link-color: #0077cc;
+          --footer-text-color: #666;
+          --theme-toggle-icon: "☀️";
+          --theme-toggle-bg: #fff;
+          --theme-toggle-border: #ddd;
+          --main-font: 'Inter', sans-serif;
+          --title-font: 'Orbitron', sans-serif;
+        }
+        body.dark-mode {
+          --body-bg: #1e1e1e;
+          --text-color: #e0e0e0;
+          --header-bg-start: #005c73;
+          --header-bg-end: #2c7a31;
+          --header-text-color: #f0f0f0;
+          --project-bg: #2a2a2a;
+          --project-border-color: #61dafb;
+          --project-shadow-color: rgba(255,255,255,0.08);
+          --project-title-color: #80deea;
+          --link-color: #61dafb;
+          --footer-text-color: #aaa;
+          --theme-toggle-icon: "🌙";
+          --theme-toggle-bg: #2a2a2a;
+          --theme-toggle-border: #555;
+        }
+        body.koncept-matrix {
+          --body-bg: #000000;
+          --text-color: #00ff00;
+          --header-bg-start: #080808;
+          --header-bg-end: #030303;
+          --header-text-color: #00ff00;
+          --project-bg: #050505;
+          --project-border-color: #00ff00;
+          --project-shadow-color: rgba(0, 255, 0, 0.2);
+          --project-title-color: #00dd00;
+          --link-color: #33ff33;
+          --footer-text-color: #00aa00;
+          --main-font: 'Courier Prime', monospace;
+          --title-font: 'Courier Prime', monospace;
+        }
+        body.koncept-matrix header h1, body.koncept-matrix .project-content h2 {
+            text-shadow: 0 0 5px var(--text-color), 0 0 10px var(--text-color);
+        }
+        body.koncept-nature {
+          --body-bg: #edf6e5;
+          --text-color: #3c2a21;
+          --header-bg-start: #86a357;
+          --header-bg-end: #c2d9a0;
+          --header-text-color: #f5f5f5;
+          --project-bg: #f5f5ef;
+          --project-border-color: #588157;
+          --project-shadow-color: rgba(91, 124, 79, 0.15);
+          --project-title-color: #3a5a40;
+          --link-color: #588157;
+          --footer-text-color: #54473c;
+          --main-font: 'Special Elite', cursive;
+          --title-font: 'Special Elite', cursive;
+        }
+        body.koncept-space {
+          --body-bg: #0b0f19;
+          --text-color: #e0e0e0;
+          --header-bg-start: #1f2a40;
+          --header-bg-end: #36456b;
+          --header-text-color: #ffffff;
+          --project-bg: #1a202c;
+          --project-border-color: #76a9fa;
+          --project-shadow-color: rgba(118, 169, 250, 0.15);
+          --project-title-color: #90caf9;
+          --link-color: #76a9fa;
+          --footer-text-color: #a0aec0;
+          --main-font: 'Orbitron', sans-serif;
+          --title-font: 'Orbitron', sans-serif;
+        }
+        body.koncept-space {
+            background-image: radial-gradient(circle, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        * { box-sizing: border-box; }
+        body {
+          margin: 0;
+          font-family: var(--main-font);
+          background-color: var(--body-bg);
+          color: var(--text-color);
+          line-height: 1.6;
+          transition: background-color 0.5s ease, color 0.5s ease, background-image 0.5s ease;
+        }
+        .common-toggle-button {
+          background: rgba(255, 255, 255, 0.2);
+          -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+          color: var(--text-color);
+          border: 1px solid rgba(255, 255, 255, 0.3);
+          height: 40px;
+          cursor: pointer;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+          transition: background 0.3s, color 0.3s, border-color 0.3s, width 0.3s ease, opacity 0.3s;
+          z-index: 1000;
+          font-size: 1.2rem;
+          width: 40px;
+          border-radius: 50%;
+          padding: 0;
+        }
+        body.dark-mode .common-toggle-button {
+          background: rgba(42, 42, 42, 0.25);
+          border-color: rgba(255, 255, 255, 0.2);
+        }
+        .koncept-mode-toggle {
+          position: fixed;
+          top: 1rem;
+          left: 1rem;
+        }
+        .theme-toggle::before {
+          content: var(--theme-toggle-icon);
+        }
+        .top-right-controls {
+          position: fixed;
+          top: 1rem;
+          right: 1rem;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          z-index: 1000;
+        }
+        .lang-switcher {
+          display: flex;
+          gap: 5px;
+        }
+        .lang-switcher button {
+          opacity: 0.6;
+        }
+        .lang-switcher button.lang-active {
+          opacity: 1;
+          border-width: 2px;
+          border-color: var(--link-color) !important;
+        }
+        header {
+          text-align: center;
+          padding: 4rem 2rem 2rem;
+          background: linear-gradient(135deg, var(--header-bg-start) 0%, var(--header-bg-end) 100%);
+          color: var(--header-text-color);
+          transition: background 0.5s ease, color 0.5s ease;
+        }
+        header h1 {
+          font-family: var(--title-font);
+          font-size: 3rem;
+          margin-bottom: 0.5rem;
+        }
+        header p {
+          font-size: 1.2rem;
+          max-width: 600px;
+          margin: 0 auto;
+          font-style: italic;
+        }
+        .container {
+          max-width: 1000px;
+          margin: 3rem auto;
+          padding: 0 2rem;
+        }
+        .intro {
+          font-size: 1.1rem;
+          margin-bottom: 2rem;
+          text-align: center;
+        }
+        .project {
+          display: flex;
+          align-items: center;
+          background-color: var(--project-bg);
+          border-left: 4px solid var(--project-border-color);
+          padding: 1.5rem;
+          margin-bottom: 2rem;
+          border-radius: 10px;
+          box-shadow: 0 5px 20px var(--project-shadow-color);
+          transition: transform 0.2s ease, background-color 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
+          gap: 1.5rem;
+          flex-wrap: wrap;
+        }
+        .project:hover { transform: translateY(-4px); }
+        .project img {
+          width: 140px;
+          height: auto;
+          border-radius: 8px;
+          flex-shrink: 0;
+        }
+        .project-content {
+          flex: 1;
+          min-width: 250px;
+        }
+        .project-content h2 {
+          margin-top: 0;
+          font-size: 1.5rem;
+          color: var(--project-title-color);
+          font-family: var(--title-font);
+          transition: color 0.5s ease;
+        }
+        .project-content p { margin: 0.5rem 0; }
+        .project-content a {
+          color: var(--link-color);
+          text-decoration: none;
+          font-weight: 500;
+          transition: color 0.5s ease;
+        }
+        .project-content a:hover { text-decoration: underline; }
+        footer {
+          text-align: center;
+          padding: 2rem;
+          font-size: 0.9rem;
+          color: var(--footer-text-color);
+          transition: color 0.5s ease;
+        }
+        @media (max-width: 600px) {
+          header h1 { font-size: 2rem; }
+          .project { flex-direction: column; text-align: center; }
+          .project img { margin: 0 auto; }
+          .koncept-mode-toggle { top: 0.5rem; left: 0.5rem; }
+          .top-right-controls { top: 0.5rem; right: 0.5rem; }
+        }
+        .badge-new {
+          background-color: #e74c3c;
+          color: white;
+          font-size: 0.65rem;
+          padding: 3px 6px;
+          border-radius: 6px;
+          margin-left: 8px;
+          vertical-align: middle;
+          font-weight: bold;
+          animation: pop 1.5s ease-out infinite alternate;
+        }
+        @keyframes pop {
+          0% { transform: scale(1); opacity: 1; }
+          100% { transform: scale(1.1); opacity: 0.8; }
+        }
+    </style>
 </head>
 <body>
 
-  <button id="koncept-mode-toggle" class="koncept-mode-toggle common-toggle-button" aria-label="Changer le Koncept Mode">
+  <button id="koncept-mode-toggle" class="koncept-mode-toggle common-toggle-button" aria-label="Changer le Koncept Mode" data-key="koncept_mode_label">
     <span class="koncept-mode-icon">🎨</span>
   </button>
-  <button id="theme-toggle" class="theme-toggle common-toggle-button" aria-label="Changer le thème"></button>
-
+  
+  <div class="top-right-controls">
+    <div class="lang-switcher">
+      <button id="lang-fr-btn" class="common-toggle-button" aria-label="Passer en Français">🇫🇷</button>
+      <button id="lang-en-btn" class="common-toggle-button" aria-label="Switch to English">🇬🇧</button>
+    </div>
+    <button id="theme-toggle" class="theme-toggle common-toggle-button" aria-label="Changer le thème" data-key="theme_toggle_label"></button>
+  </div>
 
   <header>
     <h1>Alex Koncept</h1>
-    <p>Créateur indépendant – Montres, Web, Code, IA & Crypto</p>
+    <p data-key="header_subtitle">Créateur indépendant – Montres, Web, Code, IA & Crypto</p>
   </header>
 
   <div class="container">
-    <p class="intro">Bienvenue dans mon univers numérique. Chaque "Koncept" que je crée explore un futur possible, à travers l’horlogerie, le code, le design et l’imagination augmentée.</p>
-
+    <p class="intro" data-key="intro_text">Bienvenue dans mon univers numérique. Chaque "Koncept" que je crée explore un futur possible, à travers l’horlogerie, le code, le design et l’imagination augmentée.</p>
     <div class="project">
       <img src="LogoAK.png" alt="Montres Alex Koncept">
       <div class="project-content">
-        <h2>Montres Alex Koncept</h2>
-        <p>Création horlogère indépendante, modding artistique, boîtier signature AK.</p>
-        <p><a href="https://alexkoncept.wordpress.com/" target="_blank" rel="noopener noreferrer">Visiter le site</a></p>
+        <h2 data-key="project_watches_title">Montres Alex Koncept</h2>
+        <p data-key="project_watches_desc">Création horlogère indépendante, modding artistique, boîtier signature AK.</p>
+        <p><a href="https://alexkoncept.wordpress.com/" target="_blank" rel="noopener noreferrer" data-key="visit_site_btn">Visiter le site</a></p>
       </div>
     </div>
-
     <div class="project">
       <img src="HyperNormalSites.png" alt="HyperNormalSites">
       <div class="project-content">
         <h2>HyperNormalSites</h2>
-        <p>Sites dystopiques & interactifs conçus pour se questionner sur le futur à travers la technologie, la société et l'absurde qui nous entoure de plus en plus, codés en HTML/CSS.</p>
-        <p><a href="https://alexkoncept.github.io/HyperNormalSites/" target="_blank" rel="noopener noreferrer">Explorer la collection</a></p>
+        <p data-key="project_hns_desc">Sites dystopiques & interactifs conçus pour se questionner sur le futur à travers la technologie, la société et l'absurde qui nous entoure de plus en plus, codés en HTML/CSS.</p>
+        <p><a href="https://alexkoncept.github.io/HyperNormalSites/" target="_blank" rel="noopener noreferrer" data-key="explore_collection_btn">Explorer la collection</a></p>
       </div>
     </div>
-
-    <div class="project">
+     <div class="project">
       <img src="Tamacodechi.png" alt="Tamacodechi">
       <div class="project-content">
-        <h2>Tamacodechi</h2>
-        <p>Ton Tamagotchi développeur dans ton navigateur, il évolue selon ta façon de t'en occuper. Codés en JavaScript/HTML/CSS.</p>
-        <p><a href="https://alexkoncept.github.io/Tamacodechi/" target="_blank" rel="noopener noreferrer">Voir le projet GitHub</a></p>
+        <h2 data-key="project_tamacodechi_title">Tamacodechi</h2>
+        <p data-key="project_tamacodechi_desc">Ton Tamagotchi développeur dans ton navigateur, il évolue selon ta façon de t'en occuper. Codés en JavaScript/HTML/CSS.</p>
+        <p><a href="https://alexkoncept.github.io/Tamacodechi/" target="_blank" rel="noopener noreferrer" data-key="view_github_btn">Voir le projet GitHub</a></p>
       </div>
     </div>
-
     <div class="project">
       <img src="IA-Chatbot.png" alt="IA Chatbot">
       <div class="project-content">
-        <h2>IA & Chatbot</h2>
-        <p>Un site interactif pour expliquer l'intelligence artificielle, avec un chatbot intégré. Codé en HTML/CSS/JS.</p>
-        <p><a href="https://alexkoncept.github.io/IA-Chatbot/" target="_blank" rel="noopener noreferrer">Voir le projet GitHub</a></p>
+        <h2 data-key="project_ia_title">IA & Chatbot</h2>
+        <p data-key="project_ia_desc">Un site interactif pour expliquer l'intelligence artificielle, avec un chatbot intégré. Codé en HTML/CSS/JS.</p>
+        <p><a href="https://alexkoncept.github.io/IA-Chatbot/" target="_blank" rel="noopener noreferrer" data-key="view_github_btn">Voir le projet GitHub</a></p>
       </div>
     </div>
-
     <div class="project">
       <img src="WorldPeaceToken.jpg" alt="World Peace Token">
       <div class="project-content">
-        <h2>World Peace Token (WPT)</h2>
-        <p>Crypto expérimentale lancée sur Polygon. Un projet utopiste, entre rêve et technologie.</p>
-        <p><a href="https://polygonscan.com/address/0x0f6c9ec672c4851d9fb4518145f816d12543f48a#code" target="_blank" rel="noopener noreferrer">Voir sur Polygonscan</a></p>
+        <h2 data-key="project_wpt_title">World Peace Token (WPT)</h2>
+        <p data-key="project_wpt_desc">Crypto expérimentale lancée sur Polygon. Un projet utopiste, entre rêve et technologie.</p>
+        <p><a href="https://polygonscan.com/address/0x0f6c9ec672c4851d9fb4518145f816d12543f48a#code" target="_blank" rel="noopener noreferrer" data-key="view_polygonscan_btn">Voir sur Polygonscan</a></p>
       </div>
     </div>
-
     <div class="project">
       <img src="OpticGardenKoncept.png" alt="Opti Garden Koncept">
       <div class="project-content">
         <h2>Optic Garden Koncept <span class="badge-new">NEW</span></h2>
-        <p>Générateur d’illusions visuelles interactives. Semez une idée, regardez-la éclore.</p>
-        <p><a href="https://alexkoncept.github.io/OpticGardenKoncept/" target="_blank" rel="noopener noreferrer">Voir le projet GitHub</a></p>
+        <p data-key="project_optic_desc">Générateur d’illusions visuelles interactives. Semez une idée, regardez-la éclore.</p>
+        <p><a href="https://alexkoncept.github.io/OpticGardenKoncept/" target="_blank" rel="noopener noreferrer" data-key="view_github_btn">Voir le projet GitHub</a></p>
       </div>
     </div>
-
    <div class="project">
       <img src="SolarEstateHub.png" alt="Solar Estate Hub">
       <div class="project-content">
         <h2>Solar Estate Hub <span class="badge-new">NEW</span></h2>
-        <p>Choisissez votre planète comme nouveau foyer.</p>
-        <p><a href="https://alexkoncept.github.io/SolarEstateHub/" target="_blank" rel="noopener noreferrer">🚀 Voir le projet en direct</a></p>
+        <p data-key="project_solar_desc">Choisissez votre planète comme nouveau foyer.</p>
+        <p><a href="https://alexkoncept.github.io/SolarEstateHub/" target="_blank" rel="noopener noreferrer" data-key="view_live_project_btn">🚀 Voir le projet en direct</a></p>
+    </div>
   </div>
-</div>
-
    <div class="project">
       <img src="MDIYGA.png" alt="Make DIY Great Again">
       <div class="project-content">
         <h2>Make DIY Great Again <span class="badge-new">NEW</span></h2>
-        <p>Redonne vie à tes objets oubliés. Une app pensée pour bricoler malin, inspirer, et transmettre le plaisir du faire soi-même.</p>
-        <p><a href="https://makediygreatagain.netlify.app/" target="_blank" rel="noopener noreferrer">🔧 Découvrir l'app en ligne</a></p>
+        <p data-key="project_mdiyga_desc">Redonne vie à tes objets oubliés. Une app pensée pour bricoler malin, inspirer, et transmettre le plaisir du faire soi-même.</p>
+        <p><a href="https://makediygreatagain.netlify.app/" target="_blank" rel="noopener noreferrer" data-key="discover_app_btn">🔧 Découvrir l'app en ligne</a></p>
+    </div>
   </div>
-</div>
-
     <div class="project">
      <img src="AK_enTravaux.png" alt="Prochain Koncept en développement">
      <div class="project-content">
-       <h2>Prochain Koncept en cours...</h2>
-       <p>Un nouveau projet prend forme dans l’atelier AK, à très bientôt pour en découvrir plus.</p>
+       <h2 data-key="project_next_title">Prochain Koncept en cours...</h2>
+       <p data-key="project_next_desc">Un nouveau projet prend forme dans l’atelier AK, à très bientôt pour en découvrir plus.</p>
+    </div>
   </div>
-</div>
+  </div>
+  <section id="a-propos" style="background-color: #f7fafc; padding: 2rem 1rem;">
+  <div style="max-width: 1000px; margin: auto; display: flex; align-items: center; gap: 1rem;">
+    <img src="Avatar.png" alt="Avatar Alex" style="width: 128px; height: 128px; border-radius: 50%; border: 1px solid #ccc; box-shadow: 0 0 4px rgba(0,0,0,0.1); object-fit: cover;">
+    <div style="text-align: left; font-family: sans-serif;">
+      <h2 data-key="about_title" style="font-size: 1.25rem; font-weight: bold; color: #2d3748; margin-bottom: 0.5rem;">À propos</h2>
+      <p data-key="about_desc" style="font-size: 0.9rem; color: #4a5568; line-height: 1.5;">
+        Moi c'est Alex, passionné d’informatique, de DIY, d’horlogerie et de nouvelles technologies.<br>
+        Ce site présente mes projets personnels regroupés sous <strong>Alex Koncept</strong> : montres, IA, expériences web et plus encore.
+      </p>
+      <p style="margin-top: 0.5rem; font-size: 0.9rem;">
+        <span data-key="contact_label">Contact</span>: <a href="mailto:alexkonceptuniverse@gmail.com" style="color: #3182ce; text-decoration: none;">alexkonceptuniverse@gmail.com</a>
+      </p>
+    </div>
+  </div>
+</section>
+  <footer>
+    <span data-key="footer_text">© 2025 Alex Koncept — Vivre. Apprendre. Créer.</span>
+  </footer>
 
-  <script>
+<script>
     document.addEventListener('DOMContentLoaded', () => {
       const themeToggle = document.getElementById('theme-toggle');
       const konceptModeToggle = document.getElementById('koncept-mode-toggle');
       const body = document.body;
-
       const applyDarkLightMode = (theme) => {
-        if (theme === 'dark') {
-          body.classList.add('dark-mode');
-        } else {
-          body.classList.remove('dark-mode');
-        }
+        if (theme === 'dark') { body.classList.add('dark-mode'); } 
+        else { body.classList.remove('dark-mode'); }
       };
-
       let storedDarkLightMode = localStorage.getItem('theme');
-      if (!storedDarkLightMode) {
-        storedDarkLightMode = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-      }
+      if (!storedDarkLightMode) { storedDarkLightMode = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
       applyDarkLightMode(storedDarkLightMode);
-      
       themeToggle.addEventListener('click', () => {
         const isDarkMode = body.classList.toggle('dark-mode');
-        const newTheme = isDarkMode ? 'dark' : 'light';
-        localStorage.setItem('theme', newTheme);
+        localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
       });
-
       const konceptModes = ['default', 'matrix', 'nature', 'space'];
       let currentKonceptModeIndex = 0;
-
       const applyKonceptMode = (modeName) => {
-          konceptModes.forEach(m => {
-            if (m !== 'default') {
-              body.classList.remove(`koncept-${m}`);
-            }
-          });
-
-          if (modeName && modeName !== 'default') {
-            body.classList.add(`koncept-${modeName}`);
-          }
+          konceptModes.forEach(m => { if (m !== 'default') { body.classList.remove(`koncept-${m}`); } });
+          if (modeName && modeName !== 'default') { body.classList.add(`koncept-${modeName}`); }
           localStorage.setItem('konceptMode', modeName);
       };
-      
       let storedKonceptMode = localStorage.getItem('konceptMode');
       if (storedKonceptMode && konceptModes.includes(storedKonceptMode)) {
         currentKonceptModeIndex = konceptModes.indexOf(storedKonceptMode);
         applyKonceptMode(storedKonceptMode);
-      } else {
-        applyKonceptMode('default');
-      }
-
+      } else { applyKonceptMode('default'); }
       konceptModeToggle.addEventListener('click', () => {
         currentKonceptModeIndex = (currentKonceptModeIndex + 1) % konceptModes.length;
-        const newKonceptMode = konceptModes[currentKonceptModeIndex];
-        applyKonceptMode(newKonceptMode);
+        applyKonceptMode(konceptModes[currentKonceptModeIndex]);
       });
+      const translations = {
+        fr: {
+          koncept_mode_label: "Changer le Koncept Mode", theme_toggle_label: "Changer le thème", header_subtitle: "Créateur indépendant – Montres, Web, Code, IA & Crypto", intro_text: "Bienvenue dans mon univers numérique. Chaque \"Koncept\" que je crée explore un futur possible, à travers l’horlogerie, le code, le design et l’imagination augmentée.", project_watches_title: "Montres Alex Koncept", project_watches_desc: "Création horlogère indépendante, modding artistique, boîtier signature AK.", visit_site_btn: "Visiter le site", project_hns_desc: "Sites dystopiques & interactifs conçus pour se questionner sur le futur à travers la technologie, la société et l'absurde qui nous entoure de plus en plus, codés en HTML/CSS.", explore_collection_btn: "Explorer la collection", project_tamacodechi_title: "Tamacodechi", project_tamacodechi_desc: "Ton Tamagotchi développeur dans ton navigateur, il évolue selon ta façon de t'en occuper. Codés en JavaScript/HTML/CSS.", view_github_btn: "Voir le projet GitHub", project_ia_title: "IA & Chatbot", project_ia_desc: "Un site interactif pour expliquer l'intelligence artificielle, avec un chatbot intégré. Codé en HTML/CSS/JS.", project_wpt_title: "World Peace Token (WPT)", project_wpt_desc: "Crypto expérimentale lancée sur Polygon. Un projet utopiste, entre rêve et technologie.", view_polygonscan_btn: "Voir sur Polygonscan", project_optic_desc: "Générateur d’illusions visuelles interactives. Semez une idée, regardez-la éclore.", project_solar_desc: "Choisissez votre planète comme nouveau foyer.", view_live_project_btn: "🚀 Voir le projet en direct", project_mdiyga_desc: "Redonne vie à tes objets oubliés. Une app pensée pour bricoler malin, inspirer, et transmettre le plaisir du faire soi-même.", discover_app_btn: "🔧 Découvrir l'app en ligne", project_next_title: "Prochain Koncept en cours...", project_next_desc: "Un nouveau projet prend forme dans l’atelier AK, à très bientôt pour en découvrir plus.", about_title: "À propos", about_desc: "Moi c'est Alex, passionné d’informatique, de DIY, d’horlogerie et de nouvelles technologies.<br>Ce site présente mes projets personnels regroupés sous <strong>Alex Koncept</strong> : montres, IA, expériences web et plus encore.", contact_label: "Contact", footer_text: "© 2025 Alex Koncept — Vivre. Apprendre. Créer."
+        },
+        en: {
+          koncept_mode_label: "Change Koncept Mode", theme_toggle_label: "Change theme", header_subtitle: "Independent Creator – Watches, Web, Code, AI & Crypto", intro_text: "Welcome to my digital universe. Each \"Koncept\" I create explores a possible future, through watchmaking, code, design, and augmented imagination.", project_watches_title: "Alex Koncept Watches", project_watches_desc: "Independent watchmaking, artistic modding, signature AK case.", visit_site_btn: "Visit the website", project_hns_desc: "Dystopian & interactive sites designed to question the future through technology, society, and the growing absurdity around us, coded in HTML/CSS.", explore_collection_btn: "Explore the collection", project_tamacodechi_title: "Tamacodechi", project_tamacodechi_desc: "Your developer Tamagotchi in your browser, it evolves based on how you take care of it. Coded in JavaScript/HTML/CSS.", view_github_btn: "View on GitHub", project_ia_title: "AI & Chatbot", project_ia_desc: "An interactive website to explain artificial intelligence, with an integrated chatbot. Coded in HTML/CSS/JS.", project_wpt_title: "World Peace Token (WPT)", project_wpt_desc: "Experimental crypto launched on Polygon. A utopian project, between dream and technology.", view_polygonscan_btn: "View on Polygonscan", project_optic_desc: "Interactive visual illusion generator. Plant an idea, watch it bloom.", project_solar_desc: "Choose your planet as your new home.", view_live_project_btn: "🚀 See the live project", project_mdiyga_desc: "Bring your forgotten objects back to life. An app designed for smart tinkering, inspiring, and sharing the joy of DIY.", discover_app_btn: "🔧 Discover the app online", project_next_title: "Next Koncept in progress...", project_next_desc: "A new project is taking shape in the AK workshop, see you very soon to discover more.", about_title: "About", about_desc: "I'm Alex, passionate about IT, DIY, watchmaking, and new technologies.<br>This site presents my personal projects under the <strong>Alex Koncept</strong> brand: watches, AI, web experiences, and more.", contact_label: "Contact", footer_text: "© 2025 Alex Koncept — Live. Learn. Create."
+        }
+      };
+      const langFrBtn = document.getElementById('lang-fr-btn');
+      const langEnBtn = document.getElementById('lang-en-btn');
+      const setLanguage = (lang) => {
+        document.documentElement.lang = lang;
+        localStorage.setItem('language', lang);
+        document.querySelectorAll('[data-key]').forEach(elem => {
+            const key = elem.getAttribute('data-key');
+            if (translations[lang] && translations[lang][key]) {
+                if(elem.hasAttribute('aria-label')) {
+                    elem.setAttribute('aria-label', translations[lang][key]);
+                } else { elem.innerHTML = translations[lang][key]; }
+            }
+        });
+        if (lang === 'fr') {
+            langFrBtn.classList.add('lang-active');
+            langEnBtn.classList.remove('lang-active');
+        } else {
+            langEnBtn.classList.add('lang-active');
+            langFrBtn.classList.remove('lang-active');
+        }
+      };
+      langFrBtn.addEventListener('click', () => setLanguage('fr'));
+      langEnBtn.addEventListener('click', () => setLanguage('en'));
+      const initialLang = localStorage.getItem('language') || (navigator.language.startsWith('fr') ? 'fr' : 'en');
+      setLanguage(initialLang);
     });
-
     const projects = document.querySelectorAll('.project');
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -483,120 +463,19 @@ body.dark-mode .common-toggle-button {
           observer.unobserve(entry.target);
         }
       });
-    }, {
-      threshold: 0.1
-    });
+    }, { threshold: 0.1 });
+    projects.forEach(project => { observer.observe(project); });
+</script>
 
-    projects.forEach(project => {
-      observer.observe(project);
-    });
-  </script>
-
-<section id="a-propos" style="background-color: #f7fafc; padding: 2rem 1rem;">
-  <div style="max-width: 1000px; margin: auto; display: flex; align-items: center; gap: 1rem;">
-    <img src="Avatar.png" alt="Avatar Alex"
-         style="width: 128px; height: 128px; border-radius: 50%; border: 1px solid #ccc; box-shadow: 0 0 4px rgba(0,0,0,0.1); object-fit: cover;">
-    <div style="text-align: left; font-family: sans-serif;">
-      <h2 style="font-size: 1.25rem; font-weight: bold; color: #2d3748; margin-bottom: 0.5rem;">À propos</h2>
-      <p style="font-size: 0.9rem; color: #4a5568; line-height: 1.5;">
-        Moi c'est Alex, passionné d’informatique, de DIY, d’horlogerie et de nouvelles technologies.<br>
-        Ce site présente mes projets personnels regroupés sous <strong>Alex Koncept</strong> : montres, IA, expériences web et plus encore.
-      </p>
-      <p style="margin-top: 0.5rem; font-size: 0.9rem;">
-        Contact: <a href="mailto:alexkonceptuniverse@gmail.com" style="color: #3182ce; text-decoration: none;">alexkonceptuniverse@gmail.com</a>
-      </p>
-    </div>
-  </div>
-</section>
-
-
-  <footer>
-    © 2025 Alex Koncept — Vivre. Apprendre. Créer.
-  </footer>
-
-<div 
-  id="soundcloud-floating-player" 
-  style="
-    display: none; 
-    display: flex; 
-    align-items: center; 
-    gap: 8px;
-    padding: 4px;
-    background: transparent;
-    border: 1px solid #00bcd4;
-    box-shadow: 0 0 12px rgba(0, 188, 212, 0.7);
-    border-radius: 10px; 
-    position: fixed; 
-    bottom: 20px; 
-    right: 20px; 
-    z-index: 9999;
-  ">
-  
+<div id="soundcloud-floating-player" style="display: flex; align-items: center; gap: 8px; padding: 4px; background: transparent; border: 1px solid #00bcd4; box-shadow: 0 0 12px rgba(0, 188, 212, 0.7); border-radius: 10px; position: fixed; bottom: 20px; right: 20px; z-index: 9999;">
   <iframe id="soundcloud-iframe" width="200" height="80" scrolling="no" frameborder="no" allow="autoplay"></iframe>
-  
   <button id="next-track-btn" title="Musique suivante" style="background:#00bcd4; border:none; border-radius: 6px; color: white; cursor: pointer; padding: 8px 10px; font-weight: bold; font-family: inherit; font-size: 0.9rem; transition: background 0.3s;">
     >
   </button>
 </div>
-
 <script>
-  const soundcloudTracks = [
-    "https://soundcloud.com/l-alex-339757635/lalex-piste-1-m4a?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=c8fe8d4be3a54764a0699bade90c75dd",
-    "https://soundcloud.com/l-alex-339757635/lalex-piste-2-m4a?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=e81c8192d9c04af9ab525dd31fdc6213",
-    "https://soundcloud.com/l-alex-339757635/lalex-piste-3_8bit-old-school?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=ecb00c2f996648ac82aa8ed580ff3664",
-    "https://soundcloud.com/l-alex-339757635/lalex-piste-4_ambiance-m4a?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=2ecece16847443fca00f8f27c1ce3f3d",
-    "https://soundcloud.com/l-alex-339757635/lalex-piste-5_drill-m4a?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=aa74ec6b1dda49d1b01d438642bc42f0",
-    "https://soundcloud.com/l-alex-339757635/lalex-piste-6_daft-p-style-m4a?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=07c43f8ea06a45c7897ec491608f74f4",
-    "https://soundcloud.com/l-alex-339757635/lalex-piste-7_techno-back-to?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=148b7dddbf364f6f9151e2ed31c3b636",
-    "https://soundcloud.com/l-alex-339757635/piste8-cyberpunk-style?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=3bd3de2150fd4adca93a32c336a79562",
-  ];
-
-  const shuffleArray = (array) => {
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
-    }
-  };
-
-  let shuffledTracks = [...soundcloudTracks];
-  shuffleArray(shuffledTracks);
-
-  let currentTrackIndex = 0;
-  const iframe = document.getElementById("soundcloud-iframe");
-
-  const loadTrack = (index) => {
-    const trackUrl = shuffledTracks[index];
-    const playerUrl = `https://w.soundcloud.com/player/?url=${encodeURIComponent(trackUrl)}&color=%2300bcd4&auto_play=true&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false`;
-    iframe.src = playerUrl;
-    
-    const playerContainer = document.getElementById("soundcloud-floating-player");
-    if (playerContainer) {
-        playerContainer.style.display = "flex";
-    }
-  };
-
-  const triggerOnce = () => {
-    loadTrack(currentTrackIndex);
-    window.removeEventListener("scroll", triggerOnce);
-    window.removeEventListener("click", triggerOnce);
-  };
-
-  window.addEventListener("scroll", triggerOnce, { once: true });
-  window.addEventListener("click", triggerOnce, { once: true });
-
-  document.addEventListener("DOMContentLoaded", () => {
-    const nextBtn = document.getElementById("next-track-btn");
-    
-    nextBtn.addEventListener("click", () => {
-      currentTrackIndex++;
-      if (currentTrackIndex >= shuffledTracks.length) {
-        shuffleArray(shuffledTracks);
-        currentTrackIndex = 0;
-      }
-      loadTrack(currentTrackIndex);
-    });
-  });
+  const soundcloudTracks=["https://soundcloud.com/l-alex-339757635/lalex-piste-1-m4a?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=c8fe8d4be3a54764a0699bade90c75dd","https://soundcloud.com/l-alex-339757635/lalex-piste-2-m4a?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=e81c8192d9c04af9ab525dd31fdc6213","https://soundcloud.com/l-alex-339757635/lalex-piste-3_8bit-old-school?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=ecb00c2f996648ac82aa8ed580ff3664","https://soundcloud.com/l-alex-339757635/lalex-piste-4_ambiance-m4a?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=2ecece16847443fca00f8f27c1ce3f3d","https://soundcloud.com/l-alex-339757635/lalex-piste-5_drill-m4a?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=aa74ec6b1dda49d1b01d438642bc42f0","https://soundcloud.com/l-alex-339757635/lalex-piste-6_daft-p-style-m4a?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=07c43f8ea06a45c7897ec491608f74f4","https://soundcloud.com/l-alex-339757635/lalex-piste-7_techno-back-to?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=148b7dddbf364f6f9151e2ed31c3b636","https://soundcloud.com/l-alex-339757635/piste8-cyberpunk-style?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=3bd3de2150fd4adca93a32c336a79562"];const shuffleArray=a=>{for(let b=a.length-1;0<b;b--){const c=Math.floor(Math.random()*(b+1));[a[b],a[c]]=[a[c],a[b]]}};let shuffledTracks=[...soundcloudTracks];shuffleArray(shuffledTracks);let currentTrackIndex=0;const iframe=document.getElementById("soundcloud-iframe"),loadTrack=a=>{const b=shuffledTracks[a],c=`https://w.soundcloud.com/player/?url=${encodeURIComponent(b)}&color=%2300bcd4&auto_play=true&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false`;iframe.src=c;const d=document.getElementById("soundcloud-floating-player");d&&"flex"!=d.style.display&&(d.style.display="flex")},triggerOnce=()=>{loadTrack(currentTrackIndex),window.removeEventListener("scroll",triggerOnce),window.removeEventListener("click",triggerOnce)};window.addEventListener("scroll",triggerOnce,{once:!0}),window.addEventListener("click",triggerOnce,{once:!0}),document.addEventListener("DOMContentLoaded",()=>{const a=document.getElementById("next-track-btn");a.addEventListener("click",()=>{currentTrackIndex++,currentTrackIndex>=shuffledTracks.length&&(shuffleArray(shuffledTracks),currentTrackIndex=0),loadTrack(currentTrackIndex)})});
 </script>
-    
+
 </body>
 </html>
