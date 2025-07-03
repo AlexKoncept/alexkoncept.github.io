@@ -532,8 +532,6 @@ body.dark-mode .common-toggle-button {
     z-index: 9999;
   ">
   
-  <iframe id="soundcloud-iframe" width="200" height="80" scrolling="no" frameborder="no" allow="autoplay"></iframe>
-  
   <button id="next-track-btn" title="Musique suivante" style="background:#00bcd4; border:none; border-radius: 6px; color: white; cursor: pointer; padding: 8px 10px; font-weight: bold; font-family: inherit; font-size: 0.9rem; transition: background 0.3s;">
     >
   </button>
@@ -551,14 +549,28 @@ body.dark-mode .common-toggle-button {
     "https://soundcloud.com/l-alex-339757635/piste8-cyberpunk-style?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=3bd3de2150fd4adca93a32c336a79562",
   ];
 
-  let currentTrackIndex = Math.floor(Math.random() * soundcloudTracks.length);
+  const shuffleArray = (array) => {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+  };
+
+  let shuffledTracks = [...soundcloudTracks];
+  shuffleArray(shuffledTracks);
+
+  let currentTrackIndex = 0;
+  const iframe = document.getElementById("soundcloud-iframe");
 
   const loadTrack = (index) => {
-    const trackUrl = soundcloudTracks[index];
-    const playerUrl = `https://w.soundcloud.com/player/?url=${encodeURIComponent(trackUrl)}&color=%23ff5500&auto_play=true&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false`;
-    const iframe = document.getElementById("soundcloud-iframe");
+    const trackUrl = shuffledTracks[index];
+    const playerUrl = `https://w.soundcloud.com/player/?url=${encodeURIComponent(trackUrl)}&color=%2300bcd4&auto_play=true&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false`;
     iframe.src = playerUrl;
-    document.getElementById("soundcloud-floating-player").style.display = "flex";
+    
+    const playerContainer = document.getElementById("soundcloud-floating-player");
+    if (playerContainer) {
+        playerContainer.style.display = "flex";
+    }
   };
 
   const triggerOnce = () => {
@@ -572,8 +584,13 @@ body.dark-mode .common-toggle-button {
 
   document.addEventListener("DOMContentLoaded", () => {
     const nextBtn = document.getElementById("next-track-btn");
+    
     nextBtn.addEventListener("click", () => {
-      currentTrackIndex = (currentTrackIndex + 1) % soundcloudTracks.length;
+      currentTrackIndex++;
+      if (currentTrackIndex >= shuffledTracks.length) {
+        shuffleArray(shuffledTracks);
+        currentTrackIndex = 0;
+      }
       loadTrack(currentTrackIndex);
     });
   });
