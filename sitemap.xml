@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <!-- Page d'accueil -->
   <url>
@@ -33,11 +33,5 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- Projet crypto (Polygonscan externe) -->
-  <url>
-    <loc>https://polygonscan.com/address/0x0f6c9ec672c4851d9fb4518145f816d12543f48a#code</loc>
-    <changefreq>never</changefreq>
-    <priority>0.5</priority>
-  </url>
-
 </urlset>
+
