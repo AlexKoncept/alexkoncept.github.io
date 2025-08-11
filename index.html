@@ -402,12 +402,14 @@
       const konceptModeToggle = document.getElementById('koncept-mode-toggle');
       const body = document.body;
       const applyDarkLightMode = (theme) => {
-        if (theme === 'dark') { body.classList.add('dark-mode'); } 
-        else { body.classList.remove('dark-mode'); }
+        if (theme === 'dark') {
+          body.classList.add('dark-mode');
+        } else {
+          body.classList.remove('dark-mode');
+        }
       };
-      let storedDarkLightMode = localStorage.getItem('theme');
-      if (!storedDarkLightMode) { storedDarkLightMode = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
-      applyDarkLightMode(storedDarkLightMode);
+      const initialTheme = localStorage.getItem('theme') || 'light';
+      applyDarkLightMode(initialTheme);
       themeToggle.addEventListener('click', () => {
         const isDarkMode = body.classList.toggle('dark-mode');
         localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
