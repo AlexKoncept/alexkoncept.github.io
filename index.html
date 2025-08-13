@@ -522,6 +522,7 @@
 
 <!-- Intégration d'AlexBot -->
 <div id="root"></div>
+
 <script type="importmap">
 {
   "imports": {
@@ -533,7 +534,8 @@
   }
 }
 </script>
-<script type="module" src="chatbot/index.tsx"></script>
+<!-- On utilise esm.sh pour compiler le fichier TSX à la volée depuis GitHub -->
+<script type="module" src="https://esm.sh/gh/alexkoncept/alexkoncept.github.io/chatbot/index.tsx"></script>
 <!-- Fin de l'intégration d'AlexBot -->
 
 </body>
