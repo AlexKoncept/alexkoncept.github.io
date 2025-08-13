@@ -1,4 +1,5 @@
-:root {
+#root {
+  /* Variables de style scopées pour le chatbot pour éviter les conflits */
   --primary-color: #007aff;
   --background-color: #1c1c1e;
   --surface-color: #2c2c2e;
@@ -7,22 +8,18 @@
   --bot-message-bg: #3a3a3c;
   --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   --border-radius: 20px;
+
+  /* Positionnement au-dessus du lecteur SoundCloud */
+  position: fixed;
+  bottom: 110px; 
+  right: 20px;
+  z-index: 10000;
 }
 
 *,
 *::before,
 *::after {
   box-sizing: border-box;
-}
-
-/* Le body n'est plus nécessaire ici car il est déjà stylé par la page parente */
-
-#root {
-  position: fixed;
-  /* Remonté pour être au-dessus du lecteur SoundCloud (80px de haut + 20px de marge + 10px d'espace) */
-  bottom: 110px; 
-  right: 20px;
-  z-index: 10000; /* Z-index plus élevé pour être au-dessus du lecteur */
 }
 
 .chat-bubble-button {
