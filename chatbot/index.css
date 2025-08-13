@@ -15,17 +15,14 @@
   box-sizing: border-box;
 }
 
-body {
-  margin: 0;
-  font-family: var(--font-family);
-  background-color: #f0f0f0; /* Simulate a website background */
-}
+/* Le body n'est plus nécessaire ici car il est déjà stylé par la page parente */
 
 #root {
   position: fixed;
-  bottom: 20px;
+  /* Remonté pour être au-dessus du lecteur SoundCloud (80px de haut + 20px de marge + 10px d'espace) */
+  bottom: 110px; 
   right: 20px;
-  z-index: 9999;
+  z-index: 10000; /* Z-index plus élevé pour être au-dessus du lecteur */
 }
 
 .chat-bubble-button {
@@ -74,7 +71,8 @@ body {
 
 .chat-window {
   position: fixed;
-  bottom: 90px;
+  /* Remonté pour correspondre à la nouvelle position de la bulle */
+  bottom: 180px; 
   right: 20px;
   width: 370px;
   max-width: calc(100vw - 40px);
@@ -90,6 +88,7 @@ body {
   transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.3s ease;
   transform: scale(0);
   opacity: 0;
+  z-index: 10000; /* Assure que la fenêtre est aussi au-dessus */
 }
 
 .chat-window.open {
@@ -264,13 +263,13 @@ body {
 @media (max-width: 480px) {
   .chat-window {
     width: calc(100vw - 20px);
-    height: calc(100vh - 90px);
-    bottom: 75px;
+    height: calc(100vh - 180px); /* Ajusté pour la nouvelle position */
+    bottom: 170px; /* Ajusté */
     right: 10px;
     max-height: none;
   }
   #root {
-    bottom: 10px;
+    bottom: 100px; /* Ajusté */
     right: 10px;
   }
 }
