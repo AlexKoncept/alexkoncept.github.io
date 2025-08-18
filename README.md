@@ -37,3 +37,4 @@ Ma landing page est accessible en ligne ici :
 - **JavaScript** : Interaction utilisateur minimale et effets dynamiques
 - **GitHub Pages** : Hébergement gratuit et continu du site
 - **Manifest PWA** : Support d’application web progressive (installable sur mobile)
+- **React.js + Vite** : Utiliser dans l'application Body Koncept
