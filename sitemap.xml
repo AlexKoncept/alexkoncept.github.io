@@ -16,22 +16,57 @@
   </url>
 
   <url>
-    <loc>https://alexkoncept.github.io/Tamacodechi/</loc>
+    <loc>https://alexkoncept.github.io/tamacodechi/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://alexkoncept.github.io/IA-Chatbot/</loc>
+    <loc>https://alexkoncept.github.io/ia-chatbot/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://alexkoncept.github.io/Opti-Garden-Koncept/</loc>
+    <loc>https://alexkoncept.github.io/optigardenkoncept/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://alexkoncept.github.io/solarestatehub/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://alexkoncept.github.io/makediygreatagain/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://alexkoncept.github.io/modele-ak001/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://alexkoncept.github.io/ak001/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://alexkoncept.github.io/bodykoncept-officiel/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://alexkoncept.github.io/bodykoncept/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
 </urlset>
-
