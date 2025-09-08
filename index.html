@@ -525,62 +525,7 @@
     });
 </script>
 
-<div id="soundcloud-floating-player" style="display: flex; align-items: center; gap: 8px; padding: 4px; background: transparent; border: 1px solid #00bcd4; box-shadow: 0 0 12px rgba(0, 188, 212, 0.7); border-radius: 10px; position: fixed; bottom: 20px; left: 20px; z-index: 9999;">
-  <iframe id="soundcloud-iframe" width="200" height="80" scrolling="no" frameborder="no" allow="autoplay"></iframe>
-  <button id="next-track-btn" title="Musique suivante" style="background:#00bcd4; border:none; border-radius: 6px; color: white; cursor: pointer; padding: 8px 10px; font-weight: bold; font-family: inherit; font-size: 0.9rem; transition: background 0.3s;">
-    &gt;
-  </button>
-</div>
 
-<script src="https://w.soundcloud.com/player/api.js"></script>
-
-<script>
-  const priorityTrack = "https://soundcloud.com/l-alex-339757635/alex_koncept-l_artisan_connect?si=a9bc37a665a744e288cd0a40d5e53d97&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing";
-  const soundcloudTracks = ["https://soundcloud.com/l-alex-339757635/lalex-piste-1-m4a?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=c8fe8d4be3a54764a0699bade90c75dd", "https://soundcloud.com/l-alex-339757635/lalex-piste-2-m4a?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=e81c8192d9c04af9ab525dd31fdc6213", "https://soundcloud.com/l-alex-339757635/lalex-piste-3_8bit-old-school?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=ecb00c2f996648ac82aa8ed580ff3664", "https://soundcloud.com/l-alex-339757635/lalex-piste-4_ambiance-m4a?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=2ecece16847443fca00f8f27c1ce3f3d", "https://soundcloud.com/l-alex-339757635/lalex-piste-5_drill-m4a?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=aa74ec6b1dda49d1b01d438642bc42f0", "https://soundcloud.com/l-alex-339757635/lalex-piste-6_daft-p-style-m4a?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=07c43f8ea06a45c7897ec491608f74f4", "https://soundcloud.com/l-alex-339757635/lalex-piste-7_techno-back-to?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=148b7dddbf364f6f9151e2ed31c3b636", "https://soundcloud.com/l-alex-339757635/piste8-cyberpunk-style?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=3bd3de2150fd4adca93a32c336a79562", "https://soundcloud.com/l-alex-339757635/piste-9_ambiance2-m4a?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=b5b080de12924e22865b51ba33dbf0bc", "https://soundcloud.com/l-alex-339757635/piste-10-hard-beat-m4a?si=f9a96fb2a8934756aad5eabc11f983d8&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing", "https://soundcloud.com/l-alex-339757635/alex_koncept-l_artisan_connect?si=a9bc37a665a744e288cd0a40d5e53d97&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing", ];
-  const otherTracks = soundcloudTracks.filter(track => track !== priorityTrack);
-  const shuffleArray = a => {
-    for (let b = a.length - 1; 0 < b; b--) {
-      const c = Math.floor(Math.random() * (b + 1));
-      [a[b], a[c]] = [a[c], a[b]]
-    }
-  };
-  shuffleArray(otherTracks);
-  let shuffledTracks = [priorityTrack, ...otherTracks];
-  let currentTrackIndex = 0;
-  const iframe = document.getElementById("soundcloud-iframe");
-  const loadTrack = a => {
-    const b = shuffledTracks[a];
-    const c = `https://w.soundcloud.com/player/?url=${encodeURIComponent(b)}&color=%2300bcd4&auto_play=true&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false`;
-    iframe.src = c;
-    const d = document.getElementById("soundcloud-floating-player");
-    d && "flex" != d.style.display && (d.style.display = "flex")
-  };
-  const triggerOnce = () => {
-    loadTrack(currentTrackIndex);
-    window.removeEventListener("scroll", triggerOnce);
-    window.removeEventListener("click", triggerOnce)
-  };
-  window.addEventListener("scroll", triggerOnce, {
-    once: !0
-  });
-  window.addEventListener("click", triggerOnce, {
-    once: !0
-  });
-  document.addEventListener("DOMContentLoaded", () => {
-    const nextButton = document.getElementById("next-track-btn");
-    const widget = SC.Widget(iframe);
-    const playNextTrack = () => {
-      currentTrackIndex++;
-      if (currentTrackIndex >= shuffledTracks.length) {
-        shuffleArray(shuffledTracks);
-        currentTrackIndex = 0;
-      }
-      loadTrack(currentTrackIndex)
-    };
-    nextButton.addEventListener("click", playNextTrack);
-    widget.bind(SC.Widget.Events.FINISH, playNextTrack);
-  });
-</script>
 
 <div id="root"></div>
 
