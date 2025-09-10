@@ -158,11 +158,14 @@
           padding: 2rem 2rem;
           background: linear-gradient(135deg, var(--header-bg-start) 0%, var(--header-bg-end) 100%);
           color: var(--header-text-color);
-          transition: background 0.5s ease, color 0.5s ease;
           position: sticky;
           top: 0;
           z-index: 999;
           backdrop-filter: blur(10px);
+          transition: transform 0.4s ease, background 0.5s ease, color 0.5s ease;
+        }
+        header.header-hidden {
+            transform: translateY(-100%);
         }
         header h1 {
           font-family: var(--title-font);
@@ -296,13 +299,46 @@
         }
 
         @media (max-width: 768px) {
-          .project { flex-direction: column; text-align: center; }
-          .project-visual { margin: 0 auto; }
-          .project-content p { margin-left: auto; margin-right: auto; }
-          .project-tags { justify-content: center; }
+          .container {
+            margin: 2rem auto;
+            padding: 0 1rem;
+          }
+          .project {
+            flex-direction: column;
+            text-align: center;
+          }
+          .project-visual {
+            margin: 0 auto;
+            max-width: 140px;
+          }
+          .project-content p {
+            margin-left: auto;
+            margin-right: auto;
+          }
+          .project-tags {
+            justify-content: center;
+          }
         }
         @media (max-width: 600px) {
-          header h1 { font-size: 2.5rem; }
+          header {
+            padding: 1.5rem 1rem;
+          }
+          header h1 {
+            font-size: 2.2rem;
+          }
+          header p {
+            font-size: 1rem;
+          }
+          .intro {
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+          }
+          .project {
+            padding: 1.5rem;
+          }
+          .project-content h2 {
+            font-size: 1.5rem;
+          }
           .koncept-mode-toggle { top: 0.5rem; left: 0.5rem; }
           .top-right-controls { top: 0.5rem; right: 0.5rem; }
           .about-container { text-align: center; }
@@ -450,7 +486,6 @@
         <span data-key="footer_text">© 2025 Alex Koncept — Vivre. Apprendre. Créer.</span>
     </footer>
 
-    <!-- Scripts and Music Player remain unchanged -->
     <div id="root"></div>
     <script type="importmap">{"imports": {"react": "https://esm.sh/react@^19.1.1","react-dom/": "https://esm.sh/react-dom@^19.1.1/","@google/genai": "https://esm.sh/@google/genai@^1.13.0","react/": "https://esm.sh/react@^19.1.1/"}}</script>
     <script type="module" src="https://esm.sh/gh/alexkoncept/alexkoncept.github.io@main/chatbot/index.tsx"></script>
@@ -462,6 +497,20 @@
       const themeToggle = document.getElementById('theme-toggle');
       const konceptModeToggle = document.getElementById('koncept-mode-toggle');
       const body = document.body;
+      const header = document.querySelector('header');
+      let lastScrollY = window.scrollY;
+
+      window.addEventListener('scroll', () => {
+          if (window.innerWidth <= 768) {
+              if (lastScrollY < window.scrollY && window.scrollY > header.offsetHeight) {
+                  header.classList.add('header-hidden');
+              } else {
+                  header.classList.remove('header-hidden');
+              }
+              lastScrollY = window.scrollY;
+          }
+      }, { passive: true });
+      
       const applyDarkLightMode = (theme) => {
         if (theme === 'dark') { body.classList.add('dark-mode'); } 
         else { body.classList.remove('dark-mode'); }
