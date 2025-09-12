@@ -516,7 +516,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const setRandomHeaderLogo = () => {
     const logoCount = 20;
     const randomIndex = Math.floor(Math.random() * logoCount) + 1;
-    const imagePath = `LogoAk/Logo${randomIndex}.png`;
+    const imagePath = `LogoAK/Logo${randomIndex}.png`;
     const styleSheet = document.createElement("style");
     styleSheet.innerText = `header::before { background-image: url('${imagePath}'); }`;
     document.head.appendChild(styleSheet);
