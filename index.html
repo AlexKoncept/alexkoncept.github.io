@@ -11,9 +11,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<!-- Les polices pour Vice City sont ajoutées ici pour être disponibles -->
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@300;400;600&family=Courier+Prime&family=Special+Elite&family=Bebas+Neue&family=Damion&display=swap" rel="stylesheet">
-
 
 <link rel="stylesheet" href="chatbot/index.css" />
 
@@ -61,16 +59,20 @@
       --theme-toggle-icon: "🌙";
     }
 
-
-    #matrix-canvas {
+    #matrix-canvas, #space-canvas, #vice-city-canvas, #fallout-canvas {
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        z-index: -1; /* Place le canvas en arrière-plan de tout */
-        display: none; /* Caché par défaut pour la performance */
+        z-index: -1;
+        display: none;
     }
+
+    body.koncept-matrix-reloaded #matrix-canvas { display: block; }
+    body.koncept-space #space-canvas { display: block; }
+    body.koncept-vice-city #vice-city-canvas { display: block; }
+    body.koncept-fallout #fallout-canvas { display: block; opacity: 0.1; }
 
     body.koncept-matrix-reloaded {
         --matrix-green: #00ff41;
@@ -90,11 +92,6 @@
         --title-font: 'Courier Prime', monospace;
     }
 
-    /* On affiche le canvas uniquement quand le thème est actif */
-    body.koncept-matrix-reloaded #matrix-canvas {
-        display: block;
-    }
-
     body.koncept-matrix-reloaded header,
     body.koncept-matrix-reloaded footer {
         background-color: rgba(0, 0, 0, 0.7);
@@ -105,10 +102,10 @@
         border-bottom: 1px solid var(--matrix-green);
     }
 
-    body.koncept-matrix-reloaded h1, 
+    body.koncept-matrix-reloaded h1,
     body.koncept-matrix-reloaded h2 {
         text-shadow: 0 0 5px var(--matrix-green), 0 0 10px var(--matrix-green);
-        animation: flicker 0.1s infinite alternate; /* On réutilise l'effet de scintillement */
+        animation: flicker 0.1s infinite alternate;
     }
 
     body.koncept-matrix-reloaded .project {
@@ -130,7 +127,6 @@
         background: var(--matrix-green);
         color: #000;
     }
-
 
     body.koncept-fallout {
         --fallout-amber: #ffc107;
@@ -161,7 +157,7 @@
         height: 100%;
         pointer-events: none;
         background: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.3) 0, rgba(0, 0, 0, 0.3) 1px, transparent 1px, transparent 2px);
-        z-index: 9999;
+        z-index: -1;
     }
 
     body.koncept-fallout header {
@@ -221,7 +217,7 @@
         --main-font: 'Poppins', sans-serif;
         --title-font: 'Damion', cursive;
         --project-font: 'Bebas Neue', sans-serif;
-        background: linear-gradient(170deg, #1d0f2b 0%, #3b174e 30%, #f977ce 70%, #f7b2dd 100%);
+        background-color: #1d0f2b;
         background-attachment: fixed;
         overflow-x: hidden;
     }
@@ -299,8 +295,7 @@
       --footer-text-color: #a0aec0;
       --main-font: 'Orbitron', sans-serif;
       --title-font: 'Orbitron', sans-serif;
-      background-image: radial-gradient(circle, rgba(255,255,255,0.03) 1px, transparent 1px);
-      background-size: 20px 20px;
+      background-color: #0b0f19;
     }
 
     * { box-sizing: border-box; }
@@ -566,8 +561,10 @@
 </style>
 </head>
 <body>
-<!-- AJOUT DE L'ÉLÉMENT CANVAS POUR L'ANIMATION -->
 <canvas id="matrix-canvas"></canvas>
+<canvas id="space-canvas"></canvas>
+<canvas id="vice-city-canvas"></canvas>
+<canvas id="fallout-canvas"></canvas>
 
 <button id="koncept-mode-toggle" class="koncept-mode-toggle common-toggle-button" aria-label="Changer le Koncept Mode" data-key="koncept_mode_label">
     <span class="koncept-mode-icon">🎨</span>
@@ -734,6 +731,18 @@ document.addEventListener('DOMContentLoaded', () => {
   const matrixCtx = matrixCanvas ? matrixCanvas.getContext('2d') : null;
   let matrixInterval;
 
+  const spaceCanvas = document.getElementById('space-canvas');
+  const spaceCtx = spaceCanvas ? spaceCanvas.getContext('2d') : null;
+  let spaceInterval;
+
+  const viceCityCanvas = document.getElementById('vice-city-canvas');
+  const viceCityCtx = viceCityCanvas ? viceCityCanvas.getContext('2d') : null;
+  let viceCityInterval;
+
+  const falloutCanvas = document.getElementById('fallout-canvas');
+  const falloutCtx = falloutCanvas ? falloutCanvas.getContext('2d') : null;
+  let falloutInterval;
+
   const startMatrixAnimation = () => {
     if (matrixInterval || !matrixCanvas) return;
 
@@ -778,6 +787,124 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
+  const startSpaceAnimation = () => {
+    if (spaceInterval || !spaceCanvas) return;
+    spaceCanvas.width = window.innerWidth;
+    spaceCanvas.height = window.innerHeight;
+    let stars = [];
+    const numStars = 200;
+    for (let i = 0; i < numStars; i++) {
+        stars.push({
+            x: Math.random() * spaceCanvas.width,
+            y: Math.random() * spaceCanvas.height,
+            radius: Math.random() * 1.5,
+            alpha: Math.random(),
+            speed: Math.random() * 0.1 - 0.05
+        });
+    }
+
+    const draw = () => {
+        spaceCtx.clearRect(0, 0, spaceCanvas.width, spaceCanvas.height);
+        spaceCtx.fillStyle = '#FFF';
+        stars.forEach(star => {
+            star.alpha += star.speed;
+            if (star.alpha <= 0 || star.alpha >= 1) {
+                star.speed = -star.speed;
+            }
+            spaceCtx.beginPath();
+            spaceCtx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+            spaceCtx.globalAlpha = star.alpha;
+            spaceCtx.fill();
+        });
+    };
+    spaceInterval = setInterval(draw, 50);
+  };
+
+  const stopSpaceAnimation = () => {
+    clearInterval(spaceInterval);
+    spaceInterval = null;
+    if(spaceCtx) spaceCtx.clearRect(0, 0, spaceCanvas.width, spaceCanvas.height);
+  };
+
+  const startViceCityAnimation = () => {
+      if (viceCityInterval || !viceCityCanvas) return;
+      viceCityCanvas.width = window.innerWidth;
+      viceCityCanvas.height = window.innerHeight;
+      
+      const draw = () => {
+          const w = viceCityCanvas.width;
+          const h = viceCityCanvas.height;
+          viceCityCtx.clearRect(0, 0, w, h);
+          viceCityCtx.strokeStyle = '#ff48c4';
+          viceCityCtx.lineWidth = 1;
+          viceCityCtx.globalAlpha = 0.5;
+
+          const step = 40;
+          const horizon = h * 0.4;
+          for (let i = 0; i < 20; i++) {
+              const y = horizon + (h - horizon) * (i / 20) ** 2;
+              const p = (y - horizon) / (h - horizon);
+              const xOffset = w / 2 * (1 - p);
+              
+              viceCityCtx.beginPath();
+              viceCityCtx.moveTo(xOffset, y);
+              viceCityCtx.lineTo(w - xOffset, y);
+              viceCityCtx.stroke();
+          }
+
+          for (let i = -10; i <= 10; i++) {
+              const x = w / 2 + i * step;
+              const p = Math.abs(i) / 10;
+              const x2 = w / 2 + i * step * (1 + p * 10);
+              
+              viceCityCtx.beginPath();
+              viceCityCtx.moveTo(x, horizon);
+              viceCityCtx.lineTo(x2, h);
+              viceCityCtx.stroke();
+          }
+
+          const grad = viceCityCtx.createLinearGradient(0,0,0,horizon);
+          grad.addColorStop(0, '#3b174e');
+          grad.addColorStop(1, '#f977ce');
+          viceCityCtx.globalAlpha = 0.7;
+          viceCityCtx.fillStyle = grad;
+          viceCityCtx.fillRect(0,0,w,horizon);
+      };
+      
+      draw();
+  };
+  const stopViceCityAnimation = () => {
+    clearInterval(viceCityInterval);
+    viceCityInterval = null;
+    if(viceCityCtx) {
+        viceCityCtx.clearRect(0, 0, viceCityCanvas.width, viceCityCanvas.height);
+    }
+  };
+
+  const startFalloutAnimation = () => {
+      if (falloutInterval || !falloutCanvas) return;
+      falloutCanvas.width = window.innerWidth;
+      falloutCanvas.height = window.innerHeight;
+
+      const draw = () => {
+          const w = falloutCanvas.width, h = falloutCanvas.height;
+          const imageData = falloutCtx.createImageData(w, h);
+          const buffer32 = new Uint32Array(imageData.data.buffer);
+          let len = buffer32.length;
+          while (len--) {
+              if (Math.random() < 0.9) continue;
+              const gray = Math.random() * 255;
+              buffer32[len] = (255 << 24) | (gray << 16) | (gray << 8) | gray;
+          }
+          falloutCtx.putImageData(imageData, 0, 0);
+      };
+      falloutInterval = setInterval(draw, 100);
+  };
+  const stopFalloutAnimation = () => {
+      clearInterval(falloutInterval);
+      falloutInterval = null;
+      if (falloutCtx) falloutCtx.clearRect(0, 0, falloutCanvas.width, falloutCanvas.height);
+  };
 
   const setRandomHeaderLogo = () => {
     const logoCount = 20;
@@ -825,10 +952,24 @@ document.addEventListener('DOMContentLoaded', () => {
   const applyKonceptMode = (modeName) => {
       konceptModes.forEach(m => { if (m !== 'default') { body.classList.remove(`koncept-${m}`); } });
       
-      if (modeName === 'matrix-reloaded') {
+      stopMatrixAnimation();
+      stopSpaceAnimation();
+      stopViceCityAnimation();
+      stopFalloutAnimation();
+
+      switch(modeName) {
+        case 'matrix-reloaded':
           startMatrixAnimation();
-      } else {
-          stopMatrixAnimation();
+          break;
+        case 'space':
+          startSpaceAnimation();
+          break;
+        case 'vice-city':
+          startViceCityAnimation();
+          break;
+        case 'fallout':
+          startFalloutAnimation();
+          break;
       }
 
       if (modeName && modeName !== 'default') { body.classList.add(`koncept-${modeName}`); }
