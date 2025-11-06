@@ -664,7 +664,7 @@
         <div class="project">
             <div class="project-visual"><img src="MDIYGA.webp" alt="Make DIY Great Again"></div>
             <div class="project-content">
-                <h2>Make DIY Great Again <span class="badge-new">NEW</span></h2>
+                <h2>Make DIY Great Again </h2>
                 <div class="project-tags"><span class="project-tag">React</span><span class="project-tag">PWA</span></div>
                 <p data-key="project_mdiyga_desc">Redonne vie à tes objets oubliés. Une app pensée pour bricoler malin, inspirer, et transmettre le plaisir du faire soi-même.</p>
                 <p><a href="https://makediygreatagain.netlify.app/" target="_blank" rel="noopener noreferrer" data-key="discover_app_btn">Découvrir l'app en ligne</a></p>
@@ -701,6 +701,50 @@
                 <p><a href="https://alexkoncept.github.io/ak-universe-lab/" target="_blank" rel="noopener noreferrer" data-key="discover_site_btn">Découvrir le site en ligne</a></p>
             </div>
         </div>
+<div class="project">
+  <div class="project-visual">
+    <img src="TOSE.webp" alt="Timeline OS Evolution">
+  </div>
+  <div class="project-content">
+    <h2 data-key="project_tose_title">Timeline OS Evolution <span class="badge-new">NEW</span></h2>
+    <div class="project-tags">
+      <span class="project-tag">UI/UX</span>
+      <span class="project-tag">Système</span>
+      <span class="project-tag">Futuriste</span>
+    </div>
+    <p data-key="project_tose_desc">
+      Projet interactif retraçant l’évolution des systèmes d’exploitation, de Windows 3.1 à macOS Big Sur, à travers une timeline web immersive.
+Chaque OS est fidèlement recréé pour célébrer l’histoire de l’informatique et introduire AK OS, la vision moderne et créative signée Alex Koncept.
+    </p>
+    <p>
+      <a href="https://timeline-os-evolution.netlify.app/" target="_blank" rel="noopener noreferrer" data-key="discover_site_btn">
+        Découvrir le site en ligne
+      </a>
+    </p>
+  </div>
+</div>
+<div class="project">
+    <div class="project-visual">
+        <img src="HSK.webp" alt="HSK - Hybrid Sound Koncept">
+    </div>
+    <div class="project-content">
+        <h2 data-key="project_hsk_title">HSK — Hybrid Sound Koncept <span class="badge-new">NEW</span></h2>
+        <div class="project-tags">
+            <span class="project-tag">Musique</span>
+            <span class="project-tag">IA</span>
+            <span class="project-tag">Création numérique</span>
+        </div>
+        <p data-key="project_hsk_desc">
+            HSK (Hybrid Sound Koncept) est un projet musical expérimental fusionnant des styles opposés grâce à l’intelligence artificielle. 
+            Créé avec ChatGPT, Suno et ElevenLabs, il donne vie à un artiste numérique aka "HSK capable de mêler entre eux funk, techno, reggae, metal et bien plus encore. Une exploration audacieuse où le groove humain rencontre la précision algorithmique.
+        </p>
+        <p>
+            <a href="https://hsk-by-alexkoncept.netlify.app/" target="_blank" rel="noopener noreferrer" data-key="discover_site_btn">
+                Découvrir le projet
+            </a>
+        </p>
+    </div>
+</div>
         <div class="project" id="coming-soon-project">
             <div class="project-visual"><img src="AK_enTravaux.webp" alt="Prochain Koncept en développement"></div>
             <div class="project-content">
@@ -981,16 +1025,103 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   
   const translations = {
-    fr: {
-      koncept_mode_label: "Changer le Koncept Mode", theme_toggle_label: "Changer le thème", header_subtitle: "Créateur indépendant – Montres, Web, Code, IA & Crypto", intro_text: 'Bienvenue dans mon univers numérique. Chaque "Koncept" que je crée explore un futur possible, à travers l’horlogerie, le code, le design et l’imagination augmentée.<br><br><span class="chatbot-prompt">💬 Pour en savoir plus sur mon parcours ou la genèse d\'un projet, <strong>interrogez AlexBot</strong> en bas à droite !</span>', project_watches_title: "Montres Alex Koncept", project_watches_desc: "Création horlogère indépendante, modding artistique, boîtier signature AK.", visit_site_btn: "Visiter le site", project_hns_desc: "Sites dystopiques & interactifs pour se questionner sur le futur à travers la technologie, la société et l'absurde.", explore_collection_btn: "Explorer la collection", project_tamacodechi_title: "Tamacodechi", project_tamacodechi_desc: "Ton Tamagotchi développeur dans ton navigateur, il évolue selon ta façon de t'en occuper.", view_github_btn: "Voir le projet GitHub", project_ia_title: "IA & Chatbot", project_ia_desc: "Un site interactif pour expliquer l'intelligence artificielle, avec un chatbot intégré.", project_wpt_title: "World Peace Token (WPT)", project_wpt_desc: "Crypto expérimentale lancée sur Polygon. Un projet utopiste, entre rêve et technologie.", view_polygonscan_btn: "Voir sur Polygonscan", project_optic_desc: "Générateur d’illusions visuelles interactives. Semez une idée, regardez-la éclore.", project_solar_desc: "Choisissez votre planète comme nouveau foyer.", view_live_project_btn: "Voir le projet en direct", project_mdiyga_desc: "Redonne vie à tes objets oubliés. Une app pensée pour bricoler malin, inspirer, et transmettre le plaisir du faire soi-même.", discover_app_btn: "Découvrir l'app en ligne", project_ak001_title: "AK 001 – Montre personnalisable <span class=\"badge-new\">NEW</span>", project_ak001_desc: "Le premier modèle imaginé par Alex Koncept. Élégante, moderne, et 100% personnalisable.", discover_model_btn: "Découvrir le modèle AK 001", project_bodykoncept_title: "Body Koncept<span class=\"badge-new\">NEW</span>", project_bodykoncept_desc: "Découvrez l'entraînement personnalisé par IA qui s'adapte à vos objectifs, votre morphologie et votre mode de vie.", view_live_btn: "Voir le Projet en Ligne",project_akulab_title: "AK Universe Lab <span class=\"badge-new\">NEW</span>",
-      project_akulab_desc: "AK Universe Lab est une vitrine immersive fusionnant logo, mode, technologie et expérimentation. Organisé en protocoles (vêtements, accessoires, objets), le site offre un design futuriste, un essayage virtuel par IA et une expérience interactive unique.",
-      discover_site_btn: "Découvrir le site en ligne",project_next_title: "Prochain Koncept en cours...", project_next_desc: "Un nouveau projet prend forme dans l’atelier AK, à très bientôt pour en découvrir plus.", about_title: "À propos", about_desc: "Moi c'est Alex, passionné d’informatique, de DIY, d’horlogerie et de nouvelles technologies.<br>Ce site présente mes projets personnels regroupés sous <strong>Alex Koncept</strong> : montres, IA, expériences web et plus encore.", contact_label: "Contact", footer_text: "© 2025 Alex Koncept — Vivre. Apprendre. Créer."
-    },
-    en: {
-      koncept_mode_label: "Change Koncept Mode", theme_toggle_label: "Change theme", header_subtitle: "Independent Creator – Watches, Web, Code, AI & Crypto", intro_text: 'Welcome to my digital universe. Each "Koncept" I create explores a possible future, through watchmaking, code, design, and augmented imagination.<br><br><span class="chatbot-prompt">💬 To learn more about my journey or the story behind a project, <strong>ask AlexBot</strong> at the bottom right!</span>', project_watches_title: "Alex Koncept Watches", project_watches_desc: "Independent watchmaking, artistic modding, signature AK case.", visit_site_btn: "Visit the website", project_hns_desc: "Dystopian & interactive sites to question the future through technology, society, and absurdity.", explore_collection_btn: "Explore the collection", project_tamacodechi_title: "Tamacodechi", project_tamacodechi_desc: "Your developer Tamagotchi in your browser, it evolves based on how you take care of it.", view_github_btn: "View on GitHub", project_ia_title: "AI & Chatbot", project_ia_desc: "An interactive website to explain artificial intelligence, with an integrated chatbot.", project_wpt_title: "World Peace Token (WPT)", project_wpt_desc: "Experimental crypto launched on Polygon. A utopian project, between dream and technology.", view_polygonscan_btn: "View on Polygonscan", project_optic_desc: "Interactive visual illusion generator. Plant an idea, watch it bloom.", project_solar_desc: "Choose your planet as your new home.", view_live_project_btn: "See the live project", project_mdiyga_desc: "Bring your forgotten objects back to life. An app designed for smart tinkering, inspiring, and sharing the joy of DIY.", discover_app_btn: "Discover the app online", project_ak001_title: "AK 001 – Customizable Watch <span class=\"badge-new\">NEW</span>", project_ak001_desc: "The first model designed by Alex Koncept. Elegant, modern, and 100% customizable.", discover_model_btn: "Discover the AK 001 model",project_bodykoncept_title: "Body Koncept<span class=\"badge-new\">NEW</span>", project_bodykoncept_desc: "Discover personalized training by AI that adapts to your goals, body type, and lifestyle.", view_live_btn: "View Live Project",project_akulab_title: "AK Universe Lab <span class=\"badge-new\">NEW</span>",
-      project_akulab_desc: "AK Universe Lab is an immersive showcase merging logo, fashion, technology, and experimentation. Organized into protocols (clothing, accessories, objects), the site offers a futuristic design, virtual try-on by AI, and a unique interactive experience.",
-      discover_site_btn: "Discover the site online", project_next_title: "Next Koncept in progress...", project_next_desc: "A new project is taking shape in the AK workshop, see you very soon to discover more.", about_title: "About", about_desc: "I'm Alex, passionate about IT, DIY, watchmaking, and new technologies.<br>This site presents my personal projects under the <strong>Alex Koncept</strong> brand: watches, AI, web experiences, and more.", contact_label: "Contact", footer_text: "© 2025 Alex Koncept — Live. Learn. Create."
-    }
+fr: {
+  koncept_mode_label: "Changer le Koncept Mode",
+  theme_toggle_label: "Changer le thème",
+  header_subtitle: "Créateur indépendant – Montres, Web, Code, IA & Crypto",
+  intro_text: 'Bienvenue dans mon univers numérique. Chaque "Koncept" que je crée explore un futur possible, à travers l’horlogerie, le code, le design et l’imagination augmentée.<br><br><span class="chatbot-prompt">💬 Pour en savoir plus sur mon parcours ou la genèse d\'un projet, <strong>interrogez AlexBot</strong> en bas à droite !</span>',
+  project_watches_title: "Montres Alex Koncept",
+  project_watches_desc: "Création horlogère indépendante, modding artistique, boîtier signature AK.",
+  visit_site_btn: "Visiter le site",
+  project_hns_desc: "Sites dystopiques & interactifs pour se questionner sur le futur à travers la technologie, la société et l'absurde.",
+  explore_collection_btn: "Explorer la collection",
+  project_tamacodechi_title: "Tamacodechi",
+  project_tamacodechi_desc: "Ton Tamagotchi développeur dans ton navigateur, il évolue selon ta façon de t'en occuper.",
+  view_github_btn: "Voir le projet GitHub",
+  project_ia_title: "IA & Chatbot",
+  project_ia_desc: "Un site interactif pour expliquer l'intelligence artificielle, avec un chatbot intégré.",
+  project_wpt_title: "World Peace Token (WPT)",
+  project_wpt_desc: "Crypto expérimentale lancée sur Polygon. Un projet utopiste, entre rêve et technologie.",
+  view_polygonscan_btn: "Voir sur Polygonscan",
+  project_optic_desc: "Générateur d’illusions visuelles interactives. Semez une idée, regardez-la éclore.",
+  project_solar_desc: "Choisissez votre planète comme nouveau foyer.",
+  view_live_project_btn: "Voir le projet en direct",
+  project_mdiyga_desc: "Redonne vie à tes objets oubliés. Une app pensée pour bricoler malin, inspirer, et transmettre le plaisir du faire soi-même.",
+  discover_app_btn: "Découvrir l'app en ligne",
+  project_ak001_title: "AK 001 – Montre personnalisable <span class=\"badge-new\">NEW</span>",
+  project_ak001_desc: "Le premier modèle imaginé par Alex Koncept. Élégante, moderne, et 100% personnalisable.",
+  discover_model_btn: "Découvrir le modèle AK 001",
+  project_bodykoncept_title: "Body Koncept<span class=\"badge-new\">NEW</span>",
+  project_bodykoncept_desc: "Découvrez l'entraînement personnalisé par IA qui s'adapte à vos objectifs, votre morphologie et votre mode de vie.",
+  view_live_btn: "Voir le Projet en Ligne",
+  project_akulab_title: "AK Universe Lab <span class=\"badge-new\">NEW</span>",
+  project_akulab_desc: "AK Universe Lab est une vitrine immersive fusionnant logo, mode, technologie et expérimentation. Organisé en protocoles (vêtements, accessoires, objets), le site offre un design futuriste, un essayage virtuel par IA et une expérience interactive unique.",
+  discover_site_btn: "Découvrir le site en ligne",
+
+  /* --- NOUVEAU PROJET : TIMELINE OS EVOLUTION --- */
+  project_tose_title: "Timeline OS Evolution <span class=\"badge-new\">NEW</span>",
+  project_tose_desc: "Projet interactif retraçant l’évolution des systèmes d’exploitation, de Windows 3.1 à macOS Big Sur, à travers une timeline web immersive. Chaque OS est fidèlement recréé pour célébrer l’histoire de l’informatique et introduire AK OS, la vision moderne et créative signée Alex Koncept.",
+  discover_tose_btn: "Découvrir le site en ligne",
+
+  /* --- PROJET HSK --- */
+  project_hsk_title: "HSK — Hybrid Sound Koncept <span class=\"badge-new\">NEW</span>",
+  project_hsk_desc: "HSK (Hybrid Sound Koncept) est un projet musical expérimental fusionnant des styles opposés grâce à l’intelligence artificielle. Créé avec ChatGPT, Suno et ElevenLabs, il donne vie à un artiste numérique capable de mêler funk, techno, reggae, metal et bien plus encore. Une exploration audacieuse où le groove humain rencontre la précision algorithmique.",
+  discover_hsk_btn: "Découvrir le projet musical",
+
+  project_next_title: "Prochain Koncept en cours...",
+  project_next_desc: "Un nouveau projet prend forme dans l’atelier AK, à très bientôt pour en découvrir plus.",
+  about_title: "À propos",
+  about_desc: "Moi c'est Alex, passionné d’informatique, de DIY, d’horlogerie et de nouvelles technologies.<br>Ce site présente mes projets personnels regroupés sous <strong>Alex Koncept</strong> : montres, IA, expériences web et plus encore.",
+  contact_label: "Contact",
+  footer_text: "© 2025 Alex Koncept — Vivre. Apprendre. Créer."
+},
+
+en: {
+  koncept_mode_label: "Change Koncept Mode",
+  theme_toggle_label: "Change theme",
+  header_subtitle: "Independent Creator – Watches, Web, Code, AI & Crypto",
+  intro_text: 'Welcome to my digital universe. Each "Koncept" I create explores a possible future, through watchmaking, code, design, and augmented imagination.<br><br><span class="chatbot-prompt">💬 To learn more about my journey or the story behind a project, <strong>ask AlexBot</strong> at the bottom right!</span>',
+  project_watches_title: "Alex Koncept Watches",
+  project_watches_desc: "Independent watchmaking, artistic modding, signature AK case.",
+  visit_site_btn: "Visit the website",
+  project_hns_desc: "Dystopian & interactive sites to question the future through technology, society, and absurdity.",
+  explore_collection_btn: "Explore the collection",
+  project_tamacodechi_title: "Tamacodechi",
+  project_tamacodechi_desc: "Your developer Tamagotchi in your browser, it evolves based on how you take care of it.",
+  view_github_btn: "View on GitHub",
+  project_ia_title: "AI & Chatbot",
+  project_ia_desc: "An interactive website to explain artificial intelligence, with an integrated chatbot.",
+  project_wpt_title: "World Peace Token (WPT)",
+  project_wpt_desc: "Experimental crypto launched on Polygon. A utopian project, between dream and technology.",
+  view_polygonscan_btn: "View on Polygonscan",
+  project_optic_desc: "Interactive visual illusion generator. Plant an idea, watch it bloom.",
+  project_solar_desc: "Choose your planet as your new home.",
+  view_live_project_btn: "See the live project",
+  project_mdiyga_desc: "Bring your forgotten objects back to life. An app designed for smart tinkering, inspiring, and sharing the joy of DIY.",
+  discover_app_btn: "Discover the app online",
+  project_ak001_title: "AK 001 – Customizable Watch <span class=\"badge-new\">NEW</span>",
+  project_ak001_desc: "The first model designed by Alex Koncept. Elegant, modern, and 100% customizable.",
+  discover_model_btn: "Discover the AK 001 model",
+  project_bodykoncept_title: "Body Koncept<span class=\"badge-new\">NEW</span>",
+  project_bodykoncept_desc: "Discover personalized training by AI that adapts to your goals, body type, and lifestyle.",
+  view_live_btn: "View Live Project",
+  project_akulab_title: "AK Universe Lab <span class=\"badge-new\">NEW</span>",
+  project_akulab_desc: "AK Universe Lab is an immersive showcase merging logo, fashion, technology, and experimentation. Organized into protocols (clothing, accessories, objects), the site offers a futuristic design, virtual try-on by AI, and a unique interactive experience.",
+  discover_site_btn: "Discover the site online",
+  project_tose_title: "Timeline OS Evolution <span class=\"badge-new\">NEW</span>",
+  project_tose_desc: "An interactive project retracing the evolution of operating systems, from Windows 3.1 to macOS Big Sur, through an immersive web timeline. Each OS is faithfully recreated to celebrate the history of computing and introduce AK OS, the modern and creative vision by Alex Koncept.",
+  discover_tose_btn: "Discover the live site",
+  project_hsk_title: "HSK — Hybrid Sound Koncept <span class=\"badge-new\">NEW</span>",
+  project_hsk_desc: "HSK (Hybrid Sound Koncept) is an experimental musical project merging opposite genres through artificial intelligence. Created using ChatGPT, Suno, and ElevenLabs, it brings to life a digital artist capable of blending funk, techno, reggae, metal, and more. An audacious exploration where human groove meets algorithmic precision.",
+  discover_hsk_btn: "Discover the musical project",
+
+  project_next_title: "Next Koncept in progress...",
+  project_next_desc: "A new project is taking shape in the AK workshop, see you very soon to discover more.",
+  about_title: "About",
+  about_desc: "I'm Alex, passionate about IT, DIY, watchmaking, and new technologies.<br>This site presents my personal projects under the <strong>Alex Koncept</strong> brand: watches, AI, web experiences, and more.",
+  contact_label: "Contact",
+  footer_text: "© 2025 Alex Koncept — Live. Learn. Create."
+}
   };
   const langFrBtn = document.getElementById('lang-fr-btn');
   const langEnBtn = document.getElementById('lang-en-btn');
