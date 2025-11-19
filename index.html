@@ -789,6 +789,7 @@ Chaque OS est fidèlement recréé pour célébrer l’histoire de l’informati
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
+
   const matrixCanvas = document.getElementById('matrix-canvas');
   const matrixCtx = matrixCanvas ? matrixCanvas.getContext('2d') : null;
   let matrixInterval;
@@ -972,30 +973,32 @@ document.addEventListener('DOMContentLoaded', () => {
   const header = document.getElementById('main-header');
   
   let lastScrollY = window.scrollY;
-  let ticking = false; // Sémaphore pour requestAnimationFrame
+  let ticking = false;
 
   window.addEventListener('scroll', () => {
       if (!ticking) {
           window.requestAnimationFrame(() => {
               const scrollY = window.scrollY;
-              
-              // 1. Gestion du mode compact avec "Zone Tampon" (Buffer)
-              // On ne passe en compact que si on descend bien en dessous (60px)
-              if (scrollY > 60) {
-                  if (!header.classList.contains('header-compact')) {
-                      header.classList.add('header-compact');
+              const isMobile = window.innerWidth <= 768; 
+
+              if (!isMobile) {
+
+                  if (scrollY > 60) {
+                      if (!header.classList.contains('header-compact')) {
+                          header.classList.add('header-compact');
+                      }
+                  } else if (scrollY < 20) {
+                      if (header.classList.contains('header-compact')) {
+                          header.classList.remove('header-compact');
+                      }
                   }
-              } 
-              // On ne revient en grand que si on remonte bien au dessus (20px)
-              else if (scrollY < 20) {
-                  if (header.classList.contains('header-compact')) {
-                      header.classList.remove('header-compact');
-                  }
-              }
-              
-              // 2. Gestion Mobile (Cacher/Montrer)
-              if (window.innerWidth <= 768) {
-                  if (lastScrollY < scrollY && scrollY > 150) {
+              } else {
+
+                  
+                  header.classList.remove('header-compact');
+
+                  
+                  if (lastScrollY < scrollY && scrollY > 100) {
                       header.classList.add('header-hidden');
                   } else {
                       header.classList.remove('header-hidden');
@@ -1114,7 +1117,7 @@ fr: {
   project_tose_desc: "Projet interactif retraçant l’évolution des systèmes d’exploitation, de Windows 3.1 à macOS Big Sur, à travers une timeline web immersive. Chaque OS est fidèlement recréé pour célébrer l’histoire de l’informatique et introduire AK OS, la vision moderne et créative signée Alex Koncept.",
   discover_tose_btn: "Découvrir le site en ligne",
   project_hsk_title: "HSK — Hybrid Sound Koncept <span class=\"badge-new\">NEW</span>",
-  project_hsk_desc: "HSK (Hybrid Sound Koncept) is un projet musical expérimental fusionnant des styles opposés grâce à l’intelligence artificielle. Créé avec ChatGPT, Suno et ElevenLabs, il donne vie à un artiste numérique capable de mêler funk, techno, reggae, metal et bien plus encore. Une exploration audacieuse où le groove humain rencontre la précision algorithmique.",
+  project_hsk_desc: "HSK (Hybrid Sound Koncept) est un projet musical expérimental fusionnant des styles opposés grâce à l’intelligence artificielle. Créé avec ChatGPT, Suno et ElevenLabs, il donne vie à un artiste numérique capable de mêler funk, techno, reggae, metal et bien plus encore. Une exploration audacieuse où le groove humain rencontre la précision algorithmique.",
   discover_hsk_btn: "Découvrir le projet musical",
   project_next_title: "Prochain Koncept en cours...",
   project_next_desc: "Un nouveau projet prend forme dans l’atelier AK, à très bientôt pour en découvrir plus.",
