@@ -28,16 +28,22 @@
 
 <style>
     :root {
-      --header-bg-start: #00c9ff;
-      --header-bg-end: #92fe9d;
-      --project-border-color: #00c9ff;
+      /* --- COULEURS DE BASE --- */
+      --header-bg-start: rgba(0, 201, 255, 0.85); 
+      --header-bg-end: rgba(146, 254, 157, 0.85);
+      --project-border-color: rgba(0, 201, 255, 0.5);
       --link-color: #0077cc;
-      --body-bg: #F8F9FA;
+      --body-bg: #f0f2f5; 
       --text-color: #212529;
       --header-text-color: #000;
-      --project-bg: #FFFFFF;
-      --project-shadow-color: rgba(0, 0, 0, 0.07);
-      --project-title-color: #00a5c6;
+      
+      /* --- GLASSMORPHISM VARIABLES --- */
+      --glass-bg: rgba(255, 255, 255, 0.65);
+      --glass-border: 1px solid rgba(255, 255, 255, 0.6);
+      --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+      --card-radius: 24px;
+      
+      --project-title-color: #0081a7;
       --footer-text-color: #6c757d;
       --theme-toggle-icon: "☀️";
       --main-font: 'Poppins', sans-serif;
@@ -45,15 +51,19 @@
     }
 
     body.dark-mode {
-      --header-bg-start: #005c73;
-      --header-bg-end: #2c7a31;
+      --header-bg-start: rgba(0, 92, 115, 0.9);
+      --header-bg-end: rgba(44, 122, 49, 0.9);
       --project-border-color: #61dafb;
       --link-color: #61dafb;
-      --body-bg: #121212;
+      --body-bg: #0f0f0f;
       --text-color: #EAEAEA;
       --header-text-color: #f0f0f0;
-      --project-bg: #1E1E1E;
-      --project-shadow-color: rgba(0, 0, 0, 0.2);
+      
+      /* Dark Glass */
+      --glass-bg: rgba(30, 30, 30, 0.6);
+      --glass-border: 1px solid rgba(255, 255, 255, 0.1);
+      --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+      
       --project-title-color: #80deea;
       --footer-text-color: #adb5bd;
       --theme-toggle-icon: "🌙";
@@ -74,45 +84,24 @@
     body.koncept-vice-city #vice-city-canvas { display: block; }
     body.koncept-fallout #fallout-canvas { display: block; opacity: 0.1; }
 
+    /* --- MATRIX THEME --- */
     body.koncept-matrix-reloaded {
         --matrix-green: #00ff41;
         --matrix-bg: #000501;
         --body-bg: var(--matrix-bg);
         --text-color: var(--matrix-green);
-        --header-bg-start: #000;
-        --header-bg-end: #000;
+        --header-bg-start: rgba(0,0,0,0.9);
+        --header-bg-end: rgba(0,0,0,0.9);
         --header-text-color: var(--matrix-green);
-        --project-bg: rgba(0, 20, 5, 0.4);
-        --project-border-color: var(--matrix-green);
-        --project-shadow-color: rgba(0, 255, 65, 0.3);
+        --glass-bg: rgba(0, 20, 5, 0.6);
+        --glass-border: 1px solid var(--matrix-green);
+        --glass-shadow: 0 0 15px rgba(0, 255, 65, 0.2);
         --project-title-color: var(--matrix-green);
         --link-color: var(--matrix-green);
         --footer-text-color: var(--matrix-green);
         --main-font: 'Courier Prime', monospace;
         --title-font: 'Courier Prime', monospace;
-    }
-
-    body.koncept-matrix-reloaded header,
-    body.koncept-matrix-reloaded footer {
-        background-color: rgba(0, 0, 0, 0.7);
-        backdrop-filter: blur(5px);
-    }
-
-    body.koncept-matrix-reloaded header {
-        border-bottom: 1px solid var(--matrix-green);
-    }
-
-    body.koncept-matrix-reloaded h1,
-    body.koncept-matrix-reloaded h2 {
-        text-shadow: 0 0 5px var(--matrix-green), 0 0 10px var(--matrix-green);
-        animation: flicker 0.1s infinite alternate;
-    }
-
-    body.koncept-matrix-reloaded .project {
-        border: 1px solid var(--matrix-green);
-        background-color: var(--project-bg);
-        box-shadow: inset 0 0 15px var(--project-shadow-color);
-        border-radius: 0;
+        --card-radius: 0px; 
     }
 
     body.koncept-matrix-reloaded .project-tag {
@@ -122,28 +111,24 @@
         border-radius: 0;
     }
 
-    body.koncept-matrix-reloaded .project-content a:hover {
-        text-decoration: none;
-        background: var(--matrix-green);
-        color: #000;
-    }
-
+    /* --- FALLOUT THEME --- */
     body.koncept-fallout {
         --fallout-amber: #ffc107;
         --fallout-bg: #1e2d24;
         --body-bg: var(--fallout-bg);
         --text-color: var(--fallout-amber);
-        --header-bg-start: #111;
-        --header-bg-end: #000;
+        --header-bg-start: rgba(17, 17, 17, 0.95);
+        --header-bg-end: rgba(0, 0, 0, 0.95);
         --header-text-color: var(--fallout-amber);
-        --project-bg: rgba(46, 68, 55, 0.4);
-        --project-border-color: var(--fallout-amber);
-        --project-shadow-color: rgba(255, 193, 7, 0.2);
+        --glass-bg: rgba(46, 68, 55, 0.7);
+        --glass-border: 2px solid var(--fallout-amber);
+        --glass-shadow: 0 0 15px rgba(255, 193, 7, 0.15);
         --project-title-color: var(--fallout-amber);
         --link-color: var(--fallout-amber);
         --footer-text-color: var(--fallout-amber);
         --main-font: 'Courier Prime', monospace;
         --title-font: 'Courier Prime', monospace;
+        --card-radius: 8px;
         background-image: radial-gradient(ellipse at center, rgba(255, 193, 7, 0.1) 0%, transparent 70%);
         background-attachment: fixed;
     }
@@ -160,41 +145,16 @@
         z-index: -1;
     }
 
-    body.koncept-fallout header {
-        background: #111;
-        border-bottom: 2px solid var(--fallout-amber);
-        box-shadow: 0 2px 10px rgba(255, 193, 7, 0.2);
-    }
-
     body.koncept-fallout header h1,
     body.koncept-fallout .project-content h2 {
         animation: flicker 0.15s infinite alternate;
         text-shadow: 0 0 2px var(--fallout-amber), 0 0 5px var(--fallout-amber);
     }
-
-    body.koncept-fallout .project {
-        border: 2px solid var(--fallout-amber);
-        box-shadow: inset 0 0 10px rgba(255, 193, 7, 0.3);
-        background-color: var(--project-bg);
-        border-radius: 4px;
-    }
-
-    body.koncept-fallout .project:hover {
-        transform: none;
-        background-color: rgba(56, 78, 65, 0.6);
-    }
-
+    
     body.koncept-fallout .project-tag {
         background-color: var(--fallout-amber);
         color: #111;
-        font-weight: bold;
         opacity: 1;
-    }
-
-    body.koncept-fallout .project-content a:hover {
-        text-decoration: none;
-        background: var(--fallout-amber);
-        color: #111;
     }
 
     @keyframes flicker {
@@ -202,31 +162,26 @@
         to { opacity: 1; }
     }
 
+    /* --- VICE CITY THEME --- */
     body.koncept-vice-city {
         --body-bg: #1a0a24;
         --text-color: #f0e6f2;
-        --header-bg-start: #ff48c4;
-        --header-bg-end: #2bd1ff;
+        --header-bg-start: rgba(255, 72, 196, 0.8);
+        --header-bg-end: rgba(43, 209, 255, 0.8);
         --header-text-color: #ffffff;
-        --project-bg: rgba(26, 10, 36, 0.7);
-        --project-border-color: #ff48c4;
-        --project-shadow-color: rgba(255, 72, 196, 0.5);
+        --glass-bg: rgba(26, 10, 36, 0.5);
+        --glass-border: 2px solid #ff48c4;
+        --glass-shadow: 0 0 25px rgba(255, 72, 196, 0.4);
         --project-title-color: #2bd1ff;
         --link-color: #ff48c4;
         --footer-text-color: #d8b8e3;
         --main-font: 'Poppins', sans-serif;
         --title-font: 'Damion', cursive;
         --project-font: 'Bebas Neue', sans-serif;
+        --card-radius: 16px;
         background-color: #1d0f2b;
         background-attachment: fixed;
         overflow-x: hidden;
-    }
-
-    body.koncept-vice-city header {
-        background: transparent;
-        border-bottom: 2px solid var(--header-bg-start);
-        box-shadow: 0 0 20px var(--header-bg-start);
-        backdrop-filter: blur(5px);
     }
 
     body.koncept-vice-city header h1 {
@@ -235,25 +190,6 @@
         color: #fff;
         text-shadow: 0 0 5px #fff, 0 0 10px #ff48c4, 0 0 20px #ff48c4, 0 0 40px #ff48c4;
     }
-    body.koncept-vice-city header p {
-        color: #f0e6f2;
-        text-shadow: 0 0 5px #2bd1ff;
-    }
-
-    body.koncept-vice-city .project {
-        background-color: var(--project-bg);
-        border: 2px solid var(--project-border-color);
-        border-radius: 10px;
-        box-shadow: 0 0 15px var(--project-shadow-color);
-        backdrop-filter: blur(10px);
-        transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-    }
-
-    body.koncept-vice-city .project:hover {
-        transform: translateY(-5px) scale(1.02);
-        box-shadow: 0 0 25px var(--project-shadow-color), 0 0 10px var(--project-title-color);
-    }
-
     body.koncept-vice-city .project-content h2 {
         font-family: var(--project-font);
         font-size: 2.5rem;
@@ -261,40 +197,33 @@
         color: var(--project-title-color);
         text-shadow: 0 0 5px var(--project-title-color);
     }
-
     body.koncept-vice-city .project-tag {
         background-color: transparent;
-        border: 1px solid var(--project-border-color);
-        color: var(--project-border-color);
+        border: 1px solid #ff48c4;
+        color: #ff48c4;
     }
-
     body.koncept-vice-city .badge-new {
-        background-color: var(--project-border-color);
+        background-color: #ff48c4;
         color: #1a0a24;
         text-shadow: none;
     }
 
-    body.koncept-vice-city #a-propos {
-        background-color: rgba(0,0,0,0.2);
-        border: none;
-        border-top: 1px solid var(--project-border-color);
-        border-bottom: 1px solid var(--project-border-color);
-    }
-
+    /* --- SPACE THEME --- */
     body.koncept-space {
       --body-bg: #0b0f19;
       --text-color: #e0e0e0;
-      --header-bg-start: #1f2a40;
-      --header-bg-end: #36456b;
+      --header-bg-start: rgba(31, 42, 64, 0.9);
+      --header-bg-end: rgba(54, 69, 107, 0.9);
       --header-text-color: #ffffff;
-      --project-bg: #1a202c;
-      --project-border-color: #76a9fa;
-      --project-shadow-color: rgba(118, 169, 250, 0.15);
+      --glass-bg: rgba(26, 32, 44, 0.6);
+      --glass-border: 1px solid rgba(118, 169, 250, 0.3);
+      --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
       --project-title-color: #90caf9;
       --link-color: #76a9fa;
       --footer-text-color: #a0aec0;
       --main-font: 'Orbitron', sans-serif;
       --title-font: 'Orbitron', sans-serif;
+      --card-radius: 12px;
       background-color: #0b0f19;
     }
 
@@ -307,266 +236,359 @@
       color: var(--text-color);
       line-height: 1.7;
       font-weight: 300;
-      transition: background-color 0.5s ease, color 0.5s ease, background-image 0.5s ease;
+      transition: background-color 0.5s ease, color 0.5s ease;
+      overflow-x: hidden; 
     }
 
+    /* --- BOUTONS FLOTTANTS (Style Glass) --- */
     .common-toggle-button {
-      background: rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.15);
       backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       color: var(--text-color);
       border: 1px solid rgba(255, 255, 255, 0.3);
-      height: 40px;
+      height: 45px;
+      width: 45px;
       cursor: pointer;
       display: flex;
       justify-content: center;
       align-items: center;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
-      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
       z-index: 1001;
       font-size: 1.2rem;
-      width: 40px;
       border-radius: 50%;
       padding: 0;
     }
-    body.dark-mode .common-toggle-button {
-      background: rgba(42, 42, 42, 0.25);
-      border-color: rgba(255, 255, 255, 0.2);
+    
+    .common-toggle-button:hover {
+        transform: scale(1.15) rotate(10deg);
+        background: rgba(255, 255, 255, 0.25);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
     }
 
-    .koncept-mode-toggle { position: fixed; top: 1rem; left: 1rem; }
+    .koncept-mode-toggle { position: fixed; top: 1.5rem; left: 1.5rem; }
     .theme-toggle::before { content: var(--theme-toggle-icon); }
-    .top-right-controls { position: fixed; top: 1rem; right: 1rem; display: flex; align-items: center; gap: 8px; z-index: 1001; }
+    .top-right-controls { position: fixed; top: 1.5rem; right: 1.5rem; display: flex; align-items: center; gap: 12px; z-index: 1001; }
 
-    .lang-switcher { display: flex; gap: 5px; }
-    .lang-switcher button { opacity: 0.6; }
-    .lang-switcher button.lang-active { opacity: 1; border-width: 2px; border-color: var(--link-color) !important; }
+    .lang-switcher { display: flex; gap: 8px; }
+    .lang-switcher button { opacity: 0.7; width: 40px; height: 40px; }
+    .lang-switcher button.lang-active { opacity: 1; border: 2px solid var(--link-color); background: rgba(255, 255, 255, 0.25); }
 
+    /* --- HEADER MODERNE (Glass) --- */
     header {
       text-align: center;
-      padding: 2rem 2rem;
+      padding: 4rem 2rem;
       background: linear-gradient(135deg, var(--header-bg-start) 0%, var(--header-bg-end) 100%);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      
       color: var(--header-text-color);
       position: sticky;
       top: 0;
       z-index: 999;
-      backdrop-filter: blur(10px);
-      transition: transform 0.4s ease, background 0.5s ease, color 0.5s ease;
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); /* Transition douce */
       overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      margin-bottom: 2rem;
     }
+    
+    /* --- Header "Compact" quand on scroll --- */
+    header.header-compact {
+        padding: 0.8rem 2rem; /* Beaucoup plus petit */
+        border-bottom-left-radius: 25px;
+        border-bottom-right-radius: 25px;
+        margin: 0 1.5rem;
+        top: 1rem;
+        width: auto;
+        background: var(--header-bg-start); /* Couleur unie pour lisibilité */
+    }
+    
     header.header-hidden {
-        transform: translateY(-100%);
+        transform: translateY(-150%);
     }
+    
     header::before {
         content: '';
         position: absolute;
         top: 50%;
         left: 50%;
-        width: 185px;
-        height: 185px;
+        width: 200px;
+        height: 200px;
         transform: translate(-50%, -50%);
         background-position: center;
         background-repeat: no-repeat;
         background-size: contain;
         border-radius: 50%;
-        opacity: 0.3;
+        opacity: 0.25;
         z-index: 0;
+        filter: drop-shadow(0 0 10px rgba(255,255,255,0.5));
+        transition: all 0.5s ease;
     }
+    
+    /* Cache le logo de fond en mode compact */
+    header.header-compact::before {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.5);
+    }
+    
     header h1, header p {
-        text-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2);
+        text-shadow: 0px 2px 10px rgba(0, 0, 0, 0.15);
         color: #FFFFFF;
         position: relative;
         z-index: 1;
+        transition: all 0.5s ease;
     }
+    
     header h1 {
       font-family: var(--title-font);
-      font-size: 3.2rem;
-      margin: 0 0 0.25rem 0;
-      font-weight: 700;
-      margin-top: 10px;
+      font-size: 3.5rem;
+      margin: 0 0 0.5rem 0;
+      font-weight: 800;
+      letter-spacing: -1px;
     }
+    
+    /* Titre plus petit en mode compact */
+    header.header-compact h1 {
+        font-size: 1.8rem;
+        margin: 0;
+    }
+    
     header p {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       max-width: 650px;
       margin: 0 auto;
       font-style: italic;
-      opacity: 0.9;
+      opacity: 0.95;
+      font-weight: 400;
+      max-height: 100px; /* Hauteur max pour transition */
+    }
+    
+    /* Sous-titre disparait en mode compact */
+    header.header-compact p {
+        opacity: 0;
+        max-height: 0;
+        margin: 0;
+        transform: translateY(-10px);
     }
 
     .container {
-      max-width: 1000px;
-      margin: 4rem auto;
+      max-width: 1100px;
+      margin: 2rem auto;
       padding: 0 2rem;
+      perspective: 1000px; 
     }
+    
     .intro {
-      font-size: 1.2rem;
-      margin-bottom: 4rem;
+      font-size: 1.25rem;
+      margin-bottom: 5rem;
       text-align: center;
-      max-width: 700px;
+      max-width: 750px;
       margin-left: auto;
       margin-right: auto;
+      line-height: 1.8;
     }
+    
     .chatbot-prompt {
       display: inline-block;
-      margin-top: 1rem;
-      padding: 0.8rem 1.2rem;
-      background-color: rgba(128, 222, 234, 0.1);
-      border-left: 3px solid var(--project-border-color);
-      border-radius: 8px;
+      margin-top: 1.5rem;
+      padding: 1rem 1.5rem;
+      background: var(--glass-bg);
+      backdrop-filter: blur(10px);
+      border: var(--glass-border);
+      border-left: 4px solid var(--project-border-color);
+      border-radius: 12px;
       font-size: 1.1rem;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
     }
-    body.dark-mode .chatbot-prompt {
-        background-color: rgba(128, 222, 234, 0.08);
-    }
+
+    /* --- CARTES PROJETS --- */
     .project {
       display: flex;
       align-items: center;
-      background-color: var(--project-bg);
-      border-left: 5px solid var(--project-border-color);
-      padding: 2rem;
-      margin-bottom: 2.5rem;
-      border-radius: 12px;
-      box-shadow: 0 8px 30px var(--project-shadow-color);
-      gap: 2rem;
+      background: var(--glass-bg);
+      backdrop-filter: blur(16px) saturate(120%);
+      -webkit-backdrop-filter: blur(16px) saturate(120%);
+      border: var(--glass-border);
+      border-left: 0; 
+      padding: 2.5rem;
+      margin-bottom: 4rem;
+      border-radius: var(--card-radius);
+      box-shadow: var(--glass-shadow);
+      gap: 3rem;
       flex-wrap: wrap;
       opacity: 0;
-      transform: translateY(30px);
-      transition: transform 0.4s ease-out, opacity 0.4s ease-out, box-shadow 0.3s ease, background-color 0.5s ease;
+      transform: translateY(50px);
+      transition: all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+      transform-style: preserve-3d;
+      will-change: transform;
     }
-    .project.is-visible { opacity: 1; transform: translateY(0); }
-    .project:hover { transform: scale(1.03); box-shadow: 0 12px 40px var(--project-shadow-color); }
+    
+    .project::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 15%;
+        bottom: 15%;
+        width: 4px;
+        background-color: var(--project-border-color);
+        border-radius: 0 4px 4px 0;
+        opacity: 0.8;
+    }
+
+    .project.is-visible { opacity: 1; transform: translateY(0) rotateX(0) rotateY(0); }
+    
+    .project:hover { 
+        box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        z-index: 10;
+    }
 
     .project-visual {
-      flex: 0 0 160px;
+      flex: 0 0 180px;
       text-align: center;
+      transform: translateZ(20px);
+      transition: transform 0.3s ease;
     }
+    
     .project-visual img {
       width: 100%;
       height: auto;
-      border-radius: 8px;
+      border-radius: 16px; 
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+      transition: transform 0.5s ease;
     }
+    
+    .project:hover .project-visual img {
+        transform: scale(1.05);
+    }
+
     .project-content {
       flex: 1;
       min-width: 250px;
+      transform: translateZ(10px); 
     }
+    
     .project-content h2 {
-      letter-spacing: 0.5px;
-      margin: 0 0 0.75rem 0;
-      font-size: 1.7rem;
+      letter-spacing: -0.5px;
+      margin: 0 0 1rem 0;
+      font-size: 2rem;
       color: var(--project-title-color);
       font-family: var(--title-font);
       font-weight: 700;
-      transition: color 0.5s ease;
     }
+    
     .project-content p {
-      margin: 0 0 1rem 0;
+      margin: 0 0 1.5rem 0;
       max-width: 65ch;
+      font-size: 1.05rem;
+      opacity: 0.9;
     }
+    
     .project-tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 1rem;
+      gap: 0.8rem;
+      margin-bottom: 1.5rem;
     }
+    
     .project-tag {
-      background-color: var(--project-border-color);
-      color: var(--header-text-color);
-      font-size: 0.75rem;
-      padding: 4px 10px;
-      border-radius: 15px;
+      background: rgba(var(--project-border-color), 0.1); 
+      background-color: transparent;
+      border: 1px solid var(--project-border-color);
+      color: var(--text-color);
+      font-size: 0.8rem;
+      padding: 6px 14px;
+      border-radius: 50px; 
       font-weight: 600;
-      opacity: 0.8;
-    }
-    .project-content a {
-      color: var(--link-color);
-      text-decoration: none;
-      font-weight: 600;
+      backdrop-filter: blur(5px);
       transition: all 0.3s ease;
     }
-    .project-content a:hover { text-decoration: underline; letter-spacing: 0.5px; }
-
-    #a-propos {
-      background-color: var(--project-bg);
-      padding: 3rem 1.5rem;
-      transition: background-color 0.5s ease;
-      border-top: 1px solid var(--project-shadow-color);
+    
+    .project-tag:hover {
+        background-color: var(--project-border-color);
+        color: #fff;
+        transform: translateY(-2px);
     }
-    .about-container { max-width: 1000px; margin: auto; display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; justify-content: center; }
-    .about-avatar { width: 140px; height: 140px; border-radius: 50%; border: 2px solid var(--project-border-color); box-shadow: 0 0 15px var(--project-shadow-color); object-fit: cover; }
+    
+    .project-content a {
+      display: inline-block;
+      color: #fff;
+      background: linear-gradient(45deg, var(--link-color), #00c9ff);
+      padding: 10px 24px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      box-shadow: 0 4px 15px rgba(0, 119, 204, 0.3);
+      transition: all 0.3s ease;
+      transform: translateZ(5px);
+    }
+    
+    .project-content a:hover { 
+        transform: translateY(-3px) translateZ(5px); 
+        box-shadow: 0 8px 25px rgba(0, 119, 204, 0.5);
+    }
+
+    /* --- SECTION A PROPOS --- */
+    #a-propos {
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px);
+      padding: 5rem 2rem;
+      margin-top: 4rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      position: relative;
+    }
+    
+    .about-container { max-width: 900px; margin: auto; display: flex; align-items: center; gap: 4rem; flex-wrap: wrap; justify-content: center; }
+    
+    .about-avatar { 
+        width: 160px; 
+        height: 160px; 
+        border-radius: 50%; 
+        border: 4px solid rgba(255,255,255,0.2); 
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2); 
+        object-fit: cover; 
+        transition: transform 0.5s ease;
+    }
+    .about-avatar:hover { transform: scale(1.05) rotate(5deg); }
+    
     .about-text { text-align: left; }
-    .about-text h2 { font-size: 1.5rem; font-weight: 600; color: var(--project-title-color); margin: 0 0 0.5rem 0; }
-    .about-text p { font-size: 1.1rem; line-height: 1.6; max-width: 60ch; }
-    .about-text p.contact-info { margin-top: 1rem; font-size: 1rem; }
+    .about-text h2 { font-size: 2rem; font-weight: 700; color: var(--project-title-color); margin: 0 0 1rem 0; font-family: var(--title-font); }
+    .about-text p { font-size: 1.15rem; line-height: 1.8; max-width: 60ch; }
     
     footer {
       text-align: center;
-      padding: 2.5rem;
+      padding: 3rem;
       font-size: 0.9rem;
       color: var(--footer-text-color);
-      transition: color 0.5s ease;
+      background: rgba(0,0,0,0.05);
     }
     
     .badge-new {
-      background-color: #e74c3c;
+      background: linear-gradient(135deg, #ff6b6b, #e74c3c);
       color: white;
       font-size: 0.7rem;
-      padding: 3px 8px;
-      border-radius: 8px;
-      margin-left: 8px;
+      padding: 4px 10px;
+      border-radius: 12px;
+      margin-left: 10px;
       vertical-align: middle;
-      font-weight: 600;
+      font-weight: 700;
+      box-shadow: 0 2px 10px rgba(231, 76, 60, 0.4);
       animation: pop 1.5s ease-out infinite alternate;
     }
     @keyframes pop {
-      from { transform: scale(1); opacity: 1; }
-      to { transform: scale(1.1); opacity: 0.8; }
+      from { transform: scale(1); }
+      to { transform: scale(1.1); }
     }
 
     @media (max-width: 768px) {
-      .container {
-        margin: 2rem auto;
-        padding: 0 1rem;
-      }
-      .project {
-        flex-direction: column;
-        text-align: center;
-      }
-      .project-visual {
-        margin: 0 auto;
-        max-width: 140px;
-      }
-      .project-content p {
-        margin-left: auto;
-        margin-right: auto;
-      }
-      .project-tags {
-        justify-content: center;
-      }
-      body.koncept-vice-city header h1 { font-size: 3rem; }
-      body.koncept-vice-city .project-content h2 { font-size: 2rem; }
-    }
-    @media (max-width: 600px) {
-      header {
-        padding: 1.5rem 1rem;
-      }
-      header h1 {
-        font-size: 2.2rem;
-      }
-      header p {
-        font-size: 1rem;
-      }
-      .intro {
-        font-size: 1.1rem;
-        margin-bottom: 3rem;
-      }
-      .project {
-        padding: 1.5rem;
-      }
-      .project-content h2 {
-        font-size: 1.5rem;
-      }
-      .koncept-mode-toggle { top: 0.5rem; left: 0.5rem; }
-      .top-right-controls { top: 0.5rem; right: 0.5rem; }
-      .about-container { text-align: center; }
+      .container { padding: 0 1rem; }
+      .project { flex-direction: column; text-align: center; padding: 2rem 1.5rem; gap: 1.5rem; }
+      .project::after { top: 0; bottom: auto; left: 20%; right: 20%; height: 4px; width: auto; border-radius: 0 0 4px 4px; }
+      .project-visual { margin: 0 auto; max-width: 150px; transform: translateZ(0); }
+      .project-tags { justify-content: center; }
+      header h1 { font-size: 2.5rem; }
+      .about-container { flex-direction: column; gap: 2rem; text-align: center; }
       .about-text { text-align: center; }
     }
 </style>
@@ -589,9 +611,9 @@
     <button id="theme-toggle" class="theme-toggle common-toggle-button" aria-label="Changer le thème" data-key="theme_toggle_label"></button>
 </div>
 
-<header>
-    <h1>Alex Koncept</h1>
-    <p data-key="header_subtitle">Créateur indépendant – Montres, Web, Code, IA & Crypto</p>
+<header id="main-header">
+    <h1 id="header-title">Alex Koncept</h1>
+    <p id="header-subtitle" data-key="header_subtitle">Créateur indépendant – Montres, Web, Code, IA & Crypto</p>
 </header>
 
 <div class="container">
@@ -780,7 +802,7 @@ Chaque OS est fidèlement recréé pour célébrer l’histoire de l’informati
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-
+  // --- FONCTIONNALITES EXISTANTES ---
   const matrixCanvas = document.getElementById('matrix-canvas');
   const matrixCtx = matrixCanvas ? matrixCanvas.getContext('2d') : null;
   let matrixInterval;
@@ -961,19 +983,66 @@ document.addEventListener('DOMContentLoaded', () => {
   const themeToggle = document.getElementById('theme-toggle');
   const konceptModeToggle = document.getElementById('koncept-mode-toggle');
   const body = document.body;
-  const header = document.querySelector('header');
+  const header = document.getElementById('main-header');
+  
+  // --- CORRECTION DU CLIGNOTEMENT ICI (Optimisation) ---
   let lastScrollY = window.scrollY;
+  let ticking = false; // Sémaphore pour requestAnimationFrame
 
   window.addEventListener('scroll', () => {
-      if (window.innerWidth <= 768) {
-          if (lastScrollY < window.scrollY && window.scrollY > header.offsetHeight) {
-              header.classList.add('header-hidden');
-          } else {
-              header.classList.remove('header-hidden');
-          }
-          lastScrollY = window.scrollY;
+      if (!ticking) {
+          window.requestAnimationFrame(() => {
+              const scrollY = window.scrollY;
+              
+              // 1. Gestion du mode compact avec "Zone Tampon" (Buffer)
+              // On ne passe en compact que si on descend bien en dessous (60px)
+              if (scrollY > 60) {
+                  if (!header.classList.contains('header-compact')) {
+                      header.classList.add('header-compact');
+                  }
+              } 
+              // On ne revient en grand que si on remonte bien au dessus (20px)
+              else if (scrollY < 20) {
+                  if (header.classList.contains('header-compact')) {
+                      header.classList.remove('header-compact');
+                  }
+              }
+              
+              // 2. Gestion Mobile (Cacher/Montrer)
+              if (window.innerWidth <= 768) {
+                  if (lastScrollY < scrollY && scrollY > 150) {
+                      header.classList.add('header-hidden');
+                  } else {
+                      header.classList.remove('header-hidden');
+                  }
+              }
+
+              lastScrollY = scrollY;
+              ticking = false;
+          });
+          ticking = true;
       }
   }, { passive: true });
+  
+  // --- EFFET TILT 3D SUR LES CARTES ---
+  if (window.matchMedia("(hover: hover)").matches) {
+      const projects = document.querySelectorAll('.project');
+      projects.forEach(card => {
+          card.addEventListener('mousemove', (e) => {
+              const rect = card.getBoundingClientRect();
+              const x = e.clientX - rect.left; 
+              const y = e.clientY - rect.top; 
+              const centerX = rect.width / 2;
+              const centerY = rect.height / 2;
+              const rotateX = ((y - centerY) / centerY) * -4; 
+              const rotateY = ((x - centerX) / centerX) * 4; 
+              card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+          });
+          card.addEventListener('mouseleave', () => {
+              card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+          });
+      });
+  }
   
   const applyDarkLightMode = (theme) => {
     if (theme === 'dark') { body.classList.add('dark-mode'); } 
@@ -1057,17 +1126,12 @@ fr: {
   project_akulab_title: "AK Universe Lab <span class=\"badge-new\">NEW</span>",
   project_akulab_desc: "AK Universe Lab est une vitrine immersive fusionnant logo, mode, technologie et expérimentation. Organisé en protocoles (vêtements, accessoires, objets), le site offre un design futuriste, un essayage virtuel par IA et une expérience interactive unique.",
   discover_site_btn: "Découvrir le site en ligne",
-
-  /* --- NOUVEAU PROJET : TIMELINE OS EVOLUTION --- */
   project_tose_title: "Timeline OS Evolution <span class=\"badge-new\">NEW</span>",
   project_tose_desc: "Projet interactif retraçant l’évolution des systèmes d’exploitation, de Windows 3.1 à macOS Big Sur, à travers une timeline web immersive. Chaque OS est fidèlement recréé pour célébrer l’histoire de l’informatique et introduire AK OS, la vision moderne et créative signée Alex Koncept.",
   discover_tose_btn: "Découvrir le site en ligne",
-
-  /* --- PROJET HSK --- */
   project_hsk_title: "HSK — Hybrid Sound Koncept <span class=\"badge-new\">NEW</span>",
-  project_hsk_desc: "HSK (Hybrid Sound Koncept) est un projet musical expérimental fusionnant des styles opposés grâce à l’intelligence artificielle. Créé avec ChatGPT, Suno et ElevenLabs, il donne vie à un artiste numérique capable de mêler funk, techno, reggae, metal et bien plus encore. Une exploration audacieuse où le groove humain rencontre la précision algorithmique.",
+  project_hsk_desc: "HSK (Hybrid Sound Koncept) is un projet musical expérimental fusionnant des styles opposés grâce à l’intelligence artificielle. Créé avec ChatGPT, Suno et ElevenLabs, il donne vie à un artiste numérique capable de mêler funk, techno, reggae, metal et bien plus encore. Une exploration audacieuse où le groove humain rencontre la précision algorithmique.",
   discover_hsk_btn: "Découvrir le projet musical",
-
   project_next_title: "Prochain Koncept en cours...",
   project_next_desc: "Un nouveau projet prend forme dans l’atelier AK, à très bientôt pour en découvrir plus.",
   about_title: "À propos",
@@ -1114,7 +1178,6 @@ en: {
   project_hsk_title: "HSK — Hybrid Sound Koncept <span class=\"badge-new\">NEW</span>",
   project_hsk_desc: "HSK (Hybrid Sound Koncept) is an experimental musical project merging opposite genres through artificial intelligence. Created using ChatGPT, Suno, and ElevenLabs, it brings to life a digital artist capable of blending funk, techno, reggae, metal, and more. An audacious exploration where human groove meets algorithmic precision.",
   discover_hsk_btn: "Discover the musical project",
-
   project_next_title: "Next Koncept in progress...",
   project_next_desc: "A new project is taking shape in the AK workshop, see you very soon to discover more.",
   about_title: "About",
@@ -1180,8 +1243,8 @@ en: {
   const priorityTrack = "https://soundcloud.com/l-alex-339757635/alex_koncept-l_artisan_connect?si=5c9e0fbcbbb6440297cd50ad47a943ca&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing";
   const soundcloudTracks = ["https://soundcloud.com/l-alex-339757635/lalex-piste-1-m4a?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=c8fe8d4be3a54764a0699bade90c75dd","https://soundcloud.com/l-alex-339757635/lalex-piste-2-m4a?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=e81c8192d9c04af9ab525dd31fdc6213","https://soundcloud.com/l-alex-339757635/lalex-piste-3_8bit-old-school?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=ecb00c2f996648ac82aa8ed580ff3664","https://soundcloud.com/l-alex-339757635/lalex-piste-4_ambiance-m4a?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=2ecece16847443fca00f8f27c1ce3f3d","https://soundcloud.com/l-alex-339757635/lalex-piste-5_drill-m4a?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=aa74ec6b1dda49d1b01d438642bc42f0","https://soundcloud.com/l-alex-339757635/lalex-piste-6_daft-p-style-m4a?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=07c43f8ea06a45c7897ec491608f74f4","https://soundcloud.com/l-alex-339757635/lalex-piste-7_techno-back-to?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=148b7dddbf364f6f9151e2ed31c3b636","https://soundcloud.com/l-alex-339757635/piste8-cyberpunk-style?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=3bd3de2150fd4adca93a32c336a79562","https://soundcloud.com/l-alex-339757635/piste-9_ambiance2-m4a?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=b5b080de12924e22865b51ba33dbf0bc","https://soundcloud.com/l-alex-339757635/piste-10-hard-beat-m4a?si=f9a96fb2a8934756aad5eabc11f983d8&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing","https://soundcloud.com/l-alex-339757635/alex_koncept-l_artisan_connect?si=a9bc37a665a744e288cd0a40d5e53d97&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",];
   const otherTracks = soundcloudTracks.filter(track => track !== priorityTrack);
-  const shuffleArray = a => { for (let b = a.length - 1; 0 < b; b--) { const c = Math.floor(Math.random() * (b + 1)); [a[b], a[c]] = [a[c], a[b]]; } };
-  shuffleArray(otherTracks);
+  const shuffleArrayMusic = a => { for (let b = a.length - 1; 0 < b; b--) { const c = Math.floor(Math.random() * (b + 1)); [a[b], a[c]] = [a[c], a[b]]; } };
+  shuffleArrayMusic(otherTracks);
   let shuffledTracks = [priorityTrack, ...otherTracks];
   let currentTrackIndex = 0;
 
@@ -1204,7 +1267,7 @@ en: {
   nextButton.addEventListener("click", () => {
     currentTrackIndex++;
     if (currentTrackIndex >= shuffledTracks.length) {
-      shuffleArray(shuffledTracks);
+      shuffleArrayMusic(shuffledTracks);
       currentTrackIndex = 0;
     }
     loadTrack(currentTrackIndex);
