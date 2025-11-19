@@ -28,7 +28,6 @@
 
 <style>
     :root {
-      /* --- COULEURS DE BASE --- */
       --header-bg-start: rgba(0, 201, 255, 0.85); 
       --header-bg-end: rgba(146, 254, 157, 0.85);
       --project-border-color: rgba(0, 201, 255, 0.5);
@@ -36,8 +35,6 @@
       --body-bg: #f0f2f5; 
       --text-color: #212529;
       --header-text-color: #000;
-      
-      /* --- GLASSMORPHISM VARIABLES --- */
       --glass-bg: rgba(255, 255, 255, 0.65);
       --glass-border: 1px solid rgba(255, 255, 255, 0.6);
       --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
@@ -83,8 +80,6 @@
     body.koncept-space #space-canvas { display: block; }
     body.koncept-vice-city #vice-city-canvas { display: block; }
     body.koncept-fallout #fallout-canvas { display: block; opacity: 0.1; }
-
-    /* --- MATRIX THEME --- */
     body.koncept-matrix-reloaded {
         --matrix-green: #00ff41;
         --matrix-bg: #000501;
@@ -111,7 +106,6 @@
         border-radius: 0;
     }
 
-    /* --- FALLOUT THEME --- */
     body.koncept-fallout {
         --fallout-amber: #ffc107;
         --fallout-bg: #1e2d24;
@@ -162,7 +156,6 @@
         to { opacity: 1; }
     }
 
-    /* --- VICE CITY THEME --- */
     body.koncept-vice-city {
         --body-bg: #1a0a24;
         --text-color: #f0e6f2;
@@ -208,7 +201,6 @@
         text-shadow: none;
     }
 
-    /* --- SPACE THEME --- */
     body.koncept-space {
       --body-bg: #0b0f19;
       --text-color: #e0e0e0;
@@ -240,7 +232,6 @@
       overflow-x: hidden; 
     }
 
-    /* --- BOUTONS FLOTTANTS (Style Glass) --- */
     .common-toggle-button {
       background: rgba(255, 255, 255, 0.15);
       backdrop-filter: blur(10px);
@@ -275,7 +266,6 @@
     .lang-switcher button { opacity: 0.7; width: 40px; height: 40px; }
     .lang-switcher button.lang-active { opacity: 1; border: 2px solid var(--link-color); background: rgba(255, 255, 255, 0.25); }
 
-    /* --- HEADER MODERNE (Glass) --- */
     header {
       text-align: center;
       padding: 4rem 2rem;
@@ -294,7 +284,6 @@
       margin-bottom: 2rem;
     }
     
-    /* --- Header "Compact" quand on scroll --- */
     header.header-compact {
         padding: 0.8rem 2rem; /* Beaucoup plus petit */
         border-bottom-left-radius: 25px;
@@ -403,7 +392,6 @@
       box-shadow: 0 5px 15px rgba(0,0,0,0.05);
     }
 
-    /* --- CARTES PROJETS --- */
     .project {
       display: flex;
       align-items: center;
@@ -529,7 +517,6 @@
         box-shadow: 0 8px 25px rgba(0, 119, 204, 0.5);
     }
 
-    /* --- SECTION A PROPOS --- */
     #a-propos {
       background: var(--glass-bg);
       backdrop-filter: blur(20px);
@@ -802,7 +789,6 @@ Chaque OS est fidèlement recréé pour célébrer l’histoire de l’informati
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-  // --- FONCTIONNALITES EXISTANTES ---
   const matrixCanvas = document.getElementById('matrix-canvas');
   const matrixCtx = matrixCanvas ? matrixCanvas.getContext('2d') : null;
   let matrixInterval;
@@ -985,7 +971,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const body = document.body;
   const header = document.getElementById('main-header');
   
-  // --- CORRECTION DU CLIGNOTEMENT ICI (Optimisation) ---
   let lastScrollY = window.scrollY;
   let ticking = false; // Sémaphore pour requestAnimationFrame
 
@@ -1024,7 +1009,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
   }, { passive: true });
   
-  // --- EFFET TILT 3D SUR LES CARTES ---
   if (window.matchMedia("(hover: hover)").matches) {
       const projects = document.querySelectorAll('.project');
       projects.forEach(card => {
