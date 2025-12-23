@@ -11,7 +11,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@300;400;600&family=Courier+Prime&family=Special+Elite&family=Bebas+Neue&family=Damion&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@300;400;600&family=Courier+Prime&family=Special+Elite&family=Bebas+Neue&family=Damion&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="chatbot/index.css" />
 
@@ -45,6 +45,10 @@
       --theme-toggle-icon: "☀️";
       --main-font: 'Poppins', sans-serif;
       --title-font: 'Orbitron', sans-serif;
+      
+      --cursor-color: #0077cc;
+      --cursor-size: 8px;
+      --cursor-hover-size: 40px;
     }
 
     body.dark-mode {
@@ -55,15 +59,13 @@
       --body-bg: #0f0f0f;
       --text-color: #EAEAEA;
       --header-text-color: #f0f0f0;
-      
-      /* Dark Glass */
       --glass-bg: rgba(30, 30, 30, 0.6);
       --glass-border: 1px solid rgba(255, 255, 255, 0.1);
       --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
-      
       --project-title-color: #80deea;
       --footer-text-color: #adb5bd;
       --theme-toggle-icon: "🌙";
+      --cursor-color: #61dafb;
     }
 
     #matrix-canvas, #space-canvas, #vice-city-canvas, #fallout-canvas {
@@ -80,6 +82,7 @@
     body.koncept-space #space-canvas { display: block; }
     body.koncept-vice-city #vice-city-canvas { display: block; }
     body.koncept-fallout #fallout-canvas { display: block; opacity: 0.1; }
+    
     body.koncept-matrix-reloaded {
         --matrix-green: #00ff41;
         --matrix-bg: #000501;
@@ -97,6 +100,7 @@
         --main-font: 'Courier Prime', monospace;
         --title-font: 'Courier Prime', monospace;
         --card-radius: 0px; 
+        --cursor-color: #00ff41;
     }
 
     body.koncept-matrix-reloaded .project-tag {
@@ -123,6 +127,7 @@
         --main-font: 'Courier Prime', monospace;
         --title-font: 'Courier Prime', monospace;
         --card-radius: 8px;
+        --cursor-color: #ffc107;
         background-image: radial-gradient(ellipse at center, rgba(255, 193, 7, 0.1) 0%, transparent 70%);
         background-attachment: fixed;
     }
@@ -172,6 +177,7 @@
         --title-font: 'Damion', cursive;
         --project-font: 'Bebas Neue', sans-serif;
         --card-radius: 16px;
+        --cursor-color: #00F3FF;
         background-color: #1d0f2b;
         background-attachment: fixed;
         overflow-x: hidden;
@@ -216,10 +222,11 @@
       --main-font: 'Orbitron', sans-serif;
       --title-font: 'Orbitron', sans-serif;
       --card-radius: 12px;
+      --cursor-color: #76a9fa;
       background-color: #0b0f19;
     }
 
-    * { box-sizing: border-box; }
+    * { box-sizing: border-box; cursor: none !important; }
 
     body {
       margin: 0;
@@ -240,7 +247,7 @@
       border: 1px solid rgba(255, 255, 255, 0.3);
       height: 45px;
       width: 45px;
-      cursor: pointer;
+      cursor: none;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -273,30 +280,27 @@
       backdrop-filter: blur(20px) saturate(180%);
       -webkit-backdrop-filter: blur(20px) saturate(180%);
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      
       color: var(--header-text-color);
       position: sticky;
       top: 0;
       z-index: 999;
-      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); /* Transition douce */
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); 
       overflow: hidden;
       box-shadow: 0 10px 30px rgba(0,0,0,0.1);
       margin-bottom: 2rem;
     }
     
     header.header-compact {
-        padding: 0.8rem 2rem; /* Beaucoup plus petit */
+        padding: 0.8rem 2rem;
         border-bottom-left-radius: 25px;
         border-bottom-right-radius: 25px;
         margin: 0 1.5rem;
         top: 1rem;
         width: auto;
-        background: var(--header-bg-start); /* Couleur unie pour lisibilité */
+        background: var(--header-bg-start);
     }
     
-    header.header-hidden {
-        transform: translateY(-150%);
-    }
+    header.header-hidden { transform: translateY(-150%); }
     
     header::before {
         content: '';
@@ -316,7 +320,6 @@
         transition: all 0.5s ease;
     }
     
-    /* Cache le logo de fond en mode compact */
     header.header-compact::before {
         opacity: 0;
         transform: translate(-50%, -50%) scale(0.5);
@@ -338,11 +341,7 @@
       letter-spacing: -1px;
     }
     
-    /* Titre plus petit en mode compact */
-    header.header-compact h1 {
-        font-size: 1.8rem;
-        margin: 0;
-    }
+    header.header-compact h1 { font-size: 1.8rem; margin: 0; }
     
     header p {
       font-size: 1.3rem;
@@ -351,10 +350,9 @@
       font-style: italic;
       opacity: 0.95;
       font-weight: 400;
-      max-height: 100px; /* Hauteur max pour transition */
+      max-height: 100px; 
     }
     
-    /* Sous-titre disparait en mode compact */
     header.header-compact p {
         opacity: 0;
         max-height: 0;
@@ -510,6 +508,7 @@
       box-shadow: 0 4px 15px rgba(0, 119, 204, 0.3);
       transition: all 0.3s ease;
       transform: translateZ(5px);
+      cursor: none;
     }
     
     .project-content a:hover { 
@@ -543,12 +542,14 @@
     .about-text h2 { font-size: 2rem; font-weight: 700; color: var(--project-title-color); margin: 0 0 1rem 0; font-family: var(--title-font); }
     .about-text p { font-size: 1.15rem; line-height: 1.8; max-width: 60ch; }
     
-    footer {
+ footer {
       text-align: center;
-      padding: 3rem;
+      padding: 3rem 2rem 8rem 2rem; 
       font-size: 0.9rem;
       color: var(--footer-text-color);
       background: rgba(0,0,0,0.05);
+      position: relative;
+      z-index: 1;
     }
     
     .badge-new {
@@ -577,10 +578,120 @@
       header h1 { font-size: 2.5rem; }
       .about-container { flex-direction: column; gap: 2rem; text-align: center; }
       .about-text { text-align: center; }
+      
+      /* Mobile Cursor Reset */
+      * { cursor: auto !important; }
+      #cursor-dot, #cursor-outline { display: none; }
+    }
+
+    /* CUSTOM CURSOR STYLES */
+    #cursor-dot, #cursor-outline {
+        position: fixed;
+        top: 0;
+        left: 0;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        z-index: 10002;
+        pointer-events: none;
+    }
+    #cursor-dot {
+        width: var(--cursor-size);
+        height: var(--cursor-size);
+        background-color: var(--cursor-color);
+    }
+    #cursor-outline {
+        width: 40px;
+        height: 40px;
+        border: 1px solid var(--cursor-color);
+        transition: width 0.2s, height 0.2s, background-color 0.2s;
+        mix-blend-mode: difference;
+    }
+    body.hovered #cursor-outline {
+        width: 60px;
+        height: 60px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-width: 2px;
+    }
+
+    /* WARP OVERLAY */
+    #warp-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: white;
+        z-index: 10005;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+        mix-blend-mode: overlay;
+    }
+    body.warping {
+        animation: warpShake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+    }
+    body.warping #warp-overlay { opacity: 1; }
+    
+    @keyframes warpShake {
+        0% { transform: scale(1); filter: blur(0px); }
+        50% { transform: scale(1.05); filter: blur(4px); }
+        100% { transform: scale(1); filter: blur(0px); }
+    }
+
+    /* HUD STYLES */
+    #ak-chrono-hud {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 9998;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 10px 25px;
+        background: var(--glass-bg);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid var(--project-border-color);
+        border-radius: 50px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        font-family: 'Rajdhani', 'Orbitron', monospace;
+        color: var(--text-color);
+        transition: all 0.5s ease;
+        opacity: 0;
+        animation: hudFadeIn 1s 1s forwards;
+    }
+    @keyframes hudFadeIn { to { opacity: 1; } }
+    .ak-hud-group { display: flex; flex-direction: column; align-items: center; justify-content: center; }
+    .ak-hud-label { font-size: 0.55rem; opacity: 0.7; letter-spacing: 0.15em; margin-bottom: 2px; text-transform: uppercase; }
+    #hud-hex, #hud-min { font-weight: 700; font-size: 1.1rem; letter-spacing: 0.05em; font-variant-numeric: tabular-nums; }
+    .ak-hud-divider { color: var(--project-border-color); opacity: 0.5; font-size: 1.2rem; font-weight: 300; }
+    .ak-binary-visual { display: flex; gap: 3px; }
+    .bin-dot { width: 6px; height: 6px; border-radius: 50%; background-color: var(--text-color); opacity: 0.2; transition: all 0.2s; }
+    .bin-dot.active { opacity: 1; background-color: var(--link-color); box-shadow: 0 0 5px var(--link-color); }
+    
+    body.koncept-matrix-reloaded #ak-chrono-hud { background: rgba(0, 20, 0, 0.8); border: 1px solid #00ff41; border-radius: 0; box-shadow: 0 0 15px rgba(0, 255, 65, 0.2); font-family: 'Courier Prime', monospace; letter-spacing: -1px; }
+    body.koncept-matrix-reloaded .bin-dot.active { background-color: #00ff41; box-shadow: 0 0 8px #00ff41; }
+    body.koncept-fallout #ak-chrono-hud { background: rgba(40, 30, 10, 0.8); border: 2px solid var(--fallout-amber); border-radius: 5px; box-shadow: 0 0 10px var(--fallout-amber); color: var(--fallout-amber); }
+    body.koncept-fallout .bin-dot { border-radius: 0; }
+    body.koncept-fallout .bin-dot.active { background-color: var(--fallout-amber); box-shadow: 0 0 5px var(--fallout-amber); }
+    body.koncept-vice-city #ak-chrono-hud { background: rgba(29, 15, 43, 0.8); border: 2px solid #00F3FF; border-radius: 12px; box-shadow: 0 0 15px #ff48c4, inset 0 0 10px rgba(0, 243, 255, 0.2); font-family: 'Bebas Neue', sans-serif; }
+    body.koncept-vice-city .ak-hud-label { color: #ff48c4; }
+    body.koncept-vice-city #hud-hex, body.koncept-vice-city #hud-min { color: #00F3FF; text-shadow: 0 0 5px #00F3FF; font-size: 1.3rem; }
+    body.koncept-vice-city .bin-dot.active { background-color: #ff48c4; box-shadow: 0 0 8px #ff48c4; }
+
+    @media (max-width: 600px) {
+        #ak-chrono-hud { bottom: 80px; padding: 5px 15px; gap: 10px; width: auto; }
+        .ak-hud-label { font-size: 0.45rem; }
+        #hud-hex, #hud-min { font-size: 0.9rem; }
     }
 </style>
 </head>
 <body>
+<div id="warp-overlay"></div>
+<div id="cursor-dot"></div>
+<div id="cursor-outline"></div>
+
 <canvas id="matrix-canvas"></canvas>
 <canvas id="space-canvas"></canvas>
 <canvas id="vice-city-canvas"></canvas>
@@ -596,6 +707,7 @@
         <button id="lang-en-btn" class="common-toggle-button" aria-label="Switch to English">🇬🇧</button>
     </div>
     <button id="theme-toggle" class="theme-toggle common-toggle-button" aria-label="Changer le thème" data-key="theme_toggle_label"></button>
+    <button id="sfx-toggle" class="common-toggle-button" aria-label="Mute Sound Effects">🔊</button>
 </div>
 
 <header id="main-header">
@@ -710,50 +822,50 @@
                 <p><a href="https://alexkoncept.github.io/ak-universe-lab/" target="_blank" rel="noopener noreferrer" data-key="discover_site_btn">Découvrir le site en ligne</a></p>
             </div>
         </div>
-<div class="project">
-  <div class="project-visual">
-    <img src="TOSE.webp" alt="Timeline OS Evolution">
-  </div>
-  <div class="project-content">
-    <h2 data-key="project_tose_title">Timeline OS Evolution <span class="badge-new">NEW</span></h2>
-    <div class="project-tags">
-      <span class="project-tag">UI/UX</span>
-      <span class="project-tag">Système</span>
-      <span class="project-tag">Futuriste</span>
-    </div>
-    <p data-key="project_tose_desc">
-      Projet interactif retraçant l’évolution des systèmes d’exploitation, de Windows 3.1 à macOS Big Sur, à travers une timeline web immersive.
-Chaque OS est fidèlement recréé pour célébrer l’histoire de l’informatique et introduire AK OS, la vision moderne et créative signée Alex Koncept.
-    </p>
-    <p>
-      <a href="https://timeline-os-evolution.netlify.app/" target="_blank" rel="noopener noreferrer" data-key="discover_site_btn">
-        Découvrir le site en ligne
-      </a>
-    </p>
-  </div>
-</div>
-<div class="project">
-    <div class="project-visual">
-        <img src="HSK.webp" alt="HSK - Hybrid Sound Koncept">
-    </div>
-    <div class="project-content">
-        <h2 data-key="project_hsk_title">HSK — Hybrid Sound Koncept <span class="badge-new">NEW</span></h2>
-        <div class="project-tags">
-            <span class="project-tag">Musique</span>
-            <span class="project-tag">IA</span>
-            <span class="project-tag">Création numérique</span>
+        <div class="project">
+          <div class="project-visual">
+            <img src="TOSE.webp" alt="Timeline OS Evolution">
+          </div>
+          <div class="project-content">
+            <h2 data-key="project_tose_title">Timeline OS Evolution <span class="badge-new">NEW</span></h2>
+            <div class="project-tags">
+              <span class="project-tag">UI/UX</span>
+              <span class="project-tag">Système</span>
+              <span class="project-tag">Futuriste</span>
+            </div>
+            <p data-key="project_tose_desc">
+              Projet interactif retraçant l’évolution des systèmes d’exploitation, de Windows 3.1 à macOS Big Sur, à travers une timeline web immersive.
+        Chaque OS est fidèlement recréé pour célébrer l’histoire de l’informatique et introduire AK OS, la vision moderne et créative signée Alex Koncept.
+            </p>
+            <p>
+              <a href="https://timeline-os-evolution.netlify.app/" target="_blank" rel="noopener noreferrer" data-key="discover_site_btn">
+                Découvrir le site en ligne
+              </a>
+            </p>
+          </div>
         </div>
-        <p data-key="project_hsk_desc">
-            HSK (Hybrid Sound Koncept) est un projet musical expérimental fusionnant des styles opposés grâce à l’intelligence artificielle. 
-            Créé avec ChatGPT, Suno et ElevenLabs, il donne vie à un artiste numérique aka "HSK capable de mêler entre eux funk, techno, reggae, metal et bien plus encore. Une exploration audacieuse où le groove humain rencontre la précision algorithmique.
-        </p>
-        <p>
-            <a href="https://hsk-by-alexkoncept.netlify.app/" target="_blank" rel="noopener noreferrer" data-key="discover_site_btn">
-                Découvrir le projet
-            </a>
-        </p>
-    </div>
-</div>
+        <div class="project">
+            <div class="project-visual">
+                <img src="HSK.webp" alt="HSK - Hybrid Sound Koncept">
+            </div>
+            <div class="project-content">
+                <h2 data-key="project_hsk_title">HSK — Hybrid Sound Koncept <span class="badge-new">NEW</span></h2>
+                <div class="project-tags">
+                    <span class="project-tag">Musique</span>
+                    <span class="project-tag">IA</span>
+                    <span class="project-tag">Création numérique</span>
+                </div>
+                <p data-key="project_hsk_desc">
+                    HSK (Hybrid Sound Koncept) est un projet musical expérimental fusionnant des styles opposés grâce à l’intelligence artificielle. 
+                    Créé avec ChatGPT, Suno et ElevenLabs, il donne vie à un artiste numérique capable de mêler funk, techno, reggae, metal et bien plus encore. Une exploration audacieuse où le groove humain rencontre la précision algorithmique.
+                </p>
+                <p>
+                    <a href="https://hsk-by-alexkoncept.netlify.app/" target="_blank" rel="noopener noreferrer" data-key="discover_site_btn">
+                        Découvrir le projet
+                    </a>
+                </p>
+            </div>
+        </div>
         <div class="project" id="coming-soon-project">
             <div class="project-visual"><img src="AK_enTravaux.webp" alt="Prochain Koncept en développement"></div>
             <div class="project-content">
@@ -781,6 +893,23 @@ Chaque OS est fidèlement recréé pour célébrer l’histoire de l’informati
     <span data-key="footer_text">© 2025 Alex Koncept — Vivre. Apprendre. Créer.</span>
 </footer>
 
+<div id="ak-chrono-hud" class="ak-hud-hidden">
+    <div class="ak-hud-group">
+        <span class="ak-hud-label">SYS.HEX</span>
+        <span id="hud-hex">0X00</span>
+    </div>
+    <div class="ak-hud-divider">|</div>
+    <div class="ak-hud-group">
+        <span class="ak-hud-label">T.REAL</span>
+        <span id="hud-min">00:00</span>
+    </div>
+    <div class="ak-hud-divider">|</div>
+    <div class="ak-hud-group">
+        <span class="ak-hud-label">BINARY.STREAM</span>
+        <div class="ak-binary-visual" id="hud-bin-visual"></div>
+    </div>
+</div>
+
 <div id="root"></div>
 <script type="importmap">{"imports": {"react": "https://esm.sh/react@^19.1.1","react-dom/": "https://esm.sh/react-dom@^19.1.1/","@google/genai": "https://esm.sh/@google/genai@^1.13.0","react/": "https://esm.sh/react@^19.1.1/"}}</script>
 <script type="module" src="https://esm.sh/gh/alexkoncept/alexkoncept.github.io@main/chatbot/index.tsx"></script>
@@ -790,18 +919,82 @@ Chaque OS est fidèlement recréé pour célébrer l’histoire de l’informati
 <script>
 document.addEventListener('DOMContentLoaded', () => {
 
+  // --- AUDIO SFX CONTROLLER ---
+  const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  let sfxMuted = false;
+  
+  const playSfx = (type) => {
+    if(sfxMuted || audioCtx.state === 'suspended') {
+        if(audioCtx.state === 'suspended') audioCtx.resume();
+        if(sfxMuted) return;
+    }
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+    
+    if(type === 'hover') {
+        osc.frequency.setValueAtTime(800, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(1200, audioCtx.currentTime + 0.05);
+        gain.gain.setValueAtTime(0.02, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.05);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.05);
+    } else if (type === 'click') {
+        osc.frequency.setValueAtTime(300, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(50, audioCtx.currentTime + 0.1);
+        gain.gain.setValueAtTime(0.05, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.1);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.1);
+    }
+  };
+
+  const sfxToggle = document.getElementById('sfx-toggle');
+  sfxToggle.addEventListener('click', () => {
+      sfxMuted = !sfxMuted;
+      sfxToggle.innerHTML = sfxMuted ? '🔇' : '🔊';
+  });
+
+  // Attach Audio Listeners
+  const interactiveElements = document.querySelectorAll('a, button, .project');
+  interactiveElements.forEach(el => {
+      el.addEventListener('mouseenter', () => playSfx('hover'));
+      el.addEventListener('click', () => playSfx('click'));
+  });
+
+  // --- CUSTOM CURSOR ---
+  const cursorDot = document.getElementById('cursor-dot');
+  const cursorOutline = document.getElementById('cursor-outline');
+  
+  window.addEventListener('mousemove', (e) => {
+      const posX = e.clientX;
+      const posY = e.clientY;
+      
+      cursorDot.style.left = `${posX}px`;
+      cursorDot.style.top = `${posY}px`;
+      
+      cursorOutline.animate({
+          left: `${posX}px`,
+          top: `${posY}px`
+      }, { duration: 500, fill: "forwards" });
+  });
+
+  interactiveElements.forEach(el => {
+      el.addEventListener('mouseenter', () => document.body.classList.add('hovered'));
+      el.addEventListener('mouseleave', () => document.body.classList.remove('hovered'));
+  });
+
+  // --- CANVASES & ANIMATIONS ---
   const matrixCanvas = document.getElementById('matrix-canvas');
   const matrixCtx = matrixCanvas ? matrixCanvas.getContext('2d') : null;
   let matrixInterval;
-
   const spaceCanvas = document.getElementById('space-canvas');
   const spaceCtx = spaceCanvas ? spaceCanvas.getContext('2d') : null;
   let spaceInterval;
-
   const viceCityCanvas = document.getElementById('vice-city-canvas');
   const viceCityCtx = viceCityCanvas ? viceCityCanvas.getContext('2d') : null;
   let viceCityInterval;
-
   const falloutCanvas = document.getElementById('fallout-canvas');
   const falloutCtx = falloutCanvas ? falloutCanvas.getContext('2d') : null;
   let falloutInterval;
@@ -817,9 +1010,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const fontSize = 16;
     const columns = matrixCanvas.width / fontSize;
     const rainDrops = [];
-    for (let x = 0; x < columns; x++) {
-      rainDrops[x] = 1;
-    }
+    for (let x = 0; x < columns; x++) { rainDrops[x] = 1; }
     const draw = () => {
       matrixCtx.fillStyle = 'rgba(0, 0, 0, 0.05)';
       matrixCtx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
@@ -828,21 +1019,16 @@ document.addEventListener('DOMContentLoaded', () => {
       for (let i = 0; i < rainDrops.length; i++) {
         const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
         matrixCtx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
-        if (rainDrops[i] * fontSize > matrixCanvas.height && Math.random() > 0.975) {
-          rainDrops[i] = 0;
-        }
+        if (rainDrops[i] * fontSize > matrixCanvas.height && Math.random() > 0.975) { rainDrops[i] = 0; }
         rainDrops[i]++;
       }
     };
     matrixInterval = setInterval(draw, 33);
   };
-
   const stopMatrixAnimation = () => {
     clearInterval(matrixInterval);
     matrixInterval = null;
-    if (matrixCtx) {
-      matrixCtx.clearRect(0, 0, matrixCanvas.width, matrixCanvas.height);
-    }
+    if (matrixCtx) matrixCtx.clearRect(0, 0, matrixCanvas.width, matrixCanvas.height);
   };
 
   const startSpaceAnimation = () => {
@@ -852,22 +1038,14 @@ document.addEventListener('DOMContentLoaded', () => {
     let stars = [];
     const numStars = 200;
     for (let i = 0; i < numStars; i++) {
-        stars.push({
-            x: Math.random() * spaceCanvas.width,
-            y: Math.random() * spaceCanvas.height,
-            radius: Math.random() * 1.5,
-            alpha: Math.random(),
-            speed: Math.random() * 0.1 - 0.05
-        });
+        stars.push({ x: Math.random() * spaceCanvas.width, y: Math.random() * spaceCanvas.height, radius: Math.random() * 1.5, alpha: Math.random(), speed: Math.random() * 0.1 - 0.05 });
     }
     const draw = () => {
         spaceCtx.clearRect(0, 0, spaceCanvas.width, spaceCanvas.height);
         spaceCtx.fillStyle = '#FFF';
         stars.forEach(star => {
             star.alpha += star.speed;
-            if (star.alpha <= 0 || star.alpha >= 1) {
-                star.speed = -star.speed;
-            }
+            if (star.alpha <= 0 || star.alpha >= 1) star.speed = -star.speed;
             spaceCtx.beginPath();
             spaceCtx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
             spaceCtx.globalAlpha = star.alpha;
@@ -876,7 +1054,6 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     spaceInterval = setInterval(draw, 50);
   };
-
   const stopSpaceAnimation = () => {
     clearInterval(spaceInterval);
     spaceInterval = null;
@@ -923,13 +1100,10 @@ document.addEventListener('DOMContentLoaded', () => {
       };
       draw();
   };
-
   const stopViceCityAnimation = () => {
     clearInterval(viceCityInterval);
     viceCityInterval = null;
-    if(viceCityCtx) {
-        viceCityCtx.clearRect(0, 0, viceCityCanvas.width, viceCityCanvas.height);
-    }
+    if(viceCityCtx) viceCityCtx.clearRect(0, 0, viceCityCanvas.width, viceCityCanvas.height);
   };
 
   const startFalloutAnimation = () => {
@@ -950,7 +1124,6 @@ document.addEventListener('DOMContentLoaded', () => {
       };
       falloutInterval = setInterval(draw, 100);
   };
-
   const stopFalloutAnimation = () => {
       clearInterval(falloutInterval);
       falloutInterval = null;
@@ -980,31 +1153,17 @@ document.addEventListener('DOMContentLoaded', () => {
           window.requestAnimationFrame(() => {
               const scrollY = window.scrollY;
               const isMobile = window.innerWidth <= 768; 
-
               if (!isMobile) {
-
                   if (scrollY > 60) {
-                      if (!header.classList.contains('header-compact')) {
-                          header.classList.add('header-compact');
-                      }
+                      if (!header.classList.contains('header-compact')) header.classList.add('header-compact');
                   } else if (scrollY < 20) {
-                      if (header.classList.contains('header-compact')) {
-                          header.classList.remove('header-compact');
-                      }
+                      if (header.classList.contains('header-compact')) header.classList.remove('header-compact');
                   }
               } else {
-
-                  
                   header.classList.remove('header-compact');
-
-                  
-                  if (lastScrollY < scrollY && scrollY > 100) {
-                      header.classList.add('header-hidden');
-                  } else {
-                      header.classList.remove('header-hidden');
-                  }
+                  if (lastScrollY < scrollY && scrollY > 100) header.classList.add('header-hidden');
+                  else header.classList.remove('header-hidden');
               }
-
               lastScrollY = scrollY;
               ticking = false;
           });
@@ -1040,6 +1199,7 @@ document.addEventListener('DOMContentLoaded', () => {
   themeToggle.addEventListener('click', () => {
     const isDarkMode = body.classList.toggle('dark-mode');
     localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+    playSfx('click');
   });
 
   const konceptModes = ['default', 'matrix-reloaded', 'space', 'vice-city', 'fallout'];
@@ -1052,18 +1212,10 @@ document.addEventListener('DOMContentLoaded', () => {
       stopViceCityAnimation();
       stopFalloutAnimation();
       switch(modeName) {
-        case 'matrix-reloaded':
-          startMatrixAnimation();
-          break;
-        case 'space':
-          startSpaceAnimation();
-          break;
-        case 'vice-city':
-          startViceCityAnimation();
-          break;
-        case 'fallout':
-          startFalloutAnimation();
-          break;
+        case 'matrix-reloaded': startMatrixAnimation(); break;
+        case 'space': startSpaceAnimation(); break;
+        case 'vice-city': startViceCityAnimation(); break;
+        case 'fallout': startFalloutAnimation(); break;
       }
       if (modeName && modeName !== 'default') { body.classList.add(`koncept-${modeName}`); }
       localStorage.setItem('konceptMode', modeName);
@@ -1075,9 +1227,19 @@ document.addEventListener('DOMContentLoaded', () => {
     applyKonceptMode(storedKonceptMode);
   } else { applyKonceptMode('default'); }
   
+  // WARP SPEED TRANSITION LOGIC
   konceptModeToggle.addEventListener('click', () => {
-    currentKonceptModeIndex = (currentKonceptModeIndex + 1) % konceptModes.length;
-    applyKonceptMode(konceptModes[currentKonceptModeIndex]);
+    playSfx('click');
+    document.body.classList.add('warping');
+    
+    setTimeout(() => {
+        currentKonceptModeIndex = (currentKonceptModeIndex + 1) % konceptModes.length;
+        applyKonceptMode(konceptModes[currentKonceptModeIndex]);
+    }, 250); 
+    
+    setTimeout(() => {
+        document.body.classList.remove('warping');
+    }, 500); 
   });
   
   const translations = {
@@ -1126,7 +1288,6 @@ fr: {
   contact_label: "Contact",
   footer_text: "© 2025 Alex Koncept — Vivre. Apprendre. Créer."
 },
-
 en: {
   koncept_mode_label: "Change Koncept Mode",
   theme_toggle_label: "Change theme",
@@ -1259,6 +1420,39 @@ en: {
     }
     loadTrack(currentTrackIndex);
   });
+  
+  const hudHex = document.getElementById('hud-hex');
+  const hudMin = document.getElementById('hud-min');
+  const hudBinVisual = document.getElementById('hud-bin-visual');
+  
+  if(hudBinVisual) {
+      for(let i=0; i<6; i++) {
+          const dot = document.createElement('div');
+          dot.className = 'bin-dot';
+          hudBinVisual.appendChild(dot);
+      }
+  }
+  
+  const binDots = document.querySelectorAll('.bin-dot');
+
+  const updateAKClock = () => {
+      const now = new Date();
+      const hours = now.getHours();
+      const hexHours = '0x' + hours.toString(16).toUpperCase();
+      if(hudHex) hudHex.innerText = hexHours;
+      const mins = now.getMinutes().toString().padStart(2, '0');
+      const separator = (now.getSeconds() % 2 === 0) ? ':' : ' ';
+      if(hudMin) hudMin.innerText = `${hours.toString().padStart(2,'0')}${separator}${mins}`;
+      const secs = now.getSeconds();
+      const binStr = secs.toString(2).padStart(6, '0');
+      binDots.forEach((dot, index) => {
+          if(binStr[index] === '1') dot.classList.add('active');
+          else dot.classList.remove('active');
+      });
+  };
+
+  setInterval(updateAKClock, 1000);
+  updateAKClock();
 });
 </script>
 </body>
