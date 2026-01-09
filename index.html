@@ -27,81 +27,6 @@
 <meta name="description" content="Découvrez les créations horlogères, projets web dystopiques, crypto World Peace et IA par Alex Koncept." />
 
 <style>
-/* BANNIÈRE HOLIDAY 2025 */
-#holiday-banner {
-    position: relative; /* Pousse le reste du site vers le bas */
-    width: 100%;
-    background: linear-gradient(90deg, #000 0%, #1a1a1a 100%);
-    color: #fff;
-    padding: 10px 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 10005;
-    border-bottom: 1px solid var(--link-color); /* S'adapte au thème ! */
-    font-family: 'Rajdhani', monospace;
-    overflow: hidden;
-    animation: slideDown 0.5s ease-out;
-}
-
-@keyframes slideDown {
-    from { transform: translateY(-100%); }
-    to { transform: translateY(0); }
-}
-
-.banner-content {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    flex-wrap: wrap;
-    justify-content: center;
-    text-align: center;
-}
-
-.banner-icon {
-    animation: pulseIcon 1s infinite;
-}
-
-.banner-title {
-    font-weight: 700;
-    letter-spacing: 2px;
-    color: var(--link-color);
-    text-transform: uppercase;
-}
-
-.banner-message strong {
-    color: #fff;
-    text-decoration: underline;
-    text-decoration-color: var(--link-color);
-}
-
-#close-banner {
-    background: none;
-    border: none;
-    color: #666;
-    font-size: 1.2rem;
-    cursor: pointer;
-    margin-left: 20px;
-    transition: color 0.3s;
-}
-
-#close-banner:hover {
-    color: #fff;
-}
-
-@keyframes pulseIcon {
-    0% { opacity: 1; }
-    50% { opacity: 0.5; }
-    100% { opacity: 1; }
-}
-
-/* Mobile responsive */
-@media (max-width: 600px) {
-    .banner-separator { display: none; }
-    .banner-content { flex-direction: column; gap: 5px; }
-    #holiday-banner { padding: 15px; }
-    #close-banner { position: absolute; top: 10px; right: 10px; }
-}
     :root {
       --header-bg-start: rgba(0, 201, 255, 0.85); 
       --header-bg-end: rgba(146, 254, 157, 0.85);
@@ -763,16 +688,6 @@
 </style>
 </head>
 <body>
-<!-- BANNIÈRE FIN D'ANNÉE 2025 -->
-<div id="holiday-banner">
-    <div class="banner-content">
-        <span class="banner-icon">⚠️</span>
-        <span class="banner-title">SESSION 2025 COMPLÉTÉE</span>
-        <span class="banner-separator">//</span>
-        <span class="banner-message">Ne suivez pas le script en 2026. <strong>Réécrivez-le.</strong> Bonnes fêtes à tous !</span>
-    </div>
-    <button id="close-banner" aria-label="Fermer">✖</button>
-</div>
 <div id="warp-overlay"></div>
 <div id="cursor-dot"></div>
 <div id="cursor-outline"></div>
@@ -1003,24 +918,6 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-
-// --- GESTION BANNIÈRE FIN D'ANNÉE ---
-  const holidayBanner = document.getElementById('holiday-banner');
-  const closeBannerBtn = document.getElementById('close-banner');
-
-  if(closeBannerBtn && holidayBanner) {
-      closeBannerBtn.addEventListener('click', () => {
-          playSfx('click'); // Utilise ton système de son existant
-          holidayBanner.style.transition = "transform 0.5s ease, opacity 0.5s ease";
-          holidayBanner.style.transform = "translateY(-100%)";
-          holidayBanner.style.opacity = "0";
-          
-          // On retire l'élément du DOM après l'animation pour nettoyer
-          setTimeout(() => {
-              holidayBanner.remove();
-          }, 500);
-      });
-  }
 
   // --- AUDIO SFX CONTROLLER ---
   const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
