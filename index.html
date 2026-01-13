@@ -680,10 +680,10 @@
     body.koncept-vice-city #hud-hex, body.koncept-vice-city #hud-min { color: #00F3FF; text-shadow: 0 0 5px #00F3FF; font-size: 1.3rem; }
     body.koncept-vice-city .bin-dot.active { background-color: #ff48c4; box-shadow: 0 0 8px #ff48c4; }
 
-    @media (max-width: 600px) {
-        #ak-chrono-hud { bottom: 80px; padding: 5px 15px; gap: 10px; width: auto; }
-        .ak-hud-label { font-size: 0.45rem; }
-        #hud-hex, #hud-min { font-size: 0.9rem; }
+@media (max-width: 600px) {
+       /* On cache complètement le HUD sur mobile */
+       #ak-chrono-hud { 
+           display: none !important;
     }
 </style>
 </head>
