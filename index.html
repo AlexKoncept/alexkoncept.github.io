@@ -42,7 +42,10 @@
       
       --project-title-color: #0081a7;
       --footer-text-color: #6c757d;
+      
+      /* CORRECTION ICI : Ajout des guillemets manquants pour l'icone soleil */
       --theme-toggle-icon: "☀️";
+      
       --main-font: 'Poppins', sans-serif;
       --title-font: 'Orbitron', sans-serif;
       
@@ -265,6 +268,7 @@
         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
     }
 
+    /* Boutons en haut à gauche et droite - Position "Fixed" par défaut sur tous les écrans */
     .koncept-mode-toggle { position: fixed; top: 1.5rem; left: 1.5rem; }
     .theme-toggle::before { content: var(--theme-toggle-icon); }
     .top-right-controls { position: fixed; top: 1.5rem; right: 1.5rem; display: flex; align-items: center; gap: 12px; z-index: 1001; }
@@ -281,15 +285,36 @@
       -webkit-backdrop-filter: blur(20px) saturate(180%);
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
       color: var(--header-text-color);
+      
+      /* Base behaviour (Mobile): Sticky */
       position: sticky;
       top: 0;
       z-index: 999;
+      
       transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); 
       overflow: hidden;
       box-shadow: 0 10px 30px rgba(0,0,0,0.1);
       margin-bottom: 2rem;
     }
     
+    /* MODIFICATION POUR PC UNIQUEMENT (Ecrans > 768px) */
+    @media (min-width: 769px) {
+        header {
+            position: fixed; /* On fige l'entête */
+            width: 100%;
+            top: 0;
+            left: 0;
+        }
+        /* On pousse le contenu vers le bas pour ne pas qu'il soit caché par le header fixe */
+        body {
+            padding-top: 250px; /* Ajustement approximatif de la hauteur du header */
+        }
+        /* Correction du padding si le header se compacte */
+        body:has(header.header-compact) {
+            padding-top: 100px;
+        }
+    }
+
     header.header-compact {
         padding: 0.8rem 2rem;
         border-bottom-left-radius: 25px;
@@ -680,10 +705,127 @@
     body.koncept-vice-city #hud-hex, body.koncept-vice-city #hud-min { color: #00F3FF; text-shadow: 0 0 5px #00F3FF; font-size: 1.3rem; }
     body.koncept-vice-city .bin-dot.active { background-color: #ff48c4; box-shadow: 0 0 8px #ff48c4; }
 
-@media (max-width: 600px) {
+    @media (max-width: 600px) {
        /* On cache complètement le HUD sur mobile */
        #ak-chrono-hud { 
            display: none !important;
+       }
+    }
+
+   /* =========================================
+       ORBA COMPANION - POSITION CENTRALE (Remplacement HUD)
+       ========================================= */
+    @keyframes planet-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    
+    #orba-companion { 
+        position: fixed; 
+        bottom: 20px;        /* Collé en bas comme le HUD */
+        left: 50%;           /* Centré horizontalement */
+        transform: translateX(-50%); /* Ajustement précis du centre */
+        z-index: 9990; 
+        display: flex; 
+        flex-direction: column; 
+        align-items: center; /* Centre la bulle et la fenêtre par rapport au bouton */
+    }
+
+    #orba-speech {
+        margin-bottom: 15px; 
+        background: rgba(15, 23, 42, 0.95); 
+        border: 1px solid var(--project-border-color);
+        color: #fff; 
+        font-size: 0.85rem; 
+        padding: 10px 16px; 
+        border-radius: 16px; /* Arrondi complet */
+        backdrop-filter: blur(10px); 
+        transform: scale(0); 
+        transition: 0.3s; 
+        transform-origin: bottom center; /* L'animation part du centre bas */
+        text-align: center;
+        white-space: nowrap; /* Empêche le texte de revenir à la ligne si possible */
+        box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    }
+    #orba-speech.visible { transform: scale(1); }
+
+    #orba-trigger {
+        width: 80px;  /* Un tout petit peu plus gros pour être le "Cœur" */
+        height: 80px; 
+        border-radius: 50%; 
+        position: relative;
+        background: transparent; 
+        border: none; 
+        padding: 0; 
+        transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Effet rebond */
+        cursor: pointer; /* Important pour le desktop */
+    }
+    #orba-trigger:hover { transform: scale(1.15); }
+    #orba-trigger.active { transform: scale(0.9); } /* Petit effet de clic */
+
+    .orba-planet-container {
+        position: absolute; inset: 0; 
+        border: 1px solid rgba(255,255,255,0.3);
+        border-radius: 50%; 
+        background: rgba(0, 0, 0, 0.6); /* Fond plus transparent */
+        backdrop-filter: blur(4px);
+        overflow: hidden;
+        animation: planet-spin 20s linear infinite; 
+        box-shadow: 0 0 20px var(--link-color), inset 0 0 10px var(--link-color);
+    }
+    .orba-planet-core {
+        position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+        background: linear-gradient(135deg, transparent 20%, var(--link-color) 50%, #fff 100%); 
+        opacity: 0.3;
+    }
+    .orba-logo-img { 
+        position: absolute; top: 50%; left: 50%; 
+        transform: translate(-50%, -50%); 
+        width: 40px; /* Logo ajusté */
+        z-index: 10; 
+        filter: drop-shadow(0 0 8px rgba(255,255,255,0.8)); 
+    }
+
+    /* La fenêtre d'interface centrée au dessus */
+    #orba-interface {
+        position: absolute; 
+        bottom: 100px; /* Juste au dessus du bouton */
+        left: 50%; /* Centré par rapport au parent */
+        transform: translateX(-50%) translateY(20px); /* Départ décalé pour anim */
+        width: 360px; 
+        height: 550px;
+        background: rgba(10, 10, 15, 0.95); /* Fond très sombre */
+        border-radius: 20px; 
+        overflow: hidden; 
+        border: 1px solid var(--project-border-color);
+        box-shadow: 0 20px 50px rgba(0,0,0,0.6), 0 0 20px rgba(var(--link-color), 0.2); 
+        opacity: 0; 
+        pointer-events: none; 
+        transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+        z-index: 10000;
+    }
+    #orba-interface.open { 
+        transform: translateX(-50%) translateY(0); 
+        opacity: 1; 
+        pointer-events: auto; 
+    }
+    
+    .orba-header { 
+        height: 40px; 
+        background: rgba(255,255,255,0.05); 
+        display: flex; align-items: center; justify-content: space-between; 
+        padding: 0 15px; 
+        color: var(--link-color); 
+        font-family: var(--title-font);
+        font-size: 0.8rem; 
+        letter-spacing: 1px;
+        border-bottom: 1px solid rgba(255,255,255,0.1); 
+    }
+    
+    /* Adaptation Mobile : On prend tout l'écran ou presque */
+    @media (max-width: 768px) {
+        #orba-interface { 
+            width: 90vw; 
+            height: 70vh; 
+            bottom: 110px;
+        }
     }
 </style>
 </head>
@@ -719,6 +861,31 @@
     <p class="intro" data-key="intro_text"></p>
 
     <div id="projects-container">
+        <!-- PROJET ORBA AJOUTÉ ICI -->
+        <div class="project">
+          <div class="project-visual">
+            <img src="Orba_logo.webp" alt="Orba - Interface Cognitive Multimodale">
+          </div>
+          <div class="project-content">
+            <h2 data-key="project_orba_title">ORBA <span class="badge-new">NEW</span></h2>
+            <div class="project-tags">
+              <span class="project-tag">IA Native Audio</span>
+              <span class="project-tag">Vision Augmentée</span>
+              <span class="project-tag">Three.js</span>
+            </div>
+            <p data-key="project_orba_desc" title="Orba : L'interface cognitive augmentée. Bien plus qu'un assistant, c'est un prolongement de l'esprit. Native Audio, vision temps réel et mémoire persistante : j'ai conçu l'IA que je voulais avoir, capable de voir ce que je vois et de se souvenir de tout.">
+              Bien plus qu'un simple assistant vocal, Orba est une entité IA Native Audio conçue comme un prolongement de votre propre cognition. 
+              Elle fusionne une intelligence de raisonnement avancée (Gemini 2.5 Flash) avec une interface sensorielle complète et une mémoire persistante pour une symbiose homme-machine inédite.
+            </p>
+            <p>
+              <a href="https://orbaproject-byalexkoncept.netlify.app/" target="_blank" rel="noopener noreferrer" data-key="discover_orba_btn">
+                Découvrir l'expérience Orba
+              </a>
+            </p>
+          </div>
+        </div>
+        <!-- FIN PROJET ORBA -->
+
         <div class="project">
             <div class="project-visual"><img src="LogoAK.png" alt="Montres Alex Koncept"></div>
             <div class="project-content">
@@ -798,7 +965,7 @@
                 <h2 data-key="project_ak001_title">AK 001 – Montre personnalisable </h2>
                  <div class="project-tags"><span class="project-tag">3D</span><span class="project-tag">Horlogerie</span><span class="project-tag">Design</span></div>
                 <p data-key="project_ak001_desc"> Le premier modèle imaginé par Alex Koncept. Élégante, moderne, et 100% personnalisable.</p>
-                <p><a href="https://modele-ak001.netlify.app/" target="_blank" rel="noopener noreferrer" data-key="discover_model_btn">Découvrir le modèle AK 001</a></p>
+                <p><a href="https://ak001seriesbyalexkoncept.netlify.app/" target="_blank" rel="noopener noreferrer" data-key="discover_model_btn">Découvrir le modèle AK 001</a></p>
             </div>
         </div>
         <div class="project">
@@ -894,21 +1061,20 @@
     <span data-key="footer_text">© 2025 Alex Koncept — Vivre. Apprendre. Créer.</span>
 </footer>
 
-<div id="ak-chrono-hud" class="ak-hud-hidden">
-    <div class="ak-hud-group">
-        <span class="ak-hud-label">SYS.HEX</span>
-        <span id="hud-hex">0X00</span>
+<!-- WIDGET ORBA -->
+<div id="orba-companion">
+    <div id="orba-speech"><span>Bonjour et bienvenue ! 👋 Prêt à explorer l'univers d'Alex ?</span></div>
+    <div id="orba-interface">
+        <div class="orba-header"><span>● ORBA NEURAL LINK</span><button id="close-orba-btn" style="background:none; border:none; color:white; font-size:1.2rem;">×</button></div>
+<iframe id="orba-frame" data-src="https://orbaproject-byalexkoncept.netlify.app/" src="" style="width:100%; height:100%; border:none; background: transparent;" allow="microphone; camera; autoplay"></iframe>
     </div>
-    <div class="ak-hud-divider">|</div>
-    <div class="ak-hud-group">
-        <span class="ak-hud-label">T.REAL</span>
-        <span id="hud-min">00:00</span>
-    </div>
-    <div class="ak-hud-divider">|</div>
-    <div class="ak-hud-group">
-        <span class="ak-hud-label">BINARY.STREAM</span>
-        <div class="ak-binary-visual" id="hud-bin-visual"></div>
-    </div>
+    <button id="orba-trigger">
+        <div class="orba-planet-container"><div class="orba-planet-core"></div></div>
+        <img src="Orba_logo.webp" class="orba-logo-img" alt="Orba">
+    </button>
+</div>
+<!-- FIN WIDGET ORBA -->
+
 </div>
 
 <div id="root"></div>
@@ -985,6 +1151,57 @@ document.addEventListener('DOMContentLoaded', () => {
       el.addEventListener('mouseenter', () => document.body.classList.add('hovered'));
       el.addEventListener('mouseleave', () => document.body.classList.remove('hovered'));
   });
+  
+  // --- ORBA WIDGET LOGIC ---
+  let isOrbaOpen = false;
+  const speech = document.getElementById('orba-speech');
+  const interfaceDiv = document.getElementById('orba-interface');
+  const iframeOrba = document.getElementById('orba-frame');
+  const triggerOrba = document.getElementById('orba-trigger');
+  const closeOrbaBtn = document.getElementById('close-orba-btn');
+
+  function toggleOrba() {
+    isOrbaOpen = !isOrbaOpen;
+    
+    if (isOrbaOpen) {
+        // 1. On ouvre l'interface visuellement
+        interfaceDiv.classList.add('open');
+        triggerOrba.classList.add('active');
+        
+        // 2. On cache la bulle de texte
+        if(speech) speech.classList.remove('visible');
+
+        // 3. LE CORRECTIF : On force le chargement de l'URL
+        // On récupère l'URL cible
+        const urlToLoad = iframeOrba.getAttribute('data-src');
+        
+        // Si l'iframe est vide ou sur "about:blank", on injecte l'URL
+        if (!iframeOrba.src || iframeOrba.src === "about:blank" || iframeOrba.src === window.location.href) {
+            console.log("Chargement d'Orba..."); // Pour vérifier dans la console
+            iframeOrba.src = urlToLoad;
+        }
+    } else {
+        // Fermeture
+        interfaceDiv.classList.remove('open');
+        triggerOrba.classList.remove('active');
+    }
+    
+    // Petit son si activé
+    playSfx('click');
+  }
+
+  // Écouteurs d'événements
+  if(triggerOrba) triggerOrba.addEventListener('click', toggleOrba);
+  if(closeOrbaBtn) closeOrbaBtn.addEventListener('click', toggleOrba);
+
+  // Bulle de bienvenue (Apparaît après 3s si fermé)
+  setTimeout(() => { 
+      if(!isOrbaOpen && speech) { 
+          speech.classList.add('visible'); 
+          setTimeout(() => speech.classList.remove('visible'), 5000); 
+      } 
+  }, 3000);
+  // -------------------------
 
   // --- CANVASES & ANIMATIONS ---
   const matrixCanvas = document.getElementById('matrix-canvas');
@@ -1149,18 +1366,20 @@ document.addEventListener('DOMContentLoaded', () => {
   let lastScrollY = window.scrollY;
   let ticking = false;
 
-  window.addEventListener('scroll', () => {
+window.addEventListener('scroll', () => {
       if (!ticking) {
           window.requestAnimationFrame(() => {
               const scrollY = window.scrollY;
               const isMobile = window.innerWidth <= 768; 
+              
               if (!isMobile) {
-                  if (scrollY > 60) {
-                      if (!header.classList.contains('header-compact')) header.classList.add('header-compact');
-                  } else if (scrollY < 20) {
-                      if (header.classList.contains('header-compact')) header.classList.remove('header-compact');
+                  // SUR PC : On force le header à rester normal
+                  // On enlève simplement la classe compact si elle existe
+                  if (header.classList.contains('header-compact')) {
+                      header.classList.remove('header-compact');
                   }
               } else {
+                  // SUR MOBILE : Comportement inchangé (se cache au scroll)
                   header.classList.remove('header-compact');
                   if (lastScrollY < scrollY && scrollY > 100) header.classList.add('header-hidden');
                   else header.classList.remove('header-hidden');
@@ -1249,6 +1468,13 @@ fr: {
   theme_toggle_label: "Changer le thème",
   header_subtitle: "Créateur indépendant – Montres, Web, Code, IA & Crypto",
   intro_text: 'Bienvenue dans mon univers numérique. Chaque "Koncept" que je crée explore un futur possible, à travers l’horlogerie, le code, le design et l’imagination augmentée.<br><br><span class="chatbot-prompt">💬 Pour en savoir plus sur mon parcours ou la genèse d\'un projet, <strong>interrogez AlexBot</strong> en bas à droite !</span>',
+  
+  /* --- AJOUT ORBA FR --- */
+  project_orba_title: "ORBA <span class=\"badge-new\">NEW</span>",
+  project_orba_desc: "Bien plus qu'un simple assistant vocal, Orba est une entité IA Native Audio conçue comme un prolongement de votre propre cognition. Elle fusionne une intelligence de raisonnement avancée (Gemini 2.5 Flash) avec une interface sensorielle complète et une mémoire persistante pour une symbiose homme-machine inédite.",
+  discover_orba_btn: "Découvrir l'expérience Orba",
+  /* -------------------- */
+
   project_watches_title: "Montres Alex Koncept",
   project_watches_desc: "Création horlogère indépendante, modding artistique, boîtier signature AK.",
   visit_site_btn: "Visiter le site",
@@ -1282,8 +1508,8 @@ fr: {
   project_hsk_title: "HSK — Hybrid Sound Koncept <span class=\"badge-new\">NEW</span>",
   project_hsk_desc: "HSK (Hybrid Sound Koncept) est un projet musical expérimental fusionnant des styles opposés grâce à l’intelligence artificielle. Créé avec ChatGPT, Suno et ElevenLabs, il donne vie à un artiste numérique capable de mêler funk, techno, reggae, metal et bien plus encore. Une exploration audacieuse où le groove humain rencontre la précision algorithmique.",
   discover_hsk_btn: "Découvrir le projet musical",
-  project_next_title: "Prochain Koncept en cours...",
-  project_next_desc: "Un nouveau projet prend forme dans l’atelier AK, à très bientôt pour en découvrir plus.",
+  project_next_title: "Next Koncept in progress...",
+  project_next_desc: "A new project is taking shape in the AK workshop, see you very soon to discover more.",
   about_title: "À propos",
   about_desc: "Moi c'est Alex, passionné d’informatique, de DIY, d’horlogerie et de nouvelles technologies.<br>Ce site présente mes projets personnels regroupés sous <strong>Alex Koncept</strong> : montres, IA, expériences web et plus encore.",
   contact_label: "Contact",
@@ -1294,6 +1520,13 @@ en: {
   theme_toggle_label: "Change theme",
   header_subtitle: "Independent Creator – Watches, Web, Code, AI & Crypto",
   intro_text: 'Welcome to my digital universe. Each "Koncept" I create explores a possible future, through watchmaking, code, design, and augmented imagination.<br><br><span class="chatbot-prompt">💬 To learn more about my journey or the story behind a project, <strong>ask AlexBot</strong> at the bottom right!</span>',
+  
+  /* --- AJOUT ORBA EN --- */
+  project_orba_title: "ORBA <span class=\"badge-new\">NEW</span>",
+  project_orba_desc: "More than just a voice assistant, Orba is a Native Audio AI entity designed as an extension of your own cognition. It fuses advanced reasoning intelligence (Gemini 2.5 Flash) with a complete sensory interface and persistent memory for a unique human-machine symbiosis.",
+  discover_orba_btn: "Discover the Orba experience",
+  /* -------------------- */
+
   project_watches_title: "Alex Koncept Watches",
   project_watches_desc: "Independent watchmaking, artistic modding, signature AK case.",
   visit_site_btn: "Visit the website",
@@ -1399,8 +1632,7 @@ en: {
 
   const loadTrack = (index, isFirstLoad = false) => {
     const trackUrl = shuffledTracks[index];
-    const autoPlayParam = isFirstLoad ? 'false' : 'true';
-    const widgetUrl = `https://w.soundcloud.com/player/?url=${encodeURIComponent(trackUrl)}&color=%2300bcd4&auto_play=${autoPlayParam}&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false`;
+    const widgetUrl = `https://w.soundcloud.com/player/?url=${encodeURIComponent(trackUrl)}&color=%2300bcd4&auto_play=${isFirstLoad ? 'false' : 'true'}&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false`;
     iframe.src = widgetUrl;
   };
 
