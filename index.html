@@ -827,6 +827,42 @@
             bottom: 110px;
         }
     }
+/* Ciblage universel du bouton à l'intérieur du root (Chatbot) */
+#root button {
+    background-image: url('Avatar.webp') !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    
+    /* On s'assure que le bouton est rond et à la bonne taille */
+    width: 60px !important;
+    height: 60px !important;
+    border-radius: 50% !important;
+    border: 2px solid #00bcd4 !important; /* Couleur néon comme ton site */
+    
+    /* Supprime le texte ou l'icône d'origine */
+    color: transparent !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    position: relative !important;
+}
+
+/* Cache l'icône (bulle de texte ou éclair) qui est dans le bouton */
+#root button svg, 
+#root button i, 
+#root button span {
+    display: none !important;
+}
+
+/* Optionnel : ajoute un effet de pulsation pour qu'on voit que c'est le chat */
+#root button {
+    box-shadow: 0 0 15px rgba(0, 188, 212, 0.4);
+    transition: transform 0.3s ease;
+}
+#root button:hover {
+    transform: scale(1.1) rotate(5deg);
+}
 </style>
 </head>
 <body>
