@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8" />
@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@300;400;600&family=Courier+Prime&family=Special+Elite&family=Bebas+Neue&family=Damion&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@300;400;600&family=Courier+Prime&family=Special+Elite&family=Bebas+Neue&family=Damion&family=Rajdhani:wght@400;600;700&family=Playfair+Display:ital,wght@0,700;0,900;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="chatbot/index.css" />
 
 <script type="application/ld+json">
@@ -158,6 +158,194 @@
         color: #111;
         opacity: 1;
     }
+/* --- THEME MAGAZINE --- */
+    body.koncept-magazine {
+      --body-bg: #f4f1ea; /* Couleur papier vieilli */
+      --text-color: #1a1a1a;
+      --header-bg-start: #1a1a1a;
+      --header-bg-end: #333;
+      --header-text-color: #f4f1ea;
+      --glass-bg: #ffffff;
+      --glass-border: 1px solid #000;
+      --glass-shadow: 10px 10px 0px rgba(0,0,0,0.1);
+      --project-title-color: #000;
+      --link-color: #000;
+      --footer-text-color: #555;
+      --main-font: 'Playfair Display', serif;
+      --title-font: 'Playfair Display', serif;
+      --card-radius: 0px; 
+      --cursor-color: #000;
+      background-image: url('https://www.transparenttextures.com/patterns/felt.png'); /* Texture papier */
+    }
+
+    body.koncept-magazine .project {
+      border: 1px solid #000;
+      background: #fff;
+      padding: 4rem;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 15px 15px 0px rgba(0,0,0,0.05);
+      transform-origin: left center; /* Important pour l'effet page */
+    }
+
+    /* Animation de "Page qui se tourne" à l'apparition */
+    body.koncept-magazine .project.is-visible {
+      animation: magazinePageFlip 1.2s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+    }
+
+    @keyframes magazinePageFlip {
+      0% {
+        transform: perspective(2000px) rotateY(-30deg) translateX(-50px) scale(0.9);
+        opacity: 0;
+        box-shadow: 50px 0 50px rgba(0,0,0,0.2);
+      }
+      100% {
+        transform: perspective(2000px) rotateY(0deg) translateX(0) scale(1);
+        opacity: 1;
+        box-shadow: 15px 15px 0px rgba(0,0,0,0.05);
+      }
+    }
+
+    body.koncept-magazine .project-tag {
+      border-radius: 0;
+      border: 1px solid #000;
+      text-transform: uppercase;
+      font-weight: 900;
+      font-style: italic;
+      font-size: 0.7rem;
+    }
+
+    body.koncept-magazine .project-content h2 {
+      font-size: 3rem;
+      border-bottom: 3px solid #000;
+      display: inline-block;
+      margin-bottom: 2rem;
+      font-weight: 900;
+    }
+
+    body.koncept-magazine .project-content a {
+      background: #000;
+      border-radius: 0;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+body.koncept-abyss {
+    --body-bg: #000814;
+    --text-color: #caf0f8;
+    --header-bg-start: #001d3d;
+    --header-bg-end: #003566;
+    --project-title-color: #90e0ef;
+    --link-color: #00b4d8;
+    --glass-bg: rgba(0, 8, 20, 0.7);
+    --glass-border: 1px solid rgba(144, 224, 239, 0.3);
+    overflow-x: hidden;
+}
+
+/* Animation de vagues en fond */
+body.koncept-abyss::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(125deg, #000814, #001d3d, #003566);
+    background-size: 400% 400%;
+    animation: gradientMove 15s ease infinite;
+    z-index: -2;
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+body.koncept-abyss .project {
+    border-radius: 40px;
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+body.koncept-abyss .project.is-visible {
+    animation: floatingWave 3s ease-in-out infinite alternate;
+}
+
+@keyframes floatingWave {
+    from { transform: translateY(0px) rotate(0deg); }
+    to { transform: translateY(-15px) rotate(1deg); }
+}
+body.koncept-hologram {
+    --body-bg: #050505;
+    --text-color: #00f2ff;
+    --project-title-color: #ffffff;
+    --link-color: #00f2ff;
+    --glass-bg: rgba(0, 242, 255, 0.05);
+    --glass-border: 1px solid #00f2ff;
+    --cursor-color: #00f2ff;
+}
+
+/* Ligne de scan qui descend */
+body.koncept-hologram::after {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 2px;
+    background: rgba(0, 242, 255, 0.5);
+    box-shadow: 0 0 15px #00f2ff;
+    animation: scanning 4s linear infinite;
+    z-index: 10000;
+    pointer-events: none;
+}
+
+@keyframes scanning {
+    0% { top: 0%; }
+    100% { top: 100%; }
+}
+
+body.koncept-hologram .project {
+    border-radius: 0;
+    clip-path: polygon(0% 0%, 95% 0%, 100% 15%, 100% 100%, 5% 100%, 0% 85%); /* Forme futuriste */
+    background: repeating-linear-gradient(0deg, rgba(0,0,0,0.1) 0px, rgba(0,0,0,0.1) 1px, transparent 1px, transparent 2px);
+    box-shadow: inset 0 0 20px rgba(0, 242, 255, 0.2);
+}
+
+body.koncept-hologram .project:hover {
+    filter: hue-rotate(90deg); /* Change de couleur au survol (devient violet) */
+}
+
+body.koncept-aurora {
+    --body-bg: #0a0612;
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: 1px solid rgba(255, 255, 255, 0.1);
+    --text-color: #fff;
+}
+
+/* Les taches de lumière en fond */
+body.koncept-aurora::before {
+    content: "";
+    position: fixed;
+    width: 150vw; height: 150vh;
+    top: -25%; left: -25%;
+    background: 
+        radial-gradient(circle at 20% 30%, #ff0080 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, #7928ca 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, #0070f3 0%, transparent 50%);
+    filter: blur(80px);
+    animation: auroraRotate 20s linear infinite;
+    z-index: -2;
+    opacity: 0.5;
+}
+
+@keyframes auroraRotate {
+    0% { transform: rotate(0deg) scale(1); }
+    50% { transform: rotate(180deg) scale(1.2); }
+    100% { transform: rotate(360deg) scale(1); }
+}
+
+body.koncept-aurora .project {
+    backdrop-filter: blur(30px) saturate(150%);
+    -webkit-backdrop-filter: blur(30px) saturate(150%);
+    border-radius: 30px;
+    border: 1px solid rgba(255,255,255,0.2);
+}
 
     @keyframes flicker {
         from { opacity: 0.95; }
@@ -712,39 +900,31 @@
        }
     }
 
-   /* =========================================
-       ORBA COMPANION - POSITION CENTRALE (Remplacement HUD)
-       ========================================= */
-    @keyframes planet-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-    
-    #orba-companion { 
-        position: fixed; 
-        bottom: 20px;        /* Collé en bas comme le HUD */
-        left: 50%;           /* Centré horizontalement */
-        transform: translateX(-50%); /* Ajustement précis du centre */
-        z-index: 9990; 
-        display: flex; 
-        flex-direction: column; 
-        align-items: center; /* Centre la bulle et la fenêtre par rapport au bouton */
-    }
+/* Suppression de l'ancien widget central */
+#orba-companion, #orba-trigger, #orba-interface { 
+    display: none !important; 
+}
 
-    #orba-speech {
-        margin-bottom: 15px; 
-        background: rgba(15, 23, 42, 0.95); 
-        border: 1px solid var(--project-border-color);
-        color: #fff; 
-        font-size: 0.85rem; 
-        padding: 10px 16px; 
-        border-radius: 16px; /* Arrondi complet */
-        backdrop-filter: blur(10px); 
-        transform: scale(0); 
-        transition: 0.3s; 
-        transform-origin: bottom center; /* L'animation part du centre bas */
-        text-align: center;
-        white-space: nowrap; /* Empêche le texte de revenir à la ligne si possible */
-        box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-    }
-    #orba-speech.visible { transform: scale(1); }
+/* Repositionnement de la bulle pour Alexbot */
+#orba-speech {
+    background: rgba(15, 23, 42, 0.95); 
+    border: 1px solid #00bcd4; /* Couleur bleue Alexbot */
+    color: #fff; 
+    font-size: 0.85rem; 
+    padding: 12px 18px; 
+    border-radius: 18px 18px 2px 18px; /* Style bulle de BD */
+    backdrop-filter: blur(10px); 
+    transform: scale(0); 
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+    transform-origin: bottom right; 
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+    pointer-events: none;
+}
+
+#orba-speech.visible { 
+    transform: scale(1); 
+}
 
     #orba-trigger {
         width: 80px;  /* Un tout petit peu plus gros pour être le "Cœur" */
@@ -827,41 +1007,45 @@
             bottom: 110px;
         }
     }
-/* Ciblage universel du bouton à l'intérieur du root (Chatbot) */
-#root button {
+/* 1. On cible uniquement le bouton de lancement principal */
+/* On ajoute :not([type="submit"]) pour éviter de toucher au bouton d'envoi */
+#root button:not([aria-label*="close"]):not([type="submit"]) {
     background-image: url('Alexbot.webp') !important;
     background-size: cover !important;
     background-position: center !important;
     background-repeat: no-repeat !important;
-    
-    /* On s'assure que le bouton est rond et à la bonne taille */
     width: 60px !important;
     height: 60px !important;
     border-radius: 50% !important;
-    border: 2px solid #00bcd4 !important; /* Couleur néon comme ton site */
-    
-    /* Supprime le texte ou l'icône d'origine */
+    border: 2px solid #00bcd4 !important;
     color: transparent !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
     position: relative !important;
-}
-
-/* Cache l'icône (bulle de texte ou éclair) qui est dans le bouton */
-#root button svg, 
-#root button i, 
-#root button span {
-    display: none !important;
-}
-
-/* Optionnel : ajoute un effet de pulsation pour qu'on voit que c'est le chat */
-#root button {
     box-shadow: 0 0 15px rgba(0, 188, 212, 0.4);
     transition: transform 0.3s ease;
 }
-#root button:hover {
-    transform: scale(1.1) rotate(5deg);
+
+/* 2. IMPORTANT : On nettoie les boutons à l'intérieur de la fenêtre de chat */
+/* Cela empêche l'image de se répéter sur le bouton 'Envoyer' ou dans l'en-tête */
+#root [role="dialog"] button, 
+#root div[class*="container"] button,
+#root button[type="submit"] {
+    background-image: none !important;
+    background-color: transparent; /* Ou la couleur par défaut de votre chatbot */
+    width: auto !important;
+    height: auto !important;
+    border-radius: 4px !important; /* Ou le style d'origine */
+    border: none !important;
+}
+
+/* 3. On cache TOUT contenu original dans le bouton de lancement (y compris les images/img) */
+#root button svg, 
+#root button i, 
+#root button span, 
+#root button img {
+    display: none !important;
 }
 </style>
 </head>
@@ -1097,20 +1281,8 @@
     <span data-key="footer_text">© 2025 Alex Koncept — Vivre. Apprendre. Créer.</span>
 </footer>
 
-<!-- WIDGET ORBA -->
-<div id="orba-companion">
+<div id="alexbot-speech-container" style="position: fixed; bottom: 90px; right: 20px; z-index: 10000;">
     <div id="orba-speech"><span>Bonjour et bienvenue ! 👋 Prêt à explorer l'univers d'Alex ?</span></div>
-    <div id="orba-interface">
-        <div class="orba-header"><span>● ORBA NEURAL LINK</span><button id="close-orba-btn" style="background:none; border:none; color:white; font-size:1.2rem;">×</button></div>
-<iframe id="orba-frame" data-src="https://orbaproject-byalexkoncept.netlify.app/" src="" style="width:100%; height:100%; border:none; background: transparent;" allow="microphone; camera; autoplay"></iframe>
-    </div>
-    <button id="orba-trigger">
-        <div class="orba-planet-container"><div class="orba-planet-core"></div></div>
-        <img src="Orba_logo.webp" class="orba-logo-img" alt="Orba">
-    </button>
-</div>
-<!-- FIN WIDGET ORBA -->
-
 </div>
 
 <div id="root"></div>
@@ -1230,14 +1402,15 @@ document.addEventListener('DOMContentLoaded', () => {
   if(triggerOrba) triggerOrba.addEventListener('click', toggleOrba);
   if(closeOrbaBtn) closeOrbaBtn.addEventListener('click', toggleOrba);
 
-  // Bulle de bienvenue (Apparaît après 3s si fermé)
-  setTimeout(() => { 
-      if(!isOrbaOpen && speech) { 
-          speech.classList.add('visible'); 
-          setTimeout(() => speech.classList.remove('visible'), 5000); 
-      } 
-  }, 3000);
-  // -------------------------
+// Bulle de bienvenue pour Alexbot (Apparaît après 3s)
+setTimeout(() => { 
+    const speech = document.getElementById('orba-speech');
+    if(speech) { 
+        speech.classList.add('visible'); 
+        // La bulle disparaît après 8 secondes
+        setTimeout(() => speech.classList.remove('visible'), 8000); 
+    } 
+}, 3000);
 
   // --- CANVASES & ANIMATIONS ---
   const matrixCanvas = document.getElementById('matrix-canvas');
@@ -1458,10 +1631,9 @@ window.addEventListener('scroll', () => {
     playSfx('click');
   });
 
-  const konceptModes = ['default', 'matrix-reloaded', 'space', 'vice-city', 'fallout'];
-  let currentKonceptModeIndex = 0;
+const konceptModes = ['default', 'matrix-reloaded', 'space', 'vice-city', 'fallout', 'magazine', 'abyss', 'hologram', 'aurora'];
 
-  const applyKonceptMode = (modeName) => {
+const applyKonceptMode = (modeName) => {
       konceptModes.forEach(m => { if (m !== 'default') { body.classList.remove(`koncept-${m}`); } });
       stopMatrixAnimation();
       stopSpaceAnimation();
