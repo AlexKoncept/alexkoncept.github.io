@@ -1,21 +1,31 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Alex Koncept – Universe</title>
-<link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-<link rel="manifest" href="/site.webmanifest" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alex Koncept – Universe</title>
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@300;400;600&family=Courier+Prime&family=Special+Elite&family=Bebas+Neue&family=Damion&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@300;400;600&family=Courier+Prime&family=Special+Elite&family=Bebas+Neue&family=Damion&family=Rajdhani:wght@400;600;700&family=Playfair+Display:ital,wght@0,700;0,900;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="chatbot/index.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@300;400;600&family=Rajdhani:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Courier+Prime&family=Special+Elite&family=Bebas+Neue&family=Damion&family=Playfair+Display:ital,wght@0,700;0,900;1,400&display=swap"
+        rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Courier+Prime&family=Special+Elite&family=Bebas+Neue&family=Damion&family=Playfair+Display:ital,wght@0,700;0,900;1,400&display=swap"
+            rel="stylesheet">
+    </noscript>
+    <link rel="stylesheet" href="chatbot/index.css" />
 
-<script type="application/ld+json">
+    <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebSite",
@@ -24,1875 +34,2448 @@
   "description": "Créations horlogères, projets web futuristes, crypto World Peace et IA par Alex Koncept."
 }
 </script>
-<meta name="description" content="Découvrez les créations horlogères, projets web dystopiques, crypto World Peace et IA par Alex Koncept." />
+    <meta name="description"
+        content="Découvrez les créations horlogères, projets web dystopiques, crypto World Peace et IA par Alex Koncept." />
 
-<style>
-    :root {
-      --header-bg-start: rgba(0, 201, 255, 0.85); 
-      --header-bg-end: rgba(146, 254, 157, 0.85);
-      --project-border-color: rgba(0, 201, 255, 0.5);
-      --link-color: #0077cc;
-      --body-bg: #f0f2f5; 
-      --text-color: #212529;
-      --header-text-color: #000;
-      --glass-bg: rgba(255, 255, 255, 0.65);
-      --glass-border: 1px solid rgba(255, 255, 255, 0.6);
-      --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
-      --card-radius: 24px;
-      
-      --project-title-color: #0081a7;
-      --footer-text-color: #6c757d;
-      
-      /* CORRECTION ICI : Ajout des guillemets manquants pour l'icone soleil */
-      --theme-toggle-icon: "☀️";
-      
-      --main-font: 'Poppins', sans-serif;
-      --title-font: 'Orbitron', sans-serif;
-      
-      --cursor-color: #0077cc;
-      --cursor-size: 8px;
-      --cursor-hover-size: 40px;
-    }
+    <style>
+        :root {
+            --header-bg-start: rgba(0, 201, 255, 0.85);
+            --header-bg-end: rgba(146, 254, 157, 0.85);
+            --project-border-color: rgba(0, 201, 255, 0.5);
+            --link-color: #0077cc;
+            --body-bg: #f0f2f5;
+            --text-color: #212529;
+            --header-text-color: #000;
+            --glass-bg: rgba(255, 255, 255, 0.65);
+            --glass-border: 1px solid rgba(255, 255, 255, 0.6);
+            --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+            --card-radius: 24px;
 
-    body.dark-mode {
-      --header-bg-start: rgba(0, 92, 115, 0.9);
-      --header-bg-end: rgba(44, 122, 49, 0.9);
-      --project-border-color: #61dafb;
-      --link-color: #61dafb;
-      --body-bg: #0f0f0f;
-      --text-color: #EAEAEA;
-      --header-text-color: #f0f0f0;
-      --glass-bg: rgba(30, 30, 30, 0.6);
-      --glass-border: 1px solid rgba(255, 255, 255, 0.1);
-      --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
-      --project-title-color: #80deea;
-      --footer-text-color: #adb5bd;
-      --theme-toggle-icon: "🌙";
-      --cursor-color: #61dafb;
-    }
+            --project-title-color: #0081a7;
+            --footer-text-color: #6c757d;
 
-    #matrix-canvas, #space-canvas, #vice-city-canvas, #fallout-canvas {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-        display: none;
-    }
+            /* CORRECTION ICI : Ajout des guillemets manquants pour l'icone soleil */
+            --theme-toggle-icon: "☀️";
 
-    body.koncept-matrix-reloaded #matrix-canvas { display: block; }
-    body.koncept-space #space-canvas { display: block; }
-    body.koncept-vice-city #vice-city-canvas { display: block; }
-    body.koncept-fallout #fallout-canvas { display: block; opacity: 0.1; }
-    
-    body.koncept-matrix-reloaded {
-        --matrix-green: #00ff41;
-        --matrix-bg: #000501;
-        --body-bg: var(--matrix-bg);
-        --text-color: var(--matrix-green);
-        --header-bg-start: rgba(0,0,0,0.9);
-        --header-bg-end: rgba(0,0,0,0.9);
-        --header-text-color: var(--matrix-green);
-        --glass-bg: rgba(0, 20, 5, 0.6);
-        --glass-border: 1px solid var(--matrix-green);
-        --glass-shadow: 0 0 15px rgba(0, 255, 65, 0.2);
-        --project-title-color: var(--matrix-green);
-        --link-color: var(--matrix-green);
-        --footer-text-color: var(--matrix-green);
-        --main-font: 'Courier Prime', monospace;
-        --title-font: 'Courier Prime', monospace;
-        --card-radius: 0px; 
-        --cursor-color: #00ff41;
-    }
+            --main-font: 'Poppins', sans-serif;
+            --title-font: 'Orbitron', sans-serif;
 
-    body.koncept-matrix-reloaded .project-tag {
-        background-color: var(--matrix-green);
-        color: #000;
-        font-weight: bold;
-        border-radius: 0;
-    }
-
-    body.koncept-fallout {
-        --fallout-amber: #ffc107;
-        --fallout-bg: #1e2d24;
-        --body-bg: var(--fallout-bg);
-        --text-color: var(--fallout-amber);
-        --header-bg-start: rgba(17, 17, 17, 0.95);
-        --header-bg-end: rgba(0, 0, 0, 0.95);
-        --header-text-color: var(--fallout-amber);
-        --glass-bg: rgba(46, 68, 55, 0.7);
-        --glass-border: 2px solid var(--fallout-amber);
-        --glass-shadow: 0 0 15px rgba(255, 193, 7, 0.15);
-        --project-title-color: var(--fallout-amber);
-        --link-color: var(--fallout-amber);
-        --footer-text-color: var(--fallout-amber);
-        --main-font: 'Courier Prime', monospace;
-        --title-font: 'Courier Prime', monospace;
-        --card-radius: 8px;
-        --cursor-color: #ffc107;
-        background-image: radial-gradient(ellipse at center, rgba(255, 193, 7, 0.1) 0%, transparent 70%);
-        background-attachment: fixed;
-    }
-
-    body.koncept-fallout::after {
-        content: '';
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
-        background: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.3) 0, rgba(0, 0, 0, 0.3) 1px, transparent 1px, transparent 2px);
-        z-index: -1;
-    }
-
-    body.koncept-fallout header h1,
-    body.koncept-fallout .project-content h2 {
-        animation: flicker 0.15s infinite alternate;
-        text-shadow: 0 0 2px var(--fallout-amber), 0 0 5px var(--fallout-amber);
-    }
-    
-    body.koncept-fallout .project-tag {
-        background-color: var(--fallout-amber);
-        color: #111;
-        opacity: 1;
-    }
-/* --- THEME MAGAZINE --- */
-    body.koncept-magazine {
-      --body-bg: #f4f1ea; /* Couleur papier vieilli */
-      --text-color: #1a1a1a;
-      --header-bg-start: #1a1a1a;
-      --header-bg-end: #333;
-      --header-text-color: #f4f1ea;
-      --glass-bg: #ffffff;
-      --glass-border: 1px solid #000;
-      --glass-shadow: 10px 10px 0px rgba(0,0,0,0.1);
-      --project-title-color: #000;
-      --link-color: #000;
-      --footer-text-color: #555;
-      --main-font: 'Playfair Display', serif;
-      --title-font: 'Playfair Display', serif;
-      --card-radius: 0px; 
-      --cursor-color: #000;
-      background-image: url('https://www.transparenttextures.com/patterns/felt.png'); /* Texture papier */
-    }
-
-    body.koncept-magazine .project {
-      border: 1px solid #000;
-      background: #fff;
-      padding: 4rem;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 15px 15px 0px rgba(0,0,0,0.05);
-      transform-origin: left center; /* Important pour l'effet page */
-    }
-
-    /* Animation de "Page qui se tourne" à l'apparition */
-    body.koncept-magazine .project.is-visible {
-      animation: magazinePageFlip 1.2s cubic-bezier(0.23, 1, 0.32, 1) forwards;
-    }
-
-    @keyframes magazinePageFlip {
-      0% {
-        transform: perspective(2000px) rotateY(-30deg) translateX(-50px) scale(0.9);
-        opacity: 0;
-        box-shadow: 50px 0 50px rgba(0,0,0,0.2);
-      }
-      100% {
-        transform: perspective(2000px) rotateY(0deg) translateX(0) scale(1);
-        opacity: 1;
-        box-shadow: 15px 15px 0px rgba(0,0,0,0.05);
-      }
-    }
-
-    body.koncept-magazine .project-tag {
-      border-radius: 0;
-      border: 1px solid #000;
-      text-transform: uppercase;
-      font-weight: 900;
-      font-style: italic;
-      font-size: 0.7rem;
-    }
-
-    body.koncept-magazine .project-content h2 {
-      font-size: 3rem;
-      border-bottom: 3px solid #000;
-      display: inline-block;
-      margin-bottom: 2rem;
-      font-weight: 900;
-    }
-
-    body.koncept-magazine .project-content a {
-      background: #000;
-      border-radius: 0;
-      color: #fff;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-    }
-
-body.koncept-abyss {
-    --body-bg: #000814;
-    --text-color: #caf0f8;
-    --header-bg-start: #001d3d;
-    --header-bg-end: #003566;
-    --project-title-color: #90e0ef;
-    --link-color: #00b4d8;
-    --glass-bg: rgba(0, 8, 20, 0.7);
-    --glass-border: 1px solid rgba(144, 224, 239, 0.3);
-    overflow-x: hidden;
-}
-
-/* Animation de vagues en fond */
-body.koncept-abyss::before {
-    content: "";
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(125deg, #000814, #001d3d, #003566);
-    background-size: 400% 400%;
-    animation: gradientMove 15s ease infinite;
-    z-index: -2;
-}
-
-@keyframes gradientMove {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-body.koncept-abyss .project {
-    border-radius: 40px;
-    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-body.koncept-abyss .project.is-visible {
-    animation: floatingWave 3s ease-in-out infinite alternate;
-}
-
-@keyframes floatingWave {
-    from { transform: translateY(0px) rotate(0deg); }
-    to { transform: translateY(-15px) rotate(1deg); }
-}
-body.koncept-hologram {
-    --body-bg: #050505;
-    --text-color: #00f2ff;
-    --project-title-color: #ffffff;
-    --link-color: #00f2ff;
-    --glass-bg: rgba(0, 242, 255, 0.05);
-    --glass-border: 1px solid #00f2ff;
-    --cursor-color: #00f2ff;
-}
-
-/* Ligne de scan qui descend */
-body.koncept-hologram::after {
-    content: "";
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 2px;
-    background: rgba(0, 242, 255, 0.5);
-    box-shadow: 0 0 15px #00f2ff;
-    animation: scanning 4s linear infinite;
-    z-index: 10000;
-    pointer-events: none;
-}
-
-@keyframes scanning {
-    0% { top: 0%; }
-    100% { top: 100%; }
-}
-
-body.koncept-hologram .project {
-    border-radius: 0;
-    clip-path: polygon(0% 0%, 95% 0%, 100% 15%, 100% 100%, 5% 100%, 0% 85%); /* Forme futuriste */
-    background: repeating-linear-gradient(0deg, rgba(0,0,0,0.1) 0px, rgba(0,0,0,0.1) 1px, transparent 1px, transparent 2px);
-    box-shadow: inset 0 0 20px rgba(0, 242, 255, 0.2);
-}
-
-body.koncept-hologram .project:hover {
-    filter: hue-rotate(90deg); /* Change de couleur au survol (devient violet) */
-}
-
-body.koncept-aurora {
-    --body-bg: #0a0612;
-    --glass-bg: rgba(255, 255, 255, 0.03);
-    --glass-border: 1px solid rgba(255, 255, 255, 0.1);
-    --text-color: #fff;
-}
-
-/* Les taches de lumière en fond */
-body.koncept-aurora::before {
-    content: "";
-    position: fixed;
-    width: 150vw; height: 150vh;
-    top: -25%; left: -25%;
-    background: 
-        radial-gradient(circle at 20% 30%, #ff0080 0%, transparent 40%),
-        radial-gradient(circle at 80% 70%, #7928ca 0%, transparent 40%),
-        radial-gradient(circle at 50% 50%, #0070f3 0%, transparent 50%);
-    filter: blur(80px);
-    animation: auroraRotate 20s linear infinite;
-    z-index: -2;
-    opacity: 0.5;
-}
-
-@keyframes auroraRotate {
-    0% { transform: rotate(0deg) scale(1); }
-    50% { transform: rotate(180deg) scale(1.2); }
-    100% { transform: rotate(360deg) scale(1); }
-}
-
-body.koncept-aurora .project {
-    backdrop-filter: blur(30px) saturate(150%);
-    -webkit-backdrop-filter: blur(30px) saturate(150%);
-    border-radius: 30px;
-    border: 1px solid rgba(255,255,255,0.2);
-}
-
-    @keyframes flicker {
-        from { opacity: 0.95; }
-        to { opacity: 1; }
-    }
-
-    body.koncept-vice-city {
-        --body-bg: #1a0a24;
-        --text-color: #f0e6f2;
-        --header-bg-start: rgba(255, 72, 196, 0.8);
-        --header-bg-end: rgba(43, 209, 255, 0.8);
-        --header-text-color: #ffffff;
-        --glass-bg: rgba(26, 10, 36, 0.5);
-        --glass-border: 2px solid #ff48c4;
-        --glass-shadow: 0 0 25px rgba(255, 72, 196, 0.4);
-        --project-title-color: #2bd1ff;
-        --link-color: #ff48c4;
-        --footer-text-color: #d8b8e3;
-        --main-font: 'Poppins', sans-serif;
-        --title-font: 'Damion', cursive;
-        --project-font: 'Bebas Neue', sans-serif;
-        --card-radius: 16px;
-        --cursor-color: #00F3FF;
-        background-color: #1d0f2b;
-        background-attachment: fixed;
-        overflow-x: hidden;
-    }
-
-    body.koncept-vice-city header h1 {
-        font-family: var(--title-font);
-        font-size: 4.5rem;
-        color: #fff;
-        text-shadow: 0 0 5px #fff, 0 0 10px #ff48c4, 0 0 20px #ff48c4, 0 0 40px #ff48c4;
-    }
-    body.koncept-vice-city .project-content h2 {
-        font-family: var(--project-font);
-        font-size: 2.5rem;
-        letter-spacing: 2px;
-        color: var(--project-title-color);
-        text-shadow: 0 0 5px var(--project-title-color);
-    }
-    body.koncept-vice-city .project-tag {
-        background-color: transparent;
-        border: 1px solid #ff48c4;
-        color: #ff48c4;
-    }
-    body.koncept-vice-city .badge-new {
-        background-color: #ff48c4;
-        color: #1a0a24;
-        text-shadow: none;
-    }
-
-    body.koncept-space {
-      --body-bg: #0b0f19;
-      --text-color: #e0e0e0;
-      --header-bg-start: rgba(31, 42, 64, 0.9);
-      --header-bg-end: rgba(54, 69, 107, 0.9);
-      --header-text-color: #ffffff;
-      --glass-bg: rgba(26, 32, 44, 0.6);
-      --glass-border: 1px solid rgba(118, 169, 250, 0.3);
-      --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-      --project-title-color: #90caf9;
-      --link-color: #76a9fa;
-      --footer-text-color: #a0aec0;
-      --main-font: 'Orbitron', sans-serif;
-      --title-font: 'Orbitron', sans-serif;
-      --card-radius: 12px;
-      --cursor-color: #76a9fa;
-      background-color: #0b0f19;
-    }
-
-    * { box-sizing: border-box; cursor: none !important; }
-
-    body {
-      margin: 0;
-      font-family: var(--main-font);
-      background-color: var(--body-bg);
-      color: var(--text-color);
-      line-height: 1.7;
-      font-weight: 300;
-      transition: background-color 0.5s ease, color 0.5s ease;
-      overflow-x: hidden; 
-    }
-
-    .common-toggle-button {
-      background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      color: var(--text-color);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      height: 45px;
-      width: 45px;
-      cursor: none;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-      z-index: 1001;
-      font-size: 1.2rem;
-      border-radius: 50%;
-      padding: 0;
-    }
-    
-    .common-toggle-button:hover {
-        transform: scale(1.15) rotate(10deg);
-        background: rgba(255, 255, 255, 0.25);
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-    }
-
-    /* Boutons en haut à gauche et droite - Position "Fixed" par défaut sur tous les écrans */
-    .koncept-mode-toggle { position: fixed; top: 1.5rem; left: 1.5rem; }
-    .theme-toggle::before { content: var(--theme-toggle-icon); }
-    .top-right-controls { position: fixed; top: 1.5rem; right: 1.5rem; display: flex; align-items: center; gap: 12px; z-index: 1001; }
-
-    .lang-switcher { display: flex; gap: 8px; }
-    .lang-switcher button { opacity: 0.7; width: 40px; height: 40px; }
-    .lang-switcher button.lang-active { opacity: 1; border: 2px solid var(--link-color); background: rgba(255, 255, 255, 0.25); }
-
-  header {
-  text-align: center;
-  padding: 2rem 1rem; /* AU LIEU DE "4rem 2rem" (réduit l'espace en haut et en bas) */
-  background: linear-gradient(135deg, var(--header-bg-start) 0%, var(--header-bg-end) 100%);
-      backdrop-filter: blur(20px) saturate(180%);
-      -webkit-backdrop-filter: blur(20px) saturate(180%);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      color: var(--header-text-color);
-      
-      /* Base behaviour (Mobile): Sticky */
-      position: sticky;
-      top: 0;
-      z-index: 999;
-      
-      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); 
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-      margin-bottom: 2rem;
-    }
-    
-    /* MODIFICATION POUR PC UNIQUEMENT (Ecrans > 768px) */
-@media (min-width: 769px) {
-    header {
-        position: fixed; /* On fige l'entête */
-        width: 100%;
-        top: 0;
-        left: 0;
-    }
-        /* On pousse le contenu vers le bas pour ne pas qu'il soit caché par le header fixe */
- body {
-        padding-top: 200px; /* AU LIEU DE "250px" (ajustez cette valeur selon la taille finale désirée) */
-    }
-        /* Correction du padding si le header se compacte */
-   body:has(header.header-compact) {
-        padding-top: 100px;
-    }
-}
-
-    header.header-compact {
-        padding: 0.8rem 2rem;
-        border-bottom-left-radius: 25px;
-        border-bottom-right-radius: 25px;
-        margin: 0 1.5rem;
-        top: 1rem;
-        width: auto;
-        background: var(--header-bg-start);
-    }
-    
-    header.header-hidden { transform: translateY(-150%); }
-    
-    header::before {
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 150px;
-        height: 150px;
-        transform: translate(-50%, -50%);
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: contain;
-        border-radius: 50%;
-        opacity: 0.25;
-        z-index: 0;
-        filter: drop-shadow(0 0 10px rgba(255,255,255,0.5));
-        transition: all 0.5s ease;
-    }
-    
-    header.header-compact::before {
-        opacity: 0;
-        transform: translate(-50%, -50%) scale(0.5);
-    }
-    
-    header h1, header p {
-        text-shadow: 0px 2px 10px rgba(0, 0, 0, 0.15);
-        color: #FFFFFF;
-        position: relative;
-        z-index: 1;
-        transition: all 0.5s ease;
-    }
-    
-   header h1 {
-  font-family: var(--title-font);
-  font-size: 2.5rem; /* AU LIEU DE "3.5rem" */
-  margin: 0 0 0.5rem 0;
-  font-weight: 800;
-  letter-spacing: -1px;
-}
-
-header p {
-  font-size: 1.1rem; /* AU LIEU DE "1.3rem" */
-  max-width: 650px;
-  margin: 0 auto;
-  font-style: italic;
-  opacity: 0.95;
-  font-weight: 400;
-  max-height: 100px; 
-}
-    
-    header.header-compact p {
-        opacity: 0;
-        max-height: 0;
-        margin: 0;
-        transform: translateY(-10px);
-    }
-
-    .container {
-      max-width: 1100px;
-      margin: 2rem auto;
-      padding: 0 2rem;
-      perspective: 1000px; 
-    }
-    
-    .intro {
-      font-size: 1.25rem;
-      margin-bottom: 5rem;
-      text-align: center;
-      max-width: 750px;
-      margin-left: auto;
-      margin-right: auto;
-      line-height: 1.8;
-    }
-    
-    .chatbot-prompt {
-      display: inline-block;
-      margin-top: 1.5rem;
-      padding: 1rem 1.5rem;
-      background: var(--glass-bg);
-      backdrop-filter: blur(10px);
-      border: var(--glass-border);
-      border-left: 4px solid var(--project-border-color);
-      border-radius: 12px;
-      font-size: 1.1rem;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    }
-
-    .project {
-      display: flex;
-      align-items: center;
-      background: var(--glass-bg);
-      backdrop-filter: blur(16px) saturate(120%);
-      -webkit-backdrop-filter: blur(16px) saturate(120%);
-      border: var(--glass-border);
-      border-left: 0; 
-      padding: 2.5rem;
-      margin-bottom: 4rem;
-      border-radius: var(--card-radius);
-      box-shadow: var(--glass-shadow);
-      gap: 3rem;
-      flex-wrap: wrap;
-      opacity: 0;
-      transform: translateY(50px);
-      transition: all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
-      transform-style: preserve-3d;
-      will-change: transform;
-    }
-    
-    .project::after {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 15%;
-        bottom: 15%;
-        width: 4px;
-        background-color: var(--project-border-color);
-        border-radius: 0 4px 4px 0;
-        opacity: 0.8;
-    }
-
-    .project.is-visible { opacity: 1; transform: translateY(0) rotateX(0) rotateY(0); }
-    
-    .project:hover { 
-        box-shadow: 0 20px 50px rgba(0,0,0,0.15);
-        z-index: 10;
-    }
-
-    .project-visual {
-      flex: 0 0 180px;
-      text-align: center;
-      transform: translateZ(20px);
-      transition: transform 0.3s ease;
-    }
-    
-    .project-visual img {
-      width: 100%;
-      height: auto;
-      border-radius: 16px; 
-      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-      transition: transform 0.5s ease;
-    }
-    
-    .project:hover .project-visual img {
-        transform: scale(1.05);
-    }
-
-    .project-content {
-      flex: 1;
-      min-width: 250px;
-      transform: translateZ(10px); 
-    }
-    
-    .project-content h2 {
-      letter-spacing: -0.5px;
-      margin: 0 0 1rem 0;
-      font-size: 2rem;
-      color: var(--project-title-color);
-      font-family: var(--title-font);
-      font-weight: 700;
-    }
-    
-    .project-content p {
-      margin: 0 0 1.5rem 0;
-      max-width: 65ch;
-      font-size: 1.05rem;
-      opacity: 0.9;
-    }
-    
-    .project-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.8rem;
-      margin-bottom: 1.5rem;
-    }
-    
-    .project-tag {
-      background: rgba(var(--project-border-color), 0.1); 
-      background-color: transparent;
-      border: 1px solid var(--project-border-color);
-      color: var(--text-color);
-      font-size: 0.8rem;
-      padding: 6px 14px;
-      border-radius: 50px; 
-      font-weight: 600;
-      backdrop-filter: blur(5px);
-      transition: all 0.3s ease;
-    }
-    
-    .project-tag:hover {
-        background-color: var(--project-border-color);
-        color: #fff;
-        transform: translateY(-2px);
-    }
-    
-    .project-content a {
-      display: inline-block;
-      color: #fff;
-      background: linear-gradient(45deg, var(--link-color), #00c9ff);
-      padding: 10px 24px;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: 600;
-      box-shadow: 0 4px 15px rgba(0, 119, 204, 0.3);
-      transition: all 0.3s ease;
-      transform: translateZ(5px);
-      cursor: none;
-    }
-    
-    .project-content a:hover { 
-        transform: translateY(-3px) translateZ(5px); 
-        box-shadow: 0 8px 25px rgba(0, 119, 204, 0.5);
-    }
-
-    #a-propos {
-      background: var(--glass-bg);
-      backdrop-filter: blur(20px);
-      padding: 5rem 2rem;
-      margin-top: 4rem;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      position: relative;
-    }
-    
-    .about-container { max-width: 900px; margin: auto; display: flex; align-items: center; gap: 4rem; flex-wrap: wrap; justify-content: center; }
-    
-    .about-avatar { 
-        width: 160px; 
-        height: 160px; 
-        border-radius: 50%; 
-        border: 4px solid rgba(255,255,255,0.2); 
-        box-shadow: 0 10px 30px rgba(0,0,0,0.2); 
-        object-fit: cover; 
-        transition: transform 0.5s ease;
-    }
-    .about-avatar:hover { transform: scale(1.05) rotate(5deg); }
-    
-    .about-text { text-align: left; }
-    .about-text h2 { font-size: 2rem; font-weight: 700; color: var(--project-title-color); margin: 0 0 1rem 0; font-family: var(--title-font); }
-    .about-text p { font-size: 1.15rem; line-height: 1.8; max-width: 60ch; }
-    
- footer {
-      text-align: center;
-      padding: 3rem 2rem 8rem 2rem; 
-      font-size: 0.9rem;
-      color: var(--footer-text-color);
-      background: rgba(0,0,0,0.05);
-      position: relative;
-      z-index: 1;
-    }
-    
-    .badge-new {
-      background: linear-gradient(135deg, #ff6b6b, #e74c3c);
-      color: white;
-      font-size: 0.7rem;
-      padding: 4px 10px;
-      border-radius: 12px;
-      margin-left: 10px;
-      vertical-align: middle;
-      font-weight: 700;
-      box-shadow: 0 2px 10px rgba(231, 76, 60, 0.4);
-      animation: pop 1.5s ease-out infinite alternate;
-    }
-    @keyframes pop {
-      from { transform: scale(1); }
-      to { transform: scale(1.1); }
-    }
-
-    @media (max-width: 768px) {
-      .container { padding: 0 1rem; }
-      .project { flex-direction: column; text-align: center; padding: 2rem 1.5rem; gap: 1.5rem; }
-      .project::after { top: 0; bottom: auto; left: 20%; right: 20%; height: 4px; width: auto; border-radius: 0 0 4px 4px; }
-      .project-visual { margin: 0 auto; max-width: 150px; transform: translateZ(0); }
-      .project-tags { justify-content: center; }
-      header h1 { font-size: 2.5rem; }
-      .about-container { flex-direction: column; gap: 2rem; text-align: center; }
-      .about-text { text-align: center; }
-      
-      /* Mobile Cursor Reset */
-      * { cursor: auto !important; }
-      #cursor-dot, #cursor-outline { display: none; }
-    }
-
-    /* CUSTOM CURSOR STYLES */
-    #cursor-dot, #cursor-outline {
-        position: fixed;
-        top: 0;
-        left: 0;
-        transform: translate(-50%, -50%);
-        border-radius: 50%;
-        z-index: 10002;
-        pointer-events: none;
-    }
-    #cursor-dot {
-        width: var(--cursor-size);
-        height: var(--cursor-size);
-        background-color: var(--cursor-color);
-    }
-    #cursor-outline {
-        width: 40px;
-        height: 40px;
-        border: 1px solid var(--cursor-color);
-        transition: width 0.2s, height 0.2s, background-color 0.2s;
-        mix-blend-mode: difference;
-    }
-    body.hovered #cursor-outline {
-        width: 60px;
-        height: 60px;
-        background-color: rgba(255, 255, 255, 0.1);
-        border-width: 2px;
-    }
-
-    /* WARP OVERLAY */
-    #warp-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: white;
-        z-index: 10005;
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.3s ease;
-        mix-blend-mode: overlay;
-    }
-    body.warping {
-        animation: warpShake 0.5s cubic-bezier(.36,.07,.19,.97) both;
-    }
-    body.warping #warp-overlay { opacity: 1; }
-    
-    @keyframes warpShake {
-        0% { transform: scale(1); filter: blur(0px); }
-        50% { transform: scale(1.05); filter: blur(4px); }
-        100% { transform: scale(1); filter: blur(0px); }
-    }
-
-    /* HUD STYLES */
-    #ak-chrono-hud {
-        position: fixed;
-        bottom: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        z-index: 9998;
-        display: flex;
-        align-items: center;
-        gap: 15px;
-        padding: 10px 25px;
-        background: var(--glass-bg);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        border: 1px solid var(--project-border-color);
-        border-radius: 50px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        font-family: 'Rajdhani', 'Orbitron', monospace;
-        color: var(--text-color);
-        transition: all 0.5s ease;
-        opacity: 0;
-        animation: hudFadeIn 1s 1s forwards;
-    }
-    @keyframes hudFadeIn { to { opacity: 1; } }
-    .ak-hud-group { display: flex; flex-direction: column; align-items: center; justify-content: center; }
-    .ak-hud-label { font-size: 0.55rem; opacity: 0.7; letter-spacing: 0.15em; margin-bottom: 2px; text-transform: uppercase; }
-    #hud-hex, #hud-min { font-weight: 700; font-size: 1.1rem; letter-spacing: 0.05em; font-variant-numeric: tabular-nums; }
-    .ak-hud-divider { color: var(--project-border-color); opacity: 0.5; font-size: 1.2rem; font-weight: 300; }
-    .ak-binary-visual { display: flex; gap: 3px; }
-    .bin-dot { width: 6px; height: 6px; border-radius: 50%; background-color: var(--text-color); opacity: 0.2; transition: all 0.2s; }
-    .bin-dot.active { opacity: 1; background-color: var(--link-color); box-shadow: 0 0 5px var(--link-color); }
-    
-    body.koncept-matrix-reloaded #ak-chrono-hud { background: rgba(0, 20, 0, 0.8); border: 1px solid #00ff41; border-radius: 0; box-shadow: 0 0 15px rgba(0, 255, 65, 0.2); font-family: 'Courier Prime', monospace; letter-spacing: -1px; }
-    body.koncept-matrix-reloaded .bin-dot.active { background-color: #00ff41; box-shadow: 0 0 8px #00ff41; }
-    body.koncept-fallout #ak-chrono-hud { background: rgba(40, 30, 10, 0.8); border: 2px solid var(--fallout-amber); border-radius: 5px; box-shadow: 0 0 10px var(--fallout-amber); color: var(--fallout-amber); }
-    body.koncept-fallout .bin-dot { border-radius: 0; }
-    body.koncept-fallout .bin-dot.active { background-color: var(--fallout-amber); box-shadow: 0 0 5px var(--fallout-amber); }
-    body.koncept-vice-city #ak-chrono-hud { background: rgba(29, 15, 43, 0.8); border: 2px solid #00F3FF; border-radius: 12px; box-shadow: 0 0 15px #ff48c4, inset 0 0 10px rgba(0, 243, 255, 0.2); font-family: 'Bebas Neue', sans-serif; }
-    body.koncept-vice-city .ak-hud-label { color: #ff48c4; }
-    body.koncept-vice-city #hud-hex, body.koncept-vice-city #hud-min { color: #00F3FF; text-shadow: 0 0 5px #00F3FF; font-size: 1.3rem; }
-    body.koncept-vice-city .bin-dot.active { background-color: #ff48c4; box-shadow: 0 0 8px #ff48c4; }
-
-    @media (max-width: 600px) {
-       /* On cache complètement le HUD sur mobile */
-       #ak-chrono-hud { 
-           display: none !important;
-       }
-    }
-
-/* Suppression de l'ancien widget central */
-#orba-companion, #orba-trigger, #orba-interface { 
-    display: none !important; 
-}
-
-/* Repositionnement de la bulle pour Alexbot */
-#orba-speech {
-    background: rgba(15, 23, 42, 0.95); 
-    border: 1px solid #00bcd4; /* Couleur bleue Alexbot */
-    color: #fff; 
-    font-size: 0.85rem; 
-    padding: 12px 18px; 
-    border-radius: 18px 18px 2px 18px; /* Style bulle de BD */
-    backdrop-filter: blur(10px); 
-    transform: scale(0); 
-    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
-    transform-origin: bottom right; 
-    text-align: center;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.4);
-    pointer-events: none;
-}
-
-#orba-speech.visible { 
-    transform: scale(1); 
-}
-
-    #orba-trigger {
-        width: 80px;  /* Un tout petit peu plus gros pour être le "Cœur" */
-        height: 80px; 
-        border-radius: 50%; 
-        position: relative;
-        background: transparent; 
-        border: none; 
-        padding: 0; 
-        transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Effet rebond */
-        cursor: pointer; /* Important pour le desktop */
-    }
-    #orba-trigger:hover { transform: scale(1.15); }
-    #orba-trigger.active { transform: scale(0.9); } /* Petit effet de clic */
-
-    .orba-planet-container {
-        position: absolute; inset: 0; 
-        border: 1px solid rgba(255,255,255,0.3);
-        border-radius: 50%; 
-        background: rgba(0, 0, 0, 0.6); /* Fond plus transparent */
-        backdrop-filter: blur(4px);
-        overflow: hidden;
-        animation: planet-spin 20s linear infinite; 
-        box-shadow: 0 0 20px var(--link-color), inset 0 0 10px var(--link-color);
-    }
-    .orba-planet-core {
-        position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
-        background: linear-gradient(135deg, transparent 20%, var(--link-color) 50%, #fff 100%); 
-        opacity: 0.3;
-    }
-    .orba-logo-img { 
-        position: absolute; top: 50%; left: 50%; 
-        transform: translate(-50%, -50%); 
-        width: 40px; /* Logo ajusté */
-        z-index: 10; 
-        filter: drop-shadow(0 0 8px rgba(255,255,255,0.8)); 
-    }
-
-    /* La fenêtre d'interface centrée au dessus */
-    #orba-interface {
-        position: absolute; 
-        bottom: 100px; /* Juste au dessus du bouton */
-        left: 50%; /* Centré par rapport au parent */
-        transform: translateX(-50%) translateY(20px); /* Départ décalé pour anim */
-        width: 360px; 
-        height: 550px;
-        background: rgba(10, 10, 15, 0.95); /* Fond très sombre */
-        border-radius: 20px; 
-        overflow: hidden; 
-        border: 1px solid var(--project-border-color);
-        box-shadow: 0 20px 50px rgba(0,0,0,0.6), 0 0 20px rgba(var(--link-color), 0.2); 
-        opacity: 0; 
-        pointer-events: none; 
-        transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
-        z-index: 10000;
-    }
-    #orba-interface.open { 
-        transform: translateX(-50%) translateY(0); 
-        opacity: 1; 
-        pointer-events: auto; 
-    }
-    
-    .orba-header { 
-        height: 40px; 
-        background: rgba(255,255,255,0.05); 
-        display: flex; align-items: center; justify-content: space-between; 
-        padding: 0 15px; 
-        color: var(--link-color); 
-        font-family: var(--title-font);
-        font-size: 0.8rem; 
-        letter-spacing: 1px;
-        border-bottom: 1px solid rgba(255,255,255,0.1); 
-    }
-    
-    /* Adaptation Mobile : On prend tout l'écran ou presque */
-    @media (max-width: 768px) {
-        #orba-interface { 
-            width: 90vw; 
-            height: 70vh; 
-            bottom: 110px;
+            --cursor-color: #0077cc;
+            --cursor-size: 8px;
+            --cursor-hover-size: 40px;
         }
-    }
-/* 1. On cible uniquement le bouton de lancement principal */
-/* On ajoute :not([type="submit"]) pour éviter de toucher au bouton d'envoi */
-#root button:not([aria-label*="close"]):not([type="submit"]) {
-    background-image: url('Alexbot.webp') !important;
-    background-size: cover !important;
-    background-position: center !important;
-    background-repeat: no-repeat !important;
-    width: 60px !important;
-    height: 60px !important;
-    border-radius: 50% !important;
-    border: 2px solid #00bcd4 !important;
-    color: transparent !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    position: relative !important;
-    box-shadow: 0 0 15px rgba(0, 188, 212, 0.4);
-    transition: transform 0.3s ease;
-}
 
-/* 2. IMPORTANT : On nettoie les boutons à l'intérieur de la fenêtre de chat */
-/* Cela empêche l'image de se répéter sur le bouton 'Envoyer' ou dans l'en-tête */
-#root [role="dialog"] button, 
-#root div[class*="container"] button,
-#root button[type="submit"] {
-    background-image: none !important;
-    background-color: transparent; /* Ou la couleur par défaut de votre chatbot */
-    width: auto !important;
-    height: auto !important;
-    border-radius: 4px !important; /* Ou le style d'origine */
-    border: none !important;
-}
+        body.dark-mode {
+            --header-bg-start: rgba(0, 92, 115, 0.9);
+            --header-bg-end: rgba(44, 122, 49, 0.9);
+            --project-border-color: #61dafb;
+            --link-color: #61dafb;
+            --body-bg: #0f0f0f;
+            --text-color: #EAEAEA;
+            --header-text-color: #f0f0f0;
+            --glass-bg: rgba(30, 30, 30, 0.6);
+            --glass-border: 1px solid rgba(255, 255, 255, 0.1);
+            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            --project-title-color: #80deea;
+            --footer-text-color: #adb5bd;
+            --theme-toggle-icon: "🌙";
+            --cursor-color: #61dafb;
+        }
 
-/* 3. On cache TOUT contenu original dans le bouton de lancement (y compris les images/img) */
-#root button svg, 
-#root button i, 
-#root button span, 
-#root button img {
-    display: none !important;
-}
-</style>
+        #matrix-canvas,
+        #space-canvas,
+        #vice-city-canvas,
+        #fallout-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            display: none;
+        }
+
+        body.koncept-matrix-reloaded #matrix-canvas {
+            display: block;
+        }
+
+        body.koncept-space #space-canvas {
+            display: block;
+        }
+
+        body.koncept-vice-city #vice-city-canvas {
+            display: block;
+        }
+
+        body.koncept-fallout #fallout-canvas {
+            display: block;
+            opacity: 0.1;
+        }
+
+        body.koncept-matrix-reloaded {
+            --matrix-green: #00ff41;
+            --matrix-bg: #000501;
+            --body-bg: var(--matrix-bg);
+            --text-color: var(--matrix-green);
+            --header-bg-start: rgba(0, 0, 0, 0.9);
+            --header-bg-end: rgba(0, 0, 0, 0.9);
+            --header-text-color: var(--matrix-green);
+            --glass-bg: rgba(0, 20, 5, 0.6);
+            --glass-border: 1px solid var(--matrix-green);
+            --glass-shadow: 0 0 15px rgba(0, 255, 65, 0.2);
+            --project-title-color: var(--matrix-green);
+            --link-color: var(--matrix-green);
+            --footer-text-color: var(--matrix-green);
+            --main-font: 'Courier Prime', monospace;
+            --title-font: 'Courier Prime', monospace;
+            --card-radius: 0px;
+            --cursor-color: #00ff41;
+        }
+
+        body.koncept-matrix-reloaded .project-tag {
+            background-color: var(--matrix-green);
+            color: #000;
+            font-weight: bold;
+            border-radius: 0;
+        }
+
+        body.koncept-fallout {
+            --fallout-amber: #ffc107;
+            --fallout-bg: #1e2d24;
+            --body-bg: var(--fallout-bg);
+            --text-color: var(--fallout-amber);
+            --header-bg-start: rgba(17, 17, 17, 0.95);
+            --header-bg-end: rgba(0, 0, 0, 0.95);
+            --header-text-color: var(--fallout-amber);
+            --glass-bg: rgba(46, 68, 55, 0.7);
+            --glass-border: 2px solid var(--fallout-amber);
+            --glass-shadow: 0 0 15px rgba(255, 193, 7, 0.15);
+            --project-title-color: var(--fallout-amber);
+            --link-color: var(--fallout-amber);
+            --footer-text-color: var(--fallout-amber);
+            --main-font: 'Courier Prime', monospace;
+            --title-font: 'Courier Prime', monospace;
+            --card-radius: 8px;
+            --cursor-color: #ffc107;
+            background-image: radial-gradient(ellipse at center, rgba(255, 193, 7, 0.1) 0%, transparent 70%);
+            background-attachment: fixed;
+        }
+
+        body.koncept-fallout::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.3) 0, rgba(0, 0, 0, 0.3) 1px, transparent 1px, transparent 2px);
+            z-index: -1;
+        }
+
+        body.koncept-fallout header h1,
+        body.koncept-fallout .project-content h2 {
+            animation: flicker 0.15s infinite alternate;
+            text-shadow: 0 0 2px var(--fallout-amber), 0 0 5px var(--fallout-amber);
+        }
+
+        body.koncept-fallout .project-tag {
+            background-color: var(--fallout-amber);
+            color: #111;
+            opacity: 1;
+        }
+
+        /* --- THEME MAGAZINE --- */
+        body.koncept-magazine {
+            --body-bg: #f4f1ea;
+            /* Couleur papier vieilli */
+            --text-color: #1a1a1a;
+            --header-bg-start: #1a1a1a;
+            --header-bg-end: #333;
+            --header-text-color: #f4f1ea;
+            --glass-bg: #ffffff;
+            --glass-border: 1px solid #000;
+            --glass-shadow: 10px 10px 0px rgba(0, 0, 0, 0.1);
+            --project-title-color: #000;
+            --link-color: #000;
+            --footer-text-color: #555;
+            --main-font: 'Playfair Display', serif;
+            --title-font: 'Playfair Display', serif;
+            --card-radius: 0px;
+            --cursor-color: #000;
+            background-image: url('https://www.transparenttextures.com/patterns/felt.png');
+            /* Texture papier */
+        }
+
+        body.koncept-magazine .project {
+            border: 1px solid #000;
+            background: #fff;
+            padding: 4rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 15px 15px 0px rgba(0, 0, 0, 0.05);
+            transform-origin: left center;
+            /* Important pour l'effet page */
+        }
+
+        /* Animation de "Page qui se tourne" à l'apparition */
+        body.koncept-magazine .project.is-visible {
+            animation: magazinePageFlip 1.2s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+        }
+
+        @keyframes magazinePageFlip {
+            0% {
+                transform: perspective(2000px) rotateY(-30deg) translateX(-50px) scale(0.9);
+                opacity: 0;
+                box-shadow: 50px 0 50px rgba(0, 0, 0, 0.2);
+            }
+
+            100% {
+                transform: perspective(2000px) rotateY(0deg) translateX(0) scale(1);
+                opacity: 1;
+                box-shadow: 15px 15px 0px rgba(0, 0, 0, 0.05);
+            }
+        }
+
+        body.koncept-magazine .project-tag {
+            border-radius: 0;
+            border: 1px solid #000;
+            text-transform: uppercase;
+            font-weight: 900;
+            font-style: italic;
+            font-size: 0.7rem;
+        }
+
+        body.koncept-magazine .project-content h2 {
+            font-size: 3rem;
+            border-bottom: 3px solid #000;
+            display: inline-block;
+            margin-bottom: 2rem;
+            font-weight: 900;
+        }
+
+        body.koncept-magazine .project-content a {
+            background: #000;
+            border-radius: 0;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        body.koncept-abyss {
+            --body-bg: #000814;
+            --text-color: #caf0f8;
+            --header-bg-start: #001d3d;
+            --header-bg-end: #003566;
+            --project-title-color: #90e0ef;
+            --link-color: #00b4d8;
+            --glass-bg: rgba(0, 8, 20, 0.7);
+            --glass-border: 1px solid rgba(144, 224, 239, 0.3);
+            overflow-x: hidden;
+        }
+
+        /* Animation de vagues en fond */
+        body.koncept-abyss::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(125deg, #000814, #001d3d, #003566);
+            background-size: 400% 400%;
+            animation: gradientMove 15s ease infinite;
+            z-index: -2;
+        }
+
+        @keyframes gradientMove {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        body.koncept-abyss .project {
+            border-radius: 40px;
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        body.koncept-abyss .project.is-visible {
+            animation: floatingWave 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes floatingWave {
+            from {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            to {
+                transform: translateY(-15px) rotate(1deg);
+            }
+        }
+
+        body.koncept-hologram {
+            --body-bg: #050505;
+            --text-color: #00f2ff;
+            --project-title-color: #ffffff;
+            --link-color: #00f2ff;
+            --glass-bg: rgba(0, 242, 255, 0.05);
+            --glass-border: 1px solid #00f2ff;
+            --cursor-color: #00f2ff;
+        }
+
+        /* Ligne de scan qui descend */
+        body.koncept-hologram::after {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: rgba(0, 242, 255, 0.5);
+            box-shadow: 0 0 15px #00f2ff;
+            animation: scanning 4s linear infinite;
+            z-index: 10000;
+            pointer-events: none;
+        }
+
+        @keyframes scanning {
+            0% {
+                top: 0%;
+            }
+
+            100% {
+                top: 100%;
+            }
+        }
+
+        body.koncept-hologram .project {
+            border-radius: 0;
+            clip-path: polygon(0% 0%, 95% 0%, 100% 15%, 100% 100%, 5% 100%, 0% 85%);
+            /* Forme futuriste */
+            background: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0px, rgba(0, 0, 0, 0.1) 1px, transparent 1px, transparent 2px);
+            box-shadow: inset 0 0 20px rgba(0, 242, 255, 0.2);
+        }
+
+        body.koncept-hologram .project:hover {
+            filter: hue-rotate(90deg);
+            /* Change de couleur au survol (devient violet) */
+        }
+
+        body.koncept-aurora {
+            --body-bg: #0a0612;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: 1px solid rgba(255, 255, 255, 0.1);
+            --text-color: #fff;
+        }
+
+        /* Les taches de lumière en fond */
+        body.koncept-aurora::before {
+            content: "";
+            position: fixed;
+            width: 150vw;
+            height: 150vh;
+            top: -25%;
+            left: -25%;
+            background:
+                radial-gradient(circle at 20% 30%, #ff0080 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, #7928ca 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, #0070f3 0%, transparent 50%);
+            filter: blur(80px);
+            animation: auroraRotate 20s linear infinite;
+            z-index: -2;
+            opacity: 0.5;
+        }
+
+        @keyframes auroraRotate {
+            0% {
+                transform: rotate(0deg) scale(1);
+            }
+
+            50% {
+                transform: rotate(180deg) scale(1.2);
+            }
+
+            100% {
+                transform: rotate(360deg) scale(1);
+            }
+        }
+
+        body.koncept-aurora .project {
+            backdrop-filter: blur(30px) saturate(150%);
+            -webkit-backdrop-filter: blur(30px) saturate(150%);
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        @keyframes flicker {
+            from {
+                opacity: 0.95;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        body.koncept-vice-city {
+            --body-bg: #1a0a24;
+            --text-color: #f0e6f2;
+            --header-bg-start: rgba(255, 72, 196, 0.8);
+            --header-bg-end: rgba(43, 209, 255, 0.8);
+            --header-text-color: #ffffff;
+            --glass-bg: rgba(26, 10, 36, 0.5);
+            --glass-border: 2px solid #ff48c4;
+            --glass-shadow: 0 0 25px rgba(255, 72, 196, 0.4);
+            --project-title-color: #2bd1ff;
+            --link-color: #ff48c4;
+            --footer-text-color: #d8b8e3;
+            --main-font: 'Poppins', sans-serif;
+            --title-font: 'Damion', cursive;
+            --project-font: 'Bebas Neue', sans-serif;
+            --card-radius: 16px;
+            --cursor-color: #00F3FF;
+            background-color: #1d0f2b;
+            background-attachment: fixed;
+            overflow-x: hidden;
+        }
+
+        body.koncept-vice-city header h1 {
+            font-family: var(--title-font);
+            font-size: 4.5rem;
+            color: #fff;
+            text-shadow: 0 0 5px #fff, 0 0 10px #ff48c4, 0 0 20px #ff48c4, 0 0 40px #ff48c4;
+        }
+
+        body.koncept-vice-city .project-content h2 {
+            font-family: var(--project-font);
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+            color: var(--project-title-color);
+            text-shadow: 0 0 5px var(--project-title-color);
+        }
+
+        body.koncept-vice-city .project-tag {
+            background-color: transparent;
+            border: 1px solid #ff48c4;
+            color: #ff48c4;
+        }
+
+        body.koncept-vice-city .badge-new {
+            background-color: #ff48c4;
+            color: #1a0a24;
+            text-shadow: none;
+        }
+
+        body.koncept-space {
+            --body-bg: #0b0f19;
+            --text-color: #e0e0e0;
+            --header-bg-start: rgba(31, 42, 64, 0.9);
+            --header-bg-end: rgba(54, 69, 107, 0.9);
+            --header-text-color: #ffffff;
+            --glass-bg: rgba(26, 32, 44, 0.6);
+            --glass-border: 1px solid rgba(118, 169, 250, 0.3);
+            --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+            --project-title-color: #90caf9;
+            --link-color: #76a9fa;
+            --footer-text-color: #a0aec0;
+            --main-font: 'Orbitron', sans-serif;
+            --title-font: 'Orbitron', sans-serif;
+            --card-radius: 12px;
+            --cursor-color: #76a9fa;
+            background-color: #0b0f19;
+        }
+
+        * {
+            box-sizing: border-box;
+            cursor: none !important;
+        }
+
+        body {
+            margin: 0;
+            font-family: var(--main-font);
+            background-color: var(--body-bg);
+            color: var(--text-color);
+            line-height: 1.7;
+            font-weight: 300;
+            transition: background-color 0.5s ease, color 0.5s ease;
+            overflow-x: hidden;
+        }
+
+        .common-toggle-button {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color: var(--text-color);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            height: 45px;
+            width: 45px;
+            cursor: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            z-index: 1001;
+            font-size: 1.2rem;
+            border-radius: 50%;
+            padding: 0;
+        }
+
+        .common-toggle-button:hover {
+            transform: scale(1.15) rotate(10deg);
+            background: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Boutons en haut à gauche et droite - Position "Fixed" par défaut sur tous les écrans */
+        .koncept-mode-toggle {
+            position: fixed;
+            top: 1.5rem;
+            left: 1.5rem;
+        }
+
+        .theme-toggle::before {
+            content: var(--theme-toggle-icon);
+        }
+
+        .top-right-controls {
+            position: fixed;
+            top: 1.5rem;
+            right: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            z-index: 1001;
+        }
+
+        .lang-switcher {
+            display: flex;
+            gap: 8px;
+        }
+
+        .lang-switcher button {
+            opacity: 0.7;
+            width: 40px;
+            height: 40px;
+        }
+
+        .lang-switcher button.lang-active {
+            opacity: 1;
+            border: 2px solid var(--link-color);
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        header {
+            text-align: center;
+            padding: 2rem 1rem;
+            /* AU LIEU DE "4rem 2rem" (réduit l'espace en haut et en bas) */
+            background: linear-gradient(135deg, var(--header-bg-start) 0%, var(--header-bg-end) 100%);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--header-text-color);
+
+            /* Base behaviour (Mobile): Sticky */
+            position: sticky;
+            top: 0;
+            z-index: 999;
+
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        /* MODIFICATION POUR PC UNIQUEMENT (Ecrans > 768px) */
+        @media (min-width: 769px) {
+            header {
+                position: fixed;
+                /* On fige l'entête */
+                width: 100%;
+                top: 0;
+                left: 0;
+            }
+
+            /* On pousse le contenu vers le bas pour ne pas qu'il soit caché par le header fixe */
+            body {
+                padding-top: 200px;
+                /* AU LIEU DE "250px" (ajustez cette valeur selon la taille finale désirée) */
+            }
+
+            /* Correction du padding si le header se compacte */
+            body:has(header.header-compact) {
+                padding-top: 100px;
+            }
+        }
+
+        header.header-compact {
+            padding: 0.8rem 2rem;
+            border-bottom-left-radius: 25px;
+            border-bottom-right-radius: 25px;
+            margin: 0 1.5rem;
+            top: 1rem;
+            width: auto;
+            background: var(--header-bg-start);
+        }
+
+        header.header-hidden {
+            transform: translateY(-150%);
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 150px;
+            height: 150px;
+            transform: translate(-50%, -50%);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            border-radius: 50%;
+            opacity: 0.25;
+            z-index: 0;
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+            transition: all 0.5s ease;
+        }
+
+        header.header-compact::before {
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0.5);
+        }
+
+        header h1,
+        header p {
+            text-shadow: 0px 2px 10px rgba(0, 0, 0, 0.15);
+            color: #FFFFFF;
+            position: relative;
+            z-index: 1;
+            transition: all 0.5s ease;
+        }
+
+        header h1 {
+            font-family: var(--title-font);
+            font-size: 2.5rem;
+            /* AU LIEU DE "3.5rem" */
+            margin: 0 0 0.5rem 0;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            /* AU LIEU DE "1.3rem" */
+            max-width: 650px;
+            margin: 0 auto;
+            font-style: italic;
+            opacity: 0.95;
+            font-weight: 400;
+            max-height: 100px;
+        }
+
+        header.header-compact p {
+            opacity: 0;
+            max-height: 0;
+            margin: 0;
+            transform: translateY(-10px);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+            perspective: 1000px;
+        }
+
+        .intro {
+            font-size: 1.25rem;
+            margin-bottom: 5rem;
+            text-align: center;
+            max-width: 750px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+
+        .chatbot-prompt {
+            display: inline-block;
+            margin-top: 1.5rem;
+            padding: 1rem 1.5rem;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: var(--glass-border);
+            border-left: 4px solid var(--project-border-color);
+            border-radius: 12px;
+            font-size: 1.1rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .project {
+            display: flex;
+            align-items: center;
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px) saturate(120%);
+            -webkit-backdrop-filter: blur(16px) saturate(120%);
+            border: var(--glass-border);
+            border-left: 0;
+            padding: 2.5rem;
+            margin-bottom: 4rem;
+            border-radius: var(--card-radius);
+            box-shadow: var(--glass-shadow);
+            gap: 3rem;
+            flex-wrap: wrap;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+            transform-style: preserve-3d;
+            will-change: transform;
+        }
+
+        .project::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 15%;
+            bottom: 15%;
+            width: 4px;
+            background-color: var(--project-border-color);
+            border-radius: 0 4px 4px 0;
+            opacity: 0.8;
+        }
+
+        .project.is-visible {
+            opacity: 1;
+            transform: translateY(0) rotateX(0) rotateY(0);
+        }
+
+        .project:hover {
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+            z-index: 10;
+        }
+
+        .project-visual {
+            flex: 0 0 180px;
+            text-align: center;
+            transform: translateZ(20px);
+            transition: transform 0.3s ease;
+        }
+
+        .project-visual img {
+            width: 100%;
+            height: auto;
+            border-radius: 16px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            transition: transform 0.5s ease;
+        }
+
+        .project:hover .project-visual img {
+            transform: scale(1.05);
+        }
+
+        .project-content {
+            flex: 1;
+            min-width: 250px;
+            transform: translateZ(10px);
+        }
+
+        .project-content h2 {
+            letter-spacing: -0.5px;
+            margin: 0 0 1rem 0;
+            font-size: 2rem;
+            color: var(--project-title-color);
+            font-family: var(--title-font);
+            font-weight: 700;
+        }
+
+        .project-content p {
+            margin: 0 0 1.5rem 0;
+            max-width: 65ch;
+            font-size: 1.05rem;
+            opacity: 0.9;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-tag {
+            background: rgba(var(--project-border-color), 0.1);
+            background-color: transparent;
+            border: 1px solid var(--project-border-color);
+            color: var(--text-color);
+            font-size: 0.8rem;
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-weight: 600;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+        }
+
+        .project-tag:hover {
+            background-color: var(--project-border-color);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .project-content a {
+            display: inline-block;
+            color: #fff;
+            background: linear-gradient(45deg, var(--link-color), #00c9ff);
+            padding: 10px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(0, 119, 204, 0.3);
+            transition: all 0.3s ease;
+            transform: translateZ(5px);
+            cursor: none;
+        }
+
+        .project-content a:hover {
+            transform: translateY(-3px) translateZ(5px);
+            box-shadow: 0 8px 25px rgba(0, 119, 204, 0.5);
+        }
+
+        #a-propos {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            padding: 5rem 2rem;
+            margin-top: 4rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+
+        .about-container {
+            max-width: 900px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .about-avatar {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            border: 4px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .about-avatar:hover {
+            transform: scale(1.05) rotate(5deg);
+        }
+
+        .about-text {
+            text-align: left;
+        }
+
+        .about-text h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--project-title-color);
+            margin: 0 0 1rem 0;
+            font-family: var(--title-font);
+        }
+
+        .about-text p {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            max-width: 60ch;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 2rem 8rem 2rem;
+            font-size: 0.9rem;
+            color: var(--footer-text-color);
+            background: rgba(0, 0, 0, 0.05);
+            position: relative;
+            z-index: 1;
+        }
+
+        .badge-new {
+            background: linear-gradient(135deg, #ff6b6b, #e74c3c);
+            color: white;
+            font-size: 0.7rem;
+            padding: 4px 10px;
+            border-radius: 12px;
+            margin-left: 10px;
+            vertical-align: middle;
+            font-weight: 700;
+            box-shadow: 0 2px 10px rgba(231, 76, 60, 0.4);
+            animation: pop 1.5s ease-out infinite alternate;
+        }
+
+        @keyframes pop {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(1.1);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .project {
+                flex-direction: column;
+                text-align: center;
+                padding: 2rem 1.5rem;
+                gap: 1.5rem;
+            }
+
+            .project::after {
+                top: 0;
+                bottom: auto;
+                left: 20%;
+                right: 20%;
+                height: 4px;
+                width: auto;
+                border-radius: 0 0 4px 4px;
+            }
+
+            .project-visual {
+                margin: 0 auto;
+                max-width: 150px;
+                transform: translateZ(0);
+            }
+
+            .project-tags {
+                justify-content: center;
+            }
+
+            header h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-container {
+                flex-direction: column;
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .about-text {
+                text-align: center;
+            }
+
+            /* Mobile Cursor Reset */
+            * {
+                cursor: auto !important;
+            }
+
+            #cursor-dot,
+            #cursor-outline {
+                display: none;
+            }
+        }
+
+        /* CUSTOM CURSOR STYLES */
+        #cursor-dot,
+        #cursor-outline {
+            position: fixed;
+            top: 0;
+            left: 0;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            z-index: 10002;
+            pointer-events: none;
+        }
+
+        #cursor-dot {
+            width: var(--cursor-size);
+            height: var(--cursor-size);
+            background-color: var(--cursor-color);
+        }
+
+        #cursor-outline {
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--cursor-color);
+            transition: width 0.2s, height 0.2s, background-color 0.2s;
+            mix-blend-mode: difference;
+        }
+
+        body.hovered #cursor-outline {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-width: 2px;
+        }
+
+        /* WARP OVERLAY */
+        #warp-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            z-index: 10005;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            mix-blend-mode: overlay;
+        }
+
+        body.warping {
+            animation: warpShake 0.5s cubic-bezier(.36, .07, .19, .97) both;
+        }
+
+        body.warping #warp-overlay {
+            opacity: 1;
+        }
+
+        @keyframes warpShake {
+            0% {
+                transform: scale(1);
+                filter: blur(0px);
+            }
+
+            50% {
+                transform: scale(1.05);
+                filter: blur(4px);
+            }
+
+            100% {
+                transform: scale(1);
+                filter: blur(0px);
+            }
+        }
+
+        /* HUD STYLES */
+        #ak-chrono-hud {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 9998;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 10px 25px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--project-border-color);
+            border-radius: 50px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            font-family: 'Rajdhani', 'Orbitron', monospace;
+            color: var(--text-color);
+            transition: all 0.5s ease;
+            opacity: 0;
+            animation: hudFadeIn 1s 1s forwards;
+        }
+
+        @keyframes hudFadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .ak-hud-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .ak-hud-label {
+            font-size: 0.55rem;
+            opacity: 0.7;
+            letter-spacing: 0.15em;
+            margin-bottom: 2px;
+            text-transform: uppercase;
+        }
+
+        #hud-hex,
+        #hud-min {
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: 0.05em;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .ak-hud-divider {
+            color: var(--project-border-color);
+            opacity: 0.5;
+            font-size: 1.2rem;
+            font-weight: 300;
+        }
+
+        .ak-binary-visual {
+            display: flex;
+            gap: 3px;
+        }
+
+        .bin-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: var(--text-color);
+            opacity: 0.2;
+            transition: all 0.2s;
+        }
+
+        .bin-dot.active {
+            opacity: 1;
+            background-color: var(--link-color);
+            box-shadow: 0 0 5px var(--link-color);
+        }
+
+        body.koncept-matrix-reloaded #ak-chrono-hud {
+            background: rgba(0, 20, 0, 0.8);
+            border: 1px solid #00ff41;
+            border-radius: 0;
+            box-shadow: 0 0 15px rgba(0, 255, 65, 0.2);
+            font-family: 'Courier Prime', monospace;
+            letter-spacing: -1px;
+        }
+
+        body.koncept-matrix-reloaded .bin-dot.active {
+            background-color: #00ff41;
+            box-shadow: 0 0 8px #00ff41;
+        }
+
+        body.koncept-fallout #ak-chrono-hud {
+            background: rgba(40, 30, 10, 0.8);
+            border: 2px solid var(--fallout-amber);
+            border-radius: 5px;
+            box-shadow: 0 0 10px var(--fallout-amber);
+            color: var(--fallout-amber);
+        }
+
+        body.koncept-fallout .bin-dot {
+            border-radius: 0;
+        }
+
+        body.koncept-fallout .bin-dot.active {
+            background-color: var(--fallout-amber);
+            box-shadow: 0 0 5px var(--fallout-amber);
+        }
+
+        body.koncept-vice-city #ak-chrono-hud {
+            background: rgba(29, 15, 43, 0.8);
+            border: 2px solid #00F3FF;
+            border-radius: 12px;
+            box-shadow: 0 0 15px #ff48c4, inset 0 0 10px rgba(0, 243, 255, 0.2);
+            font-family: 'Bebas Neue', sans-serif;
+        }
+
+        body.koncept-vice-city .ak-hud-label {
+            color: #ff48c4;
+        }
+
+        body.koncept-vice-city #hud-hex,
+        body.koncept-vice-city #hud-min {
+            color: #00F3FF;
+            text-shadow: 0 0 5px #00F3FF;
+            font-size: 1.3rem;
+        }
+
+        body.koncept-vice-city .bin-dot.active {
+            background-color: #ff48c4;
+            box-shadow: 0 0 8px #ff48c4;
+        }
+
+        @media (max-width: 600px) {
+
+            /* On cache complètement le HUD sur mobile */
+            #ak-chrono-hud {
+                display: none !important;
+            }
+        }
+
+        /* Suppression de l'ancien widget central */
+        #orba-companion,
+        #orba-trigger,
+        #orba-interface {
+            display: none !important;
+        }
+
+        /* Repositionnement de la bulle pour Alexbot */
+        #orba-speech {
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid #00bcd4;
+            /* Couleur bleue Alexbot */
+            color: #fff;
+            font-size: 0.85rem;
+            padding: 12px 18px;
+            border-radius: 18px 18px 2px 18px;
+            /* Style bulle de BD */
+            backdrop-filter: blur(10px);
+            transform: scale(0);
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform-origin: bottom right;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+            pointer-events: none;
+        }
+
+        #orba-speech.visible {
+            transform: scale(1);
+        }
+
+        #orba-trigger {
+            width: 80px;
+            /* Un tout petit peu plus gros pour être le "Cœur" */
+            height: 80px;
+            border-radius: 50%;
+            position: relative;
+            background: transparent;
+            border: none;
+            padding: 0;
+            transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            /* Effet rebond */
+            cursor: pointer;
+            /* Important pour le desktop */
+        }
+
+        #orba-trigger:hover {
+            transform: scale(1.15);
+        }
+
+        #orba-trigger.active {
+            transform: scale(0.9);
+        }
+
+        /* Petit effet de clic */
+
+        .orba-planet-container {
+            position: absolute;
+            inset: 0;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.6);
+            /* Fond plus transparent */
+            backdrop-filter: blur(4px);
+            overflow: hidden;
+            animation: planet-spin 20s linear infinite;
+            box-shadow: 0 0 20px var(--link-color), inset 0 0 10px var(--link-color);
+        }
+
+        .orba-planet-core {
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(135deg, transparent 20%, var(--link-color) 50%, #fff 100%);
+            opacity: 0.3;
+        }
+
+        .orba-logo-img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            /* Logo ajusté */
+            z-index: 10;
+            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8));
+        }
+
+        /* La fenêtre d'interface centrée au dessus */
+        #orba-interface {
+            position: absolute;
+            bottom: 100px;
+            /* Juste au dessus du bouton */
+            left: 50%;
+            /* Centré par rapport au parent */
+            transform: translateX(-50%) translateY(20px);
+            /* Départ décalé pour anim */
+            width: 360px;
+            height: 550px;
+            background: rgba(10, 10, 15, 0.95);
+            /* Fond très sombre */
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--project-border-color);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 20px rgba(var(--link-color), 0.2);
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+            z-index: 10000;
+        }
+
+        #orba-interface.open {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .orba-header {
+            height: 40px;
+            background: rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 15px;
+            color: var(--link-color);
+            font-family: var(--title-font);
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Adaptation Mobile : On prend tout l'écran ou presque */
+        @media (max-width: 768px) {
+            #orba-interface {
+                width: 90vw;
+                height: 70vh;
+                bottom: 110px;
+            }
+        }
+
+        /* 1. On cible uniquement le bouton de lancement principal */
+        /* On ajoute :not([type="submit"]) pour éviter de toucher au bouton d'envoi */
+        #root button:not([aria-label*="close"]):not([type="submit"]) {
+            background-image: url('Alexbot.webp') !important;
+            background-size: cover !important;
+            background-position: center !important;
+            background-repeat: no-repeat !important;
+            width: 60px !important;
+            height: 60px !important;
+            border-radius: 50% !important;
+            border: 2px solid #00bcd4 !important;
+            color: transparent !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            position: relative !important;
+            box-shadow: 0 0 15px rgba(0, 188, 212, 0.4);
+            transition: transform 0.3s ease;
+        }
+
+        /* 2. IMPORTANT : On nettoie les boutons à l'intérieur de la fenêtre de chat */
+        /* Cela empêche l'image de se répéter sur le bouton 'Envoyer' ou dans l'en-tête */
+        #root [role="dialog"] button,
+        #root div[class*="container"] button,
+        #root button[type="submit"] {
+            background-image: none !important;
+            background-color: transparent;
+            /* Ou la couleur par défaut de votre chatbot */
+            width: auto !important;
+            height: auto !important;
+            border-radius: 4px !important;
+            /* Ou le style d'origine */
+            border: none !important;
+        }
+
+        /* 3. On cache TOUT contenu original dans le bouton de lancement (y compris les images/img) */
+        #root button svg,
+        #root button i,
+        #root button span,
+        #root button img {
+            display: none !important;
+        }
+
+        /* --- MODAL PDF --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            z-index: 100000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: var(--glass-bg);
+            border: var(--glass-border);
+            border-radius: var(--card-radius);
+            width: 90%;
+            max-width: 1100px;
+            height: 85vh;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+            transform: translateY(30px) scale(0.95);
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            overflow: hidden;
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: translateY(0) scale(1);
+        }
+
+        .modal-header {
+            height: 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 25px;
+            background: rgba(0, 0, 0, 0.4);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .modal-header h3 {
+            margin: 0;
+            font-size: 1.2rem;
+            font-family: var(--title-font);
+            color: var(--text-color);
+            letter-spacing: 1px;
+        }
+
+        .modal-close-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-color);
+            font-size: 2rem;
+            transition: all 0.3s ease;
+            line-height: 1;
+            opacity: 0.7;
+            cursor: pointer !important;
+        }
+
+        .modal-close-btn:hover {
+            color: #ff48c4;
+            transform: scale(1.2) rotate(90deg);
+            opacity: 1;
+        }
+
+        .modal-body {
+            flex: 1;
+            width: 100%;
+            background: #e5e5e5;
+        }
+
+        .modal-body iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .action-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: #fff;
+            background: linear-gradient(45deg, var(--link-color), #00c9ff);
+            padding: 12px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(0, 119, 204, 0.3);
+            transition: all 0.3s ease;
+            border: none;
+            font-family: var(--main-font);
+            font-size: 1rem;
+            margin-top: 1.5rem;
+            cursor: pointer !important;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 119, 204, 0.5);
+            color: #fff;
+        }
+    </style>
 </head>
+
 <body>
-<div id="warp-overlay"></div>
-<div id="cursor-dot"></div>
-<div id="cursor-outline"></div>
+    <div id="warp-overlay"></div>
+    <div id="cursor-dot"></div>
 
-<canvas id="matrix-canvas"></canvas>
-<canvas id="space-canvas"></canvas>
-<canvas id="vice-city-canvas"></canvas>
-<canvas id="fallout-canvas"></canvas>
-
-<button id="koncept-mode-toggle" class="koncept-mode-toggle common-toggle-button" aria-label="Changer le Koncept Mode" data-key="koncept_mode_label">
-    <span class="koncept-mode-icon">🎨</span>
-</button>
-
-<div class="top-right-controls">
-    <div class="lang-switcher">
-        <button id="lang-fr-btn" class="common-toggle-button" aria-label="Passer en Français">🇫🇷</button>
-        <button id="lang-en-btn" class="common-toggle-button" aria-label="Switch to English">🇬🇧</button>
+    <!-- PDF Modal -->
+    <div id="pdf-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 data-key="pdf_modal_title">Analyse du Koncept Universe</h3>
+                <button id="close-pdf-btn" class="modal-close-btn" aria-label="Fermer">&times;</button>
+            </div>
+            <div class="modal-body">
+                <iframe src="ALEX_KONCEPT_UNIVERSE.pdf#toolbar=0&navpanes=0&scrollbar=0" title="PDF Analysis"></iframe>
+            </div>
+        </div>
     </div>
-    <button id="theme-toggle" class="theme-toggle common-toggle-button" aria-label="Changer le thème" data-key="theme_toggle_label"></button>
-    <button id="sfx-toggle" class="common-toggle-button" aria-label="Mute Sound Effects">🔊</button>
-</div>
+    <div id="cursor-outline"></div>
 
-<header id="main-header">
-    <h1 id="header-title">Alex Koncept</h1>
-    <p id="header-subtitle" data-key="header_subtitle">Créateur indépendant – Montres, Web, Code, IA & Crypto</p>
-</header>
+    <canvas id="matrix-canvas"></canvas>
+    <canvas id="space-canvas"></canvas>
+    <canvas id="vice-city-canvas"></canvas>
+    <canvas id="fallout-canvas"></canvas>
 
-<div class="container">
-    <p class="intro" data-key="intro_text"></p>
+    <button id="koncept-mode-toggle" class="koncept-mode-toggle common-toggle-button"
+        aria-label="Changer le Koncept Mode" data-key="koncept_mode_label">
+        <span class="koncept-mode-icon">🎨</span>
+    </button>
 
-    <div id="projects-container">
-        <!-- PROJET ORBA AJOUTÉ ICI -->
-        <div class="project">
-          <div class="project-visual">
-            <img src="Orba_logo.webp" alt="Orba - Interface Cognitive Multimodale">
-          </div>
-          <div class="project-content">
-            <h2 data-key="project_orba_title">ORBA <span class="badge-new">NEW</span></h2>
-            <div class="project-tags">
-              <span class="project-tag">IA Native Audio</span>
-              <span class="project-tag">Vision Augmentée</span>
-              <span class="project-tag">Three.js</span>
-            </div>
-            <p data-key="project_orba_desc" title="Orba : L'interface cognitive augmentée. Bien plus qu'un assistant, c'est un prolongement de l'esprit. Native Audio, vision temps réel et mémoire persistante : j'ai conçu l'IA que je voulais avoir, capable de voir ce que je vois et de se souvenir de tout.">
-              Bien plus qu'un simple assistant vocal, Orba est une entité IA Native Audio conçue comme un prolongement de votre propre cognition. 
-              Elle fusionne une intelligence de raisonnement avancée (Gemini 2.5 Flash) avec une interface sensorielle complète et une mémoire persistante pour une symbiose homme-machine inédite.
-            </p>
-            <p>
-              <a href="https://orba-website-byalexkoncept.netlify.app/" target="_blank" rel="noopener noreferrer" data-key="discover_orba_btn">
-                Découvrir l'expérience Orba
-              </a>
-            </p>
-          </div>
+    <div class="top-right-controls">
+        <div class="lang-switcher">
+            <button id="lang-fr-btn" class="common-toggle-button" aria-label="Passer en Français">🇫🇷</button>
+            <button id="lang-en-btn" class="common-toggle-button" aria-label="Switch to English">🇬🇧</button>
         </div>
-        <!-- FIN PROJET ORBA -->
+        <button id="theme-toggle" class="theme-toggle common-toggle-button" aria-label="Changer le thème"
+            data-key="theme_toggle_label"></button>
+        <button id="sfx-toggle" class="common-toggle-button" aria-label="Mute Sound Effects">🔊</button>
+    </div>
 
-        <div class="project">
-            <div class="project-visual"><img src="LogoAK.png" alt="Montres Alex Koncept"></div>
-            <div class="project-content">
-                <h2 data-key="project_watches_title">Montres Alex Koncept</h2>
-                <div class="project-tags"><span class="project-tag">Design</span><span class="project-tag">Horlogerie</span></div>
-                <p data-key="project_watches_desc">Création horlogère indépendante, modding artistique, boîtier signature AK.</p>
-                <p><a href="https://alexkoncept.wordpress.com/" target="_blank" rel="noopener noreferrer" data-key="visit_site_btn">Visiter le site</a></p>
-            </div>
-        </div>
-        <div class="project">
-            <div class="project-visual"><img src="HyperNormalSites.webp" alt="HyperNormalSites"></div>
-            <div class="project-content">
-                <h2>HyperNormalSites</h2>
-                <div class="project-tags"><span class="project-tag">HTML</span><span class="project-tag">CSS</span><span class="project-tag">Web Art</span></div>
-                <p data-key="project_hns_desc">Sites dystopiques & interactifs pour se questionner sur le futur à travers la technologie, la société et l'absurde.</p>
-                <p><a href="https://alexkoncept.github.io/HyperNormalSites/" target="_blank" rel="noopener noreferrer" data-key="explore_collection_btn">Explorer la collection</a></p>
-            </div>
-        </div>
-        <div class="project">
-            <div class="project-visual"><img src="Tamacodechi.webp" alt="Tamacodechi"></div>
-            <div class="project-content">
-                <h2 data-key="project_tamacodechi_title">Tamacodechi</h2>
-                <div class="project-tags"><span class="project-tag">JavaScript</span><span class="project-tag">HTML/CSS</span></div>
-                <p data-key="project_tamacodechi_desc">Ton Tamagotchi développeur dans ton navigateur, il évolue selon ta façon de t'en occuper.</p>
-                <p><a href="https://alexkoncept.github.io/tamacodechi/" target="_blank" rel="noopener noreferrer" data-key="view_github_btn">Voir le projet GitHub</a></p>
-            </div>
-        </div>
-        <div class="project">
-            <div class="project-visual"><img src="ai_odyssey.webp" alt="IA Chatbot"></div>
-            <div class="project-content">
-                <h2 data-key="project_odyssey_title">AI Odyssey <span class="badge-new">NEW</span></h2>
-                <div class="project-tags"><span class="project-tag">UI/UX</span><span class="project-tag">3D</span><span class="project-tag">PWA</span></div>
-                <p data-key="project_ia_desc">Une exploration immersive de l'IA : Histoire, Éthique, Galerie interactive (Visual Evidence), et générateur de Prompt (Prompt Crafter).</p>
-                <p><a href="https://alexkoncept.github.io/ai-odyssey/" target="_blank" rel="noopener noreferrer" class="project-link" data-key="view_project_btn">
-                Voir le projet en ligne</a></p>
-            </div>
-        </div>
-        <div class="project">
-            <div class="project-visual"><img src="WorldPeaceToken.jpg" alt="World Peace Token"></div>
-            <div class="project-content">
-                <h2 data-key="project_wpt_title">World Peace Token (WPT)</h2>
-                <div class="project-tags"><span class="project-tag">Blockchain</span><span class="project-tag">Polygon</span><span class="project-tag">Crypto</span></div>
-                <p data-key="project_wpt_desc">Crypto expérimentale lancée sur Polygon. Un projet utopiste, entre rêve et technologie.</p>
-                <p><a href="https://polygonscan.com/address/0x0f6c9ec672c4851d9fb4518145f816d12543f48a#code" target="_blank" rel="noopener noreferrer" data-key="view_polygonscan_btn">Voir sur Polygonscan</a></p>
-            </div>
-        </div>
-        <div class="project">
-            <div class="project-visual"><img src="OpticGardenKoncept.webp" alt="Opti Garden Koncept"></div>
-            <div class="project-content">
-                <h2>Optic Garden Koncept</h2>
-                <div class="project-tags"><span class="project-tag">JavaScript</span><span class="project-tag">Créatif</span></div>
-                <p data-key="project_optic_desc">Générateur d’illusions visuelles interactives. Semez une idée, regardez-la éclore.</p>
-                <p><a href="https://alexkoncept.github.io/optigardenkoncept/" target="_blank" rel="noopener noreferrer" data-key="view_github_btn">Voir le projet GitHub</a></p>
-            </div>
-        </div>
-        <div class="project">
-            <div class="project-visual"><img src="SolarEstateHub.webp" alt="Solar Estate Hub"></div>
-            <div class="project-content">
-                <h2>Solar Estate Hub</h2>
-                <div class="project-tags"><span class="project-tag">React</span><span class="project-tag">Three.js</span></div>
-                <p data-key="project_solar_desc">Choisissez votre planète comme nouveau foyer.</p>
-                <p><a href="https://alexkoncept.github.io/solarestatehub/" target="_blank" rel="noopener noreferrer" data-key="view_live_project_btn">Voir le projet en direct</a></p>
-            </div>
-        </div>
-        <div class="project">
-            <div class="project-visual"><img src="MDIYGA.webp" alt="Make DIY Great Again"></div>
-            <div class="project-content">
-                <h2>Make DIY Great Again </h2>
-                <div class="project-tags"><span class="project-tag">React</span><span class="project-tag">PWA</span></div>
-                <p data-key="project_mdiyga_desc">Redonne vie à tes objets oubliés. Une app pensée pour bricoler malin, inspirer, et transmettre le plaisir du faire soi-même.</p>
-                <p><a href="https://makediygreatagain.netlify.app/" target="_blank" rel="noopener noreferrer" data-key="discover_app_btn">Découvrir l'app en ligne</a></p>
-            </div>
-        </div>
-        <div class="project">
-            <div class="project-visual"><img src="AK001.webp" alt="AK 001 – Montre personnalisable"></div>
-            <div class="project-content">
-                <h2 data-key="project_ak001_title">AK 001 – Montre personnalisable </h2>
-                 <div class="project-tags"><span class="project-tag">3D</span><span class="project-tag">Horlogerie</span><span class="project-tag">Design</span></div>
-                <p data-key="project_ak001_desc"> Le premier modèle imaginé par Alex Koncept. Élégante, moderne, et 100% personnalisable.</p>
-                <p><a href="https://ak001seriesbyalexkoncept.netlify.app/" target="_blank" rel="noopener noreferrer" data-key="discover_model_btn">Découvrir le modèle AK 001</a></p>
-            </div>
-        </div>
-        <div class="project">
-            <div class="project-visual"><img src="BodyKoncept.webp" alt="Vitrine web pour l'application Body Koncept"></div>
-            <div class="project-content">
-                <h2 data-key="project_bodykoncept_title">Body Koncept<span class="badge-new">NEW</span></h2>
-                <div class="project-tags"><span class="project-tag">React</span><span class="project-tag">Vite</span><span class="project-tag">IA</span><span class="project-tag">PWA</span></div>
-                <p data-key="project_bodykoncept_desc">Découvrez l'entraînement personnalisé par IA qui s'adapte à vos objectifs, votre morphologie et votre mode de vie.</p>
-                <p><a href="https://alexkoncept.github.io/bodykoncept-officiel/" target="_blank" rel="noopener noreferrer" data-key="view_live_btn">Voir le Projet en Ligne</a></p>
-            </div>
-        </div>
-        <div class="project">
-            <div class="project-visual"><img src="AKULAB.webp" alt="AK Universe Lab"></div>
-            <div class="project-content">
-                <h2 data-key="project_akulab_title">AK Universe Lab <span class="badge-new">NEW</span></h2>
-                <div class="project-tags">
-                    <span class="project-tag">UI/UX</span>
-                    <span class="project-tag">3D</span>
-                    <span class="project-tag">Créatif</span>
+    <header id="main-header">
+        <h1 id="header-title">Alex Koncept</h1>
+        <p id="header-subtitle" data-key="header_subtitle">Créateur indépendant – Montres, Web, Code, IA & Crypto</p>
+    </header>
+
+    <div class="container">
+        <p class="intro" data-key="intro_text"></p>
+
+        <div id="projects-container">
+            <!-- PROJET ORBA AJOUTÉ ICI -->
+            <div class="project">
+                <div class="project-visual">
+                    <img src="Orba_logo.webp" alt="Orba - Interface Cognitive Multimodale">
                 </div>
-                <p data-key="project_akulab_desc">AK Universe Lab est une vitrine immersive fusionnant logo, mode, technologie et expérimentation. Organisé en protocoles (vêtements, accessoires, objets), le site offre un design futuriste, un essayage virtuel par IA et une expérience interactive unique.</p>
-                <p><a href="https://alexkoncept.github.io/ak-universe-lab/" target="_blank" rel="noopener noreferrer" data-key="discover_site_btn">Découvrir le site en ligne</a></p>
-            </div>
-        </div>
-        <div class="project">
-          <div class="project-visual">
-            <img src="TOSE.webp" alt="Timeline OS Evolution">
-          </div>
-          <div class="project-content">
-            <h2 data-key="project_tose_title">Timeline OS Evolution <span class="badge-new">NEW</span></h2>
-            <div class="project-tags">
-              <span class="project-tag">UI/UX</span>
-              <span class="project-tag">Système</span>
-              <span class="project-tag">Futuriste</span>
-            </div>
-            <p data-key="project_tose_desc">
-              Projet interactif retraçant l’évolution des systèmes d’exploitation, de Windows 3.1 à macOS Big Sur, à travers une timeline web immersive.
-        Chaque OS est fidèlement recréé pour célébrer l’histoire de l’informatique et introduire AK OS, la vision moderne et créative signée Alex Koncept.
-            </p>
-            <p>
-              <a href="https://timeline-os-evolution.netlify.app/" target="_blank" rel="noopener noreferrer" data-key="discover_site_btn">
-                Découvrir le site en ligne
-              </a>
-            </p>
-          </div>
-        </div>
-        <div class="project">
-            <div class="project-visual">
-                <img src="HSK.webp" alt="HSK - Hybrid Sound Koncept">
-            </div>
-            <div class="project-content">
-                <h2 data-key="project_hsk_title">HSK — Hybrid Sound Koncept <span class="badge-new">NEW</span></h2>
-                <div class="project-tags">
-                    <span class="project-tag">Musique</span>
-                    <span class="project-tag">IA</span>
-                    <span class="project-tag">Création numérique</span>
+                <div class="project-content">
+                    <h2 data-key="project_orba_title">ORBA <span class="badge-new">NEW</span></h2>
+                    <div class="project-tags">
+                        <span class="project-tag">IA Native Audio</span>
+                        <span class="project-tag">Vision Augmentée</span>
+                        <span class="project-tag">Three.js</span>
+                    </div>
+                    <p data-key="project_orba_desc"
+                        title="Orba : L'interface cognitive augmentée. Bien plus qu'un assistant, c'est un prolongement de l'esprit. Native Audio, vision temps réel et mémoire persistante : j'ai conçu l'IA que je voulais avoir, capable de voir ce que je vois et de se souvenir de tout.">
+                        Bien plus qu'un simple assistant vocal, Orba est une entité IA Native Audio conçue comme un
+                        prolongement de votre propre cognition.
+                        Elle fusionne une intelligence de raisonnement avancée (Gemini 2.5 Flash) avec une interface
+                        sensorielle complète et une mémoire persistante pour une symbiose homme-machine inédite.
+                    </p>
+                    <p>
+                        <a href="https://orba-website-byalexkoncept.netlify.app/" target="_blank"
+                            rel="noopener noreferrer" data-key="discover_orba_btn">
+                            Découvrir l'expérience Orba
+                        </a>
+                    </p>
                 </div>
-                <p data-key="project_hsk_desc">
-                    HSK (Hybrid Sound Koncept) est un projet musical expérimental fusionnant des styles opposés grâce à l’intelligence artificielle. 
-                    Créé avec ChatGPT, Suno et ElevenLabs, il donne vie à un artiste numérique capable de mêler funk, techno, reggae, metal et bien plus encore. Une exploration audacieuse où le groove humain rencontre la précision algorithmique.
-                </p>
-                <p>
-                    <a href="https://hsk-by-alexkoncept.netlify.app/" target="_blank" rel="noopener noreferrer" data-key="discover_site_btn">
-                        Découvrir le projet
-                    </a>
-                </p>
             </div>
-        </div>
-        <div class="project" id="coming-soon-project">
-            <div class="project-visual"><img src="AK_enTravaux.webp" alt="Prochain Koncept en développement"></div>
-            <div class="project-content">
-                <h2 data-key="project_next_title">Prochain Koncept en cours...</h2>
-                <p data-key="project_next_desc">Un nouveau projet prend forme dans l’atelier AK, à très bientôt pour en découvrir plus.</p>
+            <!-- FIN PROJET ORBA -->
+
+            <div class="project">
+                <div class="project-visual"><img src="LogoAK.png" alt="Montres Alex Koncept"></div>
+                <div class="project-content">
+                    <h2 data-key="project_watches_title">Montres Alex Koncept</h2>
+                    <div class="project-tags"><span class="project-tag">Design</span><span
+                            class="project-tag">Horlogerie</span></div>
+                    <p data-key="project_watches_desc">Création horlogère indépendante, modding artistique, boîtier
+                        signature AK.</p>
+                    <p><a href="https://alexkoncept.wordpress.com/" target="_blank" rel="noopener noreferrer"
+                            data-key="visit_site_btn">Visiter le site</a></p>
+                </div>
+            </div>
+            <div class="project">
+                <div class="project-visual"><img src="HyperNormalSites.webp" alt="HyperNormalSites"></div>
+                <div class="project-content">
+                    <h2>HyperNormalSites</h2>
+                    <div class="project-tags"><span class="project-tag">HTML</span><span
+                            class="project-tag">CSS</span><span class="project-tag">Web Art</span></div>
+                    <p data-key="project_hns_desc">Sites dystopiques & interactifs pour se questionner sur le futur à
+                        travers la technologie, la société et l'absurde.</p>
+                    <p><a href="https://alexkoncept.github.io/HyperNormalSites/" target="_blank"
+                            rel="noopener noreferrer" data-key="explore_collection_btn">Explorer la collection</a></p>
+                </div>
+            </div>
+            <div class="project">
+                <div class="project-visual"><img src="Tamacodechi.webp" alt="Tamacodechi"></div>
+                <div class="project-content">
+                    <h2 data-key="project_tamacodechi_title">Tamacodechi</h2>
+                    <div class="project-tags"><span class="project-tag">JavaScript</span><span
+                            class="project-tag">HTML/CSS</span></div>
+                    <p data-key="project_tamacodechi_desc">Ton Tamagotchi développeur dans ton navigateur, il évolue
+                        selon ta façon de t'en occuper.</p>
+                    <p><a href="https://alexkoncept.github.io/tamacodechi/" target="_blank" rel="noopener noreferrer"
+                            data-key="view_github_btn">Voir le projet GitHub</a></p>
+                </div>
+            </div>
+            <div class="project">
+                <div class="project-visual"><img src="ai_odyssey.webp" alt="IA Chatbot"></div>
+                <div class="project-content">
+                    <h2 data-key="project_odyssey_title">AI Odyssey <span class="badge-new">NEW</span></h2>
+                    <div class="project-tags"><span class="project-tag">UI/UX</span><span
+                            class="project-tag">3D</span><span class="project-tag">PWA</span></div>
+                    <p data-key="project_ia_desc">Une exploration immersive de l'IA : Histoire, Éthique, Galerie
+                        interactive (Visual Evidence), et générateur de Prompt (Prompt Crafter).</p>
+                    <p><a href="https://alexkoncept.github.io/ai-odyssey/" target="_blank" rel="noopener noreferrer"
+                            class="project-link" data-key="view_project_btn">
+                            Voir le projet en ligne</a></p>
+                </div>
+            </div>
+            <div class="project">
+                <div class="project-visual"><img src="WorldPeaceToken.jpg" alt="World Peace Token"></div>
+                <div class="project-content">
+                    <h2 data-key="project_wpt_title">World Peace Token (WPT)</h2>
+                    <div class="project-tags"><span class="project-tag">Blockchain</span><span
+                            class="project-tag">Polygon</span><span class="project-tag">Crypto</span></div>
+                    <p data-key="project_wpt_desc">Crypto expérimentale lancée sur Polygon. Un projet utopiste, entre
+                        rêve et technologie.</p>
+                    <p><a href="https://polygonscan.com/address/0x0f6c9ec672c4851d9fb4518145f816d12543f48a#code"
+                            target="_blank" rel="noopener noreferrer" data-key="view_polygonscan_btn">Voir sur
+                            Polygonscan</a></p>
+                </div>
+            </div>
+            <div class="project">
+                <div class="project-visual"><img src="OpticGardenKoncept.webp" alt="Opti Garden Koncept"></div>
+                <div class="project-content">
+                    <h2>Optic Garden Koncept</h2>
+                    <div class="project-tags"><span class="project-tag">JavaScript</span><span
+                            class="project-tag">Créatif</span></div>
+                    <p data-key="project_optic_desc">Générateur d’illusions visuelles interactives. Semez une idée,
+                        regardez-la éclore.</p>
+                    <p><a href="https://alexkoncept.github.io/optigardenkoncept/" target="_blank"
+                            rel="noopener noreferrer" data-key="view_github_btn">Voir le projet GitHub</a></p>
+                </div>
+            </div>
+            <div class="project">
+                <div class="project-visual"><img src="SolarEstateHub.webp" alt="Solar Estate Hub"></div>
+                <div class="project-content">
+                    <h2>Solar Estate Hub</h2>
+                    <div class="project-tags"><span class="project-tag">React</span><span
+                            class="project-tag">Three.js</span></div>
+                    <p data-key="project_solar_desc">Choisissez votre planète comme nouveau foyer.</p>
+                    <p><a href="https://alexkoncept.github.io/solarestatehub/" target="_blank" rel="noopener noreferrer"
+                            data-key="view_live_project_btn">Voir le projet en direct</a></p>
+                </div>
+            </div>
+            <div class="project">
+                <div class="project-visual"><img src="MDIYGA.webp" alt="Make DIY Great Again"></div>
+                <div class="project-content">
+                    <h2>Make DIY Great Again </h2>
+                    <div class="project-tags"><span class="project-tag">React</span><span class="project-tag">PWA</span>
+                    </div>
+                    <p data-key="project_mdiyga_desc">Redonne vie à tes objets oubliés. Une app pensée pour bricoler
+                        malin, inspirer, et transmettre le plaisir du faire soi-même.</p>
+                    <p><a href="https://makediygreatagain.netlify.app/" target="_blank" rel="noopener noreferrer"
+                            data-key="discover_app_btn">Découvrir l'app en ligne</a></p>
+                </div>
+            </div>
+            <div class="project">
+                <div class="project-visual"><img src="AK001.webp" alt="AK 001 – Montre personnalisable"></div>
+                <div class="project-content">
+                    <h2 data-key="project_ak001_title">AK 001 – Montre personnalisable </h2>
+                    <div class="project-tags"><span class="project-tag">3D</span><span
+                            class="project-tag">Horlogerie</span><span class="project-tag">Design</span></div>
+                    <p data-key="project_ak001_desc"> Le premier modèle imaginé par Alex Koncept. Élégante, moderne, et
+                        100% personnalisable.</p>
+                    <p><a href="https://ak001seriesbyalexkoncept.netlify.app/" target="_blank" rel="noopener noreferrer"
+                            data-key="discover_model_btn">Découvrir le modèle AK 001</a></p>
+                </div>
+            </div>
+            <div class="project">
+                <div class="project-visual"><img src="BodyKoncept.webp"
+                        alt="Vitrine web pour l'application Body Koncept"></div>
+                <div class="project-content">
+                    <h2 data-key="project_bodykoncept_title">Body Koncept<span class="badge-new">NEW</span></h2>
+                    <div class="project-tags"><span class="project-tag">React</span><span
+                            class="project-tag">Vite</span><span class="project-tag">IA</span><span
+                            class="project-tag">PWA</span></div>
+                    <p data-key="project_bodykoncept_desc">Découvrez l'entraînement personnalisé par IA qui s'adapte à
+                        vos objectifs, votre morphologie et votre mode de vie.</p>
+                    <p><a href="https://alexkoncept.github.io/bodykoncept-officiel/" target="_blank"
+                            rel="noopener noreferrer" data-key="view_live_btn">Voir le Projet en Ligne</a></p>
+                </div>
+            </div>
+            <div class="project">
+                <div class="project-visual"><img src="AKULAB.webp" alt="AK Universe Lab"></div>
+                <div class="project-content">
+                    <h2 data-key="project_akulab_title">AK Universe Lab <span class="badge-new">NEW</span></h2>
+                    <div class="project-tags">
+                        <span class="project-tag">UI/UX</span>
+                        <span class="project-tag">3D</span>
+                        <span class="project-tag">Créatif</span>
+                    </div>
+                    <p data-key="project_akulab_desc">AK Universe Lab est une vitrine immersive fusionnant logo, mode,
+                        technologie et expérimentation. Organisé en protocoles (vêtements, accessoires, objets), le site
+                        offre un design futuriste, un essayage virtuel par IA et une expérience interactive unique.</p>
+                    <p><a href="https://alexkoncept.github.io/ak-universe-lab/" target="_blank"
+                            rel="noopener noreferrer" data-key="discover_site_btn">Découvrir le site en ligne</a></p>
+                </div>
+            </div>
+            <div class="project">
+                <div class="project-visual">
+                    <img src="TOSE.webp" alt="Timeline OS Evolution">
+                </div>
+                <div class="project-content">
+                    <h2 data-key="project_tose_title">Timeline OS Evolution <span class="badge-new">NEW</span></h2>
+                    <div class="project-tags">
+                        <span class="project-tag">UI/UX</span>
+                        <span class="project-tag">Système</span>
+                        <span class="project-tag">Futuriste</span>
+                    </div>
+                    <p data-key="project_tose_desc">
+                        Projet interactif retraçant l’évolution des systèmes d’exploitation, de Windows 3.1 à macOS Big
+                        Sur, à travers une timeline web immersive.
+                        Chaque OS est fidèlement recréé pour célébrer l’histoire de l’informatique et introduire AK OS,
+                        la vision moderne et créative signée Alex Koncept.
+                    </p>
+                    <p>
+                        <a href="https://timeline-os-evolution.netlify.app/" target="_blank" rel="noopener noreferrer"
+                            data-key="discover_site_btn">
+                            Découvrir le site en ligne
+                        </a>
+                    </p>
+                </div>
+            </div>
+            <div class="project">
+                <div class="project-visual">
+                    <img src="HSK.webp" alt="HSK - Hybrid Sound Koncept">
+                </div>
+                <div class="project-content">
+                    <h2 data-key="project_hsk_title">HSK — Hybrid Sound Koncept <span class="badge-new">NEW</span></h2>
+                    <div class="project-tags">
+                        <span class="project-tag">Musique</span>
+                        <span class="project-tag">IA</span>
+                        <span class="project-tag">Création numérique</span>
+                    </div>
+                    <p data-key="project_hsk_desc">
+                        HSK (Hybrid Sound Koncept) est un projet musical expérimental fusionnant des styles opposés
+                        grâce à l’intelligence artificielle.
+                        Créé avec ChatGPT, Suno et ElevenLabs, il donne vie à un artiste numérique capable de mêler
+                        funk, techno, reggae, metal et bien plus encore. Une exploration audacieuse où le groove humain
+                        rencontre la précision algorithmique.
+                    </p>
+                    <p>
+                        <a href="https://hsk-by-alexkoncept.netlify.app/" target="_blank" rel="noopener noreferrer"
+                            data-key="discover_site_btn">
+                            Découvrir le projet
+                        </a>
+                    </p>
+                </div>
+            </div>
+            <div class="project" id="coming-soon-project">
+                <div class="project-visual"><img src="AK_enTravaux.webp" alt="Prochain Koncept en développement"></div>
+                <div class="project-content">
+                    <h2 data-key="project_next_title">Prochain Koncept en cours...</h2>
+                    <p data-key="project_next_desc">Un nouveau projet prend forme dans l’atelier AK, à très bientôt pour
+                        en découvrir plus.</p>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<section id="a-propos">
-    <div class="about-container">
-        <img src="Avatar.webp" alt="Avatar Alex" class="about-avatar">
-        <div class="about-text">
-            <h2 data-key="about_title">À propos</h2>
-            <p data-key="about_desc">Moi c'est Alex, passionné d’informatique, de DIY, d’horlogerie et de nouvelles technologies.<br>Ce site présente mes projets personnels regroupés sous <strong>Alex Koncept</strong> : montres, IA, expériences web et plus encore.</p>
-            <p class="contact-info">
-                <span data-key="contact_label">Contact</span>: <a href="mailto:alexkonceptuniverse@gmail.com">alexkonceptuniverse@gmail.com</a>
-            </p>
+    <section id="a-propos">
+        <div class="about-container">
+            <img src="Avatar.webp" alt="Avatar Alex" class="about-avatar">
+            <div class="about-text">
+                <h2 data-key="about_title">À propos</h2>
+                <p data-key="about_desc">Moi c'est Alex, passionné d’informatique, de DIY, d’horlogerie et de nouvelles
+                    technologies.<br>Ce site présente mes projets personnels regroupés sous <strong>Alex
+                        Koncept</strong> : montres, IA, expériences web et plus encore.</p>
+                <p class="contact-info">
+                    <span data-key="contact_label">Contact</span>: <a
+                        href="mailto:alexkonceptuniverse@gmail.com">alexkonceptuniverse@gmail.com</a>
+                </p>
+                <button id="open-pdf-btn" class="action-btn" data-key="read_pdf_btn">📄 Lire l'analyse du Portfolio
+                    (PDF)</button>
+            </div>
         </div>
+    </section>
+
+    <footer>
+        <span data-key="footer_text">© 2025 Alex Koncept — Vivre. Apprendre. Créer.</span>
+    </footer>
+
+    <div id="alexbot-speech-container" style="position: fixed; bottom: 90px; right: 20px; z-index: 10000;">
+        <div id="orba-speech"><span>Bonjour et bienvenue ! 👋 Prêt à explorer l'univers d'Alex ?</span></div>
     </div>
-</section>
 
-<footer>
-    <span data-key="footer_text">© 2025 Alex Koncept — Vivre. Apprendre. Créer.</span>
-</footer>
+    <div id="root"></div>
+    <script
+        type="importmap">{"imports": {"react": "https://esm.sh/react@^19.1.1","react-dom/": "https://esm.sh/react-dom@^19.1.1/","@google/genai": "https://esm.sh/@google/genai@^1.13.0","react/": "https://esm.sh/react@^19.1.1/"}}</script>
+    <script type="module" src="https://esm.sh/gh/alexkoncept/alexkoncept.github.io@main/chatbot/index.tsx"></script>
+    <div id="music-note-icon"
+        style="position: fixed; bottom: 20px; left: 20px; z-index: 10000; cursor: pointer; background: #00bcd4; border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 12px rgba(0, 188, 212, 0.7);">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" 24" fill="none" stroke="white"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 18V5l12-2v13"></path>
+            <circle cx="6" cy="18" r="3"></circle>
+            <circle cx="18" cy="16" r="3"></circle>
+        </svg>
+    </div>
+    <div id="soundcloud-floating-player"
+        style="display: none; align-items: center; gap: 8px; padding: 4px; background: transparent; border: 1px solid #00bcd4; box-shadow: 0 0 12px rgba(0, 188, 212, 0.7); border-radius: 10px; position: fixed; bottom: 20px; left: 20px; z-index: 9999;">
+        <iframe id="soundcloud-iframe" width="200" height="80" scrolling="no" frameborder="no"
+            allow="autoplay"></iframe><button id="next-track-btn" title="Musique suivante"
+            style="background:#00bcd4; border:none; border-radius: 6px; color: white; cursor: pointer; padding: 8px 10px; font-weight: bold; font-family: inherit; font-size: 0.9rem; transition: background 0.3s;">&gt;</button>
+    </div>
 
-<div id="alexbot-speech-container" style="position: fixed; bottom: 90px; right: 20px; z-index: 10000;">
-    <div id="orba-speech"><span>Bonjour et bienvenue ! 👋 Prêt à explorer l'univers d'Alex ?</span></div>
-</div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
 
-<div id="root"></div>
-<script type="importmap">{"imports": {"react": "https://esm.sh/react@^19.1.1","react-dom/": "https://esm.sh/react-dom@^19.1.1/","@google/genai": "https://esm.sh/@google/genai@^1.13.0","react/": "https://esm.sh/react@^19.1.1/"}}</script>
-<script type="module" src="https://esm.sh/gh/alexkoncept/alexkoncept.github.io@main/chatbot/index.tsx"></script>
-<div id="music-note-icon" style="position: fixed; bottom: 20px; left: 20px; z-index: 10000; cursor: pointer; background: #00bcd4; border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 12px rgba(0, 188, 212, 0.7);"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg></div>
-<div id="soundcloud-floating-player" style="display: none; align-items: center; gap: 8px; padding: 4px; background: transparent; border: 1px solid #00bcd4; box-shadow: 0 0 12px rgba(0, 188, 212, 0.7); border-radius: 10px; position: fixed; bottom: 20px; left: 20px; z-index: 9999;"><iframe id="soundcloud-iframe" width="200" height="80" scrolling="no" frameborder="no" allow="autoplay"></iframe><button id="next-track-btn" title="Musique suivante" style="background:#00bcd4; border:none; border-radius: 6px; color: white; cursor: pointer; padding: 8px 10px; font-weight: bold; font-family: inherit; font-size: 0.9rem; transition: background 0.3s;">&gt;</button></div>
+            // --- AUDIO SFX CONTROLLER ---
+            const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            let sfxMuted = false;
 
-<script>
-document.addEventListener('DOMContentLoaded', () => {
+            const playSfx = (type) => {
+                if (sfxMuted || audioCtx.state === 'suspended') {
+                    if (audioCtx.state === 'suspended') audioCtx.resume();
+                    if (sfxMuted) return;
+                }
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
 
-  // --- AUDIO SFX CONTROLLER ---
-  const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-  let sfxMuted = false;
-  
-  const playSfx = (type) => {
-    if(sfxMuted || audioCtx.state === 'suspended') {
-        if(audioCtx.state === 'suspended') audioCtx.resume();
-        if(sfxMuted) return;
-    }
-    const osc = audioCtx.createOscillator();
-    const gain = audioCtx.createGain();
-    osc.connect(gain);
-    gain.connect(audioCtx.destination);
-    
-    if(type === 'hover') {
-        osc.frequency.setValueAtTime(800, audioCtx.currentTime);
-        osc.frequency.exponentialRampToValueAtTime(1200, audioCtx.currentTime + 0.05);
-        gain.gain.setValueAtTime(0.02, audioCtx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.05);
-        osc.start();
-        osc.stop(audioCtx.currentTime + 0.05);
-    } else if (type === 'click') {
-        osc.frequency.setValueAtTime(300, audioCtx.currentTime);
-        osc.frequency.exponentialRampToValueAtTime(50, audioCtx.currentTime + 0.1);
-        gain.gain.setValueAtTime(0.05, audioCtx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.1);
-        osc.start();
-        osc.stop(audioCtx.currentTime + 0.1);
-    }
-  };
+                if (type === 'hover') {
+                    osc.frequency.setValueAtTime(800, audioCtx.currentTime);
+                    osc.frequency.exponentialRampToValueAtTime(1200, audioCtx.currentTime + 0.05);
+                    gain.gain.setValueAtTime(0.02, audioCtx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.05);
+                    osc.start();
+                    osc.stop(audioCtx.currentTime + 0.05);
+                } else if (type === 'click') {
+                    osc.frequency.setValueAtTime(300, audioCtx.currentTime);
+                    osc.frequency.exponentialRampToValueAtTime(50, audioCtx.currentTime + 0.1);
+                    gain.gain.setValueAtTime(0.05, audioCtx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.1);
+                    osc.start();
+                    osc.stop(audioCtx.currentTime + 0.1);
+                }
+            };
 
-  const sfxToggle = document.getElementById('sfx-toggle');
-  sfxToggle.addEventListener('click', () => {
-      sfxMuted = !sfxMuted;
-      sfxToggle.innerHTML = sfxMuted ? '🔇' : '🔊';
-  });
+            const sfxToggle = document.getElementById('sfx-toggle');
+            sfxToggle.addEventListener('click', () => {
+                sfxMuted = !sfxMuted;
+                sfxToggle.innerHTML = sfxMuted ? '🔇' : '🔊';
+            });
 
-  // Attach Audio Listeners
-  const interactiveElements = document.querySelectorAll('a, button, .project');
-  interactiveElements.forEach(el => {
-      el.addEventListener('mouseenter', () => playSfx('hover'));
-      el.addEventListener('click', () => playSfx('click'));
-  });
+            // Attach Audio Listeners
+            const interactiveElements = document.querySelectorAll('a, button, .project');
+            interactiveElements.forEach(el => {
+                el.addEventListener('mouseenter', () => playSfx('hover'));
+                el.addEventListener('click', () => playSfx('click'));
+            });
 
-  // --- CUSTOM CURSOR ---
-  const cursorDot = document.getElementById('cursor-dot');
-  const cursorOutline = document.getElementById('cursor-outline');
-  
-  window.addEventListener('mousemove', (e) => {
-      const posX = e.clientX;
-      const posY = e.clientY;
-      
-      cursorDot.style.left = `${posX}px`;
-      cursorDot.style.top = `${posY}px`;
-      
-      cursorOutline.animate({
-          left: `${posX}px`,
-          top: `${posY}px`
-      }, { duration: 500, fill: "forwards" });
-  });
+            // --- CUSTOM CURSOR ---
+            const cursorDot = document.getElementById('cursor-dot');
+            const cursorOutline = document.getElementById('cursor-outline');
 
-  interactiveElements.forEach(el => {
-      el.addEventListener('mouseenter', () => document.body.classList.add('hovered'));
-      el.addEventListener('mouseleave', () => document.body.classList.remove('hovered'));
-  });
-  
-  // --- ORBA WIDGET LOGIC ---
-  let isOrbaOpen = false;
-  const speech = document.getElementById('orba-speech');
-  const interfaceDiv = document.getElementById('orba-interface');
-  const iframeOrba = document.getElementById('orba-frame');
-  const triggerOrba = document.getElementById('orba-trigger');
-  const closeOrbaBtn = document.getElementById('close-orba-btn');
+            window.addEventListener('mousemove', (e) => {
+                const posX = e.clientX;
+                const posY = e.clientY;
 
-  function toggleOrba() {
-    isOrbaOpen = !isOrbaOpen;
-    
-    if (isOrbaOpen) {
-        // 1. On ouvre l'interface visuellement
-        interfaceDiv.classList.add('open');
-        triggerOrba.classList.add('active');
-        
-        // 2. On cache la bulle de texte
-        if(speech) speech.classList.remove('visible');
+                cursorDot.style.left = `${posX}px`;
+                cursorDot.style.top = `${posY}px`;
 
-        // 3. LE CORRECTIF : On force le chargement de l'URL
-        // On récupère l'URL cible
-        const urlToLoad = iframeOrba.getAttribute('data-src');
-        
-        // Si l'iframe est vide ou sur "about:blank", on injecte l'URL
-        if (!iframeOrba.src || iframeOrba.src === "about:blank" || iframeOrba.src === window.location.href) {
-            console.log("Chargement d'Orba..."); // Pour vérifier dans la console
-            iframeOrba.src = urlToLoad;
-        }
-    } else {
-        // Fermeture
-        interfaceDiv.classList.remove('open');
-        triggerOrba.classList.remove('active');
-    }
-    
-    // Petit son si activé
-    playSfx('click');
-  }
+                cursorOutline.animate({
+                    left: `${posX}px`,
+                    top: `${posY}px`
+                }, { duration: 500, fill: "forwards" });
+            });
 
-  // Écouteurs d'événements
-  if(triggerOrba) triggerOrba.addEventListener('click', toggleOrba);
-  if(closeOrbaBtn) closeOrbaBtn.addEventListener('click', toggleOrba);
+            interactiveElements.forEach(el => {
+                el.addEventListener('mouseenter', () => document.body.classList.add('hovered'));
+                el.addEventListener('mouseleave', () => document.body.classList.remove('hovered'));
+            });
 
-// Bulle de bienvenue pour Alexbot (Apparaît après 3s)
-setTimeout(() => { 
-    const speech = document.getElementById('orba-speech');
-    if(speech) { 
-        speech.classList.add('visible'); 
-        // La bulle disparaît après 8 secondes
-        setTimeout(() => speech.classList.remove('visible'), 8000); 
-    } 
-}, 3000);
+            // --- PDF MODAL LOGIC ---
+            const pdfModal = document.getElementById('pdf-modal');
+            const openPdfBtn = document.getElementById('open-pdf-btn');
+            const closePdfBtn = document.getElementById('close-pdf-btn');
 
-  // --- CANVASES & ANIMATIONS ---
-  const matrixCanvas = document.getElementById('matrix-canvas');
-  const matrixCtx = matrixCanvas ? matrixCanvas.getContext('2d') : null;
-  let matrixInterval;
-  const spaceCanvas = document.getElementById('space-canvas');
-  const spaceCtx = spaceCanvas ? spaceCanvas.getContext('2d') : null;
-  let spaceInterval;
-  const viceCityCanvas = document.getElementById('vice-city-canvas');
-  const viceCityCtx = viceCityCanvas ? viceCityCanvas.getContext('2d') : null;
-  let viceCityInterval;
-  const falloutCanvas = document.getElementById('fallout-canvas');
-  const falloutCtx = falloutCanvas ? falloutCanvas.getContext('2d') : null;
-  let falloutInterval;
+            if (openPdfBtn && pdfModal && closePdfBtn) {
+                const togglePdfModal = (show) => {
+                    if (show) {
+                        pdfModal.classList.add('active');
+                        document.body.style.overflow = 'hidden';
+                    } else {
+                        pdfModal.classList.remove('active');
+                        document.body.style.overflow = '';
+                    }
+                    playSfx('click');
+                };
 
-  const startMatrixAnimation = () => {
-    if (matrixInterval || !matrixCanvas) return;
-    matrixCanvas.width = window.innerWidth;
-    matrixCanvas.height = window.innerHeight;
-    const katakana = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン';
-    const latin = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    const nums = '0123456789';
-    const alphabet = katakana + latin + nums;
-    const fontSize = 16;
-    const columns = matrixCanvas.width / fontSize;
-    const rainDrops = [];
-    for (let x = 0; x < columns; x++) { rainDrops[x] = 1; }
-    const draw = () => {
-      matrixCtx.fillStyle = 'rgba(0, 0, 0, 0.05)';
-      matrixCtx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
-      matrixCtx.fillStyle = '#00ff41';
-      matrixCtx.font = fontSize + 'px monospace';
-      for (let i = 0; i < rainDrops.length; i++) {
-        const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
-        matrixCtx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
-        if (rainDrops[i] * fontSize > matrixCanvas.height && Math.random() > 0.975) { rainDrops[i] = 0; }
-        rainDrops[i]++;
-      }
-    };
-    matrixInterval = setInterval(draw, 33);
-  };
-  const stopMatrixAnimation = () => {
-    clearInterval(matrixInterval);
-    matrixInterval = null;
-    if (matrixCtx) matrixCtx.clearRect(0, 0, matrixCanvas.width, matrixCanvas.height);
-  };
+                openPdfBtn.addEventListener('click', () => togglePdfModal(true));
+                closePdfBtn.addEventListener('click', () => togglePdfModal(false));
 
-  const startSpaceAnimation = () => {
-    if (spaceInterval || !spaceCanvas) return;
-    spaceCanvas.width = window.innerWidth;
-    spaceCanvas.height = window.innerHeight;
-    let stars = [];
-    const numStars = 200;
-    for (let i = 0; i < numStars; i++) {
-        stars.push({ x: Math.random() * spaceCanvas.width, y: Math.random() * spaceCanvas.height, radius: Math.random() * 1.5, alpha: Math.random(), speed: Math.random() * 0.1 - 0.05 });
-    }
-    const draw = () => {
-        spaceCtx.clearRect(0, 0, spaceCanvas.width, spaceCanvas.height);
-        spaceCtx.fillStyle = '#FFF';
-        stars.forEach(star => {
-            star.alpha += star.speed;
-            if (star.alpha <= 0 || star.alpha >= 1) star.speed = -star.speed;
-            spaceCtx.beginPath();
-            spaceCtx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
-            spaceCtx.globalAlpha = star.alpha;
-            spaceCtx.fill();
+                pdfModal.addEventListener('click', (e) => {
+                    if (e.target === pdfModal) togglePdfModal(false);
+                });
+            }
+
+            // --- ORBA WIDGET LOGIC ---
+            let isOrbaOpen = false;
+            const speech = document.getElementById('orba-speech');
+            const interfaceDiv = document.getElementById('orba-interface');
+            const iframeOrba = document.getElementById('orba-frame');
+            const triggerOrba = document.getElementById('orba-trigger');
+            const closeOrbaBtn = document.getElementById('close-orba-btn');
+
+            function toggleOrba() {
+                isOrbaOpen = !isOrbaOpen;
+
+                if (isOrbaOpen) {
+                    // 1. On ouvre l'interface visuellement
+                    interfaceDiv.classList.add('open');
+                    triggerOrba.classList.add('active');
+
+                    // 2. On cache la bulle de texte
+                    if (speech) speech.classList.remove('visible');
+
+                    // 3. LE CORRECTIF : On force le chargement de l'URL
+                    // On récupère l'URL cible
+                    const urlToLoad = iframeOrba.getAttribute('data-src');
+
+                    // Si l'iframe est vide ou sur "about:blank", on injecte l'URL
+                    if (!iframeOrba.src || iframeOrba.src === "about:blank" || iframeOrba.src === window.location.href) {
+                        console.log("Chargement d'Orba..."); // Pour vérifier dans la console
+                        iframeOrba.src = urlToLoad;
+                    }
+                } else {
+                    // Fermeture
+                    interfaceDiv.classList.remove('open');
+                    triggerOrba.classList.remove('active');
+                }
+
+                // Petit son si activé
+                playSfx('click');
+            }
+
+            // Écouteurs d'événements
+            if (triggerOrba) triggerOrba.addEventListener('click', toggleOrba);
+            if (closeOrbaBtn) closeOrbaBtn.addEventListener('click', toggleOrba);
+
+            // Bulle de bienvenue pour Alexbot (Apparaît après 3s)
+            setTimeout(() => {
+                const speech = document.getElementById('orba-speech');
+                if (speech) {
+                    speech.classList.add('visible');
+                    // La bulle disparaît après 8 secondes
+                    setTimeout(() => speech.classList.remove('visible'), 8000);
+                }
+            }, 3000);
+
+            // --- CANVASES & ANIMATIONS ---
+            const matrixCanvas = document.getElementById('matrix-canvas');
+            const matrixCtx = matrixCanvas ? matrixCanvas.getContext('2d') : null;
+            let matrixReqId;
+            const spaceCanvas = document.getElementById('space-canvas');
+            const spaceCtx = spaceCanvas ? spaceCanvas.getContext('2d') : null;
+            let spaceReqId;
+            const viceCityCanvas = document.getElementById('vice-city-canvas');
+            const viceCityCtx = viceCityCanvas ? viceCityCanvas.getContext('2d') : null;
+            const falloutCanvas = document.getElementById('fallout-canvas');
+            const falloutCtx = falloutCanvas ? falloutCanvas.getContext('2d') : null;
+            let falloutReqId;
+
+            const startMatrixAnimation = () => {
+                if (matrixReqId || !matrixCanvas) return;
+                matrixCanvas.width = window.innerWidth;
+                matrixCanvas.height = window.innerHeight;
+                const katakana = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン';
+                const latin = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                const nums = '0123456789';
+                const alphabet = katakana + latin + nums;
+                const fontSize = 16;
+                const columns = matrixCanvas.width / fontSize;
+                const rainDrops = [];
+                for (let x = 0; x < columns; x++) { rainDrops[x] = 1; }
+
+                let lastTime = 0;
+                const draw = (time) => {
+                    matrixReqId = requestAnimationFrame(draw);
+                    if (time - lastTime < 33) return;
+                    lastTime = time;
+                    matrixCtx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+                    matrixCtx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
+                    matrixCtx.fillStyle = '#00ff41';
+                    matrixCtx.font = fontSize + 'px monospace';
+                    for (let i = 0; i < rainDrops.length; i++) {
+                        const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+                        matrixCtx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
+                        if (rainDrops[i] * fontSize > matrixCanvas.height && Math.random() > 0.975) { rainDrops[i] = 0; }
+                        rainDrops[i]++;
+                    }
+                };
+                matrixReqId = requestAnimationFrame(draw);
+            };
+            const stopMatrixAnimation = () => {
+                if (matrixReqId) cancelAnimationFrame(matrixReqId);
+                matrixReqId = null;
+                if (matrixCtx) matrixCtx.clearRect(0, 0, matrixCanvas.width, matrixCanvas.height);
+            };
+
+            const startSpaceAnimation = () => {
+                if (spaceReqId || !spaceCanvas) return;
+                spaceCanvas.width = window.innerWidth;
+                spaceCanvas.height = window.innerHeight;
+                let stars = [];
+                const numStars = 200;
+                for (let i = 0; i < numStars; i++) {
+                    stars.push({ x: Math.random() * spaceCanvas.width, y: Math.random() * spaceCanvas.height, radius: Math.random() * 1.5, alpha: Math.random(), speed: Math.random() * 0.1 - 0.05 });
+                }
+
+                let lastTime = 0;
+                const draw = (time) => {
+                    spaceReqId = requestAnimationFrame(draw);
+                    if (time - lastTime < 50) return;
+                    lastTime = time;
+                    spaceCtx.clearRect(0, 0, spaceCanvas.width, spaceCanvas.height);
+                    spaceCtx.fillStyle = '#FFF';
+                    stars.forEach(star => {
+                        star.alpha += star.speed;
+                        if (star.alpha <= 0 || star.alpha >= 1) star.speed = -star.speed;
+                        spaceCtx.beginPath();
+                        spaceCtx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+                        spaceCtx.globalAlpha = star.alpha;
+                        spaceCtx.fill();
+                    });
+                };
+                spaceReqId = requestAnimationFrame(draw);
+            };
+            const stopSpaceAnimation = () => {
+                if (spaceReqId) cancelAnimationFrame(spaceReqId);
+                spaceReqId = null;
+                if (spaceCtx) spaceCtx.clearRect(0, 0, spaceCanvas.width, spaceCanvas.height);
+            };
+
+            const startViceCityAnimation = () => {
+                // viceCity is a static drawing, no animation loop needed
+                if (!viceCityCanvas) return;
+                viceCityCanvas.width = window.innerWidth;
+                viceCityCanvas.height = window.innerHeight;
+                const draw = () => {
+                    const w = viceCityCanvas.width;
+                    const h = viceCityCanvas.height;
+                    viceCityCtx.clearRect(0, 0, w, h);
+                    viceCityCtx.strokeStyle = '#ff48c4';
+                    viceCityCtx.lineWidth = 1;
+                    viceCityCtx.globalAlpha = 0.5;
+                    const step = 40;
+                    const horizon = h * 0.4;
+                    for (let i = 0; i < 20; i++) {
+                        const y = horizon + (h - horizon) * (i / 20) ** 2;
+                        const p = (y - horizon) / (h - horizon);
+                        const xOffset = w / 2 * (1 - p);
+                        viceCityCtx.beginPath();
+                        viceCityCtx.moveTo(xOffset, y);
+                        viceCityCtx.lineTo(w - xOffset, y);
+                        viceCityCtx.stroke();
+                    }
+                    for (let i = -10; i <= 10; i++) {
+                        const x = w / 2 + i * step;
+                        const p = Math.abs(i) / 10;
+                        const x2 = w / 2 + i * step * (1 + p * 10);
+                        viceCityCtx.beginPath();
+                        viceCityCtx.moveTo(x, horizon);
+                        viceCityCtx.lineTo(x2, h);
+                        viceCityCtx.stroke();
+                    }
+                    const grad = viceCityCtx.createLinearGradient(0, 0, 0, horizon);
+                    grad.addColorStop(0, '#3b174e');
+                    grad.addColorStop(1, '#f977ce');
+                    viceCityCtx.globalAlpha = 0.7;
+                    viceCityCtx.fillStyle = grad;
+                    viceCityCtx.fillRect(0, 0, w, horizon);
+                };
+                draw();
+            };
+            const stopViceCityAnimation = () => {
+                if (viceCityCtx) viceCityCtx.clearRect(0, 0, viceCityCanvas.width, viceCityCanvas.height);
+            };
+
+            const startFalloutAnimation = () => {
+                if (falloutReqId || !falloutCanvas) return;
+                falloutCanvas.width = window.innerWidth;
+                falloutCanvas.height = window.innerHeight;
+
+                let lastTime = 0;
+                const draw = (time) => {
+                    falloutReqId = requestAnimationFrame(draw);
+                    if (time - lastTime < 100) return;
+                    lastTime = time;
+                    const w = falloutCanvas.width, h = falloutCanvas.height;
+                    const imageData = falloutCtx.createImageData(w, h);
+                    const buffer32 = new Uint32Array(imageData.data.buffer);
+                    let len = buffer32.length;
+                    while (len--) {
+                        if (Math.random() < 0.9) continue;
+                        const gray = Math.random() * 255;
+                        buffer32[len] = (255 << 24) | (gray << 16) | (gray << 8) | gray;
+                    }
+                    falloutCtx.putImageData(imageData, 0, 0);
+                };
+                falloutReqId = requestAnimationFrame(draw);
+            };
+            const stopFalloutAnimation = () => {
+                if (falloutReqId) cancelAnimationFrame(falloutReqId);
+                falloutReqId = null;
+                if (falloutCtx) falloutCtx.clearRect(0, 0, falloutCanvas.width, falloutCanvas.height);
+            };
+
+            const setRandomHeaderLogo = () => {
+                const logoCount = 20;
+                const randomIndex = Math.floor(Math.random() * logoCount) + 1;
+                const imagePath = `LogoAK/Logo${randomIndex}.webp`;
+                const styleSheet = document.createElement("style");
+                styleSheet.innerText = `header::before { background-image: url('${imagePath}'); }`;
+                document.head.appendChild(styleSheet);
+            };
+            setRandomHeaderLogo();
+
+            const themeToggle = document.getElementById('theme-toggle');
+            const konceptModeToggle = document.getElementById('koncept-mode-toggle');
+            const body = document.body;
+            const header = document.getElementById('main-header');
+
+            let lastScrollY = window.scrollY;
+            let ticking = false;
+
+            window.addEventListener('scroll', () => {
+                if (!ticking) {
+                    window.requestAnimationFrame(() => {
+                        const scrollY = window.scrollY;
+                        const isMobile = window.innerWidth <= 768;
+
+                        if (!isMobile) {
+                            // SUR PC : On force le header à rester normal
+                            // On enlève simplement la classe compact si elle existe
+                            if (header.classList.contains('header-compact')) {
+                                header.classList.remove('header-compact');
+                            }
+                        } else {
+                            // SUR MOBILE : Comportement inchangé (se cache au scroll)
+                            header.classList.remove('header-compact');
+                            if (lastScrollY < scrollY && scrollY > 100) header.classList.add('header-hidden');
+                            else header.classList.remove('header-hidden');
+                        }
+                        lastScrollY = scrollY;
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            }, { passive: true });
+
+            if (window.matchMedia("(hover: hover)").matches) {
+                const projects = document.querySelectorAll('.project');
+                projects.forEach(card => {
+                    card.addEventListener('mousemove', (e) => {
+                        const rect = card.getBoundingClientRect();
+                        const x = e.clientX - rect.left;
+                        const y = e.clientY - rect.top;
+                        const centerX = rect.width / 2;
+                        const centerY = rect.height / 2;
+                        const rotateX = ((y - centerY) / centerY) * -4;
+                        const rotateY = ((x - centerX) / centerX) * 4;
+                        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+                    });
+                    card.addEventListener('mouseleave', () => {
+                        card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+                    });
+                });
+            }
+
+            const applyDarkLightMode = (theme) => {
+                if (theme === 'dark') { body.classList.add('dark-mode'); }
+                else { body.classList.remove('dark-mode'); }
+            };
+            const initialTheme = localStorage.getItem('theme') || 'light';
+            applyDarkLightMode(initialTheme);
+            themeToggle.addEventListener('click', () => {
+                const isDarkMode = body.classList.toggle('dark-mode');
+                localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+                playSfx('click');
+            });
+
+            const konceptModes = ['default', 'matrix-reloaded', 'space', 'vice-city', 'fallout', 'magazine', 'abyss', 'hologram', 'aurora'];
+
+            const applyKonceptMode = (modeName) => {
+                konceptModes.forEach(m => { if (m !== 'default') { body.classList.remove(`koncept-${m}`); } });
+                stopMatrixAnimation();
+                stopSpaceAnimation();
+                stopViceCityAnimation();
+                stopFalloutAnimation();
+                switch (modeName) {
+                    case 'matrix-reloaded': startMatrixAnimation(); break;
+                    case 'space': startSpaceAnimation(); break;
+                    case 'vice-city': startViceCityAnimation(); break;
+                    case 'fallout': startFalloutAnimation(); break;
+                }
+                if (modeName && modeName !== 'default') { body.classList.add(`koncept-${modeName}`); }
+                localStorage.setItem('konceptMode', modeName);
+            };
+
+            let storedKonceptMode = localStorage.getItem('konceptMode');
+            if (storedKonceptMode && konceptModes.includes(storedKonceptMode)) {
+                currentKonceptModeIndex = konceptModes.indexOf(storedKonceptMode);
+                applyKonceptMode(storedKonceptMode);
+            } else { applyKonceptMode('default'); }
+
+            // WARP SPEED TRANSITION LOGIC
+            konceptModeToggle.addEventListener('click', () => {
+                playSfx('click');
+                document.body.classList.add('warping');
+
+                setTimeout(() => {
+                    currentKonceptModeIndex = (currentKonceptModeIndex + 1) % konceptModes.length;
+                    applyKonceptMode(konceptModes[currentKonceptModeIndex]);
+                }, 250);
+
+                setTimeout(() => {
+                    document.body.classList.remove('warping');
+                }, 500);
+            });
+
+            const translations = {
+                fr: {
+                    koncept_mode_label: "Changer le Koncept Mode",
+                    theme_toggle_label: "Changer le thème",
+                    header_subtitle: "Créateur indépendant – Montres, Web, Code, IA & Crypto",
+                    intro_text: 'Bienvenue dans mon univers numérique. Chaque "Koncept" que je crée explore un futur possible, à travers l’horlogerie, le code, le design et l’imagination augmentée.<br><br><span class="chatbot-prompt">💬 Pour en savoir plus sur mon parcours ou la genèse d\'un projet, <strong>interrogez AlexBot</strong> en bas à droite !</span>',
+
+                    /* --- AJOUT ORBA FR --- */
+                    project_orba_title: "ORBA <span class=\"badge-new\">NEW</span>",
+                    project_orba_desc: "Bien plus qu'un simple assistant vocal, Orba est une entité IA Native Audio conçue comme un prolongement de votre propre cognition. Elle fusionne une intelligence de raisonnement avancée (Gemini 2.5 Flash) avec une interface sensorielle complète et une mémoire persistante pour une symbiose homme-machine inédite.",
+                    discover_orba_btn: "Découvrir l'expérience Orba",
+                    /* -------------------- */
+
+                    project_watches_title: "Montres Alex Koncept",
+                    project_watches_desc: "Création horlogère indépendante, modding artistique, boîtier signature AK.",
+                    visit_site_btn: "Visiter le site",
+                    project_hns_desc: "Sites dystopiques & interactifs pour se questionner sur le futur à travers la technologie, la société et l'absurde.",
+                    explore_collection_btn: "Explorer la collection",
+                    project_tamacodechi_title: "Tamacodechi",
+                    project_tamacodechi_desc: "Ton Tamagotchi développeur dans ton navigateur, il évolue selon ta façon de t'en occuper.",
+                    view_github_btn: "Voir le projet GitHub",
+                    project_ia_title: "IA & Chatbot",
+                    project_ia_desc: "Une exploration immersive de l'IA : Histoire, Éthique, Galerie interactive (Visual Evidence), et générateur de Prompt (Prompt Crafter).",
+                    project_wpt_title: "World Peace Token (WPT)",
+                    project_wpt_desc: "Crypto expérimentale lancée sur Polygon. Un projet utopiste, entre rêve et technologie.",
+                    view_polygonscan_btn: "Voir sur Polygonscan",
+                    project_optic_desc: "Générateur d’illusions visuelles interactives. Semez une idée, regardez-la éclore.",
+                    project_solar_desc: "Choisissez votre planète comme nouveau foyer.",
+                    view_live_project_btn: "Voir le projet en direct",
+                    project_mdiyga_desc: "Redonne vie à tes objets oubliés. Une app pensée pour bricoler malin, inspirer, et transmettre le plaisir du faire soi-même.",
+                    discover_app_btn: "Découvrir l'app en ligne",
+                    project_ak001_title: "AK 001 – Montre personnalisable",
+                    project_ak001_desc: "Le premier modèle imaginé par Alex Koncept. Élégante, moderne, et 100% personnalisable.",
+                    discover_model_btn: "Découvrir le modèle AK 001",
+                    project_bodykoncept_title: "Body Koncept<span class=\"badge-new\">NEW</span>",
+                    project_bodykoncept_desc: "Découvrez l'entraînement personnalisé par IA qui s'adapte à vos objectifs, votre morphologie et votre mode de vie.",
+                    view_live_btn: "Voir le Projet en Ligne",
+                    project_akulab_title: "AK Universe Lab <span class=\"badge-new\">NEW</span>",
+                    project_akulab_desc: "AK Universe Lab est une vitrine immersive fusionnant logo, mode, technologie et expérimentation. Organisé en protocoles (vêtements, accessoires, objets), le site offre un design futuriste, un essayage virtuel par IA et une expérience interactive unique.",
+                    discover_site_btn: "Découvrir le site en ligne",
+                    project_tose_title: "Timeline OS Evolution <span class=\"badge-new\">NEW</span>",
+                    project_tose_desc: "Projet interactif retraçant l’évolution des systèmes d’exploitation, de Windows 3.1 à macOS Big Sur, à travers une timeline web immersive. Chaque OS est fidèlement recréé pour célébrer l’histoire de l’informatique et introduire AK OS, la vision moderne et créative signée Alex Koncept.",
+                    discover_tose_btn: "Découvrir le site en ligne",
+                    project_hsk_title: "HSK — Hybrid Sound Koncept <span class=\"badge-new\">NEW</span>",
+                    project_hsk_desc: "HSK (Hybrid Sound Koncept) est un projet musical expérimental fusionnant des styles opposés grâce à l’intelligence artificielle. Créé avec ChatGPT, Suno et ElevenLabs, il donne vie à un artiste numérique capable de mêler funk, techno, reggae, metal et bien plus encore. Une exploration audacieuse où le groove humain rencontre la précision algorithmique.",
+                    discover_hsk_btn: "Découvrir le projet musical",
+                    project_next_title: "Next Koncept in progress...",
+                    project_next_desc: "A new project is taking shape in the AK workshop, see you very soon to discover more.",
+                    about_title: "À propos",
+                    about_desc: "Moi c'est Alex, passionné d’informatique, de DIY, d’horlogerie et de nouvelles technologies.<br>Ce site présente mes projets personnels regroupés sous <strong>Alex Koncept</strong> : montres, IA, expériences web et plus encore.",
+                    contact_label: "Contact",
+                    read_pdf_btn: "📄 Lire l'analyse du Portfolio (PDF)",
+                    pdf_modal_title: "Analyse du Koncept Universe",
+                    footer_text: "© 2025 Alex Koncept — Vivre. Apprendre. Créer."
+                },
+                en: {
+                    koncept_mode_label: "Change Koncept Mode",
+                    theme_toggle_label: "Change theme",
+                    header_subtitle: "Independent Creator – Watches, Web, Code, AI & Crypto",
+                    intro_text: 'Welcome to my digital universe. Each "Koncept" I create explores a possible future, through watchmaking, code, design, and augmented imagination.<br><br><span class="chatbot-prompt">💬 To learn more about my journey or the story behind a project, <strong>ask AlexBot</strong> at the bottom right!</span>',
+
+                    /* --- AJOUT ORBA EN --- */
+                    project_orba_title: "ORBA <span class=\"badge-new\">NEW</span>",
+                    project_orba_desc: "More than just a voice assistant, Orba is a Native Audio AI entity designed as an extension of your own cognition. It fuses advanced reasoning intelligence (Gemini 2.5 Flash) with a complete sensory interface and persistent memory for a unique human-machine symbiosis.",
+                    discover_orba_btn: "Discover the Orba experience",
+                    /* -------------------- */
+
+                    project_watches_title: "Alex Koncept Watches",
+                    project_watches_desc: "Independent watchmaking, artistic modding, signature AK case.",
+                    visit_site_btn: "Visit the website",
+                    project_hns_desc: "Dystopian & interactive sites to question the future through technology, society, and absurdity.",
+                    explore_collection_btn: "Explore the collection",
+                    project_tamacodechi_title: "Tamacodechi",
+                    project_tamacodechi_desc: "Your developer Tamagotchi in your browser, it evolves based on how you take care of it.",
+                    view_github_btn: "View on GitHub",
+                    project_ia_title: "AI & Chatbot",
+                    project_ia_desc: "An immersive exploration of AI: History, Ethics, Interactive Gallery (Visual Evidence), and Prompt Generator (Prompt Crafter).",
+                    project_wpt_title: "World Peace Token (WPT)",
+                    project_wpt_desc: "Experimental crypto launched on Polygon. A utopian project, between dream and technology.",
+                    view_polygonscan_btn: "View on Polygonscan",
+                    project_optic_desc: "Interactive visual illusion generator. Plant an idea, watch it bloom.",
+                    project_solar_desc: "Choose your planet as your new home.",
+                    view_live_project_btn: "See the live project",
+                    project_mdiyga_desc: "Bring your forgotten objects back to life. An app designed for smart tinkering, inspiring, and sharing the joy of DIY.",
+                    discover_app_btn: "Discover the app online",
+                    project_ak001_title: "AK 001 – Customizable Watch",
+                    project_ak001_desc: "The first model designed by Alex Koncept. Elegant, modern, and 100% customizable.",
+                    discover_model_btn: "Discover the AK 001 model",
+                    project_bodykoncept_title: "Body Koncept<span class=\"badge-new\">NEW</span>",
+                    project_bodykoncept_desc: "Discover personalized training by AI that adapts to your goals, body type, and lifestyle.",
+                    view_live_btn: "View Live Project",
+                    project_akulab_title: "AK Universe Lab <span class=\"badge-new\">NEW</span>",
+                    project_akulab_desc: "AK Universe Lab is an immersive showcase merging logo, fashion, technology, and experimentation. Organized into protocols (clothing, accessories, objects), the site offers a futuristic design, virtual try-on by AI, and a unique interactive experience.",
+                    discover_site_btn: "Discover the site online",
+                    project_tose_title: "Timeline OS Evolution <span class=\"badge-new\">NEW</span>",
+                    project_tose_desc: "An interactive project retracing the evolution of operating systems, from Windows 3.1 to macOS Big Sur, through an immersive web timeline. Each OS is faithfully recreated to celebrate the history of computing and introduce AK OS, the modern and creative vision by Alex Koncept.",
+                    discover_tose_btn: "Discover the live site",
+                    project_hsk_title: "HSK — Hybrid Sound Koncept <span class=\"badge-new\">NEW</span>",
+                    project_hsk_desc: "HSK (Hybrid Sound Koncept) is an experimental musical project merging opposite genres through artificial intelligence. Created using ChatGPT, Suno, and ElevenLabs, it brings to life a digital artist capable of blending funk, techno, reggae, metal, and more. An audacious exploration where human groove meets algorithmic precision.",
+                    discover_hsk_btn: "Discover the musical project",
+                    project_next_title: "Next Koncept in progress...",
+                    project_next_desc: "A new project is taking shape in the AK workshop, see you very soon to discover more.",
+                    about_title: "About",
+                    about_desc: "I'm Alex, passionate about IT, DIY, watchmaking, and new technologies.<br>This site presents my personal projects under the <strong>Alex Koncept</strong> brand: watches, AI, web experiences, and more.",
+                    contact_label: "Contact",
+                    read_pdf_btn: "📄 Read Portfolio Analysis (PDF)",
+                    pdf_modal_title: "Koncept Universe Analysis",
+                    footer_text: "© 2025 Alex Koncept — Live. Learn. Create."
+                }
+            };
+            const langFrBtn = document.getElementById('lang-fr-btn');
+            const langEnBtn = document.getElementById('lang-en-btn');
+            const setLanguage = (lang) => {
+                document.documentElement.lang = lang;
+                localStorage.setItem('language', lang);
+                document.querySelectorAll('[data-key]').forEach(elem => {
+                    const key = elem.getAttribute('data-key');
+                    if (translations[lang] && translations[lang][key]) {
+                        if (elem.hasAttribute('aria-label')) { elem.setAttribute('aria-label', translations[lang][key]); }
+                        else { elem.innerHTML = translations[lang][key]; }
+                    }
+                });
+                if (lang === 'fr') { langFrBtn.classList.add('lang-active'); langEnBtn.classList.remove('lang-active'); }
+                else { langEnBtn.classList.add('lang-active'); langFrBtn.classList.remove('lang-active'); }
+            };
+            langFrBtn.addEventListener('click', () => setLanguage('fr'));
+            langEnBtn.addEventListener('click', () => setLanguage('en'));
+            const initialLang = localStorage.getItem('language') || (navigator.language.startsWith('fr') ? 'fr' : 'en');
+            setLanguage(initialLang);
+
+            const projectsContainer = document.getElementById('projects-container');
+            if (projectsContainer) {
+                const comingSoonProject = document.getElementById('coming-soon-project');
+                const allProjects = Array.from(projectsContainer.querySelectorAll('.project:not(#coming-soon-project)'));
+                const newProjects = allProjects.filter(p => p.querySelector('.badge-new'));
+                const oldProjects = allProjects.filter(p => !p.querySelector('.badge-new'));
+                const shuffleArray = (array) => {
+                    for (let i = array.length - 1; i > 0; i--) {
+                        const j = Math.floor(Math.random() * (i + 1));
+                        [array[i], array[j]] = [array[j], array[i]];
+                    }
+                };
+                shuffleArray(oldProjects);
+                projectsContainer.innerHTML = '';
+                newProjects.forEach(project => projectsContainer.appendChild(project));
+                oldProjects.forEach(project => projectsContainer.appendChild(project));
+                if (comingSoonProject) { projectsContainer.appendChild(comingSoonProject); }
+            }
+
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.project').forEach(project => { observer.observe(project); });
+
+            const musicIcon = document.getElementById("music-note-icon");
+            const playerContainer = document.getElementById("soundcloud-floating-player");
+            const iframe = document.getElementById("soundcloud-iframe");
+            const nextButton = document.getElementById("next-track-btn");
+            let isPlayerLaunched = false;
+            const priorityTrack = "https://on.soundcloud.com/K38qn3P6w3Z29EcYCh";
+            const soundcloudTracks = ["https://soundcloud.com/l-alex-339757635/lalex-piste-1-m4a?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=c8fe8d4be3a54764a0699bade90c75dd", "https://soundcloud.com/l-alex-339757635/lalex-piste-2-m4a?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=e81c8192d9c04af9ab525dd31fdc6213", "https://soundcloud.com/l-alex-339757635/lalex-piste-3_8bit-old-school?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=ecb00c2f996648ac82aa8ed580ff3664", "https://soundcloud.com/l-alex-339757635/lalex-piste-4_ambiance-m4a?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=2ecece16847443fca00f8f27c1ce3f3d", "https://soundcloud.com/l-alex-339757635/lalex-piste-5_drill-m4a?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=aa74ec6b1dda49d1b01d438642bc42f0", "https://soundcloud.com/l-alex-339757635/lalex-piste-6_daft-p-style-m4a?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=07c43f8ea06a45c7897ec491608f74f4", "https://soundcloud.com/l-alex-339757635/lalex-piste-7_techno-back-to?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=148b7dddbf364f6f9151e2ed31c3b636", "https://soundcloud.com/l-alex-339757635/piste8-cyberpunk-style?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=3bd3de2150fd4adca93a32c336a79562", "https://soundcloud.com/l-alex-339757635/piste-9_ambiance2-m4a?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=b5b080de12924e22865b51ba33dbf0bc", "https://soundcloud.com/l-alex-339757635/piste-10-hard-beat-m4a?si=f9a96fb2a8934756aad5eabc11f983d8&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing", "https://on.soundcloud.com/K38qn3P6w3Z29EcYCh",];
+            const otherTracks = soundcloudTracks.filter(track => track !== priorityTrack);
+            const shuffleArrayMusic = a => { for (let b = a.length - 1; 0 < b; b--) { const c = Math.floor(Math.random() * (b + 1));[a[b], a[c]] = [a[c], a[b]]; } };
+            shuffleArrayMusic(otherTracks);
+            let shuffledTracks = [priorityTrack, ...otherTracks];
+            let currentTrackIndex = 0;
+
+            const loadTrack = (index, isFirstLoad = false) => {
+                const trackUrl = shuffledTracks[index];
+                const widgetUrl = `https://w.soundcloud.com/player/?url=${encodeURIComponent(trackUrl)}&color=%2300bcd4&auto_play=${isFirstLoad ? 'false' : 'true'}&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false`;
+                iframe.src = widgetUrl;
+            };
+
+            musicIcon.addEventListener("click", () => {
+                if (!isPlayerLaunched) {
+                    loadTrack(currentTrackIndex, true);
+                    isPlayerLaunched = true;
+                }
+                playerContainer.style.display = "flex";
+                musicIcon.style.display = "none";
+            });
+
+            nextButton.addEventListener("click", () => {
+                currentTrackIndex++;
+                if (currentTrackIndex >= shuffledTracks.length) {
+                    shuffleArrayMusic(shuffledTracks);
+                    currentTrackIndex = 0;
+                }
+                loadTrack(currentTrackIndex);
+            });
+
+            const hudHex = document.getElementById('hud-hex');
+            const hudMin = document.getElementById('hud-min');
+            const hudBinVisual = document.getElementById('hud-bin-visual');
+
+            if (hudBinVisual) {
+                for (let i = 0; i < 6; i++) {
+                    const dot = document.createElement('div');
+                    dot.className = 'bin-dot';
+                    hudBinVisual.appendChild(dot);
+                }
+            }
+
+            const binDots = document.querySelectorAll('.bin-dot');
+
+            const updateAKClock = () => {
+                const now = new Date();
+                const hours = now.getHours();
+                const hexHours = '0x' + hours.toString(16).toUpperCase();
+                if (hudHex) hudHex.innerText = hexHours;
+                const mins = now.getMinutes().toString().padStart(2, '0');
+                const separator = (now.getSeconds() % 2 === 0) ? ':' : ' ';
+                if (hudMin) hudMin.innerText = `${hours.toString().padStart(2, '0')}${separator}${mins}`;
+                const secs = now.getSeconds();
+                const binStr = secs.toString(2).padStart(6, '0');
+                binDots.forEach((dot, index) => {
+                    if (binStr[index] === '1') dot.classList.add('active');
+                    else dot.classList.remove('active');
+                });
+            };
+
+            setInterval(updateAKClock, 1000);
+            updateAKClock();
         });
-    };
-    spaceInterval = setInterval(draw, 50);
-  };
-  const stopSpaceAnimation = () => {
-    clearInterval(spaceInterval);
-    spaceInterval = null;
-    if(spaceCtx) spaceCtx.clearRect(0, 0, spaceCanvas.width, spaceCanvas.height);
-  };
-
-  const startViceCityAnimation = () => {
-      if (viceCityInterval || !viceCityCanvas) return;
-      viceCityCanvas.width = window.innerWidth;
-      viceCityCanvas.height = window.innerHeight;
-      const draw = () => {
-          const w = viceCityCanvas.width;
-          const h = viceCityCanvas.height;
-          viceCityCtx.clearRect(0, 0, w, h);
-          viceCityCtx.strokeStyle = '#ff48c4';
-          viceCityCtx.lineWidth = 1;
-          viceCityCtx.globalAlpha = 0.5;
-          const step = 40;
-          const horizon = h * 0.4;
-          for (let i = 0; i < 20; i++) {
-              const y = horizon + (h - horizon) * (i / 20) ** 2;
-              const p = (y - horizon) / (h - horizon);
-              const xOffset = w / 2 * (1 - p);
-              viceCityCtx.beginPath();
-              viceCityCtx.moveTo(xOffset, y);
-              viceCityCtx.lineTo(w - xOffset, y);
-              viceCityCtx.stroke();
-          }
-          for (let i = -10; i <= 10; i++) {
-              const x = w / 2 + i * step;
-              const p = Math.abs(i) / 10;
-              const x2 = w / 2 + i * step * (1 + p * 10);
-              viceCityCtx.beginPath();
-              viceCityCtx.moveTo(x, horizon);
-              viceCityCtx.lineTo(x2, h);
-              viceCityCtx.stroke();
-          }
-          const grad = viceCityCtx.createLinearGradient(0,0,0,horizon);
-          grad.addColorStop(0, '#3b174e');
-          grad.addColorStop(1, '#f977ce');
-          viceCityCtx.globalAlpha = 0.7;
-          viceCityCtx.fillStyle = grad;
-          viceCityCtx.fillRect(0,0,w,horizon);
-      };
-      draw();
-  };
-  const stopViceCityAnimation = () => {
-    clearInterval(viceCityInterval);
-    viceCityInterval = null;
-    if(viceCityCtx) viceCityCtx.clearRect(0, 0, viceCityCanvas.width, viceCityCanvas.height);
-  };
-
-  const startFalloutAnimation = () => {
-      if (falloutInterval || !falloutCanvas) return;
-      falloutCanvas.width = window.innerWidth;
-      falloutCanvas.height = window.innerHeight;
-      const draw = () => {
-          const w = falloutCanvas.width, h = falloutCanvas.height;
-          const imageData = falloutCtx.createImageData(w, h);
-          const buffer32 = new Uint32Array(imageData.data.buffer);
-          let len = buffer32.length;
-          while (len--) {
-              if (Math.random() < 0.9) continue;
-              const gray = Math.random() * 255;
-              buffer32[len] = (255 << 24) | (gray << 16) | (gray << 8) | gray;
-          }
-          falloutCtx.putImageData(imageData, 0, 0);
-      };
-      falloutInterval = setInterval(draw, 100);
-  };
-  const stopFalloutAnimation = () => {
-      clearInterval(falloutInterval);
-      falloutInterval = null;
-      if (falloutCtx) falloutCtx.clearRect(0, 0, falloutCanvas.width, falloutCanvas.height);
-  };
-
-  const setRandomHeaderLogo = () => {
-    const logoCount = 20;
-    const randomIndex = Math.floor(Math.random() * logoCount) + 1;
-    const imagePath = `LogoAK/Logo${randomIndex}.webp`;
-    const styleSheet = document.createElement("style");
-    styleSheet.innerText = `header::before { background-image: url('${imagePath}'); }`;
-    document.head.appendChild(styleSheet);
-  };
-  setRandomHeaderLogo();
-
-  const themeToggle = document.getElementById('theme-toggle');
-  const konceptModeToggle = document.getElementById('koncept-mode-toggle');
-  const body = document.body;
-  const header = document.getElementById('main-header');
-  
-  let lastScrollY = window.scrollY;
-  let ticking = false;
-
-window.addEventListener('scroll', () => {
-      if (!ticking) {
-          window.requestAnimationFrame(() => {
-              const scrollY = window.scrollY;
-              const isMobile = window.innerWidth <= 768; 
-              
-              if (!isMobile) {
-                  // SUR PC : On force le header à rester normal
-                  // On enlève simplement la classe compact si elle existe
-                  if (header.classList.contains('header-compact')) {
-                      header.classList.remove('header-compact');
-                  }
-              } else {
-                  // SUR MOBILE : Comportement inchangé (se cache au scroll)
-                  header.classList.remove('header-compact');
-                  if (lastScrollY < scrollY && scrollY > 100) header.classList.add('header-hidden');
-                  else header.classList.remove('header-hidden');
-              }
-              lastScrollY = scrollY;
-              ticking = false;
-          });
-          ticking = true;
-      }
-  }, { passive: true });
-  
-  if (window.matchMedia("(hover: hover)").matches) {
-      const projects = document.querySelectorAll('.project');
-      projects.forEach(card => {
-          card.addEventListener('mousemove', (e) => {
-              const rect = card.getBoundingClientRect();
-              const x = e.clientX - rect.left; 
-              const y = e.clientY - rect.top; 
-              const centerX = rect.width / 2;
-              const centerY = rect.height / 2;
-              const rotateX = ((y - centerY) / centerY) * -4; 
-              const rotateY = ((x - centerX) / centerX) * 4; 
-              card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
-          });
-          card.addEventListener('mouseleave', () => {
-              card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
-          });
-      });
-  }
-  
-  const applyDarkLightMode = (theme) => {
-    if (theme === 'dark') { body.classList.add('dark-mode'); } 
-    else { body.classList.remove('dark-mode'); }
-  };
-  const initialTheme = localStorage.getItem('theme') || 'light';
-  applyDarkLightMode(initialTheme);
-  themeToggle.addEventListener('click', () => {
-    const isDarkMode = body.classList.toggle('dark-mode');
-    localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
-    playSfx('click');
-  });
-
-const konceptModes = ['default', 'matrix-reloaded', 'space', 'vice-city', 'fallout', 'magazine', 'abyss', 'hologram', 'aurora'];
-
-const applyKonceptMode = (modeName) => {
-      konceptModes.forEach(m => { if (m !== 'default') { body.classList.remove(`koncept-${m}`); } });
-      stopMatrixAnimation();
-      stopSpaceAnimation();
-      stopViceCityAnimation();
-      stopFalloutAnimation();
-      switch(modeName) {
-        case 'matrix-reloaded': startMatrixAnimation(); break;
-        case 'space': startSpaceAnimation(); break;
-        case 'vice-city': startViceCityAnimation(); break;
-        case 'fallout': startFalloutAnimation(); break;
-      }
-      if (modeName && modeName !== 'default') { body.classList.add(`koncept-${modeName}`); }
-      localStorage.setItem('konceptMode', modeName);
-  };
-
-  let storedKonceptMode = localStorage.getItem('konceptMode');
-  if (storedKonceptMode && konceptModes.includes(storedKonceptMode)) {
-    currentKonceptModeIndex = konceptModes.indexOf(storedKonceptMode);
-    applyKonceptMode(storedKonceptMode);
-  } else { applyKonceptMode('default'); }
-  
-  // WARP SPEED TRANSITION LOGIC
-  konceptModeToggle.addEventListener('click', () => {
-    playSfx('click');
-    document.body.classList.add('warping');
-    
-    setTimeout(() => {
-        currentKonceptModeIndex = (currentKonceptModeIndex + 1) % konceptModes.length;
-        applyKonceptMode(konceptModes[currentKonceptModeIndex]);
-    }, 250); 
-    
-    setTimeout(() => {
-        document.body.classList.remove('warping');
-    }, 500); 
-  });
-  
-  const translations = {
-fr: {
-  koncept_mode_label: "Changer le Koncept Mode",
-  theme_toggle_label: "Changer le thème",
-  header_subtitle: "Créateur indépendant – Montres, Web, Code, IA & Crypto",
-  intro_text: 'Bienvenue dans mon univers numérique. Chaque "Koncept" que je crée explore un futur possible, à travers l’horlogerie, le code, le design et l’imagination augmentée.<br><br><span class="chatbot-prompt">💬 Pour en savoir plus sur mon parcours ou la genèse d\'un projet, <strong>interrogez AlexBot</strong> en bas à droite !</span>',
-  
-  /* --- AJOUT ORBA FR --- */
-  project_orba_title: "ORBA <span class=\"badge-new\">NEW</span>",
-  project_orba_desc: "Bien plus qu'un simple assistant vocal, Orba est une entité IA Native Audio conçue comme un prolongement de votre propre cognition. Elle fusionne une intelligence de raisonnement avancée (Gemini 2.5 Flash) avec une interface sensorielle complète et une mémoire persistante pour une symbiose homme-machine inédite.",
-  discover_orba_btn: "Découvrir l'expérience Orba",
-  /* -------------------- */
-
-  project_watches_title: "Montres Alex Koncept",
-  project_watches_desc: "Création horlogère indépendante, modding artistique, boîtier signature AK.",
-  visit_site_btn: "Visiter le site",
-  project_hns_desc: "Sites dystopiques & interactifs pour se questionner sur le futur à travers la technologie, la société et l'absurde.",
-  explore_collection_btn: "Explorer la collection",
-  project_tamacodechi_title: "Tamacodechi",
-  project_tamacodechi_desc: "Ton Tamagotchi développeur dans ton navigateur, il évolue selon ta façon de t'en occuper.",
-  view_github_btn: "Voir le projet GitHub",
-  project_ia_title: "IA & Chatbot",
-  project_ia_desc: "Une exploration immersive de l'IA : Histoire, Éthique, Galerie interactive (Visual Evidence), et générateur de Prompt (Prompt Crafter).",
-  project_wpt_title: "World Peace Token (WPT)",
-  project_wpt_desc: "Crypto expérimentale lancée sur Polygon. Un projet utopiste, entre rêve et technologie.",
-  view_polygonscan_btn: "Voir sur Polygonscan",
-  project_optic_desc: "Générateur d’illusions visuelles interactives. Semez une idée, regardez-la éclore.",
-  project_solar_desc: "Choisissez votre planète comme nouveau foyer.",
-  view_live_project_btn: "Voir le projet en direct",
-  project_mdiyga_desc: "Redonne vie à tes objets oubliés. Une app pensée pour bricoler malin, inspirer, et transmettre le plaisir du faire soi-même.",
-  discover_app_btn: "Découvrir l'app en ligne",
-  project_ak001_title: "AK 001 – Montre personnalisable",
-  project_ak001_desc: "Le premier modèle imaginé par Alex Koncept. Élégante, moderne, et 100% personnalisable.",
-  discover_model_btn: "Découvrir le modèle AK 001",
-  project_bodykoncept_title: "Body Koncept<span class=\"badge-new\">NEW</span>",
-  project_bodykoncept_desc: "Découvrez l'entraînement personnalisé par IA qui s'adapte à vos objectifs, votre morphologie et votre mode de vie.",
-  view_live_btn: "Voir le Projet en Ligne",
-  project_akulab_title: "AK Universe Lab <span class=\"badge-new\">NEW</span>",
-  project_akulab_desc: "AK Universe Lab est une vitrine immersive fusionnant logo, mode, technologie et expérimentation. Organisé en protocoles (vêtements, accessoires, objets), le site offre un design futuriste, un essayage virtuel par IA et une expérience interactive unique.",
-  discover_site_btn: "Découvrir le site en ligne",
-  project_tose_title: "Timeline OS Evolution <span class=\"badge-new\">NEW</span>",
-  project_tose_desc: "Projet interactif retraçant l’évolution des systèmes d’exploitation, de Windows 3.1 à macOS Big Sur, à travers une timeline web immersive. Chaque OS est fidèlement recréé pour célébrer l’histoire de l’informatique et introduire AK OS, la vision moderne et créative signée Alex Koncept.",
-  discover_tose_btn: "Découvrir le site en ligne",
-  project_hsk_title: "HSK — Hybrid Sound Koncept <span class=\"badge-new\">NEW</span>",
-  project_hsk_desc: "HSK (Hybrid Sound Koncept) est un projet musical expérimental fusionnant des styles opposés grâce à l’intelligence artificielle. Créé avec ChatGPT, Suno et ElevenLabs, il donne vie à un artiste numérique capable de mêler funk, techno, reggae, metal et bien plus encore. Une exploration audacieuse où le groove humain rencontre la précision algorithmique.",
-  discover_hsk_btn: "Découvrir le projet musical",
-  project_next_title: "Next Koncept in progress...",
-  project_next_desc: "A new project is taking shape in the AK workshop, see you very soon to discover more.",
-  about_title: "À propos",
-  about_desc: "Moi c'est Alex, passionné d’informatique, de DIY, d’horlogerie et de nouvelles technologies.<br>Ce site présente mes projets personnels regroupés sous <strong>Alex Koncept</strong> : montres, IA, expériences web et plus encore.",
-  contact_label: "Contact",
-  footer_text: "© 2025 Alex Koncept — Vivre. Apprendre. Créer."
-},
-en: {
-  koncept_mode_label: "Change Koncept Mode",
-  theme_toggle_label: "Change theme",
-  header_subtitle: "Independent Creator – Watches, Web, Code, AI & Crypto",
-  intro_text: 'Welcome to my digital universe. Each "Koncept" I create explores a possible future, through watchmaking, code, design, and augmented imagination.<br><br><span class="chatbot-prompt">💬 To learn more about my journey or the story behind a project, <strong>ask AlexBot</strong> at the bottom right!</span>',
-  
-  /* --- AJOUT ORBA EN --- */
-  project_orba_title: "ORBA <span class=\"badge-new\">NEW</span>",
-  project_orba_desc: "More than just a voice assistant, Orba is a Native Audio AI entity designed as an extension of your own cognition. It fuses advanced reasoning intelligence (Gemini 2.5 Flash) with a complete sensory interface and persistent memory for a unique human-machine symbiosis.",
-  discover_orba_btn: "Discover the Orba experience",
-  /* -------------------- */
-
-  project_watches_title: "Alex Koncept Watches",
-  project_watches_desc: "Independent watchmaking, artistic modding, signature AK case.",
-  visit_site_btn: "Visit the website",
-  project_hns_desc: "Dystopian & interactive sites to question the future through technology, society, and absurdity.",
-  explore_collection_btn: "Explore the collection",
-  project_tamacodechi_title: "Tamacodechi",
-  project_tamacodechi_desc: "Your developer Tamagotchi in your browser, it evolves based on how you take care of it.",
-  view_github_btn: "View on GitHub",
-  project_ia_title: "AI & Chatbot",
-  project_ia_desc: "An immersive exploration of AI: History, Ethics, Interactive Gallery (Visual Evidence), and Prompt Generator (Prompt Crafter).",
-  project_wpt_title: "World Peace Token (WPT)",
-  project_wpt_desc: "Experimental crypto launched on Polygon. A utopian project, between dream and technology.",
-  view_polygonscan_btn: "View on Polygonscan",
-  project_optic_desc: "Interactive visual illusion generator. Plant an idea, watch it bloom.",
-  project_solar_desc: "Choose your planet as your new home.",
-  view_live_project_btn: "See the live project",
-  project_mdiyga_desc: "Bring your forgotten objects back to life. An app designed for smart tinkering, inspiring, and sharing the joy of DIY.",
-  discover_app_btn: "Discover the app online",
-  project_ak001_title: "AK 001 – Customizable Watch",
-  project_ak001_desc: "The first model designed by Alex Koncept. Elegant, modern, and 100% customizable.",
-  discover_model_btn: "Discover the AK 001 model",
-  project_bodykoncept_title: "Body Koncept<span class=\"badge-new\">NEW</span>",
-  project_bodykoncept_desc: "Discover personalized training by AI that adapts to your goals, body type, and lifestyle.",
-  view_live_btn: "View Live Project",
-  project_akulab_title: "AK Universe Lab <span class=\"badge-new\">NEW</span>",
-  project_akulab_desc: "AK Universe Lab is an immersive showcase merging logo, fashion, technology, and experimentation. Organized into protocols (clothing, accessories, objects), the site offers a futuristic design, virtual try-on by AI, and a unique interactive experience.",
-  discover_site_btn: "Discover the site online",
-  project_tose_title: "Timeline OS Evolution <span class=\"badge-new\">NEW</span>",
-  project_tose_desc: "An interactive project retracing the evolution of operating systems, from Windows 3.1 to macOS Big Sur, through an immersive web timeline. Each OS is faithfully recreated to celebrate the history of computing and introduce AK OS, the modern and creative vision by Alex Koncept.",
-  discover_tose_btn: "Discover the live site",
-  project_hsk_title: "HSK — Hybrid Sound Koncept <span class=\"badge-new\">NEW</span>",
-  project_hsk_desc: "HSK (Hybrid Sound Koncept) is an experimental musical project merging opposite genres through artificial intelligence. Created using ChatGPT, Suno, and ElevenLabs, it brings to life a digital artist capable of blending funk, techno, reggae, metal, and more. An audacious exploration where human groove meets algorithmic precision.",
-  discover_hsk_btn: "Discover the musical project",
-  project_next_title: "Next Koncept in progress...",
-  project_next_desc: "A new project is taking shape in the AK workshop, see you very soon to discover more.",
-  about_title: "About",
-  about_desc: "I'm Alex, passionate about IT, DIY, watchmaking, and new technologies.<br>This site presents my personal projects under the <strong>Alex Koncept</strong> brand: watches, AI, web experiences, and more.",
-  contact_label: "Contact",
-  footer_text: "© 2025 Alex Koncept — Live. Learn. Create."
-}
-  };
-  const langFrBtn = document.getElementById('lang-fr-btn');
-  const langEnBtn = document.getElementById('lang-en-btn');
-  const setLanguage = (lang) => {
-    document.documentElement.lang = lang;
-    localStorage.setItem('language', lang);
-    document.querySelectorAll('[data-key]').forEach(elem => {
-        const key = elem.getAttribute('data-key');
-        if (translations[lang] && translations[lang][key]) {
-            if(elem.hasAttribute('aria-label')) { elem.setAttribute('aria-label', translations[lang][key]); } 
-            else { elem.innerHTML = translations[lang][key]; }
-        }
-    });
-    if (lang === 'fr') { langFrBtn.classList.add('lang-active'); langEnBtn.classList.remove('lang-active'); } 
-    else { langEnBtn.classList.add('lang-active'); langFrBtn.classList.remove('lang-active'); }
-  };
-  langFrBtn.addEventListener('click', () => setLanguage('fr'));
-  langEnBtn.addEventListener('click', () => setLanguage('en'));
-  const initialLang = localStorage.getItem('language') || (navigator.language.startsWith('fr') ? 'fr' : 'en');
-  setLanguage(initialLang);
-
-  const projectsContainer = document.getElementById('projects-container');
-  if (projectsContainer) {
-      const comingSoonProject = document.getElementById('coming-soon-project');
-      const allProjects = Array.from(projectsContainer.querySelectorAll('.project:not(#coming-soon-project)'));
-      const newProjects = allProjects.filter(p => p.querySelector('.badge-new'));
-      const oldProjects = allProjects.filter(p => !p.querySelector('.badge-new'));
-      const shuffleArray = (array) => {
-          for (let i = array.length - 1; i > 0; i--) {
-              const j = Math.floor(Math.random() * (i + 1));
-              [array[i], array[j]] = [array[j], array[i]];
-          }
-      };
-      shuffleArray(oldProjects);
-      projectsContainer.innerHTML = ''; 
-      newProjects.forEach(project => projectsContainer.appendChild(project));
-      oldProjects.forEach(project => projectsContainer.appendChild(project));
-      if (comingSoonProject) { projectsContainer.appendChild(comingSoonProject); }
-  }
-
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.project').forEach(project => { observer.observe(project); });
-
-  const musicIcon = document.getElementById("music-note-icon");
-  const playerContainer = document.getElementById("soundcloud-floating-player");
-  const iframe = document.getElementById("soundcloud-iframe");
-  const nextButton = document.getElementById("next-track-btn");
-  let isPlayerLaunched = false;
-  const priorityTrack = "https://on.soundcloud.com/K38qn3P6w3Z29EcYCh";
-  const soundcloudTracks = ["https://soundcloud.com/l-alex-339757635/lalex-piste-1-m4a?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=c8fe8d4be3a54764a0699bade90c75dd","https://soundcloud.com/l-alex-339757635/lalex-piste-2-m4a?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=e81c8192d9c04af9ab525dd31fdc6213","https://soundcloud.com/l-alex-339757635/lalex-piste-3_8bit-old-school?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=ecb00c2f996648ac82aa8ed580ff3664","https://soundcloud.com/l-alex-339757635/lalex-piste-4_ambiance-m4a?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=2ecece16847443fca00f8f27c1ce3f3d","https://soundcloud.com/l-alex-339757635/lalex-piste-5_drill-m4a?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=aa74ec6b1dda49d1b01d438642bc42f0","https://soundcloud.com/l-alex-339757635/lalex-piste-6_daft-p-style-m4a?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=07c43f8ea06a45c7897ec491608f74f4","https://soundcloud.com/l-alex-339757635/lalex-piste-7_techno-back-to?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=148b7dddbf364f6f9151e2ed31c3b636","https://soundcloud.com/l-alex-339757635/piste8-cyberpunk-style?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=3bd3de2150fd4adca93a32c336a79562","https://soundcloud.com/l-alex-339757635/piste-9_ambiance2-m4a?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=b5b080de12924e22865b51ba33dbf0bc","https://soundcloud.com/l-alex-339757635/piste-10-hard-beat-m4a?si=f9a96fb2a8934756aad5eabc11f983d8&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing","https://on.soundcloud.com/K38qn3P6w3Z29EcYCh",];
-  const otherTracks = soundcloudTracks.filter(track => track !== priorityTrack);
-  const shuffleArrayMusic = a => { for (let b = a.length - 1; 0 < b; b--) { const c = Math.floor(Math.random() * (b + 1)); [a[b], a[c]] = [a[c], a[b]]; } };
-  shuffleArrayMusic(otherTracks);
-  let shuffledTracks = [priorityTrack, ...otherTracks];
-  let currentTrackIndex = 0;
-
-  const loadTrack = (index, isFirstLoad = false) => {
-    const trackUrl = shuffledTracks[index];
-    const widgetUrl = `https://w.soundcloud.com/player/?url=${encodeURIComponent(trackUrl)}&color=%2300bcd4&auto_play=${isFirstLoad ? 'false' : 'true'}&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false`;
-    iframe.src = widgetUrl;
-  };
-
-  musicIcon.addEventListener("click", () => {
-    if (!isPlayerLaunched) {
-      loadTrack(currentTrackIndex, true);
-      isPlayerLaunched = true;
-    }
-    playerContainer.style.display = "flex";
-    musicIcon.style.display = "none";
-  });
-
-  nextButton.addEventListener("click", () => {
-    currentTrackIndex++;
-    if (currentTrackIndex >= shuffledTracks.length) {
-      shuffleArrayMusic(shuffledTracks);
-      currentTrackIndex = 0;
-    }
-    loadTrack(currentTrackIndex);
-  });
-  
-  const hudHex = document.getElementById('hud-hex');
-  const hudMin = document.getElementById('hud-min');
-  const hudBinVisual = document.getElementById('hud-bin-visual');
-  
-  if(hudBinVisual) {
-      for(let i=0; i<6; i++) {
-          const dot = document.createElement('div');
-          dot.className = 'bin-dot';
-          hudBinVisual.appendChild(dot);
-      }
-  }
-  
-  const binDots = document.querySelectorAll('.bin-dot');
-
-  const updateAKClock = () => {
-      const now = new Date();
-      const hours = now.getHours();
-      const hexHours = '0x' + hours.toString(16).toUpperCase();
-      if(hudHex) hudHex.innerText = hexHours;
-      const mins = now.getMinutes().toString().padStart(2, '0');
-      const separator = (now.getSeconds() % 2 === 0) ? ':' : ' ';
-      if(hudMin) hudMin.innerText = `${hours.toString().padStart(2,'0')}${separator}${mins}`;
-      const secs = now.getSeconds();
-      const binStr = secs.toString(2).padStart(6, '0');
-      binDots.forEach((dot, index) => {
-          if(binStr[index] === '1') dot.classList.add('active');
-          else dot.classList.remove('active');
-      });
-  };
-
-  setInterval(updateAKClock, 1000);
-  updateAKClock();
-});
-</script>
+    </script>
 </body>
+
 </html>
