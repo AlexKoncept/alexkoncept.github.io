@@ -461,76 +461,81 @@
         /* 7. CACHER LE FOOTER DANS LE DASHBOARD */
         body.koncept-os-dashboard footer { display: none !important; }
 
-        /* =========================================================
-           RESPONSIVE MOBILE DU DASHBOARD (Même principe OS)
+ /* =========================================================
+           RESPONSIVE MOBILE DU DASHBOARD ("Mini Desktop" pour le sport)
            ========================================================= */
         @media (max-width: 900px) {
             body.koncept-os-dashboard {
-                grid-template-columns: 1fr !important;
-                grid-template-rows: 60px auto 1fr !important;
-                height: 100dvh !important; /* Adapté aux écrans mobiles */
+                /* On garde la grille 2 colonnes, mais on fait une mini-sidebar de 110px */
+                grid-template-columns: 110px 1fr !important;
+                grid-template-rows: 55px 1fr !important;
+                height: 100vh !important;
+                height: 100dvh !important; /* Gère la barre d'adresse mobile */
                 overflow: hidden !important; 
                 padding: 10px !important;
                 gap: 10px !important;
             }
+
+            /* Réduction des boutons flottants pour qu'ils rentrent */
+            body.koncept-os-dashboard .top-left-controls { top: 15px !important; left: 15px !important; gap: 8px !important; }
+            body.koncept-os-dashboard .top-right-controls { top: 15px !important; right: 15px !important; gap: 8px !important; }
+            body.koncept-os-dashboard .common-toggle-button { width: 32px !important; height: 32px !important; font-size: 0.9rem !important; }
+            
+            /* Mini Header */
             body.koncept-os-dashboard header#main-header {
-                grid-column: 1 !important;
+                grid-column: 1 / -1 !important;
                 grid-row: 1 !important;
-                padding: 0 15px 0 110px !important;
+                padding: 0 10px 0 100px !important; /* Place pour les boutons à gauche */
+                border-radius: 12px !important;
             }
-            body.koncept-os-dashboard header#main-header h1 {
-                font-size: 1.3rem !important;
-            }
+            body.koncept-os-dashboard header#main-header h1 { font-size: 1.1rem !important; }
+
+            /* Mini Sidebar (À propos) */
             body.koncept-os-dashboard #a-propos {
                 grid-column: 1 !important;
                 grid-row: 2 !important;
-                padding: 15px !important;
-                height: auto !important;
-                overflow: visible !important;
+                padding: 10px !important;
+                border-radius: 16px !important;
             }
-            body.koncept-os-dashboard .about-container {
-                flex-direction: row !important;
-                align-items: center !important;
-                gap: 15px !important;
-                text-align: left !important;
-            }
-            body.koncept-os-dashboard .about-avatar {
-                width: 60px !important;
-                height: 60px !important;
-            }
-            body.koncept-os-dashboard .about-text h2 {
-                font-size: 1rem !important;
-                margin-bottom: 5px !important;
-            }
-            body.koncept-os-dashboard .about-text p {
-                font-size: 0.75rem !important;
-                margin: 0 !important;
-            }
-            body.koncept-os-dashboard .about-text .action-btn {
-                display: none !important; /* Caché sur mobile pour gagner de la place */
-            }
+            body.koncept-os-dashboard .about-container { flex-direction: column !important; gap: 10px !important; text-align: center !important; }
+            body.koncept-os-dashboard .about-avatar { width: 45px !important; height: 45px !important; border-width: 2px !important; }
+            body.koncept-os-dashboard .about-text h2 { font-size: 0.85rem !important; margin-bottom: 5px !important; }
+            body.koncept-os-dashboard .about-text p { font-size: 0.6rem !important; line-height: 1.4 !important; margin-bottom: 5px !important; }
+            body.koncept-os-dashboard .contact-info { font-size: 0.55rem !important; word-break: break-all; }
+            body.koncept-os-dashboard .action-btn { font-size: 0.55rem !important; padding: 5px !important; border-radius: 8px !important; margin-top: 5px !important;}
+
+            /* Mini Zone Principale */
             body.koncept-os-dashboard .container {
-                grid-column: 1 !important;
-                grid-row: 3 !important;
+                grid-column: 2 !important;
+                grid-row: 2 !important;
                 gap: 10px !important;
             }
+
+            /* Mini Intro Wdiget */
             body.koncept-os-dashboard .intro {
-                padding: 15px !important;
-                font-size: 0.8rem !important;
+                padding: 10px !important;
+                font-size: 0.7rem !important;
                 flex-direction: column !important;
-                gap: 10px !important;
+                gap: 5px !important;
+                text-align: center !important;
+                border-radius: 16px !important;
             }
-            body.koncept-os-dashboard .chatbot-prompt {
-                margin: 0 !important;
-                font-size: 0.75rem !important;
-                padding: 8px !important;
-            }
+            body.koncept-os-dashboard .chatbot-prompt { margin: 0 !important; font-size: 0.6rem !important; padding: 5px !important; border-radius: 8px !important; }
+
+            /* Mini Grille de Projets (1 colonne car 2 ça serait illisible) */
             body.koncept-os-dashboard #projects-container {
-                grid-template-columns: 1fr !important; /* 1 seule colonne */
-                gap: 15px !important;
+                grid-template-columns: 1fr !important;
+                gap: 10px !important;
                 padding-right: 5px !important;
-                padding-bottom: 15px !important;
             }
+            
+            body.koncept-os-dashboard .project { padding: 10px !important; border-radius: 16px !important;}
+            body.koncept-os-dashboard .project-visual img { height: 90px !important; }
+            body.koncept-os-dashboard .project-content h2 { font-size: 0.95rem !important; margin-bottom: 5px !important; }
+            body.koncept-os-dashboard .project-content p:not(:last-child) { font-size: 0.65rem !important; -webkit-line-clamp: 2 !important; margin-bottom: 10px !important; }
+            body.koncept-os-dashboard .project-tags { gap: 4px !important; margin-bottom: 10px !important; }
+            body.koncept-os-dashboard .project-tag { font-size: 0.5rem !important; padding: 3px 6px !important; border-radius: 4px !important; }
+            body.koncept-os-dashboard .project-content a { font-size: 0.7rem !important; padding: 6px 15px !important; border-radius: 8px !important; }
         }
 
         @keyframes flicker {
