@@ -461,7 +461,7 @@
         /* 7. CACHER LE FOOTER DANS LE DASHBOARD */
         body.koncept-os-dashboard footer { display: none !important; }
 
- /* =========================================================
+        /* =========================================================
            RESPONSIVE MOBILE DU DASHBOARD ("Mini Desktop" pour le sport)
            ========================================================= */
         @media (max-width: 900px) {
@@ -812,6 +812,7 @@
         </button>
     </div>
 
+    <!-- Bouton SON supprimé -->
     <div class="top-right-controls">
         <div class="lang-switcher">
             <button id="lang-fr-btn" class="common-toggle-button" aria-label="Passer en Français">🇫🇷</button>
@@ -819,7 +820,6 @@
         </div>
         <button id="theme-toggle" class="theme-toggle common-toggle-button" aria-label="Changer le thème"
             data-key="theme_toggle_label"></button>
-        <button id="sfx-toggle" class="common-toggle-button" aria-label="Mute Sound Effects">🔊</button>
     </div>
 
     <header id="main-header">
@@ -1115,7 +1115,6 @@
         type="importmap">{"imports": {"react": "https://esm.sh/react@^19.1.1","react-dom/": "https://esm.sh/react-dom@^19.1.1/","@google/genai": "https://esm.sh/@google/genai@^1.13.0","react/": "https://esm.sh/react@^19.1.1/"}}</script>
     <script type="module" src="https://esm.sh/gh/alexkoncept/alexkoncept.github.io@main/chatbot/index.tsx"></script>
     
-    <!-- FIX DE L'ERREUR DE SVG (viewBox) -->
     <div id="music-note-icon"
         style="position: fixed; bottom: 20px; left: 20px; z-index: 10000; cursor: pointer; background: #00bcd4; border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 12px rgba(0, 188, 212, 0.7);">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white"
@@ -1134,59 +1133,13 @@
     </div>
 
     <script>
-        // Force la page à s'afficher en haut au chargement
         if ('scrollRestoration' in history) {
             history.scrollRestoration = 'manual';
         }
 
         document.addEventListener('DOMContentLoaded', () => {
 
-            // Scroll forcé en haut de page au chargement
             window.scrollTo(0, 0);
-
-            // --- AUDIO SFX CONTROLLER ---
-            const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-            let sfxMuted = false;
-
-            const playSfx = (type) => {
-                if (sfxMuted || audioCtx.state === 'suspended') {
-                    if (audioCtx.state === 'suspended') audioCtx.resume();
-                    if (sfxMuted) return;
-                }
-                const osc = audioCtx.createOscillator();
-                const gain = audioCtx.createGain();
-                osc.connect(gain);
-                gain.connect(audioCtx.destination);
-
-                if (type === 'hover') {
-                    osc.frequency.setValueAtTime(800, audioCtx.currentTime);
-                    osc.frequency.exponentialRampToValueAtTime(1200, audioCtx.currentTime + 0.05);
-                    gain.gain.setValueAtTime(0.02, audioCtx.currentTime);
-                    gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.05);
-                    osc.start();
-                    osc.stop(audioCtx.currentTime + 0.05);
-                } else if (type === 'click') {
-                    osc.frequency.setValueAtTime(300, audioCtx.currentTime);
-                    osc.frequency.exponentialRampToValueAtTime(50, audioCtx.currentTime + 0.1);
-                    gain.gain.setValueAtTime(0.05, audioCtx.currentTime);
-                    gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.1);
-                    osc.start();
-                    osc.stop(audioCtx.currentTime + 0.1);
-                }
-            };
-
-            const sfxToggle = document.getElementById('sfx-toggle');
-            sfxToggle.addEventListener('click', () => {
-                sfxMuted = !sfxMuted;
-                sfxToggle.innerHTML = sfxMuted ? '🔇' : '🔊';
-            });
-
-            // Attach Audio Listeners
-            const interactiveElements = document.querySelectorAll('a, button, .project');
-            interactiveElements.forEach(el => {
-                el.addEventListener('mouseenter', () => playSfx('hover'));
-                el.addEventListener('click', () => playSfx('click'));
-            });
 
             // --- CUSTOM CURSOR ---
             const cursorDot = document.getElementById('cursor-dot');
@@ -1205,6 +1158,7 @@
                 }, { duration: 500, fill: "forwards" });
             });
 
+            const interactiveElements = document.querySelectorAll('a, button, .project');
             interactiveElements.forEach(el => {
                 el.addEventListener('mouseenter', () => document.body.classList.add('hovered'));
                 el.addEventListener('mouseleave', () => document.body.classList.remove('hovered'));
@@ -1224,7 +1178,6 @@
                         pdfModal.classList.remove('active');
                         document.body.style.overflow = '';
                     }
-                    playSfx('click');
                 };
 
                 openPdfBtn.addEventListener('click', () => togglePdfModal(true));
@@ -1259,7 +1212,6 @@
                     interfaceDiv.classList.remove('open');
                     triggerOrba.classList.remove('active');
                 }
-                playSfx('click');
             }
 
             if (triggerOrba) triggerOrba.addEventListener('click', toggleOrba);
@@ -1473,7 +1425,6 @@
                 const projects = document.querySelectorAll('.project');
                 projects.forEach(card => {
                     card.addEventListener('mousemove', (e) => {
-                        // Annule l'effet 3D si on est en mode OS Dashboard
                         if(document.body.classList.contains('koncept-os-dashboard')) return;
 
                         const rect = card.getBoundingClientRect();
@@ -1501,7 +1452,6 @@
             themeToggle.addEventListener('click', () => {
                 const isDarkMode = body.classList.toggle('dark-mode');
                 localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
-                playSfx('click');
             });
 
             // --- GESTION DES MODES KONCEPT ET OS DASHBOARD ---
@@ -1549,11 +1499,9 @@
             }
 
             konceptModeToggle.addEventListener('click', () => {
-                playSfx('click');
                 document.body.classList.add('warping');
                 isOsModeActive = false; 
                 
-                // Forcer le scroll tout en haut
                 window.scrollTo({ top: 0, behavior: 'instant' }); 
 
                 setTimeout(() => {
@@ -1567,10 +1515,7 @@
             });
 
             osModeToggle.addEventListener('click', () => {
-                playSfx('click');
                 document.body.classList.add('warping');
-                
-                // Forcer le scroll tout en haut pour éviter de sauter vers le bas
                 window.scrollTo({ top: 0, behavior: 'instant' }); 
 
                 setTimeout(() => {
