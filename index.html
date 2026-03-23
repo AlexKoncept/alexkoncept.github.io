@@ -263,7 +263,7 @@
             background-image: none !important;
         }
 
-        /* 1. LE HEADER DEVIENT LA BARRE DU HAUT */
+        /* 1. HEADER -> BARRE DU HAUT */
         body.koncept-os-dashboard header#main-header {
             position: static !important;
             grid-column: 1 / -1 !important;
@@ -291,7 +291,7 @@
             display: none !important; 
         }
 
-        /* 2. LA SECTION "À PROPOS" DEVIENT LA SIDEBAR GAUCHE */
+        /* 2. SIDEBAR -> SECTION A PROPOS */
         body.koncept-os-dashboard #a-propos {
             grid-column: 1 !important;
             grid-row: 2 !important;
@@ -331,7 +331,7 @@
             justify-content: center !important;
         }
 
-        /* 3. LE CONTENEUR PRINCIPAL PREND LE RESTE DE LA PLACE */
+        /* 3. WIDGETS PROJETS -> CONTENEUR CENTRAL */
         body.koncept-os-dashboard .container {
             grid-column: 2 !important;
             grid-row: 2 !important;
@@ -345,7 +345,7 @@
             min-height: 0 !important; 
         }
 
-        /* 4. LE TEXTE D'INTRO DEVIENT UN WIDGET HORIZONTAL EN HAUT */
+        /* 4. INTRO -> WIDGET HORIZONTAL */
         body.koncept-os-dashboard .intro {
             margin: 0 !important;
             padding: 20px 30px !important;
@@ -369,7 +369,7 @@
             box-shadow: none !important;
         }
 
-        /* 5. LES PROJETS DEVIENNENT UNE FENÊTRE AVEC DÉFILEMENT INTERNE */
+        /* 5. ZONE DES CARTES AVEC SCROLL INTERNE */
         body.koncept-os-dashboard #projects-container {
             flex: 1 !important;
             overflow-y: auto !important; 
@@ -384,7 +384,7 @@
         body.koncept-os-dashboard #projects-container::-webkit-scrollbar-track { background: transparent; }
         body.koncept-os-dashboard #projects-container::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
 
-        /* 6. STYLE DES CARTES PROJETS (APP ICONS / BENTO) */
+        /* 6. STYLE CARTES BENTO UI */
         body.koncept-os-dashboard .project {
             margin: 0 !important;
             padding: 15px !important;
@@ -458,31 +458,78 @@
             box-shadow: 0 4px 10px rgba(0, 188, 212, 0.2) !important;
         }
 
-        /* 7. CACHER LE FOOTER (INUTILE DANS UN DASHBOARD) */
+        /* 7. CACHER LE FOOTER DANS LE DASHBOARD */
         body.koncept-os-dashboard footer { display: none !important; }
 
-        /* RESPONSIVE MOBILE POUR LE DASHBOARD */
+        /* =========================================================
+           RESPONSIVE MOBILE DU DASHBOARD (Même principe OS)
+           ========================================================= */
         @media (max-width: 900px) {
             body.koncept-os-dashboard {
-                display: flex !important;
-                flex-direction: column !important;
-                height: auto !important;
-                overflow-y: auto !important; 
+                grid-template-columns: 1fr !important;
+                grid-template-rows: 60px auto 1fr !important;
+                height: 100dvh !important; /* Adapté aux écrans mobiles */
+                overflow: hidden !important; 
                 padding: 10px !important;
+                gap: 10px !important;
             }
             body.koncept-os-dashboard header#main-header {
-                padding: 70px 20px 20px 20px !important; 
+                grid-column: 1 !important;
+                grid-row: 1 !important;
+                padding: 0 15px 0 110px !important;
+            }
+            body.koncept-os-dashboard header#main-header h1 {
+                font-size: 1.3rem !important;
+            }
+            body.koncept-os-dashboard #a-propos {
+                grid-column: 1 !important;
+                grid-row: 2 !important;
+                padding: 15px !important;
+                height: auto !important;
+                overflow: visible !important;
+            }
+            body.koncept-os-dashboard .about-container {
+                flex-direction: row !important;
+                align-items: center !important;
+                gap: 15px !important;
+                text-align: left !important;
+            }
+            body.koncept-os-dashboard .about-avatar {
+                width: 60px !important;
+                height: 60px !important;
+            }
+            body.koncept-os-dashboard .about-text h2 {
+                font-size: 1rem !important;
+                margin-bottom: 5px !important;
+            }
+            body.koncept-os-dashboard .about-text p {
+                font-size: 0.75rem !important;
+                margin: 0 !important;
+            }
+            body.koncept-os-dashboard .about-text .action-btn {
+                display: none !important; /* Caché sur mobile pour gagner de la place */
+            }
+            body.koncept-os-dashboard .container {
+                grid-column: 1 !important;
+                grid-row: 3 !important;
+                gap: 10px !important;
             }
             body.koncept-os-dashboard .intro {
+                padding: 15px !important;
+                font-size: 0.8rem !important;
                 flex-direction: column !important;
-                gap: 15px !important;
+                gap: 10px !important;
             }
             body.koncept-os-dashboard .chatbot-prompt {
                 margin: 0 !important;
+                font-size: 0.75rem !important;
+                padding: 8px !important;
             }
             body.koncept-os-dashboard #projects-container {
-                overflow-y: visible !important;
-                padding-right: 0 !important;
+                grid-template-columns: 1fr !important; /* 1 seule colonne */
+                gap: 15px !important;
+                padding-right: 5px !important;
+                padding-bottom: 15px !important;
             }
         }
 
@@ -725,8 +772,7 @@
         .modal-body iframe { width: 100%; height: 100%; border: none; }
         .action-btn { display: inline-flex; align-items: center; gap: 10px; color: #fff; background: linear-gradient(45deg, var(--link-color), #00c9ff); padding: 12px 28px; border-radius: 30px; text-decoration: none; font-weight: 600; box-shadow: 0 4px 15px rgba(0, 119, 204, 0.3); transition: all 0.3s ease; border: none; font-family: var(--main-font); font-size: 1rem; margin-top: 1.5rem; cursor: pointer !important; }
         .action-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0, 119, 204, 0.5); color: #fff; }
-
-    </style>11:42 23/03/2026
+    </style>
 </head>
 
 <body>
@@ -1063,15 +1109,18 @@
     <script
         type="importmap">{"imports": {"react": "https://esm.sh/react@^19.1.1","react-dom/": "https://esm.sh/react-dom@^19.1.1/","@google/genai": "https://esm.sh/@google/genai@^1.13.0","react/": "https://esm.sh/react@^19.1.1/"}}</script>
     <script type="module" src="https://esm.sh/gh/alexkoncept/alexkoncept.github.io@main/chatbot/index.tsx"></script>
+    
+    <!-- FIX DE L'ERREUR DE SVG (viewBox) -->
     <div id="music-note-icon"
         style="position: fixed; bottom: 20px; left: 20px; z-index: 10000; cursor: pointer; background: #00bcd4; border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 12px rgba(0, 188, 212, 0.7);">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" 24" fill="none" stroke="white"
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white"
             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M9 18V5l12-2v13"></path>
             <circle cx="6" cy="18" r="3"></circle>
             <circle cx="18" cy="16" r="3"></circle>
         </svg>
     </div>
+    
     <div id="soundcloud-floating-player"
         style="display: none; align-items: center; gap: 8px; padding: 4px; background: transparent; border: 1px solid #00bcd4; box-shadow: 0 0 12px rgba(0, 188, 212, 0.7); border-radius: 10px; position: fixed; bottom: 20px; left: 20px; z-index: 9999;">
         <iframe id="soundcloud-iframe" width="200" height="80" scrolling="no" frameborder="no"
@@ -1081,8 +1130,10 @@
 
     <script>
         // Force la page à s'afficher en haut au chargement
-        window.history.scrollRestoration = 'manual';
-        
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
 
             // Scroll forcé en haut de page au chargement
@@ -1417,6 +1468,9 @@
                 const projects = document.querySelectorAll('.project');
                 projects.forEach(card => {
                     card.addEventListener('mousemove', (e) => {
+                        // Annule l'effet 3D si on est en mode OS Dashboard
+                        if(document.body.classList.contains('koncept-os-dashboard')) return;
+
                         const rect = card.getBoundingClientRect();
                         const x = e.clientX - rect.left;
                         const y = e.clientY - rect.top;
@@ -1427,6 +1481,7 @@
                         card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
                     });
                     card.addEventListener('mouseleave', () => {
+                        if(document.body.classList.contains('koncept-os-dashboard')) return;
                         card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
                     });
                 });
@@ -1453,7 +1508,6 @@
             let isOsModeActive = false;
 
             const applyKonceptMode = (modeName) => {
-                // Nettoyage de toutes les classes de mode possibles
                 konceptModes.forEach(m => {
                     if (m !== 'default') body.classList.remove(`koncept-${m}`);
                 });
@@ -1477,11 +1531,10 @@
                 localStorage.setItem('konceptMode', modeName);
             };
 
-            // Chargement initial
             let storedKonceptMode = localStorage.getItem('konceptMode');
             if (storedKonceptMode === 'os-dashboard') {
                 isOsModeActive = true;
-                currentKonceptModeIndex = 0; // fallback
+                currentKonceptModeIndex = 0; 
                 applyKonceptMode('os-dashboard');
             } else if (storedKonceptMode && konceptModes.includes(storedKonceptMode)) {
                 currentKonceptModeIndex = konceptModes.indexOf(storedKonceptMode);
@@ -1490,12 +1543,13 @@
                 applyKonceptMode('default');
             }
 
-            // Bouton principal (Pinceau 🎨)
             konceptModeToggle.addEventListener('click', () => {
                 playSfx('click');
                 document.body.classList.add('warping');
-                isOsModeActive = false; // Quitte le mode OS si actif
-                window.scrollTo({ top: 0, behavior: 'smooth' }); // Ramène la page en haut
+                isOsModeActive = false; 
+                
+                // Forcer le scroll tout en haut
+                window.scrollTo({ top: 0, behavior: 'instant' }); 
 
                 setTimeout(() => {
                     currentKonceptModeIndex = (currentKonceptModeIndex + 1) % konceptModes.length;
@@ -1507,11 +1561,12 @@
                 }, 500);
             });
 
-            // Bouton indépendant OS Dashboard (Ordinateur 💻)
             osModeToggle.addEventListener('click', () => {
                 playSfx('click');
                 document.body.classList.add('warping');
-                window.scrollTo({ top: 0, behavior: 'smooth' }); // Empêche un saut de scroll
+                
+                // Forcer le scroll tout en haut pour éviter de sauter vers le bas
+                window.scrollTo({ top: 0, behavior: 'instant' }); 
 
                 setTimeout(() => {
                     isOsModeActive = !isOsModeActive;
@@ -1540,7 +1595,6 @@
                     project_orba_title: "ORBA <span class=\"badge-new\">NEW</span>",
                     project_orba_desc: "Bien plus qu'un simple assistant vocal, Orba est une entité IA Native Audio conçue comme un prolongement de votre propre cognition. Elle fusionne une intelligence de raisonnement avancée (Gemini 2.5 Flash) avec une interface sensorielle complète et une mémoire persistante pour une symbiose homme-machine inédite.",
                     discover_orba_btn: "Découvrir l'expérience Orba",
-                    /* -------------------- */
 
                     project_watches_title: "Montres Alex Koncept",
                     project_watches_desc: "Création horlogère indépendante, modding artistique, boîtier signature AK.",
@@ -1596,7 +1650,6 @@
                     project_orba_title: "ORBA <span class=\"badge-new\">NEW</span>",
                     project_orba_desc: "More than just a voice assistant, Orba is a Native Audio AI entity designed as an extension of your own cognition. It fuses advanced reasoning intelligence (Gemini 2.5 Flash) with a complete sensory interface and persistent memory for a unique human-machine symbiosis.",
                     discover_orba_btn: "Discover the Orba experience",
-                    /* -------------------- */
 
                     project_watches_title: "Alex Koncept Watches",
                     project_watches_desc: "Independent watchmaking, artistic modding, signature AK case.",
