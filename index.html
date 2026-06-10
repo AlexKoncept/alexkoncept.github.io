@@ -772,7 +772,7 @@
         #root [role="dialog"] button, #root div[class*="container"] button, #root button[type="submit"] { background-image: none !important; background-color: transparent; width: auto !important; height: auto !important; border-radius: 4px !important; border: none !important; }
         #root button svg, #root button i, #root button span, #root button img { display: none !important; }
 
-        /* --- MODAL PDF --- */
+        /* --- MODAL PDF & GÉNERAL --- */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); z-index: 100000; display: flex; justify-content: center; align-items: center; opacity: 0; visibility: hidden; transition: all 0.4s ease; }
         .modal-overlay.active { opacity: 1; visibility: visible; }
         .modal-content { background: var(--glass-bg); border: var(--glass-border); border-radius: var(--card-radius); width: 90%; max-width: 1100px; height: 85vh; display: flex; flex-direction: column; box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6); transform: translateY(30px) scale(0.95); transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); overflow: hidden; }
@@ -785,6 +785,42 @@
         .modal-body iframe { width: 100%; height: 100%; border: none; }
         .action-btn { display: inline-flex; align-items: center; gap: 10px; color: #fff; background: linear-gradient(45deg, var(--link-color), #00c9ff); padding: 12px 28px; border-radius: 30px; text-decoration: none; font-weight: 600; box-shadow: 0 4px 15px rgba(0, 119, 204, 0.3); transition: all 0.3s ease; border: none; font-family: var(--main-font); font-size: 1rem; margin-top: 1.5rem; cursor: pointer !important; }
         .action-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0, 119, 204, 0.5); color: #fff; }
+
+        /* =========================================================
+           BOUTON DE NEWS AKRN LIVE (FLOTTANT À DROITE MILIEU/BAS)
+           ========================================================= */
+        .floating-news-btn {
+            position: fixed;
+            right: 20px;
+            top: 60%;
+            transform: translateY(-50%);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-image: url('akrn_logo.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border: 2px solid #00bcd4;
+            box-shadow: 0 0 15px rgba(0, 188, 212, 0.4);
+            z-index: 10001;
+            transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease;
+            cursor: pointer !important;
+            padding: 0;
+        }
+        .floating-news-btn:hover {
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 0 25px rgba(0, 188, 212, 0.8);
+        }
+
+        @media (max-width: 900px) {
+            .floating-news-btn {
+                width: 50px;
+                height: 50px;
+                right: 10px;
+                top: 65%;
+            }
+        }
     </style>
 </head>
 
@@ -804,6 +840,20 @@
             </div>
         </div>
     </div>
+
+    <!-- AKRN News Modal -->
+    <div id="akrn-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 data-key="akrn_modal_title">AKRN Live</h3>
+                <button id="close-akrn-btn" class="modal-close-btn" aria-label="Fermer">&times;</button>
+            </div>
+            <div class="modal-body">
+                <iframe id="akrn-iframe" data-src="https://akrn-live.netlify.app/" title="AKRN Live"></iframe>
+            </div>
+        </div>
+    </div>
+
     <div id="cursor-outline"></div>
 
     <canvas id="matrix-canvas"></canvas>
@@ -1139,6 +1189,9 @@
         </div>
     </section>
 
+    <!-- Bouton flottant AKRN Live (News) -->
+    <button id="akrn-trigger" class="floating-news-btn" aria-label="Afficher AKRN Live"></button>
+
     <footer>
         <span data-key="footer_text">© 2025 Alex Koncept — Vivre. Apprendre. Créer.</span>
     </footer>
@@ -1195,7 +1248,8 @@
                 }, { duration: 500, fill: "forwards" });
             });
 
-            const interactiveElements = document.querySelectorAll('a, button, .project');
+            // Ajout de .floating-news-btn dans la liste des éléments interactifs
+            const interactiveElements = document.querySelectorAll('a, button, .project, .floating-news-btn');
             interactiveElements.forEach(el => {
                 el.addEventListener('mouseenter', () => document.body.classList.add('hovered'));
                 el.addEventListener('mouseleave', () => document.body.classList.remove('hovered'));
@@ -1222,6 +1276,35 @@
 
                 pdfModal.addEventListener('click', (e) => {
                     if (e.target === pdfModal) togglePdfModal(false);
+                });
+            }
+
+            // --- AKRN MODAL LOGIC ---
+            const akrnModal = document.getElementById('akrn-modal');
+            const akrnTrigger = document.getElementById('akrn-trigger');
+            const closeAkrnBtn = document.getElementById('close-akrn-btn');
+            const akrnIframe = document.getElementById('akrn-iframe');
+
+            if (akrnTrigger && akrnModal && closeAkrnBtn && akrnIframe) {
+                const toggleAkrnModal = (show) => {
+                    if (show) {
+                        // Charger la source de l'iframe si non chargée (lazy loading)
+                        if (!akrnIframe.src) {
+                            akrnIframe.src = akrnIframe.getAttribute('data-src');
+                        }
+                        akrnModal.classList.add('active');
+                        document.body.style.overflow = 'hidden';
+                    } else {
+                        akrnModal.classList.remove('active');
+                        document.body.style.overflow = '';
+                    }
+                };
+
+                akrnTrigger.addEventListener('click', () => toggleAkrnModal(true));
+                closeAkrnBtn.addEventListener('click', () => toggleAkrnModal(false));
+
+                akrnModal.addEventListener('click', (e) => {
+                    if (e.target === akrnModal) toggleAkrnModal(false);
                 });
             }
 
@@ -1628,6 +1711,7 @@
                     contact_label: "Contact",
                     read_pdf_btn: "📄 Lire l'analyse du Portfolio (PDF)",
                     pdf_modal_title: "Analyse du Koncept Universe",
+                    akrn_modal_title: "AKRN Live",
                     footer_text: "© 2025 Alex Koncept — Vivre. Apprendre. Créer."
                 },
                 en: {
@@ -1688,6 +1772,7 @@
                     contact_label: "Contact",
                     read_pdf_btn: "📄 Read Portfolio Analysis (PDF)",
                     pdf_modal_title: "Koncept Universe Analysis",
+                    akrn_modal_title: "AKRN Live",
                     footer_text: "© 2025 Alex Koncept — Live. Learn. Create."
                 }
             };
