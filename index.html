@@ -5,37 +5,47 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Alex Koncept – Universe</title>
+    
+    <!-- Favicons -->
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
 
+    <!-- SEO & Metadata -->
+    <meta name="description" content="Découvrez les créations horlogères, projets web dystopiques, crypto World Peace et IA par Alex Koncept." />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://alexkoncept.github.io/">
+    <meta property="og:title" content="Alex Koncept – Universe">
+    <meta property="og:description" content="Découvrez les créations horlogères, projets web dystopiques, crypto World Peace et IA par Alex Koncept.">
+    <meta property="og:image" content="https://alexkoncept.github.io/Avatar.webp">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://alexkoncept.github.io/">
+    <meta name="twitter:title" content="Alex Koncept – Universe">
+    <meta name="twitter:description" content="Découvrez les créations horlogères, projets web dystopiques, crypto World Peace et IA par Alex Koncept.">
+    <meta name="twitter:image" content="https://alexkoncept.github.io/Avatar.webp">
+
+    <!-- Fonts Pré-connexion et Chargement Groupé unique -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@300;400;600&family=Rajdhani:wght@400;600;700&display=swap"
-        rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Courier+Prime&family=Special+Elite&family=Bebas+Neue&family=Damion&family=Playfair+Display:ital,wght@0,700;0,900;1,400&display=swap"
-        rel="stylesheet" media="print" onload="this.media='all'">
-    <noscript>
-        <link
-            href="https://fonts.googleapis.com/css2?family=Courier+Prime&family=Special+Elite&family=Bebas+Neue&family=Damion&family=Playfair+Display:ital,wght@0,700;0,900;1,400&display=swap"
-            rel="stylesheet">
-    </noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Courier+Prime&family=Damion&family=Orbitron:wght@500;700&family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Poppins:wght@300;400;600&family=Rajdhani:wght@400;600;700&family=Special+Elite&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="chatbot/index.css" />
 
+    <!-- Schema.org Structured Data -->
     <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "Alex Koncept",
-  "url": "https://alexkoncept.github.io/",
-  "description": "Créations horlogères, projets web futuristes, crypto World Peace et IA par Alex Koncept."
-}
-</script>
-    <meta name="description"
-        content="Découvrez les créations horlogères, projets web dystopiques, crypto World Peace et IA par Alex Koncept." />
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Alex Koncept",
+      "url": "https://alexkoncept.github.io/",
+      "description": "Créations horlogères, projets web futuristes, crypto World Peace et IA par Alex Koncept."
+    }
+    </script>
 
     <style>
         :root {
@@ -466,31 +476,27 @@
            ========================================================= */
         @media (max-width: 900px) {
             body.koncept-os-dashboard {
-                /* On garde la grille 2 colonnes, mais on fait une mini-sidebar de 110px */
                 grid-template-columns: 110px 1fr !important;
                 grid-template-rows: 55px 1fr !important;
                 height: 100vh !important;
-                height: 100dvh !important; /* Gère la barre d'adresse mobile */
+                height: 100dvh !important;
                 overflow: hidden !important; 
                 padding: 10px !important;
                 gap: 10px !important;
             }
 
-            /* Réduction des boutons flottants pour qu'ils rentrent */
             body.koncept-os-dashboard .top-left-controls { top: 15px !important; left: 15px !important; gap: 8px !important; }
             body.koncept-os-dashboard .top-right-controls { top: 15px !important; right: 15px !important; gap: 8px !important; }
             body.koncept-os-dashboard .common-toggle-button { width: 32px !important; height: 32px !important; font-size: 0.9rem !important; }
             
-            /* Mini Header */
             body.koncept-os-dashboard header#main-header {
                 grid-column: 1 / -1 !important;
                 grid-row: 1 !important;
-                padding: 0 10px 0 100px !important; /* Place pour les boutons à gauche */
+                padding: 0 10px 0 100px !important;
                 border-radius: 12px !important;
             }
             body.koncept-os-dashboard header#main-header h1 { font-size: 1.1rem !important; }
 
-            /* Mini Sidebar (À propos) */
             body.koncept-os-dashboard #a-propos {
                 grid-column: 1 !important;
                 grid-row: 2 !important;
@@ -504,14 +510,12 @@
             body.koncept-os-dashboard .contact-info { font-size: 0.55rem !important; word-break: break-all; }
             body.koncept-os-dashboard .action-btn { font-size: 0.55rem !important; padding: 5px !important; border-radius: 8px !important; margin-top: 5px !important;}
 
-            /* Mini Zone Principale */
             body.koncept-os-dashboard .container {
                 grid-column: 2 !important;
                 grid-row: 2 !important;
                 gap: 10px !important;
             }
 
-            /* Mini Intro Wdiget */
             body.koncept-os-dashboard .intro {
                 padding: 10px !important;
                 font-size: 0.7rem !important;
@@ -522,7 +526,6 @@
             }
             body.koncept-os-dashboard .chatbot-prompt { margin: 0 !important; font-size: 0.6rem !important; padding: 5px !important; border-radius: 8px !important; }
 
-            /* Mini Grille de Projets (1 colonne car 2 ça serait illisible) */
             body.koncept-os-dashboard #projects-container {
                 grid-template-columns: 1fr !important;
                 gap: 10px !important;
@@ -546,6 +549,12 @@
         * {
             box-sizing: border-box;
             cursor: none !important;
+        }
+
+        /* Accessibilité Clavier : Indicateur visuel standard de focus */
+        *:focus-visible {
+            outline: 2px solid var(--link-color) !important;
+            outline-offset: 4px;
         }
 
         body {
@@ -772,7 +781,7 @@
         #root [role="dialog"] button, #root div[class*="container"] button, #root button[type="submit"] { background-image: none !important; background-color: transparent; width: auto !important; height: auto !important; border-radius: 4px !important; border: none !important; }
         #root button svg, #root button i, #root button span, #root button img { display: none !important; }
 
-        /* --- MODAL PDF & GÉNERAL --- */
+        /* --- MODAL PDF & GENERAL --- */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); z-index: 100000; display: flex; justify-content: center; align-items: center; opacity: 0; visibility: hidden; transition: all 0.4s ease; }
         .modal-overlay.active { opacity: 1; visibility: visible; }
         .modal-content { background: var(--glass-bg); border: var(--glass-border); border-radius: var(--card-radius); width: 90%; max-width: 1100px; height: 85vh; display: flex; flex-direction: column; box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6); transform: translateY(30px) scale(0.95); transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); overflow: hidden; }
@@ -820,6 +829,23 @@
                 right: 10px;
                 top: 65%;
             }
+        }
+
+        /* --- STYLE DU BOUTON RETOUR EN HAUT --- */
+        #back-to-top {
+            position: fixed;
+            bottom: 160px; /* Positionné juste au-dessus de la bulle d'aide d'Alexbot (bottom: 90px) */
+            right: 20px;
+            opacity: 0;
+            pointer-events: none;
+            transform: scale(0.8) translateY(20px);
+            transition: opacity 0.3s ease, transform 0.3s ease, background 0.3s, box-shadow 0.3s;
+            z-index: 10000;
+        }
+        #back-to-top.active {
+            opacity: 1;
+            pointer-events: auto;
+            transform: scale(1) translateY(0);
         }
     </style>
 </head>
@@ -870,7 +896,6 @@
         </button>
     </div>
 
-    <!-- Bouton SON supprimé -->
     <div class="top-right-controls">
         <div class="lang-switcher">
             <button id="lang-fr-btn" class="common-toggle-button" aria-label="Passer en Français">FR</button>
@@ -986,8 +1011,7 @@
                         <span class="project-tag">Vision Augmentée</span>
                         <span class="project-tag">Three.js</span>
                     </div>
-                    <p data-key="project_orba_desc"
-                        title="Orba : L'interface cognitive augmentée. Bien plus qu'un assistant, c'est un prolongement de l'esprit. Native Audio, vision temps réel et mémoire persistante : j'ai conçu l'IA que je voulais avoir, capable de voir ce que je vois et de se souvenir de tout.">
+                    <p data-key="project_orba_desc">
                         Bien plus qu'un simple assistant vocal, Orba est une entité IA Native Audio conçue comme un
                         prolongement de votre propre cognition.
                         Elle fusionne une intelligence de raisonnement avancée (Gemini 2.5 Flash) avec une interface
@@ -1224,6 +1248,11 @@
     <!-- Bouton flottant AKNR Live (News) -->
     <button id="akrn-trigger" class="floating-news-btn" aria-label="Afficher AKNR Live"></button>
 
+    <!-- Bouton de retour en haut -->
+    <button id="back-to-top" class="common-toggle-button" aria-label="Retour en haut" data-key="back_to_top" title="Retour en haut">
+        ↑
+    </button>
+
     <footer>
         <span data-key="footer_text">© 2025 Alex Koncept — Vivre. Apprendre. Créer.</span>
     </footer>
@@ -1233,10 +1262,21 @@
     </div>
 
     <div id="root"></div>
-    <script
-        type="importmap">{"imports": {"react": "https://esm.sh/react@^19.1.1","react-dom/": "https://esm.sh/react-dom@^19.1.1/","@google/genai": "https://esm.sh/@google/genai@^1.13.0","react/": "https://esm.sh/react@^19.1.1/"}}</script>
+    
+    <!-- Script Module Import Map -->
+    <script type="importmap">
+    {
+      "imports": {
+        "react": "https://esm.sh/react@^19.1.1",
+        "react-dom/": "https://esm.sh/react-dom@^19.1.1/",
+        "@google/genai": "https://esm.sh/@google/genai@^1.13.0",
+        "react/": "https://esm.sh/react@^19.1.1/"
+      }
+    }
+    </script>
     <script type="module" src="https://esm.sh/gh/alexkoncept/alexkoncept.github.io@main/chatbot/index.tsx"></script>
     
+    <!-- SoundCloud Player -->
     <div id="music-note-icon"
         style="position: fixed; bottom: 20px; left: 20px; z-index: 10000; cursor: pointer; background: #00bcd4; border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 12px rgba(0, 188, 212, 0.7);">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white"
@@ -1249,11 +1289,12 @@
     
     <div id="soundcloud-floating-player"
         style="display: none; align-items: center; gap: 8px; padding: 4px; background: transparent; border: 1px solid #00bcd4; box-shadow: 0 0 12px rgba(0, 188, 212, 0.7); border-radius: 10px; position: fixed; bottom: 20px; left: 20px; z-index: 9999;">
-        <iframe id="soundcloud-iframe" width="200" height="80" scrolling="no" frameborder="no"
-            allow="autoplay"></iframe><button id="next-track-btn" title="Musique suivante"
+        <iframe id="soundcloud-iframe" width="200" height="80" scrolling="no" frameborder="no" allow="autoplay"></iframe>
+        <button id="next-track-btn" title="Musique suivante"
             style="background:#00bcd4; border:none; border-radius: 6px; color: white; cursor: pointer; padding: 8px 10px; font-weight: bold; font-family: inherit; font-size: 0.9rem; transition: background 0.3s;">&gt;</button>
     </div>
 
+    <!-- Application Logic -->
     <script>
         if ('scrollRestoration' in history) {
             history.scrollRestoration = 'manual';
@@ -1280,11 +1321,31 @@
                 }, { duration: 500, fill: "forwards" });
             });
 
-            // Ajout de .floating-news-btn dans la liste des éléments interactifs
-            const interactiveElements = document.querySelectorAll('a, button, .project, .floating-news-btn');
+            // Ajout du bouton Retour en haut dans la liste des éléments interactifs pour le curseur
+            const interactiveElements = document.querySelectorAll('a, button, .project, .floating-news-btn, #back-to-top');
             interactiveElements.forEach(el => {
                 el.addEventListener('mouseenter', () => document.body.classList.add('hovered'));
                 el.addEventListener('mouseleave', () => document.body.classList.remove('hovered'));
+            });
+
+            // --- BOUTON RETOUR EN HAUT LOGIC ---
+            const backToTopBtn = document.getElementById('back-to-top');
+            
+            // On écoute le défilement de la page principale
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    backToTopBtn.classList.add('active');
+                } else {
+                    backToTopBtn.classList.remove('active');
+                }
+            }, { passive: true });
+
+            // Action de défilement fluide vers le haut
+            backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
             });
 
             // --- PDF MODAL LOGIC ---
@@ -1320,7 +1381,6 @@
             if (akrnTrigger && akrnModal && closeAkrnBtn && akrnIframe) {
                 const toggleAkrnModal = (show) => {
                     if (show) {
-                        // Charger la source de l'iframe si non chargée (lazy loading)
                         if (!akrnIframe.src) {
                             akrnIframe.src = akrnIframe.getAttribute('data-src');
                         }
@@ -1394,7 +1454,7 @@
                 if (matrixReqId || !matrixCanvas) return;
                 matrixCanvas.width = window.innerWidth;
                 matrixCanvas.height = window.innerHeight;
-                const katakana = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン';
+                const katakana = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブプエェケセテネヘメレヱGEZEデベペオォコソトノホモヨョロヲゴゾドボポヴッン';
                 const latin = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
                 const nums = '0123456789';
                 const alphabet = katakana + latin + nums;
@@ -1684,6 +1744,7 @@
                 }, 500);
             });
 
+            // --- TRADUCTIONS ET LOCALISATION ---
             const translations = {
                 fr: {
                     koncept_mode_label: "Changer le Koncept Mode",
@@ -1748,7 +1809,8 @@
                     read_pdf_btn: "📄 Lire l'analyse du Portfolio (PDF)",
                     pdf_modal_title: "Analyse du Koncept Universe",
                     akrn_modal_title: "AKNR Live",
-                    footer_text: "© 2025 Alex Koncept — Vivre. Apprendre. Créer."
+                    footer_text: "© 2025 Alex Koncept — Vivre. Apprendre. Créer.",
+                    back_to_top: "Retour en haut"
                 },
                 en: {
                     koncept_mode_label: "Change Koncept Mode",
@@ -1813,9 +1875,11 @@
                     read_pdf_btn: "📄 Read Portfolio Analysis (PDF)",
                     pdf_modal_title: "Koncept Universe Analysis",
                     akrn_modal_title: "AKNR Live",
-                    footer_text: "© 2025 Alex Koncept — Live. Learn. Create."
+                    footer_text: "© 2025 Alex Koncept — Live. Learn. Create.",
+                    back_to_top: "Back to top"
                 }
             };
+
             const langFrBtn = document.getElementById('lang-fr-btn');
             const langEnBtn = document.getElementById('lang-en-btn');
             const setLanguage = (lang) => {
@@ -1831,11 +1895,13 @@
                 if (lang === 'fr') { langFrBtn.classList.add('lang-active'); langEnBtn.classList.remove('lang-active'); }
                 else { langEnBtn.classList.add('lang-active'); langFrBtn.classList.remove('lang-active'); }
             };
+
             langFrBtn.addEventListener('click', () => setLanguage('fr'));
             langEnBtn.addEventListener('click', () => setLanguage('en'));
             const initialLang = localStorage.getItem('language') || (navigator.language.startsWith('fr') ? 'fr' : 'en');
             setLanguage(initialLang);
 
+            // --- TRI ET PRESENTATION DES CARTES ---
             const projectsContainer = document.getElementById('projects-container');
             if (projectsContainer) {
                 const comingSoonProject = document.getElementById('coming-soon-project');
@@ -1865,6 +1931,7 @@
             }, { threshold: 0.1 });
             document.querySelectorAll('.project').forEach(project => { observer.observe(project); });
 
+            // --- TRACKS AUDIO SOUNDCLOUD ---
             const musicIcon = document.getElementById("music-note-icon");
             const playerContainer = document.getElementById("soundcloud-floating-player");
             const iframe = document.getElementById("soundcloud-iframe");
