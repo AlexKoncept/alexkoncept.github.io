@@ -1340,44 +1340,60 @@
 
         document.addEventListener('DOMContentLoaded', () => {
 
-// --- LOGO MOUVEMENT ALEATOIRE (logo_move.png) ---
+// --- LOGO MOUVEMENT ALEATOIRE (CONSTRAINTS: GAUCHE, HAUT, DROITE) ---
             const movingLogo = document.getElementById('moving-logo-container');
             
             if (movingLogo) {
-                // Associe le survol au curseur personnalisé du site
                 movingLogo.addEventListener('mouseenter', () => document.body.classList.add('hovered'));
                 movingLogo.addEventListener('mouseleave', () => document.body.classList.remove('hovered'));
 
                 function moveLogoRandomly() {
-                    // Récupération dynamique de la taille de l'élément
                     const rect = movingLogo.getBoundingClientRect();
                     const logoWidth = rect.width;
                     const logoHeight = rect.height;
 
-                    // Marges pour éviter que le logo sorte de l'écran
+                    // Limites maximales de l'écran
                     const maxX = window.innerWidth - logoWidth;
                     const maxY = window.innerHeight - logoHeight;
 
-                    // Coordonnées aléatoires sur l'écran
-                    const randomX = Math.random() * maxX;
-                    const randomY = Math.random() * maxY;
+                    // Marge pour que le logo reste élégamment visible sans être tronqué
+                    const margin = 20; 
 
-                    // Vitesse lente et variable pour le voyage (entre 7 et 12 secondes)
+                    // Choix aléatoire du côté : 0 = Gauche, 1 = Haut, 2 = Droite
+                    const side = Math.floor(Math.random() * 3);
+                    let targetX, targetY;
+
+                    switch (side) {
+                        case 0: // Déplacement le long du bord GAUCHE
+                            targetX = margin;
+                            targetY = margin + Math.random() * (maxY - 2 * margin);
+                            break;
+                        case 1: // Déplacement le long du bord HAUT
+                            targetX = margin + Math.random() * (maxX - 2 * margin);
+                            targetY = margin;
+                            break;
+                        case 2: // Déplacement le long du bord DROITE
+                            targetX = maxX - margin;
+                            targetY = margin + Math.random() * (maxY - 2 * margin);
+                            break;
+                    }
+
+                    // Durée de déplacement (entre 7 et 12 secondes)
                     const travelDuration = 7000 + Math.random() * 5000;
 
-                    // Application fluide de la transition CSS
+                    // Application de la transition
                     movingLogo.style.transition = `left ${travelDuration}ms ease-in-out, top ${travelDuration}ms ease-in-out`;
-                    movingLogo.style.left = `${randomX}px`;
-                    movingLogo.style.top = `${randomY}px`;
+                    movingLogo.style.left = `${targetX}px`;
+                    movingLogo.style.top = `${targetY}px`;
 
-                    // Temps d'arrêt (pause) aléatoire à destination (entre 2 et 4,5 secondes)
+                    // Temps de pause à destination (entre 2 et 4,5 secondes)
                     const pauseDuration = 2000 + Math.random() * 2500;
 
-                    // Planifie le prochain mouvement après le voyage ET le temps de pause
+                    // Prochain déplacement
                     setTimeout(moveLogoRandomly, travelDuration + pauseDuration);
                 }
 
-                // Démarre le mouvement initial après un petit temps d'attente (1,5 seconde)
+                // Lancement après 1,5 seconde
                 setTimeout(moveLogoRandomly, 1500);
             }
             window.scrollTo(0, 0);
