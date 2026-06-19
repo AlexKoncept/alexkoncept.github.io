@@ -48,44 +48,6 @@
     </script>
 
     <style>
-/* =========================================================
-           LOGO FLOTTANT EN MOUVEMENT ET ROTATION
-           ========================================================= */
-        #moving-logo-container {
-            position: fixed;
-            left: 50%;
-            top: 50%;
-            width: 80px; /* Ajustez la taille selon vos préférences */
-            height: 80px;
-            z-index: 9998; /* Visible au-dessus du contenu mais sous les modals */
-            display: block;
-            cursor: none !important; /* Masque le curseur système pour utiliser votre curseur personnalisé */
-            user-select: none;
-            -webkit-user-drag: none;
-        }
-
-        #moving-logo-img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            background: transparent;
-            /* Rotation continue et lente (15 secondes par tour complet) */
-            animation: spin-continuous 15s linear infinite;
-            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.25));
-        }
-
-        @keyframes spin-continuous {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        /* Sur mobile, on peut réduire un peu sa taille pour ne pas gêner la navigation */
-        @media (max-width: 768px) {
-            #moving-logo-container {
-                width: 60px;
-                height: 60px;
-            }
-        }
         :root {
             --header-bg-start: rgba(0, 201, 255, 0.85);
             --header-bg-end: rgba(146, 254, 157, 0.85);
@@ -1340,62 +1302,6 @@
 
         document.addEventListener('DOMContentLoaded', () => {
 
-// --- LOGO MOUVEMENT ALEATOIRE (CONSTRAINTS: GAUCHE, HAUT, DROITE) ---
-            const movingLogo = document.getElementById('moving-logo-container');
-            
-            if (movingLogo) {
-                movingLogo.addEventListener('mouseenter', () => document.body.classList.add('hovered'));
-                movingLogo.addEventListener('mouseleave', () => document.body.classList.remove('hovered'));
-
-                function moveLogoRandomly() {
-                    const rect = movingLogo.getBoundingClientRect();
-                    const logoWidth = rect.width;
-                    const logoHeight = rect.height;
-
-                    // Limites maximales de l'écran
-                    const maxX = window.innerWidth - logoWidth;
-                    const maxY = window.innerHeight - logoHeight;
-
-                    // Marge pour que le logo reste élégamment visible sans être tronqué
-                    const margin = 20; 
-
-                    // Choix aléatoire du côté : 0 = Gauche, 1 = Haut, 2 = Droite
-                    const side = Math.floor(Math.random() * 3);
-                    let targetX, targetY;
-
-                    switch (side) {
-                        case 0: // Déplacement le long du bord GAUCHE
-                            targetX = margin;
-                            targetY = margin + Math.random() * (maxY - 2 * margin);
-                            break;
-                        case 1: // Déplacement le long du bord HAUT
-                            targetX = margin + Math.random() * (maxX - 2 * margin);
-                            targetY = margin;
-                            break;
-                        case 2: // Déplacement le long du bord DROITE
-                            targetX = maxX - margin;
-                            targetY = margin + Math.random() * (maxY - 2 * margin);
-                            break;
-                    }
-
-                    // Durée de déplacement (entre 7 et 12 secondes)
-                    const travelDuration = 7000 + Math.random() * 5000;
-
-                    // Application de la transition
-                    movingLogo.style.transition = `left ${travelDuration}ms ease-in-out, top ${travelDuration}ms ease-in-out`;
-                    movingLogo.style.left = `${targetX}px`;
-                    movingLogo.style.top = `${targetY}px`;
-
-                    // Temps de pause à destination (entre 2 et 4,5 secondes)
-                    const pauseDuration = 2000 + Math.random() * 2500;
-
-                    // Prochain déplacement
-                    setTimeout(moveLogoRandomly, travelDuration + pauseDuration);
-                }
-
-                // Lancement après 1,5 seconde
-                setTimeout(moveLogoRandomly, 1500);
-            }
             window.scrollTo(0, 0);
 
             // --- CUSTOM CURSOR ---
@@ -2065,10 +1971,6 @@
 
         });
     </script>
-<!-- Logo en mouvement aléatoire (The Clockwork Solstice) -->
-    <a id="moving-logo-container" href="https://theclockworksolstice-byalexkoncept.netlify.app/" target="_blank" rel="noopener noreferrer">
-        <img id="moving-logo-img" src="logo_move.png" alt="The Clockwork Solstice">
-    </a>
 </body>
 
 </html>
