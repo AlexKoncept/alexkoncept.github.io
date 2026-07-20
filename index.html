@@ -1375,9 +1375,9 @@
     </script>
     <script type="module" src="https://esm.sh/gh/alexkoncept/alexkoncept.github.io@main/chatbot/index.tsx"></script>
     
-    <!-- SoundCloud Player -->
-    <div id="music-note-icon"
-        style="position: fixed; bottom: 20px; left: 20px; z-index: 10000; cursor: pointer; background: #00bcd4; border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 12px rgba(0, 188, 212, 0.7);">
+    <!-- Bouton Toggle pour le Lecteur HSK -->
+    <div id="hsk-player-icon"
+        style="position: fixed; bottom: 20px; left: 20px; z-index: 10000; cursor: pointer; background: #00bcd4; border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 12px rgba(0, 188, 212, 0.7); transition: transform 0.3s ease;">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white"
             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M9 18V5l12-2v13"></path>
@@ -1386,11 +1386,18 @@
         </svg>
     </div>
     
-    <div id="soundcloud-floating-player"
-        style="display: none; align-items: center; gap: 8px; padding: 4px; background: transparent; border: 1px solid #00bcd4; box-shadow: 0 0 12px rgba(0, 188, 212, 0.7); border-radius: 10px; position: fixed; bottom: 20px; left: 20px; z-index: 9999;">
-        <iframe id="soundcloud-iframe" width="200" height="80" scrolling="no" frameborder="no" allow="autoplay"></iframe>
-        <button id="next-track-btn" title="Musique suivante"
-            style="background:#00bcd4; border:none; border-radius: 6px; color: white; cursor: pointer; padding: 8px 10px; font-weight: bold; font-family: inherit; font-size: 0.9rem; transition: background 0.3s;">&gt;</button>
+    <!-- Lecteur Mini Audio HSK Flottant -->
+    <div id="hsk-floating-player"
+        style="display: none; flex-direction: column; width: 350px; max-width: 90vw; height: 500px; max-height: 70vh; background: rgba(10, 10, 15, 0.95); border: 1px solid #00bcd4; box-shadow: 0 8px 32px rgba(0, 188, 212, 0.4); border-radius: 16px; position: fixed; bottom: 20px; left: 20px; z-index: 9999; overflow: hidden; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);">
+        <!-- En-tête du Mini-Player HSK -->
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 15px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); background: rgba(0, 0, 0, 0.4);">
+            <span style="font-family: 'Orbitron', sans-serif; font-size: 0.8rem; color: #00bcd4; font-weight: bold; letter-spacing: 1px;">HSK PLAYER</span>
+            <button id="close-hsk-player-btn" style="background: transparent; border: none; color: #fff; font-size: 1.2rem; cursor: pointer; opacity: 0.7; transition: opacity 0.2s;" title="Fermer">✕</button>
+        </div>
+        <!-- Contenu de l'Iframe HSK -->
+        <div style="flex: 1; width: 100%; height: 100%;">
+            <iframe id="hsk-iframe" src="about:blank" data-src="https://hsk-by-alexkoncept.netlify.app/" width="100%" height="100%" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" style="border: none; display: block;"></iframe>
+        </div>
     </div>
 
     <!-- Application Logic -->
@@ -1420,8 +1427,8 @@
                 }, { duration: 500, fill: "forwards" });
             });
 
-            // Ajout du bouton Retour en haut dans la liste des éléments interactifs pour le curseur
-            const interactiveElements = document.querySelectorAll('a, button, .project, .floating-news-btn, #back-to-top');
+            // Ajout du bouton de retour en haut et des éléments HSK dans la liste du curseur
+            const interactiveElements = document.querySelectorAll('a, button, .project, .floating-news-btn, #back-to-top, #hsk-player-icon, #close-hsk-player-btn');
             interactiveElements.forEach(el => {
                 el.addEventListener('mouseenter', () => document.body.classList.add('hovered'));
                 el.addEventListener('mouseleave', () => document.body.classList.remove('hovered'));
@@ -1735,9 +1742,9 @@
             if (window.matchMedia("(hover: hover)").matches) {
                 const projects = document.querySelectorAll('.project');
                 projects.forEach(card => {
-                    card.addEventListener('mousemove', (e) => {
-                        if(document.body.classList.contains('koncept-os-dashboard')) return;
+                    if(document.body.classList.contains('koncept-os-dashboard')) return;
 
+                    card.addEventListener('mousemove', (e) => {
                         const rect = card.getBoundingClientRect();
                         const x = e.clientX - rect.left;
                         const y = e.clientY - rect.top;
@@ -2126,42 +2133,26 @@ I've always loved understanding how things work, taking them apart, improving th
             }, { threshold: 0.1 });
             document.querySelectorAll('.project').forEach(project => { observer.observe(project); });
 
-            // --- TRACKS AUDIO SOUNDCLOUD ---
-            const musicIcon = document.getElementById("music-note-icon");
-            const playerContainer = document.getElementById("soundcloud-floating-player");
-            const iframe = document.getElementById("soundcloud-iframe");
-            const nextButton = document.getElementById("next-track-btn");
-            let isPlayerLaunched = false;
-            const priorityTrack = "https://on.soundcloud.com/K38qn3P6w3Z29EcYCh";
-            const soundcloudTracks = ["https://soundcloud.com/l-alex-339757635/lalex-piste-1-m4a?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=c8fe8d4be3a54764a0699bade90c75dd", "https://soundcloud.com/l-alex-339757635/lalex-piste-2-m4a?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=e81c8192d9c04af9ab525dd31fdc6213", "https://soundcloud.com/l-alex-339757635/lalex-piste-3_8bit-old-school?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=ecb00c2f996648ac82aa8ed580ff3664", "https://soundcloud.com/l-alex-339757635/lalex-piste-4_ambiance-m4a?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=2ecece16847443fca00f8f27c1ce3f3d", "https://soundcloud.com/l-alex-339757635/lalex-piste-5_drill-m4a?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=aa74ec6b1dda49d1b01d438642bc42f0", "https://soundcloud.com/l-alex-339757635/lalex-piste-6_daft-p-style-m4a?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=07c43f8ea06a45c7897ec491608f74f4", "https://soundcloud.com/l-alex-339757635/lalex-piste-7_techno-back-to?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=148b7dddbf364f6f9151e2ed31c3b636", "https://soundcloud.com/l-alex-339757635/piste8-cyberpunk-style?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=3bd3de2150fd4adca93a32c336a79562", "https://soundcloud.com/l-alex-339757635/piste-9_ambiance2-m4a?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=b5b080de12924e22865b51ba33dbf0bc", "https://soundcloud.com/l-alex-339757635/piste-10-hard-beat-m4a?si=f9a96fb2a8934756aad5eabc11f983d8&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing", "https://on.soundcloud.com/K38qn3P6w3Z29EcYCh"];
-            const otherTracks = soundcloudTracks.filter(track => track !== priorityTrack);
-            const shuffleArrayMusic = a => { for (let b = a.length - 1; 0 < b; b--) { const c = Math.floor(Math.random() * (b + 1));[a[b], a[c]] = [a[c], a[b]]; } };
-            shuffleArrayMusic(otherTracks);
-            let shuffledTracks = [priorityTrack, ...otherTracks];
-            let currentTrackIndex = 0;
+            // --- HSK PLAYER LOGIC ---
+            const hskPlayerIcon = document.getElementById("hsk-player-icon");
+            const hskPlayerContainer = document.getElementById("hsk-floating-player");
+            const hskIframe = document.getElementById("hsk-iframe");
+            const closeHskBtn = document.getElementById("close-hsk-player-btn");
+            let isHskLaunched = false;
 
-            const loadTrack = (index, isFirstLoad = false) => {
-                const trackUrl = shuffledTracks[index];
-                const widgetUrl = `https://w.soundcloud.com/player/?url=${encodeURIComponent(trackUrl)}&color=%2300bcd4&auto_play=${isFirstLoad ? 'false' : 'true'}&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false`;
-                iframe.src = widgetUrl;
-            };
-
-            musicIcon.addEventListener("click", () => {
-                if (!isPlayerLaunched) {
-                    loadTrack(currentTrackIndex, true);
-                    isPlayerLaunched = true;
+            hskPlayerIcon.addEventListener("click", () => {
+                if (!isHskLaunched) {
+                    // Chargement différé pour optimiser la vitesse au chargement initial du portfolio
+                    hskIframe.src = hskIframe.getAttribute("data-src");
+                    isHskLaunched = true;
                 }
-                playerContainer.style.display = "flex";
-                musicIcon.style.display = "none";
+                hskPlayerContainer.style.display = "flex";
+                hskPlayerIcon.style.display = "none";
             });
 
-            nextButton.addEventListener("click", () => {
-                currentTrackIndex++;
-                if (currentTrackIndex >= shuffledTracks.length) {
-                    shuffleArrayMusic(shuffledTracks);
-                    currentTrackIndex = 0;
-                }
-                loadTrack(currentTrackIndex);
+            closeHskBtn.addEventListener("click", () => {
+                hskPlayerContainer.style.display = "none";
+                hskPlayerIcon.style.display = "flex";
             });
 
         });
