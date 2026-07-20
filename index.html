@@ -847,6 +847,40 @@
             pointer-events: auto;
             transform: scale(1) translateY(0);
         }
+		.about-stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
+    gap:15px;
+    margin-top:25px;
+}
+
+.about-stat{
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:16px;
+    padding:18px;
+    text-align:center;
+    transition:.3s;
+}
+
+.about-stat:hover{
+    transform:translateY(-5px);
+    border-color:var(--accent);
+}
+
+.about-stat .icon{
+    font-size:2rem;
+}
+
+.about-stat .title{
+    font-weight:700;
+    margin-top:8px;
+}
+
+.about-stat .subtitle{
+    opacity:.75;
+    font-size:.9rem;
+}
     </style>
 </head>
 
@@ -1301,8 +1335,8 @@
                     technologies.<br>Ce site présente mes projets personnels regroupés sous <strong>Alex
                         Koncept</strong> : montres, IA, expériences web et plus encore.</p>
                 <p class="contact-info">
-                    <span data-key="contact_label">Contact</span>: <a
-                        href="mailto:contact@alexkoncept.com">contact@alexkoncept.com</a>
+                    <span data-key="contact_label"></span>: <a
+                        href="contact@alexkoncept.com">contact@alexkoncept.com</a>
                 </p>
                 <button id="open-pdf-btn" class="action-btn" data-key="read_pdf_btn">📄 Lire l'analyse du Portfolio
                     (PDF)</button>
@@ -1877,7 +1911,49 @@
                     project_next_title: "Next Koncept in progress...",
                     project_next_desc: "Un nouveau projet prend forme dans l’atelier AK, à très bientôt pour en découvrir plus.",
                     about_title: "À propos",
-                    about_desc: "Moi c'est Alex, passionné d’informatique, de DIY, d’horlogerie et de nouvelles technologies.<br>Ce site présente mes projets personnels regroupés sous <strong>Alex Koncept</strong> : montres, IA, expériences web et plus encore.",
+                    about_desc: `
+Moi c'est <strong>Alex</strong>, informaticien de métier et créateur par passion.<br><br>
+
+Depuis toujours, j'aime comprendre comment les choses fonctionnent, les démonter, les améliorer et imaginer de nouvelles idées.<br><br>
+
+<strong>Alex Koncept</strong> est devenu mon laboratoire personnel où se rencontrent intelligence artificielle, développement, horlogerie, design et DIY. Chaque projet est une nouvelle expérimentation, une occasion d'apprendre, de créer et de partager.<br><br>
+
+<div class="about-stats">
+
+<div class="about-stat">
+<div class="icon">💻</div>
+<div class="title">20 ans</div>
+<div class="subtitle">d'expérience</div>
+</div>
+
+<div class="about-stat">
+<div class="icon">🚀</div>
+<div class="title">20+</div>
+<div class="subtitle">projets</div>
+</div>
+
+<div class="about-stat">
+<div class="icon">⌚</div>
+<div class="title">Horlogerie</div>
+</div>
+
+<div class="about-stat">
+<div class="icon">🤖</div>
+<div class="title">IA</div>
+</div>
+
+<div class="about-stat">
+<div class="icon">🎨</div>
+<div class="title">DIY & Design</div>
+</div>
+
+<div class="about-stat">
+<div class="icon">🌍</div>
+<div class="title">Toujours en apprentissage</div>
+</div>
+
+</div>
+`,
                     contact_label: "Contact",
                     read_pdf_btn: "📄 Lire l'analyse du Portfolio (PDF)",
                     pdf_modal_title: "Analyse du Koncept Universe",
@@ -1947,7 +2023,49 @@
                     project_next_title: "Next Koncept in progress...",
                     project_next_desc: "A new project is taking shape in the AK workshop, see you very soon to discover more.",
                     about_title: "About",
-                    about_desc: "I'm Alex, passionate about IT, DIY, watchmaking, and new technologies.<br>This site presents my personal projects under the <strong>Alex Koncept</strong> brand: watches, AI, web experiences, and more.",
+                    about_desc: `
+I'm <strong>Alex</strong>, an IT professional by trade and a creator by passion.<br><br>
+
+I've always loved understanding how things work, taking them apart, improving them and turning ideas into real projects.<br><br>
+
+<strong>Alex Koncept</strong> has become my personal laboratory where artificial intelligence, software development, watchmaking, design and DIY come together. Every project is a new experiment, an opportunity to learn, create and share.<br><br>
+
+<div class="about-stats">
+
+<div class="about-stat">
+<div class="icon">💻</div>
+<div class="title">20 ans</div>
+<div class="subtitle">d'expérience</div>
+</div>
+
+<div class="about-stat">
+<div class="icon">🚀</div>
+<div class="title">20+</div>
+<div class="subtitle">projets</div>
+</div>
+
+<div class="about-stat">
+<div class="icon">⌚</div>
+<div class="title">Horlogerie</div>
+</div>
+
+<div class="about-stat">
+<div class="icon">🤖</div>
+<div class="title">IA</div>
+</div>
+
+<div class="about-stat">
+<div class="icon">🎨</div>
+<div class="title">DIY & Design</div>
+</div>
+
+<div class="about-stat">
+<div class="icon">🌍</div>
+<div class="title">Toujours en apprentissage</div>
+</div>
+
+</div>
+`,
                     contact_label: "Contact",
                     read_pdf_btn: "📄 Read Portfolio Analysis (PDF)",
                     pdf_modal_title: "Koncept Universe Analysis",
