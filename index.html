@@ -273,7 +273,6 @@
             background-image: none !important;
         }
 
-        /* 1. HEADER -> BARRE DU HAUT */
         body.koncept-os-dashboard header#main-header {
             position: static !important;
             grid-column: 1 / -1 !important;
@@ -301,7 +300,6 @@
             display: none !important; 
         }
 
-        /* 2. SIDEBAR -> SECTION A PROPOS */
         body.koncept-os-dashboard #a-propos {
             grid-column: 1 !important;
             grid-row: 2 !important;
@@ -341,7 +339,6 @@
             justify-content: center !important;
         }
 
-        /* 3. WIDGETS PROJETS -> CONTENEUR CENTRAL */
         body.koncept-os-dashboard .container {
             grid-column: 2 !important;
             grid-row: 2 !important;
@@ -355,7 +352,6 @@
             min-height: 0 !important; 
         }
 
-        /* 4. INTRO -> WIDGET HORIZONTAL */
         body.koncept-os-dashboard .intro {
             margin: 0 !important;
             padding: 20px 30px !important;
@@ -379,7 +375,6 @@
             box-shadow: none !important;
         }
 
-        /* 5. ZONE DES CARTES AVEC SCROLL INTERNE */
         body.koncept-os-dashboard #projects-container {
             flex: 1 !important;
             overflow-y: auto !important; 
@@ -394,7 +389,6 @@
         body.koncept-os-dashboard #projects-container::-webkit-scrollbar-track { background: transparent; }
         body.koncept-os-dashboard #projects-container::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
 
-        /* 6. STYLE CARTES BENTO UI */
         body.koncept-os-dashboard .project {
             margin: 0 !important;
             padding: 15px !important;
@@ -468,12 +462,8 @@
             box-shadow: 0 4px 10px rgba(0, 188, 212, 0.2) !important;
         }
 
-        /* 7. CACHER LE FOOTER DANS LE DASHBOARD */
         body.koncept-os-dashboard footer { display: none !important; }
 
-        /* =========================================================
-           RESPONSIVE MOBILE DU DASHBOARD ("Mini Desktop" pour le sport)
-           ========================================================= */
         @media (max-width: 900px) {
             body.koncept-os-dashboard {
                 grid-template-columns: 110px 1fr !important;
@@ -551,7 +541,6 @@
             cursor: none !important;
         }
 
-        /* Accessibilité Clavier : Indicateur visuel standard de focus */
         *:focus-visible {
             outline: 2px solid var(--link-color) !important;
             outline-offset: 4px;
@@ -749,8 +738,16 @@
             #cursor-dot, #cursor-outline { display: none; }
         }
 
-        /* CUSTOM CURSOR STYLES */
-        #cursor-dot, #cursor-outline { position: fixed; top: 0; left: 0; transform: translate(-50%, -50%); border-radius: 50%; z-index: 10002; pointer-events: none; }
+        /* CUSTOM CURSOR STYLES (Z-INDEX AU PREMIER PLAN) */
+        #cursor-dot, #cursor-outline { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            transform: translate(-50%, -50%); 
+            border-radius: 50%; 
+            z-index: 999999 !important; 
+            pointer-events: none !important; 
+        }
         #cursor-dot { width: var(--cursor-size); height: var(--cursor-size); background-color: var(--cursor-color); }
         #cursor-outline { width: 40px; height: 40px; border: 1px solid var(--cursor-color); transition: width 0.2s, height 0.2s, background-color 0.2s; mix-blend-mode: difference; }
         body.hovered #cursor-outline { width: 60px; height: 60px; background-color: rgba(255, 255, 255, 0.1); border-width: 2px; }
@@ -834,7 +831,7 @@
         /* --- STYLE DU BOUTON RETOUR EN HAUT --- */
         #back-to-top {
             position: fixed;
-            bottom: 160px; /* Positionné juste au-dessus de la bulle d'aide d'Alexbot (bottom: 90px) */
+            bottom: 160px;
             right: 20px;
             opacity: 0;
             pointer-events: none;
@@ -847,40 +844,372 @@
             pointer-events: auto;
             transform: scale(1) translateY(0);
         }
-		.about-stats{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
-    gap:15px;
-    margin-top:25px;
-}
 
-.about-stat{
-    background:rgba(255,255,255,.05);
-    border:1px solid rgba(255,255,255,.1);
-    border-radius:16px;
-    padding:18px;
-    text-align:center;
-    transition:.3s;
-}
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 15px;
+            margin-top: 25px;
+        }
 
-.about-stat:hover{
-    transform:translateY(-5px);
-    border-color:var(--accent);
-}
+        .about-stat {
+            background: rgba(255, 255, 255, .05);
+            border: 1px solid rgba(255, 255, 255, .1);
+            border-radius: 16px;
+            padding: 18px;
+            text-align: center;
+            transition: .3s;
+        }
 
-.about-stat .icon{
-    font-size:2rem;
-}
+        .about-stat:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
 
-.about-stat .title{
-    font-weight:700;
-    margin-top:8px;
-}
+        .about-stat .icon { font-size: 2rem; }
+        .about-stat .title { font-weight: 700; margin-top: 8px; }
+        .about-stat .subtitle { opacity: .75; font-size: .9rem; }
 
-.about-stat .subtitle{
-    opacity:.75;
-    font-size:.9rem;
-}
+        /* =========================================================
+           WIDGET FLOTTANT ANNONCE : ORBAOS (CARRÉ GRAND + HALO LATÉRAL)
+           ========================================================= */
+        .orbaos-widget {
+            position: fixed;
+            top: calc(17% + 45px); /* Positionné sous AKNR */
+            right: 20px;
+            width: 330px;
+            max-width: calc(100vw - 40px);
+            background: rgba(18, 10, 26, 0.94);
+            backdrop-filter: blur(20px) saturate(160%);
+            -webkit-backdrop-filter: blur(20px) saturate(160%);
+            border: 2px solid rgba(217, 70, 239, 0.75);
+            border-radius: 20px;
+            overflow: hidden;
+            z-index: 10002;
+            font-family: var(--main-font, 'Poppins', sans-serif);
+            color: #fce7f3;
+            transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+            transform-origin: top right;
+        }
+
+        /* --- ÉTAT RÉDUIT (FORMAT CARRÉ AGRANDI + HALO LATÉRAL PULSÉ) --- */
+        .orbaos-widget.collapsed {
+            width: 125px;
+            height: 125px;
+            border-radius: 18px;
+            padding: 0;
+            cursor: pointer !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: orbaSideGlowPulse 3s ease-in-out infinite alternate;
+        }
+
+        .orbaos-widget.collapsed:hover {
+            transform: scale(1.06);
+        }
+
+        @keyframes orbaSideGlowPulse {
+            0% {
+                box-shadow: 
+                    -12px 0 25px -4px rgba(244, 63, 94, 0.6),
+                    12px 0 25px -4px rgba(217, 70, 239, 0.6),
+                    0 0 15px rgba(217, 70, 239, 0.4);
+                border-color: rgba(217, 70, 239, 0.7);
+            }
+            100% {
+                box-shadow: 
+                    -22px 0 35px -2px rgba(244, 63, 94, 0.9),
+                    22px 0 35px -2px rgba(217, 70, 239, 0.9),
+                    0 0 25px rgba(244, 63, 94, 0.7);
+                border-color: rgba(244, 63, 94, 1);
+            }
+        }
+
+        .orbaos-widget.collapsed .orbaos-card-content {
+            display: none;
+        }
+
+        /* Déclencheur / Aperçu Carré */
+        .orbaos-square-preview {
+            display: none;
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            border-radius: 16px;
+        }
+
+        .orbaos-widget.collapsed .orbaos-square-preview {
+            display: block;
+        }
+
+        .orbaos-mini-carousel {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .orbaos-mini-slide {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out, transform 1s ease;
+            transform: scale(1.05);
+        }
+
+        .orbaos-mini-slide.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .orbaos-square-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(18,10,26,0.85) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 8px;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .orbaos-square-title {
+            font-family: var(--title-font, 'Orbitron', sans-serif);
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+            text-shadow: 0 0 8px rgba(217, 70, 239, 0.9);
+        }
+
+        .orbaos-mini-badge {
+            position: absolute;
+            top: 6px;
+            right: 6px;
+            background: linear-gradient(135deg, #d946ef, #f43f5e);
+            color: #fff;
+            font-size: 0.55rem;
+            font-weight: 800;
+            padding: 2px 6px;
+            border-radius: 8px;
+            letter-spacing: 0.5px;
+            box-shadow: 0 0 10px rgba(217, 70, 239, 0.9);
+            z-index: 3;
+            animation: pop 1.5s ease-out infinite alternate;
+        }
+
+        /* --- CONTENU DE LA CARTE DÉPLIÉE --- */
+        .orbaos-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 16px;
+            background: linear-gradient(90deg, rgba(217, 70, 239, 0.18) 0%, rgba(244, 63, 94, 0.1) 100%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            user-select: none;
+        }
+
+        .orbaos-header-left {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .orbaos-badge {
+            background: linear-gradient(135deg, #d946ef 0%, #f43f5e 100%);
+            color: #ffffff;
+            font-size: 0.65rem;
+            font-weight: 800;
+            letter-spacing: 0.8px;
+            padding: 3px 8px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            box-shadow: 0 0 10px rgba(217, 70, 239, 0.6);
+        }
+
+        .orbaos-header-title {
+            font-family: var(--title-font, 'Orbitron', sans-serif);
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+        }
+
+        .orbaos-close-btn {
+            background: transparent;
+            border: none;
+            color: #f472b6;
+            font-size: 1.2rem;
+            line-height: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            cursor: pointer !important;
+            transition: transform 0.2s ease, color 0.2s ease;
+        }
+
+        .orbaos-close-btn:hover {
+            color: #ffffff;
+            transform: scale(1.2);
+        }
+
+        .orbaos-body {
+            padding: 16px;
+        }
+
+        .orbaos-title {
+            margin: 0 0 10px 0;
+            font-family: var(--title-font, 'Orbitron', sans-serif);
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 0 0 8px rgba(217, 70, 239, 0.6);
+        }
+
+        .orbaos-carousel {
+            position: relative;
+            width: 100%;
+            height: 150px;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 12px;
+            border: 1px solid rgba(217, 70, 239, 0.4);
+        }
+
+        .orbaos-slides {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .orbaos-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out, transform 0.8s ease;
+            transform: scale(1.04);
+        }
+
+        .orbaos-slide.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .orbaos-dots {
+            position: absolute;
+            bottom: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 6px;
+            z-index: 2;
+            background: rgba(0, 0, 0, 0.55);
+            padding: 4px 8px;
+            border-radius: 12px;
+            backdrop-filter: blur(4px);
+        }
+
+        .orbaos-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            cursor: pointer !important;
+            transition: all 0.3s ease;
+        }
+
+        .orbaos-dot.active {
+            width: 16px;
+            border-radius: 8px;
+            background: #d946ef;
+            box-shadow: 0 0 8px #d946ef;
+        }
+
+        .orbaos-desc {
+            font-size: 0.78rem;
+            line-height: 1.5;
+            color: #e2e8f0;
+            margin: 0 0 14px 0;
+        }
+
+        .orbaos-desc strong {
+            color: #f472b6;
+        }
+
+        .orbaos-actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+
+        .orbaos-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 10px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            text-align: center;
+            cursor: pointer !important;
+        }
+
+        .orbaos-btn.primary {
+            background: linear-gradient(135deg, #d946ef 0%, #ec4899 100%);
+            color: #ffffff;
+            box-shadow: 0 3px 12px rgba(217, 70, 239, 0.4);
+        }
+
+        .orbaos-btn.primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(217, 70, 239, 0.7);
+            color: #ffffff;
+        }
+
+        .orbaos-btn.secondary {
+            background: rgba(255, 255, 255, 0.06);
+            color: #fce7f3;
+            border: 1px solid rgba(244, 63, 94, 0.4);
+        }
+
+        .orbaos-btn.secondary:hover {
+            background: rgba(244, 63, 94, 0.2);
+            border-color: #f43f5e;
+            transform: translateY(-2px);
+            color: #ffffff;
+        }
+
+        @media (max-width: 900px) {
+            .orbaos-widget {
+                top: calc(65% + 40px);
+                right: 10px;
+            }
+            .orbaos-widget.collapsed {
+                width: 100px;
+                height: 100px;
+            }
+            .orbaos-widget:not(.collapsed) {
+                top: auto;
+                bottom: 85px;
+                right: 10px;
+                width: calc(100vw - 20px);
+                max-width: 320px;
+            }
+        }
     </style>
 </head>
 
@@ -1214,8 +1543,8 @@
                 <div class="project-visual"><img src="MDIYGA.webp" alt="Make DIY Great Again"></div>
                 <div class="project-content">
                     <h2>Make DIY Great Again </h2>
-                    <div class="project-tags"><span class="project-tag">React</span><span class="project-tag">PWA</span>
-                    </div>
+                    <div class="project-tags"><span class="project-tag">React</span><span
+                            class="project-tag">PWA</span></div>
                     <p data-key="project_mdiyga_desc">Redonne vie à tes objets oubliés. Une app pensée pour bricoler
                         malin, inspirer, et transmettre le plaisir du faire soi-même.</p>
                     <p><a href="https://makediygreatagain.netlify.app/" target="_blank" rel="noopener noreferrer"
@@ -1336,13 +1665,76 @@
                         Koncept</strong> : montres, IA, expériences web et plus encore.</p>
                 <p class="contact-info">
                     <span data-key="contact_label"></span>: <a
-                        href="contact@alexkoncept.com">contact@alexkoncept.com</a>
+                        href="mailto:contact@alexkoncept.com">contact@alexkoncept.com</a>
                 </p>
                 <button id="open-pdf-btn" class="action-btn" data-key="read_pdf_btn">📄 Lire l'analyse du Portfolio
                     (PDF)</button>
             </div>
         </div>
     </section>
+
+    <!-- Widget Annonce Flottant OrbaOS (Carré 125px + Halo Latéral Pulsé) -->
+    <aside id="orbaos-widget" class="orbaos-widget collapsed" aria-label="Annonce OrbaOS">
+        <!-- Vue Carrée Réduite avec Carrousel 5s -->
+        <div class="orbaos-square-preview" id="orbaos-open-btn" aria-label="Découvrir OrbaOS" title="Cliquer pour agrandir OrbaOS">
+            <span class="orbaos-mini-badge">NEW</span>
+            <div class="orbaos-mini-carousel">
+                <img src="OrbaOS1.jpg" alt="OrbaOS 1" class="orbaos-mini-slide active" loading="lazy">
+                <img src="OrbaOS2.jpg" alt="OrbaOS 2" class="orbaos-mini-slide" loading="lazy">
+                <img src="OrbaOS3.jpg" alt="OrbaOS 3" class="orbaos-mini-slide" loading="lazy">
+                <img src="OrbaOS4.jpg" alt="OrbaOS 4" class="orbaos-mini-slide" loading="lazy">
+            </div>
+            <div class="orbaos-square-overlay">
+                <span class="orbaos-square-title">OrbaOS ✦</span>
+            </div>
+        </div>
+
+        <!-- Vue Carte Dépliée -->
+        <div class="orbaos-card-content">
+            <div class="orbaos-header">
+                <div class="orbaos-header-left">
+                    <span class="orbaos-badge">NEW</span>
+                    <span class="orbaos-header-title">OrbaOS</span>
+                </div>
+                <button class="orbaos-close-btn" id="orbaos-close-btn" aria-label="Fermer l'annonce" title="Réduire">
+                    ✕
+                </button>
+            </div>
+            
+            <div class="orbaos-body">
+                <h4 class="orbaos-title">OrbaOS — OS Cognitif Zero UI</h4>
+                
+                <!-- Carrousel d'images déplié (5s) -->
+                <div class="orbaos-carousel" id="orbaos-carousel">
+                    <div class="orbaos-slides" id="orbaos-slides">
+                        <img src="OrbaOS1.jpg" alt="OrbaOS Interface 1" class="orbaos-slide active" loading="lazy">
+                        <img src="OrbaOS2.jpg" alt="OrbaOS Interface 2" class="orbaos-slide" loading="lazy">
+                        <img src="OrbaOS3.jpg" alt="OrbaOS Interface 3" class="orbaos-slide" loading="lazy">
+                        <img src="OrbaOS4.jpg" alt="OrbaOS Interface 4" class="orbaos-slide" loading="lazy">
+                    </div>
+                    <div class="orbaos-dots" id="orbaos-dots">
+                        <span class="orbaos-dot active" data-index="0"></span>
+                        <span class="orbaos-dot" data-index="1"></span>
+                        <span class="orbaos-dot" data-index="2"></span>
+                        <span class="orbaos-dot" data-index="3"></span>
+                    </div>
+                </div>
+
+                <p class="orbaos-desc">
+                    Expérimentez le futur de l'interaction : <strong>Zero UI</strong>, flux multimodal <strong>Gemini Live</strong>, vision <strong>Omni-Sight</strong> et écosystème de <strong>Micro-Apps</strong>.
+                </p>
+
+                <div class="orbaos-actions">
+                    <a href="https://orbaos-website-byalexkoncept.netlify.app/" target="_blank" rel="noopener noreferrer" class="orbaos-btn primary">
+                        🚀 Démo Live
+                    </a>
+                    <a href="https://www.youtube.com/@AlexKoncept" target="_blank" rel="noopener noreferrer" class="orbaos-btn secondary">
+                        🎥 Vidéo YouTube
+                    </a>
+                </div>
+            </div>
+        </div>
+    </aside>
 
     <!-- Bouton flottant AKNR Live (News) -->
     <button id="akrn-trigger" class="floating-news-btn" aria-label="Afficher AKNR Live"></button>
@@ -1352,9 +1744,9 @@
         ↑
     </button>
 
-<footer>
-    <span data-key="footer_text">© 2025 - 2026 Alex Koncept — Vivre. Apprendre. Créer.</span>
-</footer>
+    <footer>
+        <span data-key="footer_text">© 2025 - 2026 Alex Koncept — Vivre. Apprendre. Créer.</span>
+    </footer>
 
     <div id="alexbot-speech-container" style="position: fixed; bottom: 90px; right: 20px; z-index: 10000;">
         <div id="orba-speech"><span>Bonjour et bienvenue ! 👋 Prêt à explorer l'univers d'Alex ?</span></div>
@@ -1427,8 +1819,8 @@
                 }, { duration: 500, fill: "forwards" });
             });
 
-            // Ajout du bouton de retour en haut et des éléments HSK dans la liste du curseur
-            const interactiveElements = document.querySelectorAll('a, button, .project, .floating-news-btn, #back-to-top, #hsk-player-icon, #close-hsk-player-btn');
+            // Éléments interactifs pour le curseur personnalisé
+            const interactiveElements = document.querySelectorAll('a, button, .project, .floating-news-btn, #back-to-top, #hsk-player-icon, #close-hsk-player-btn, #orbaos-open-btn, #orbaos-close-btn, .orbaos-dot, .orbaos-btn, .orbaos-widget');
             interactiveElements.forEach(el => {
                 el.addEventListener('mouseenter', () => document.body.classList.add('hovered'));
                 el.addEventListener('mouseleave', () => document.body.classList.remove('hovered'));
@@ -1437,7 +1829,6 @@
             // --- BOUTON RETOUR EN HAUT LOGIC ---
             const backToTopBtn = document.getElementById('back-to-top');
             
-            // On écoute le défilement de la page principale
             window.addEventListener('scroll', () => {
                 if (window.scrollY > 300) {
                     backToTopBtn.classList.add('active');
@@ -1446,13 +1837,77 @@
                 }
             }, { passive: true });
 
-            // Action de défilement fluide vers le haut
             backToTopBtn.addEventListener('click', () => {
                 window.scrollTo({
                     top: 0,
                     behavior: 'smooth'
                 });
             });
+
+            // --- WIDGET ANNONCE ORBAOS LOGIC (5 SECONDES INTERVAL) ---
+            const orbaWidget = document.getElementById('orbaos-widget');
+            const orbaOpenBtn = document.getElementById('orbaos-open-btn');
+            const orbaCloseBtn = document.getElementById('orbaos-close-btn');
+            const orbaSlides = document.querySelectorAll('.orbaos-slide');
+            const orbaMiniSlides = document.querySelectorAll('.orbaos-mini-slide');
+            const orbaDots = document.querySelectorAll('.orbaos-dot');
+            let currentSlide = 0;
+            let slideInterval = null;
+
+            function goToSlide(index) {
+                const totalSlides = orbaSlides.length;
+                if (!totalSlides) return;
+
+                // Grand Carrousel
+                orbaSlides[currentSlide].classList.remove('active');
+                if (orbaDots[currentSlide]) orbaDots[currentSlide].classList.remove('active');
+
+                // Mini Carrousel (Vue Carrée Réduite)
+                if (orbaMiniSlides[currentSlide]) orbaMiniSlides[currentSlide].classList.remove('active');
+                
+                currentSlide = (index + totalSlides) % totalSlides;
+                
+                orbaSlides[currentSlide].classList.add('active');
+                if (orbaDots[currentSlide]) orbaDots[currentSlide].classList.add('active');
+                if (orbaMiniSlides[currentSlide]) orbaMiniSlides[currentSlide].classList.add('active');
+            }
+
+            function startSlideShow() {
+                if (slideInterval) clearInterval(slideInterval);
+                slideInterval = setInterval(() => {
+                    goToSlide(currentSlide + 1);
+                }, 5000); // Défilement réglé à 5 secondes
+            }
+
+            orbaDots.forEach((dot, index) => {
+                dot.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    goToSlide(index);
+                    startSlideShow();
+                });
+            });
+
+            if (orbaOpenBtn && orbaWidget) {
+                orbaOpenBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    orbaWidget.classList.remove('collapsed');
+                });
+            }
+
+            if (orbaCloseBtn && orbaWidget) {
+                orbaCloseBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    orbaWidget.classList.add('collapsed');
+                });
+            }
+
+            const carouselElement = document.getElementById('orbaos-carousel');
+            if (carouselElement) {
+                carouselElement.addEventListener('mouseenter', () => clearInterval(slideInterval));
+                carouselElement.addEventListener('mouseleave', () => startSlideShow());
+            }
+
+            startSlideShow();
 
             // --- PDF MODAL LOGIC ---
             const pdfModal = document.getElementById('pdf-modal');
@@ -1505,43 +1960,6 @@
                     if (e.target === akrnModal) toggleAkrnModal(false);
                 });
             }
-
-            // --- ORBA WIDGET LOGIC ---
-            let isOrbaOpen = false;
-            const speech = document.getElementById('orba-speech');
-            const interfaceDiv = document.getElementById('orba-interface');
-            const iframeOrba = document.getElementById('orba-frame');
-            const triggerOrba = document.getElementById('orba-trigger');
-            const closeOrbaBtn = document.getElementById('close-orba-btn');
-
-            function toggleOrba() {
-                isOrbaOpen = !isOrbaOpen;
-
-                if (isOrbaOpen) {
-                    interfaceDiv.classList.add('open');
-                    triggerOrba.classList.add('active');
-                    if (speech) speech.classList.remove('visible');
-
-                    const urlToLoad = iframeOrba.getAttribute('data-src');
-                    if (!iframeOrba.src || iframeOrba.src === "about:blank" || iframeOrba.src === window.location.href) {
-                        iframeOrba.src = urlToLoad;
-                    }
-                } else {
-                    interfaceDiv.classList.remove('open');
-                    triggerOrba.classList.remove('active');
-                }
-            }
-
-            if (triggerOrba) triggerOrba.addEventListener('click', toggleOrba);
-            if (closeOrbaBtn) closeOrbaBtn.addEventListener('click', toggleOrba);
-
-            setTimeout(() => {
-                const speech = document.getElementById('orba-speech');
-                if (speech) {
-                    speech.classList.add('visible');
-                    setTimeout(() => speech.classList.remove('visible'), 8000);
-                }
-            }, 3000);
 
             // --- CANVASES & ANIMATIONS ---
             const matrixCanvas = document.getElementById('matrix-canvas');
@@ -2072,7 +2490,6 @@ I've always loved understanding how things work, taking them apart, improving th
 
             hskPlayerIcon.addEventListener("click", () => {
                 if (!isHskLaunched) {
-                    // Chargement différé pour optimiser la vitesse au chargement initial du portfolio
                     hskIframe.src = hskIframe.getAttribute("data-src");
                     isHskLaunched = true;
                 }
