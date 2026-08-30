@@ -871,7 +871,7 @@
         .about-stat .subtitle { opacity: .75; font-size: .9rem; }
 
         /* =========================================================
-           WIDGET FLOTTANT ANNONCE : ORBAOS (CARRÉ GRAND + HALO LATÉRAL)
+           WIDGET FLOTTANT ANNONCE : ORBAOS (FORMAT CARRÉ 1:1)
            ========================================================= */
         .orbaos-widget {
             position: fixed;
@@ -970,7 +970,7 @@
         .orbaos-square-overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(18,10,26,0.85) 100%);
+            background: linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(18,10,26,0.85) 100%);
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
@@ -1074,14 +1074,17 @@
             text-shadow: 0 0 8px rgba(217, 70, 239, 0.6);
         }
 
+        /* Carrousel adapté au ratio carré 1:1 pour éviter les coupures */
         .orbaos-carousel {
             position: relative;
             width: 100%;
-            height: 150px;
-            border-radius: 12px;
+            aspect-ratio: 1 / 1; /* Garantit le format carré parfait */
+            height: auto;
+            border-radius: 14px;
             overflow: hidden;
             margin-bottom: 12px;
             border: 1px solid rgba(217, 70, 239, 0.4);
+            background: rgba(0, 0, 0, 0.3);
         }
 
         .orbaos-slides {
@@ -1096,10 +1099,10 @@
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain; /* Conserve l'intégralité de l'image sans rognage */
             opacity: 0;
             transition: opacity 0.8s ease-in-out, transform 0.8s ease;
-            transform: scale(1.04);
+            transform: scale(1);
         }
 
         .orbaos-slide.active {
@@ -1391,7 +1394,7 @@
                         <span class="project-tag">LLM</span>
                     </div>
                     <p data-key="project_konceptcrew_desc">
-                        KonceptCrew est une plateforme innovante permettant de créer, personnaliser et faire évoluer votre propre équipe d'experts IA spécialisés. Concevez des assistants sur mesure capables de dialoguer par texte ou par voix en temps réel grâce aux dernières technologies d'intelligence artificielle. Compatible avec OpenAI, Gemini, Claude ainsi que les modèles locaux via Ollama ou LM Studio, KonceptCrew offre une expérience immersive intégrant mémoire personnalisée, analyse d'images, recherche web, gestion des connaissances, export/import d'experts et partage communautaire.
+                        KonceptCrew est une plateforme innovante permettant de créer, personnaliser et faire évoluer votre propre équipe d'experts IA spécialisés. Concevez des assistants sur mesure capables de dialoguer par texte ou par voix en temps réel grâce aux dernières technologies d'intelligence artificielle. Compatible avec OpenAI, Gemini, Claude ainsi que les modèles locaux via Ollama ou LM Studio, KonceptCrew offre une expérience immersive intégrant mémoire personnalisée, analyse d'images, recherche web, gestion des connaissances, export/import d'experts et partage communautaire.",
                     </p>
                     <p>
                         <a href="https://konceptcrew-website-byalexkoncept.netlify.app/"
@@ -1673,7 +1676,7 @@
         </div>
     </section>
 
-    <!-- Widget Annonce Flottant OrbaOS (Carré 125px + Halo Latéral Pulsé) -->
+    <!-- Widget Annonce Flottant OrbaOS (Format Carré 1:1 sans coupure) -->
     <aside id="orbaos-widget" class="orbaos-widget collapsed" aria-label="Annonce OrbaOS">
         <!-- Vue Carrée Réduite avec Carrousel 5s -->
         <div class="orbaos-square-preview" id="orbaos-open-btn" aria-label="Découvrir OrbaOS" title="Cliquer pour agrandir OrbaOS">
@@ -1704,7 +1707,7 @@
             <div class="orbaos-body">
                 <h4 class="orbaos-title">OrbaOS — OS Cognitif Zero UI</h4>
                 
-                <!-- Carrousel d'images déplié (5s) -->
+                <!-- Carrousel d'images déplié (format carré 1:1 préservé) -->
                 <div class="orbaos-carousel" id="orbaos-carousel">
                     <div class="orbaos-slides" id="orbaos-slides">
                         <img src="OrbaOS1.jpg" alt="OrbaOS Interface 1" class="orbaos-slide active" loading="lazy">
@@ -1728,7 +1731,8 @@
                     <a href="https://orbaos-website-byalexkoncept.netlify.app/" target="_blank" rel="noopener noreferrer" class="orbaos-btn primary">
                         🚀 Démo Live
                     </a>
-                    <a href="https://www.youtube.com/@AlexKoncept" target="_blank" rel="noopener noreferrer" class="orbaos-btn secondary">
+                    <!-- Remplacez le lien ci-dessous par l'URL exacte de votre vidéo YouTube -->
+                    <a href="VOTRE_LIEN_YOUTUBE_ICI" target="_blank" rel="noopener noreferrer" class="orbaos-btn secondary">
                         🎥 Vidéo YouTube
                     </a>
                 </div>
