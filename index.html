@@ -930,7 +930,6 @@
             display: none;
         }
 
-        /* Déclencheur / Aperçu Carré */
         .orbaos-square-preview {
             display: none;
             width: 100%;
@@ -1078,7 +1077,7 @@
         .orbaos-carousel {
             position: relative;
             width: 100%;
-            aspect-ratio: 1 / 1; /* Garantit le format carré parfait */
+            aspect-ratio: 1 / 1;
             height: auto;
             border-radius: 14px;
             overflow: hidden;
@@ -1099,7 +1098,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: contain; /* Conserve l'intégralité de l'image sans rognage */
+            object-fit: contain;
             opacity: 0;
             transition: opacity 0.8s ease-in-out, transform 0.8s ease;
             transform: scale(1);
@@ -1394,7 +1393,7 @@
                         <span class="project-tag">LLM</span>
                     </div>
                     <p data-key="project_konceptcrew_desc">
-                        KonceptCrew est une plateforme innovante permettant de créer, personnaliser et faire évoluer votre propre équipe d'experts IA spécialisés. Concevez des assistants sur mesure capables de dialoguer par texte ou par voix en temps réel grâce aux dernières technologies d'intelligence artificielle. Compatible avec OpenAI, Gemini, Claude ainsi que les modèles locaux via Ollama ou LM Studio, KonceptCrew offre une expérience immersive intégrant mémoire personnalisée, analyse d'images, recherche web, gestion des connaissances, export/import d'experts et partage communautaire.",
+                        KonceptCrew est une plateforme innovante permettant de créer, personnaliser et faire évoluer votre propre équipe d'experts IA spécialisés. Concevez des assistants sur mesure capables de dialoguer par texte ou par voix en temps réel grâce aux dernières technologies d'intelligence artificielle. Compatible avec OpenAI, Gemini, Claude ainsi que les modèles locaux via Ollama ou LM Studio, KonceptCrew offre une expérience immersive intégrant mémoire personnalisée, analyse d'images, recherche web, gestion des connaissances, export/import d'experts et partage communautaire.
                     </p>
                     <p>
                         <a href="https://konceptcrew-website-byalexkoncept.netlify.app/"
@@ -1705,7 +1704,7 @@
             </div>
             
             <div class="orbaos-body">
-                <h4 class="orbaos-title">OrbaOS — OS Cognitif Zero UI</h4>
+                <h4 class="orbaos-title" data-key="widget_orbaos_title">OrbaOS — OS Cognitif Zero UI</h4>
                 
                 <!-- Carrousel d'images déplié (format carré 1:1 préservé) -->
                 <div class="orbaos-carousel" id="orbaos-carousel">
@@ -1723,16 +1722,16 @@
                     </div>
                 </div>
 
-                <p class="orbaos-desc">
+                <p class="orbaos-desc" data-key="widget_orbaos_desc">
                     Expérimentez le futur de l'interaction : <strong>Zero UI</strong>, flux multimodal <strong>Gemini Live</strong>, vision <strong>Omni-Sight</strong> et écosystème de <strong>Micro-Apps</strong>.
                 </p>
 
                 <div class="orbaos-actions">
-                    <a href="https://orbaos-website-byalexkoncept.netlify.app/" target="_blank" rel="noopener noreferrer" class="orbaos-btn primary">
+                    <a href="https://orbaos-website-byalexkoncept.netlify.app/" target="_blank" rel="noopener noreferrer" class="orbaos-btn primary" data-key="widget_orbaos_demo_btn">
                         🚀 Démo Live
                     </a>
-                    <!-- Remplacez le lien ci-dessous par l'URL exacte de votre vidéo YouTube -->
-                    <a href="https://youtu.be/3CSeZQfzDfE?is=8A6yGtiZvDmPbvSU" target="_blank" rel="noopener noreferrer" class="orbaos-btn secondary">
+                    <!-- Remplacez l'URL ci-dessous par celle de votre vidéo YouTube -->
+                    <a href="VOTRE_LIEN_YOUTUBE_ICI" target="_blank" rel="noopener noreferrer" class="orbaos-btn secondary" data-key="widget_orbaos_video_btn">
                         🎥 Vidéo YouTube
                     </a>
                 </div>
@@ -2280,6 +2279,11 @@
                     header_subtitle: "Créateur indépendant – Montres, Web, Code, IA & Crypto",
                     intro_text: 'Bienvenue dans mon univers numérique. Chaque "Koncept" que je crée explore un futur possible, à travers l’horlogerie, le code, le design et l’imagination augmentée.<br><br><span class="chatbot-prompt">💬 Pour en savoir plus sur mon parcours ou la genèse d\'un projet, <strong>interrogez AlexBot</strong> en bas à droite !</span>',
 
+                    widget_orbaos_title: "OrbaOS — OS Cognitif Zero UI",
+                    widget_orbaos_desc: "Expérimentez le futur de l'interaction : <strong>Zero UI</strong>, flux multimodal <strong>Gemini Live</strong>, vision <strong>Omni-Sight</strong> et écosystème de <strong>Micro-Apps</strong>.",
+                    widget_orbaos_demo_btn: "🚀 Démo Live",
+                    widget_orbaos_video_btn: "🎥 Vidéo YouTube",
+
                     project_humankoncept_title: "Human Koncept <span class=\"badge-new\">NEW</span>",
                     project_humankoncept_desc: "Human Koncept est une application de biohacking et d'optimisation cellulaire animée par l'IA HK-OS (v2.6) avec synthèse vocale. Conçue pour accompagner le bien-être physique et cognitif, elle intègre un cockpit circadien gamifié, un profil biologique personnalisé (Identité Sapiens), des outils de concentration (test Dual N-Back, ondes binaurales), un minuteur de jeûne en temps réel et un guide de cohérence cardiaque. Un module d'export PDF permet de générer un bilan complet de votre profil.",
                     discover_humankoncept_btn: "Découvrir Human Koncept",
@@ -2360,6 +2364,11 @@ Depuis toujours, j'aime comprendre comment les choses fonctionnent, les démonte
                     theme_toggle_label: "Change theme",
                     header_subtitle: "Independent Creator – Watches, Web, Code, AI & Crypto",
                     intro_text: 'Welcome to my digital universe. Each "Koncept" I create explores a possible future, through watchmaking, code, design, and augmented imagination.<br><br><span class="chatbot-prompt">💬 To learn more about my journey or the story behind a project, <strong>ask AlexBot</strong> at the bottom right!</span>',
+
+                    widget_orbaos_title: "OrbaOS — Cognitive Zero UI OS",
+                    widget_orbaos_desc: "Experience the future of interaction: <strong>Zero UI</strong>, <strong>Gemini Live</strong> multimodal stream, <strong>Omni-Sight</strong> vision, and instant <strong>Micro-Apps</strong> ecosystem.",
+                    widget_orbaos_demo_btn: "🚀 Live Demo",
+                    widget_orbaos_video_btn: "🎥 YouTube Video",
 
                     project_humankoncept_title: "Human Koncept <span class=\"badge-new\">NEW</span>",
                     project_humankoncept_desc: "Human Koncept is a biohacking and cellular optimization app powered by the HK-OS (v2.6) AI with built-in voice synthesis. Designed to support physical and cognitive well-being, it features a gamified circadian cockpit, a personalized biological profile (Sapiens Identity), concentration tools (Dual N-Back test, binaural beats), a real-time fasting timer, and a heart rate coherence guide. An integrated PDF export module allows you to generate a comprehensive report of your profile.",
