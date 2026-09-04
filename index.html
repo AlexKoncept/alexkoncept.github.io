@@ -69,9 +69,7 @@
             --main-font: 'Poppins', sans-serif;
             --title-font: 'Orbitron', sans-serif;
 
-            --cursor-color: #0077cc;
-            --cursor-size: 8px;
-            --cursor-hover-size: 40px;
+            --cursor-color: #00e5ff;
         }
 
         body.dark-mode {
@@ -88,7 +86,7 @@
             --project-title-color: #80deea;
             --footer-text-color: #adb5bd;
             --theme-toggle-icon: "🌙";
-            --cursor-color: #61dafb;
+            --cursor-color: #00e5ff;
         }
 
         #matrix-canvas,
@@ -250,11 +248,12 @@
             background-color: #0b0f19;
         }
 		
-@media (max-width: 768px) {
-    #os-mode-toggle {
-        display: none !important;
-    }
-}
+        @media (max-width: 768px) {
+            #os-mode-toggle {
+                display: none !important;
+            }
+        }
+
         /* =========================================================
            THEME 6 : DASHBOARD OS (BENTO UI - FULL SCREEN NO SCROLL) 
            ========================================================= */
@@ -278,30 +277,30 @@
             background-image: none !important;
         }
 
-body.koncept-os-dashboard header#main-header {
-    position: static !important;
-    grid-column: 1 / -1 !important;
-    grid-row: 1 !important;
-    width: 100% !important;
-    height: 100% !important;
-    margin: 0 !important;
-    padding: 0 180px !important;            /* Marge symétrique pour ne jamais chevaucher les boutons à gauche et à droite */
-    border-radius: 20px !important;
-    background: linear-gradient(135deg, var(--header-bg-start) 0%, var(--header-bg-end) 100%) !important; /* Dégradé Cyan vers Vert du site */
-    box-shadow: 0 10px 30px rgba(0, 201, 255, 0.25) !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;     /* Centre parfaitement le titre au milieu */
-}
+        body.koncept-os-dashboard header#main-header {
+            position: static !important;
+            grid-column: 1 / -1 !important;
+            grid-row: 1 !important;
+            width: 100% !important;
+            height: 100% !important;
+            margin: 0 !important;
+            padding: 0 180px !important;
+            border-radius: 20px !important;
+            background: linear-gradient(135deg, var(--header-bg-start) 0%, var(--header-bg-end) 100%) !important;
+            box-shadow: 0 10px 30px rgba(0, 201, 255, 0.25) !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+        }
 
-body.koncept-os-dashboard header#main-header h1 {
-    font-size: 1.8rem !important;
-    color: #ffffff !important;
-    margin: 0 !important;
-    text-align: center !important;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
-    letter-spacing: 1.5px !important;
-}
+        body.koncept-os-dashboard header#main-header h1 {
+            font-size: 1.8rem !important;
+            color: #ffffff !important;
+            margin: 0 !important;
+            text-align: center !important;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
+            letter-spacing: 1.5px !important;
+        }
         body.koncept-os-dashboard header#main-header p,
         body.koncept-os-dashboard header#main-header::before {
             display: none !important; 
@@ -412,31 +411,31 @@ body.koncept-os-dashboard header#main-header h1 {
         body.koncept-os-dashboard .project::after,
         body.koncept-os-dashboard .project::before { display: none !important; }
 
-body.koncept-os-dashboard .project-visual {
-    width: 100% !important;
-    height: 140px !important;              /* Hauteur fixe pour le cadre */
-    flex: none !important;
-    transform: none !important;
-    margin-bottom: 15px !important;
-    display: flex !important;              /* Centre l'image horizontalement et verticalement */
-    align-items: center !important;
-    justify-content: center !important;
-    background: #f8fafc !important;        /* Fond neutre moderne sous l'image */
-    border: 1px solid #e2e8f0 !important;  /* Légère délimitation élégante */
-    border-radius: 14px !important;
-    padding: 8px !important;               /* Évite que l'image colle aux bords */
-    overflow: hidden !important;
-}
-body.koncept-os-dashboard .project-visual img {
-    border-radius: 8px !important;
-    max-height: 100% !important;           /* Ne dépasse jamais en hauteur */
-    max-width: 100% !important;            /* Ne dépasse jamais en largeur */
-    width: auto !important;
-    height: auto !important;
-    object-fit: contain !important;        /* Empêche tout rognage */
-    object-position: center !important;
-    box-shadow: none !important;
-}
+        body.koncept-os-dashboard .project-visual {
+            width: 100% !important;
+            height: 140px !important;
+            flex: none !important;
+            transform: none !important;
+            margin-bottom: 15px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            background: #f8fafc !important;
+            border: 1px solid #e2e8f0 !important;
+            border-radius: 14px !important;
+            padding: 8px !important;
+            overflow: hidden !important;
+        }
+        body.koncept-os-dashboard .project-visual img {
+            border-radius: 8px !important;
+            max-height: 100% !important;
+            max-width: 100% !important;
+            width: auto !important;
+            height: auto !important;
+            object-fit: contain !important;
+            object-position: center !important;
+            box-shadow: none !important;
+        }
         body.koncept-os-dashboard .project-content {
             padding: 0 !important;
             width: 100% !important;
@@ -498,18 +497,18 @@ body.koncept-os-dashboard .project-visual img {
             body.koncept-os-dashboard .top-right-controls { top: 15px !important; right: 15px !important; gap: 8px !important; }
             body.koncept-os-dashboard .common-toggle-button { width: 32px !important; height: 32px !important; font-size: 0.9rem !important; }
             
-body.koncept-os-dashboard header#main-header {
-    grid-column: 1 / -1 !important;
-    grid-row: 1 !important;
-    padding: 0 90px !important;          /* Évite les petits boutons tactiles des coins */
-    border-radius: 12px !important;
-    justify-content: center !important;  /* Reste bien centré sur mobile */
-}
+            body.koncept-os-dashboard header#main-header {
+                grid-column: 1 / -1 !important;
+                grid-row: 1 !important;
+                padding: 0 90px !important;
+                border-radius: 12px !important;
+                justify-content: center !important;
+            }
 
-body.koncept-os-dashboard header#main-header h1 { 
-    font-size: 1.1rem !important; 
-    text-align: center !important;
-}
+            body.koncept-os-dashboard header#main-header h1 { 
+                font-size: 1.1rem !important; 
+                text-align: center !important;
+            }
 
             body.koncept-os-dashboard #a-propos {
                 grid-column: 1 !important;
@@ -547,18 +546,18 @@ body.koncept-os-dashboard header#main-header h1 {
             }
             
             body.koncept-os-dashboard .project { padding: 10px !important; border-radius: 16px !important;}
-body.koncept-os-dashboard .project-visual { 
-    height: 95px !important; 
-    padding: 4px !important; 
-    margin-bottom: 8px !important; 
-}
-body.koncept-os-dashboard .project-visual img { 
-    max-height: 100% !important; 
-    max-width: 100% !important; 
-    width: auto !important; 
-    height: auto !important; 
-    object-fit: contain !important; 
-}
+            body.koncept-os-dashboard .project-visual { 
+                height: 95px !important; 
+                padding: 4px !important; 
+                margin-bottom: 8px !important; 
+            }
+            body.koncept-os-dashboard .project-visual img { 
+                max-height: 100% !important; 
+                max-width: 100% !important; 
+                width: auto !important; 
+                height: auto !important; 
+                object-fit: contain !important; 
+            }
             body.koncept-os-dashboard .project-content h2 { font-size: 0.95rem !important; margin-bottom: 5px !important; }
             body.koncept-os-dashboard .project-content p:not(:last-child) { font-size: 0.65rem !important; -webkit-line-clamp: 2 !important; margin-bottom: 10px !important; }
             body.koncept-os-dashboard .project-tags { gap: 4px !important; margin-bottom: 10px !important; }
@@ -770,22 +769,38 @@ body.koncept-os-dashboard .project-visual img {
             .about-container { flex-direction: column; gap: 2rem; text-align: center; }
             .about-text { text-align: center; }
             * { cursor: auto !important; }
-            #cursor-dot, #cursor-outline { display: none; }
+            #custom-cursor { display: none !important; }
         }
 
-        /* CUSTOM CURSOR STYLES (Z-INDEX AU PREMIER PLAN) */
-        #cursor-dot, #cursor-outline { 
+        /* =========================================================
+           STYLE POINTEUR PERSONNALISÉ (IMAGE WEBP + LUEUR ÉLECTRIQUE)
+           ========================================================= */
+        #custom-cursor { 
             position: fixed; 
             top: 0; 
             left: 0; 
-            transform: translate(-50%, -50%); 
-            border-radius: 50%; 
-            z-index: 999999 !important; 
+            width: 34px; 
+            height: 34px; 
+            object-fit: contain;
             pointer-events: none !important; 
+            z-index: 999999 !important; 
+            transform: translate(-50%, -50%); 
+            /* Lueur dynamique bleu électrique épousant les contours de l'image */
+            filter: drop-shadow(0 0 4px #00e5ff) drop-shadow(0 0 10px rgba(0, 180, 255, 0.65));
+            transition: transform 0.15s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.25s ease;
+            will-change: transform, left, top;
         }
-        #cursor-dot { width: var(--cursor-size); height: var(--cursor-size); background-color: var(--cursor-color); }
-        #cursor-outline { width: 40px; height: 40px; border: 1px solid var(--cursor-color); transition: width 0.2s, height 0.2s, background-color 0.2s; mix-blend-mode: difference; }
-        body.hovered #cursor-outline { width: 60px; height: 60px; background-color: rgba(255, 255, 255, 0.1); border-width: 2px; }
+
+        /* Agrandissement & halo intense au survol d'un élément cliquable */
+        body.hovered #custom-cursor { 
+            transform: translate(-50%, -50%) scale(1.22); 
+            filter: drop-shadow(0 0 7px #00f0ff) drop-shadow(0 0 16px rgba(0, 217, 255, 0.9));
+        }
+
+        /* Micro-impulsion au clic */
+        body.clicking #custom-cursor { 
+            transform: translate(-50%, -50%) scale(0.88); 
+        }
 
         /* WARP OVERLAY */
         #warp-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: white; z-index: 10005; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; mix-blend-mode: overlay; }
@@ -826,6 +841,13 @@ body.koncept-os-dashboard .project-visual img {
         .modal-body iframe { width: 100%; height: 100%; border: none; }
         .action-btn { display: inline-flex; align-items: center; gap: 10px; color: #fff; background: linear-gradient(45deg, var(--link-color), #00c9ff); padding: 12px 28px; border-radius: 30px; text-decoration: none; font-weight: 600; box-shadow: 0 4px 15px rgba(0, 119, 204, 0.3); transition: all 0.3s ease; border: none; font-family: var(--main-font); font-size: 1rem; margin-top: 1.5rem; cursor: pointer !important; }
         .action-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0, 119, 204, 0.5); color: #fff; }
+
+        .aknr-nav-btn {
+            background-image: url('akrn_logo.png') !important;
+            background-size: cover !important;
+            background-position: center !important;
+            border: 2px solid #00bcd4 !important;
+        }
 
         /* --- STYLE DU BOUTON RETOUR EN HAUT --- */
         #back-to-top {
@@ -874,7 +896,7 @@ body.koncept-os-dashboard .project-visual img {
            ========================================================= */
         .orbaos-widget {
             position: fixed;
-            top: calc(17% + 45px); /* Positionné sous AKNR */
+            top: 15%;
             right: 20px;
             width: 330px;
             max-width: calc(100vw - 40px);
@@ -891,7 +913,7 @@ body.koncept-os-dashboard .project-visual img {
             transform-origin: top right;
         }
 
-        /* --- ÉTAT RÉDUIT (FORMAT CARRÉ AGRANDI + HALO LATÉRAL PULSÉ) --- */
+        /* --- ÉTAT RÉDUIT --- */
         .orbaos-widget.collapsed {
             width: 125px;
             height: 125px;
@@ -1002,12 +1024,7 @@ body.koncept-os-dashboard .project-visual img {
             z-index: 3;
             animation: pop 1.5s ease-out infinite alternate;
         }
-.aknr-nav-btn {
-    background-image: url('akrn_logo.png') !important;
-    background-size: cover !important;
-    background-position: center !important;
-    border: 2px solid #00bcd4 !important;
-}
+
         /* --- CONTENU DE LA CARTE DÉPLIÉE --- */
         .orbaos-header {
             display: flex;
@@ -1077,7 +1094,7 @@ body.koncept-os-dashboard .project-visual img {
             text-shadow: 0 0 8px rgba(217, 70, 239, 0.6);
         }
 
-        /* Carrousel adapté au ratio carré 1:1 pour éviter les coupures */
+        /* Carrousel format carré 1:1 */
         .orbaos-carousel {
             position: relative;
             width: 100%;
@@ -1221,7 +1238,9 @@ body.koncept-os-dashboard .project-visual img {
 
 <body>
     <div id="warp-overlay"></div>
-    <div id="cursor-dot"></div>
+    
+    <!-- Pointeur Personnalisé avec lueur bleu électrique -->
+    <img id="custom-cursor" src="pointeur.webp" alt="Curseur" />
 
     <!-- PDF Modal -->
     <div id="pdf-modal" class="modal-overlay">
@@ -1249,23 +1268,21 @@ body.koncept-os-dashboard .project-visual img {
         </div>
     </div>
 
-    <div id="cursor-outline"></div>
-
     <canvas id="matrix-canvas"></canvas>
     <canvas id="space-canvas"></canvas>
     <canvas id="vice-city-canvas"></canvas>
     <canvas id="fallout-canvas"></canvas>
 
-<div class="top-left-controls">
-    <button id="koncept-mode-toggle" class="common-toggle-button" aria-label="Changer le Koncept Mode" data-key="koncept_mode_label">
-        <span class="koncept-mode-icon">🎨</span>
-    </button>
-    <button id="os-mode-toggle" class="common-toggle-button" aria-label="Activer AK-OS Dashboard" title="Mode OS / Dashboard">
-        💻
-    </button>
-    <!-- Bouton AKNR intégré aux commandes -->
-    <button id="akrn-trigger" class="common-toggle-button aknr-nav-btn" aria-label="Afficher AKNR Live" title="AKNR Live"></button>
-</div>
+    <div class="top-left-controls">
+        <button id="koncept-mode-toggle" class="common-toggle-button" aria-label="Changer le Koncept Mode" data-key="koncept_mode_label">
+            <span class="koncept-mode-icon">🎨</span>
+        </button>
+        <button id="os-mode-toggle" class="common-toggle-button" aria-label="Activer AK-OS Dashboard" title="Mode OS / Dashboard">
+            💻
+        </button>
+        <!-- Bouton AKNR intégré aux commandes -->
+        <button id="akrn-trigger" class="common-toggle-button aknr-nav-btn" aria-label="Afficher AKNR Live" title="AKNR Live"></button>
+    </div>
 
     <div class="top-right-controls">
         <div class="lang-switcher">
@@ -1736,7 +1753,6 @@ body.koncept-os-dashboard .project-visual img {
                     <a href="https://orbaos-website-byalexkoncept.netlify.app/" target="_blank" rel="noopener noreferrer" class="orbaos-btn primary" data-key="widget_orbaos_demo_btn">
                         🚀 Démo Live
                     </a>
-                    <!-- Remplacez l'URL ci-dessous par celle de votre vidéo YouTube -->
                     <a href="VOTRE_LIEN_YOUTUBE_ICI" target="_blank" rel="noopener noreferrer" class="orbaos-btn secondary" data-key="widget_orbaos_video_btn">
                         🎥 Vidéo YouTube
                     </a>
@@ -1744,9 +1760,6 @@ body.koncept-os-dashboard .project-visual img {
             </div>
         </div>
     </aside>
-
-    <!-- Bouton flottant AKNR Live (News) -->
-    <button id="akrn-trigger" class="floating-news-btn" aria-label="Afficher AKNR Live"></button>
 
     <!-- Bouton de retour en haut -->
     <button id="back-to-top" class="common-toggle-button" aria-label="Retour en haut" data-key="back_to_top" title="Retour en haut">
@@ -1811,22 +1824,19 @@ body.koncept-os-dashboard .project-visual img {
 
             window.scrollTo(0, 0);
 
-            // --- CUSTOM CURSOR ---
-            const cursorDot = document.getElementById('cursor-dot');
-            const cursorOutline = document.getElementById('cursor-outline');
+            // --- CURSEUR AVEC POINTEUR.WEBP & LUEUR BLEU ÉLECTRIQUE ---
+            const customCursor = document.getElementById('custom-cursor');
 
             window.addEventListener('mousemove', (e) => {
-                const posX = e.clientX;
-                const posY = e.clientY;
-
-                cursorDot.style.left = `${posX}px`;
-                cursorDot.style.top = `${posY}px`;
-
-                cursorOutline.animate({
-                    left: `${posX}px`,
-                    top: `${posY}px`
-                }, { duration: 500, fill: "forwards" });
+                if (customCursor) {
+                    customCursor.style.left = `${e.clientX}px`;
+                    customCursor.style.top = `${e.clientY}px`;
+                }
             });
+
+            // Détection du clic pour effet tactile
+            window.addEventListener('mousedown', () => document.body.classList.add('clicking'));
+            window.addEventListener('mouseup', () => document.body.classList.remove('clicking'));
 
             // Éléments interactifs pour le curseur personnalisé
             const interactiveElements = document.querySelectorAll('a, button, .project, #back-to-top, #hsk-player-icon, #close-hsk-player-btn, #orbaos-open-btn, #orbaos-close-btn, .orbaos-dot, .orbaos-btn, .orbaos-widget');
@@ -2231,17 +2241,16 @@ body.koncept-os-dashboard .project-visual img {
                 localStorage.setItem('konceptMode', modeName);
             };
 
-let storedKonceptMode = localStorage.getItem('konceptMode');
-// On n'active le Dashboard au chargement que si l'écran est supérieur à 768px (non-mobile)
-if (storedKonceptMode === 'os-dashboard') {
-    if (window.innerWidth > 768) {
-        isOsModeActive = true;
-        currentKonceptModeIndex = 0; 
-        applyKonceptMode('os-dashboard');
-    } else {
-        applyKonceptMode('default');
-    }
-} else if (storedKonceptMode && konceptModes.includes(storedKonceptMode)) {
+            let storedKonceptMode = localStorage.getItem('konceptMode');
+            if (storedKonceptMode === 'os-dashboard') {
+                if (window.innerWidth > 768) {
+                    isOsModeActive = true;
+                    currentKonceptModeIndex = 0; 
+                    applyKonceptMode('os-dashboard');
+                } else {
+                    applyKonceptMode('default');
+                }
+            } else if (storedKonceptMode && konceptModes.includes(storedKonceptMode)) {
                 currentKonceptModeIndex = konceptModes.indexOf(storedKonceptMode);
                 applyKonceptMode(storedKonceptMode);
             } else {
