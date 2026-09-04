@@ -405,19 +405,31 @@
         body.koncept-os-dashboard .project::after,
         body.koncept-os-dashboard .project::before { display: none !important; }
 
-        body.koncept-os-dashboard .project-visual {
-            width: 100% !important;
-            flex: none !important;
-            transform: none !important;
-            margin-bottom: 15px !important;
-        }
-        body.koncept-os-dashboard .project-visual img {
-            border-radius: 12px !important;
-            height: 140px !important;
-            width: 100% !important;
-            object-fit: cover !important;
-            box-shadow: none !important;
-        }
+body.koncept-os-dashboard .project-visual {
+    width: 100% !important;
+    height: 140px !important;              /* Hauteur fixe pour le cadre */
+    flex: none !important;
+    transform: none !important;
+    margin-bottom: 15px !important;
+    display: flex !important;              /* Centre l'image horizontalement et verticalement */
+    align-items: center !important;
+    justify-content: center !important;
+    background: #f8fafc !important;        /* Fond neutre moderne sous l'image */
+    border: 1px solid #e2e8f0 !important;  /* Légère délimitation élégante */
+    border-radius: 14px !important;
+    padding: 8px !important;               /* Évite que l'image colle aux bords */
+    overflow: hidden !important;
+}
+body.koncept-os-dashboard .project-visual img {
+    border-radius: 8px !important;
+    max-height: 100% !important;           /* Ne dépasse jamais en hauteur */
+    max-width: 100% !important;            /* Ne dépasse jamais en largeur */
+    width: auto !important;
+    height: auto !important;
+    object-fit: contain !important;        /* Empêche tout rognage */
+    object-position: center !important;
+    box-shadow: none !important;
+}
         body.koncept-os-dashboard .project-content {
             padding: 0 !important;
             width: 100% !important;
@@ -523,7 +535,18 @@
             }
             
             body.koncept-os-dashboard .project { padding: 10px !important; border-radius: 16px !important;}
-            body.koncept-os-dashboard .project-visual img { height: 90px !important; }
+body.koncept-os-dashboard .project-visual { 
+    height: 95px !important; 
+    padding: 4px !important; 
+    margin-bottom: 8px !important; 
+}
+body.koncept-os-dashboard .project-visual img { 
+    max-height: 100% !important; 
+    max-width: 100% !important; 
+    width: auto !important; 
+    height: auto !important; 
+    object-fit: contain !important; 
+}
             body.koncept-os-dashboard .project-content h2 { font-size: 0.95rem !important; margin-bottom: 5px !important; }
             body.koncept-os-dashboard .project-content p:not(:last-child) { font-size: 0.65rem !important; -webkit-line-clamp: 2 !important; margin-bottom: 10px !important; }
             body.koncept-os-dashboard .project-tags { gap: 4px !important; margin-bottom: 10px !important; }
