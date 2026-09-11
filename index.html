@@ -1217,21 +1217,27 @@
 
 @media (max-width: 900px) {
             .orbaos-widget {
-                top: 85px; /* Aligné en haut sous les boutons de contrôle */
+                /* Calé juste sous la fin du header mobile (~220-240px) */
+                top: 230px; 
                 right: 12px;
                 bottom: auto;
             }
+
+            /* Widget fermé */
             .orbaos-widget.collapsed {
                 width: 90px;
                 height: 90px;
             }
+
+            /* Widget ouvert : centré verticalement pour être lisible sans écraser le chat */
             .orbaos-widget:not(.collapsed) {
-                top: 80px;
+                top: 50%;
+                transform: translateY(-50%);
                 bottom: auto;
                 right: 10px;
                 width: calc(100vw - 20px);
                 max-width: 320px;
-                max-height: 80vh; /* Évite qu'il ne déborde vers le bas */
+                max-height: 85vh;
                 overflow-y: auto;
             }
         }
