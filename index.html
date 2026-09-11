@@ -1217,19 +1217,18 @@
 
 @media (max-width: 900px) {
             .orbaos-widget {
-                /* Calé juste sous la fin du header mobile (~220-240px) */
-                top: 230px; 
+                top: 230px;
                 right: 12px;
                 bottom: auto;
+                /* Transition fluide pour l'effet de glissement latéral */
+                transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease, box-shadow 0.3s ease !important;
             }
 
-            /* Widget fermé */
             .orbaos-widget.collapsed {
                 width: 90px;
                 height: 90px;
             }
 
-            /* Widget ouvert : centré verticalement pour être lisible sans écraser le chat */
             .orbaos-widget:not(.collapsed) {
                 top: 50%;
                 transform: translateY(-50%);
@@ -1239,6 +1238,21 @@
                 max-width: 320px;
                 max-height: 85vh;
                 overflow-y: auto;
+            }
+
+            /* =========================================================
+               ÉTAT RÉTRACTÉ « LANGUETTE » (SCROLL VERS LE BAS OU CHATBOT OUVERT)
+               ========================================================= */
+            .orbaos-widget.is-docked {
+                /* Glisse vers la droite et laisse dépasser ~22px lumineux */
+                transform: translateX(calc(100% - 22px)) !important;
+                opacity: 0.85;
+                box-shadow: -6px 0 20px rgba(217, 70, 239, 0.8) !important;
+            }
+
+            /* Feedback tactile quand l'utilisateur touche la languette */
+            .orbaos-widget.is-docked:active {
+                transform: translateX(calc(100% - 38px)) !important;
             }
         }
     </style>
@@ -1830,6 +1844,67 @@
 
         document.addEventListener('DOMContentLoaded', () => {
 
+// --- GESTION DU DOCKING AUTOMATIQUE DU WIDGET ORBAOS (MOBILE) ---
+            const orbaWidgetElem = document.getElementById('orbaos-widget');
+            const chatRootElem = document.getElementById('root');
+            let lastScrollPos = window.scrollY;
+            let isChatbotOpened = false;
+
+            // 1. Détection de l'état du Chatbot
+            if (chatRootElem) {
+                const checkChatbot = () => {
+                    isChatbotOpened = chatRootElem.querySelector('[role="dialog"]') !== null;
+                    if (isChatbotOpened) {
+                        if (orbaWidgetElem) {
+                            orbaWidgetElem.classList.add('collapsed');
+                            orbaWidgetElem.classList.add('is-docked');
+                        }
+                    } else if (window.scrollY < 120 && orbaWidgetElem) {
+                        // Si on ferme le chat et qu'on est en haut, il ressort
+                        orbaWidgetElem.classList.remove('is-docked');
+                    }
+                };
+                const chatObserver = new MutationObserver(checkChatbot);
+                chatObserver.observe(chatRootElem, { childList: true, subtree: true });
+            }
+
+            // 2. Détection du Scroll sur smartphone
+            window.addEventListener('scroll', () => {
+                if (window.innerWidth > 900 || !orbaWidgetElem) return;
+
+                const currentScrollPos = window.scrollY;
+
+                // Si le chatbot est ouvert, on force le mode rétracté
+                if (isChatbotOpened) {
+                    orbaWidgetElem.classList.add('is-docked');
+                    return;
+                }
+
+                // Scroll vers le bas (après le header) : se rétracte en languette
+                if (currentScrollPos > lastScrollPos && currentScrollPos > 120) {
+                    if (!orbaWidgetElem.classList.contains('collapsed')) {
+                        orbaWidgetElem.classList.add('collapsed');
+                    }
+                    orbaWidgetElem.classList.add('is-docked');
+                } 
+                // Scroll vers le haut ou retour tout en haut : réapparaît en entier
+                else if (currentScrollPos < lastScrollPos || currentScrollPos <= 60) {
+                    orbaWidgetElem.classList.remove('is-docked');
+                }
+
+                lastScrollPos = currentScrollPos;
+            }, { passive: true });
+
+            // 3. Clic sur la languette rétractée : la fait ressortir immédiatement
+            if (orbaWidgetElem) {
+                orbaWidgetElem.addEventListener('click', (e) => {
+                    if (orbaWidgetElem.classList.contains('is-docked')) {
+                        e.stopPropagation();
+                        orbaWidgetElem.classList.remove('is-docked');
+                    }
+                });
+            }
+			
             window.scrollTo(0, 0);
 
             // --- CURSEUR AVEC POINTEUR.WEBP & LUEUR BLEU ÉLECTRIQUE ---
