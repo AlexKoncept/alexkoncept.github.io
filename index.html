@@ -40,13 +40,10 @@
     <link rel="preload" as="font" type="font/woff2" crossorigin href="https://fonts.gstatic.com/s/poppins/v21/pxiEyp8kv8JHgFVrJJfedw.woff2" />
     <link rel="preload" as="image" href="https://alexkoncept.github.io/AK-Universe_logo.png" />
 
-    <!-- Polices Google avec display=swap -->
+    <!-- Polices Google -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Courier+Prime&family=Damion&family=Orbitron:wght@500;700&family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Poppins:wght@300;400;600&family=Rajdhani:wght@400;600;700&family=Special+Elite&display=swap" rel="stylesheet">
-
-    <!-- Content Security Policy -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://fonts.googleapis.com https://fonts.gstatic.com https://esm.sh https://alexkoncept.github.io https://akrn-live.netlify.app https://hsk-by-alexkoncept.netlify.app https://orba-ecosystem-project-byalexkoncept.netlify.app https://konceptcrew-website-byalexkoncept.netlify.app https://cinesecrets-byalexkoncept.netlify.app https://orba-website-byalexkoncept.netlify.app https://humankoncept-byalexkoncept.netlify.app https://appbuilder-byalexkoncept.onrender.com https://modele-ak001.netlify.app https://makediygreatagain.netlify.app https://timeline-os-evolution.netlify.app https://orbaos-website-byalexkoncept.netlify.app https://polygonscan.com; frame-src 'self' https://akrn-live.netlify.app https://hsk-by-alexkoncept.netlify.app https://polygonscan.com; connect-src 'self' https://esm.sh https://generativelanguage.googleapis.com;">
 
     <link rel="stylesheet" href="chatbot/index.css" />
 
@@ -104,7 +101,7 @@
             --cursor-color: #00e5ff;
         }
 
-        /* --- SKIP LINK ACCESSIBILITÉ --- */
+        /* Skip link accessibilité */
         .skip-link {
             position: fixed;
             top: -100px;
@@ -257,9 +254,7 @@
             --cursor-color: #76a9fa;
         }
 
-        /* =========================================================
-           DASHBOARD OS (BENTO UI)
-           ========================================================= */
+        /* Dashboard OS (Bento) */
         body.koncept-os-dashboard {
             --body-bg: #eef2f6;
             --text-color: #334155;
@@ -412,9 +407,7 @@
             #os-mode-toggle { display: none !important; }
         }
 
-        * {
-            box-sizing: border-box;
-        }
+        * { box-sizing: border-box; }
 
         *:focus-visible {
             outline: 2px solid var(--link-color) !important;
@@ -432,7 +425,7 @@
             overflow-x: hidden;
         }
 
-        /* --- BOUTONS EN TÊTE (OPTIMISÉS SMARTPHONE POUR NE PAS DÉBORDER) --- */
+        /* Commandes du haut (taille équilibrée pour ne pas déborder sur smartphone) */
         .common-toggle-button {
             background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(10px);
@@ -577,9 +570,7 @@
         .badge-new { background: linear-gradient(135deg, #ff6b6b, #e74c3c); color: white; font-size: 0.7rem; padding: 4px 10px; border-radius: 12px; margin-left: 10px; vertical-align: middle; font-weight: 700; box-shadow: 0 2px 10px rgba(231, 76, 60, 0.4); animation: pop 1.5s ease-out infinite alternate; }
         @keyframes pop { from { transform: scale(1); } to { transform: scale(1.1); } }
 
-        /* =========================================================
-           RESPONSIVE MOBILE 768px (PROJETS PARFAITEMENT CENTRÉS)
-           ========================================================= */
+        /* Alignement parfait des cartes projets sur smartphone */
         @media (max-width: 768px) {
             header { 
                 padding-top: 5.5rem !important; 
@@ -607,7 +598,6 @@
             .container { 
                 padding: 0 1rem !important; 
             }
-            /* Cartes projets empilées au centre sans aucun décalage */
             .project { 
                 flex-direction: column !important; 
                 text-align: center !important; 
@@ -654,7 +644,7 @@
             }
         }
 
-        /* --- CURSEUR ÉLECTRIQUE PC & PROTECTION TACTILE MOBILE --- */
+        /* Curseur PC fluide & tactile natif sur smartphone */
         @media (hover: hover) and (pointer: fine) {
             * { cursor: none !important; }
             #custom-cursor { 
@@ -693,9 +683,7 @@
         body.warping #warp-overlay { opacity: 1; }
         @keyframes warpShake { 0% { transform: scale(1); } 50% { transform: scale(1.03); filter: blur(3px); } 100% { transform: scale(1); } }
 
-        /* =========================================================
-           STYLES CHATBOT ALEXBOT (VERROUILLÉ SANS CHANGER DE LOGO)
-           ========================================================= */
+        /* Configuration originale du chatbot AlexBot */
         #alexbot-speech-container {
             position: fixed;
             bottom: 90px;
@@ -744,7 +732,7 @@
             display: none !important;
         }
 
-        /* --- MODALES ACCESSIBLES --- */
+        /* Modales */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.75); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); z-index: 100000; display: none; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.4s ease; }
         .modal-overlay.active { display: flex !important; opacity: 1 !important; }
         .modal-content { background: var(--glass-bg); border: var(--glass-border); border-radius: var(--card-radius); width: 90%; max-width: 1100px; height: 85vh; display: flex; flex-direction: column; box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6); overflow: hidden; }
@@ -780,9 +768,7 @@
             transform: scale(1) translateY(0);
         }
 
-        /* =========================================================
-           WIDGET ORBAOS
-           ========================================================= */
+        /* Widget OrbaOS */
         .orbaos-widget {
             position: fixed;
             top: 15%;
@@ -844,7 +830,7 @@
 </head>
 
 <body>
-    <!-- Skip link pour navigation clavier -->
+    <!-- Skip link pour les claviers -->
     <a href="#main-content" class="skip-link" data-key="skip_link">Aller au contenu principal</a>
 
     <div id="warp-overlay"></div>
@@ -882,7 +868,7 @@
     <canvas id="vice-city-canvas" aria-hidden="true"></canvas>
     <canvas id="fallout-canvas" aria-hidden="true"></canvas>
 
-    <!-- COMMANDES HAUT GAUCHE -->
+    <!-- COMMANDES DU HAUT -->
     <div class="top-left-controls">
         <button id="koncept-mode-toggle" class="common-toggle-button" aria-label="Changer le Koncept Mode" data-key="koncept_mode_label" title="Changer le thème visuel">
             <span class="koncept-mode-icon" aria-hidden="true">🎨</span>
@@ -893,7 +879,6 @@
         <button id="akrn-trigger" class="common-toggle-button aknr-nav-btn" aria-label="Afficher AKNR Live" title="AKNR Live" aria-controls="akrn-modal"></button>
     </div>
 
-    <!-- COMMANDES HAUT DROITE -->
     <div class="top-right-controls">
         <div class="lang-switcher" role="group" aria-label="Sélection de la langue">
             <button id="lang-fr-btn" class="common-toggle-button" aria-label="Français" role="switch" aria-checked="true">FR</button>
@@ -939,10 +924,7 @@
                                 Un module d'export PDF permet de générer un bilan complet de votre profil.
                             </p>
                             <p>
-                                <a href="https://humankoncept-byalexkoncept.netlify.app/"
-                                   target="_blank"
-                                   rel="noopener noreferrer"
-                                   data-key="discover_humankoncept_btn">
+                                <a href="https://humankoncept-byalexkoncept.netlify.app/" target="_blank" rel="noopener noreferrer" data-key="discover_humankoncept_btn">
                                     Découvrir Human Koncept
                                 </a>
                             </p>
@@ -971,10 +953,7 @@
                                 prévisualisation, un explorateur de code et un espace de partage communautaire (Marketplace).
                             </p>
                             <p>
-                                <a href="https://appbuilder-byalexkoncept.onrender.com/"
-                                   target="_blank"
-                                   rel="noopener noreferrer"
-                                   data-key="discover_appbuilder_btn">
+                                <a href="https://appbuilder-byalexkoncept.onrender.com/" target="_blank" rel="noopener noreferrer" data-key="discover_appbuilder_btn">
                                     Découvrir App Builder Hub
                                 </a>
                             </p>
@@ -1003,10 +982,7 @@
                                 et gestion intelligente des guardrails.
                             </p>
                             <p>
-                                <a href="https://orba-ecosystem-project-byalexkoncept.netlify.app/"
-                                   target="_blank"
-                                   rel="noopener noreferrer"
-                                   data-key="discover_orba_ecosystem_btn">
+                                <a href="https://orba-ecosystem-project-byalexkoncept.netlify.app/" target="_blank" rel="noopener noreferrer" data-key="discover_orba_ecosystem_btn">
                                     Découvrir The Orba Ecosystem
                                 </a>
                             </p>
@@ -1032,10 +1008,7 @@
                                 KonceptCrew est une plateforme innovante permettant de créer, personnaliser et faire évoluer votre propre équipe d'experts IA spécialisés. Concevez des assistants sur mesure capables de dialoguer par texte ou par voix en temps réel grâce aux dernières technologies d'intelligence artificielle. Compatible avec OpenAI, Gemini, Claude ainsi que les modèles locaux via Ollama ou LM Studio, KonceptCrew offre une expérience immersive intégrant mémoire personnalisée, analyse d'images, recherche web, gestion des connaissances, export/import d'experts et partage communautaire.
                             </p>
                             <p>
-                                <a href="https://konceptcrew-website-byalexkoncept.netlify.app/"
-                                   target="_blank"
-                                   rel="noopener noreferrer"
-                                   data-key="discover_konceptcrew_btn">
+                                <a href="https://konceptcrew-website-byalexkoncept.netlify.app/" target="_blank" rel="noopener noreferrer" data-key="discover_konceptcrew_btn">
                                     Découvrir KonceptCrew
                                 </a>
                             </p>
@@ -1058,8 +1031,7 @@
                                 Ciné Secrets est une application web propulsée par l'IA, conçue pour révéler les détails cachés, les caméos et les "easter eggs" dissimulés dans les films et les séries. Dotée d'un moteur de recherche intelligent et d'un bouton "Surprends-moi", elle propose une exploration interactive et bilingue des œuvres cinématographiques, le tout dans un design moderne avec mode Sombre/Clair.
                             </p>
                             <p>
-                                <a href="https://cinesecrets-byalexkoncept.netlify.app/" target="_blank"
-                                    rel="noopener noreferrer" data-key="discover_cine_secrets_btn">
+                                <a href="https://cinesecrets-byalexkoncept.netlify.app/" target="_blank" rel="noopener noreferrer" data-key="discover_cine_secrets_btn">
                                     Découvrir Ciné Secrets
                                 </a>
                             </p>
@@ -1084,8 +1056,7 @@
                                 sensorielle complète et une mémoire persistante pour une symbiose homme-machine inédite.
                             </p>
                             <p>
-                                <a href="https://orba-website-byalexkoncept.netlify.app/" target="_blank"
-                                    rel="noopener noreferrer" data-key="discover_orba_btn">
+                                <a href="https://orba-website-byalexkoncept.netlify.app/" target="_blank" rel="noopener noreferrer" data-key="discover_orba_btn">
                                     Découvrir l'expérience Orba
                                 </a>
                             </p>
@@ -1096,12 +1067,9 @@
                         <div class="project-visual"><img src="LogoAK.png" alt="Montres Alex Koncept"></div>
                         <div class="project-content">
                             <h2 data-key="project_watches_title">Montres Alex Koncept</h2>
-                            <div class="project-tags"><span class="project-tag">Design</span><span
-                                    class="project-tag">Horlogerie</span></div>
-                            <p data-key="project_watches_desc">Création horlogère indépendante, modding artistique, boîtier
-                                signature AK.</p>
-                            <p><a href="https://alexkoncept.wordpress.com/" target="_blank" rel="noopener noreferrer"
-                                    data-key="visit_site_btn">Visiter le site</a></p>
+                            <div class="project-tags"><span class="project-tag">Design</span><span class="project-tag">Horlogerie</span></div>
+                            <p data-key="project_watches_desc">Création horlogère indépendante, modding artistique, boîtier signature AK.</p>
+                            <p><a href="https://alexkoncept.wordpress.com/" target="_blank" rel="noopener noreferrer" data-key="visit_site_btn">Visiter le site</a></p>
                         </div>
                     </div>
 
@@ -1109,12 +1077,9 @@
                         <div class="project-visual"><img src="HyperNormalSites.webp" alt="HyperNormalSites"></div>
                         <div class="project-content">
                             <h2>HyperNormalSites</h2>
-                            <div class="project-tags"><span class="project-tag">HTML</span><span
-                                    class="project-tag">CSS</span><span class="project-tag">Web Art</span></div>
-                            <p data-key="project_hns_desc">Sites dystopiques & interactifs pour se questionner sur le futur à
-                                travers la technologie, la société et l'absurde.</p>
-                            <p><a href="https://alexkoncept.github.io/HyperNormalSites/" target="_blank"
-                                    rel="noopener noreferrer" data-key="explore_collection_btn">Explorer la collection</a></p>
+                            <div class="project-tags"><span class="project-tag">HTML</span><span class="project-tag">CSS</span><span class="project-tag">Web Art</span></div>
+                            <p data-key="project_hns_desc">Sites dystopiques & interactifs pour se questionner sur le futur à travers la technologie, la société et l'absurde.</p>
+                            <p><a href="https://alexkoncept.github.io/HyperNormalSites/" target="_blank" rel="noopener noreferrer" data-key="explore_collection_btn">Explorer la collection</a></p>
                         </div>
                     </div>
 
@@ -1122,12 +1087,9 @@
                         <div class="project-visual"><img src="Tamacodechi.webp" alt="Tamacodechi"></div>
                         <div class="project-content">
                             <h2 data-key="project_tamacodechi_title">Tamacodechi</h2>
-                            <div class="project-tags"><span class="project-tag">JavaScript</span><span
-                                    class="project-tag">HTML/CSS</span></div>
-                            <p data-key="project_tamacodechi_desc">Ton Tamagotchi développeur dans ton navigateur, il évolue
-                                selon ta façon de t'en occuper.</p>
-                            <p><a href="https://alexkoncept.github.io/tamacodechi/" target="_blank" rel="noopener noreferrer"
-                                    data-key="view_github_btn">Voir le projet GitHub</a></p>
+                            <div class="project-tags"><span class="project-tag">JavaScript</span><span class="project-tag">HTML/CSS</span></div>
+                            <p data-key="project_tamacodechi_desc">Ton Tamagotchi développeur dans ton navigateur, il évolue selon ta façon de t'en occuper.</p>
+                            <p><a href="https://alexkoncept.github.io/tamacodechi/" target="_blank" rel="noopener noreferrer" data-key="view_github_btn">Voir le projet GitHub</a></p>
                         </div>
                     </div>
 
@@ -1135,13 +1097,9 @@
                         <div class="project-visual"><img src="ai_odyssey.webp" alt="IA Chatbot"></div>
                         <div class="project-content">
                             <h2 data-key="project_odyssey_title">AI Odyssey</h2>
-                            <div class="project-tags"><span class="project-tag">UI/UX</span><span
-                                    class="project-tag">3D</span><span class="project-tag">PWA</span></div>
-                            <p data-key="project_ia_desc">Une exploration immersive de l'IA : Histoire, Éthique, Galerie
-                                interactive (Visual Evidence), et générateur de Prompt (Prompt Crafter).</p>
-                            <p><a href="https://alexkoncept.github.io/ai-odyssey/" target="_blank" rel="noopener noreferrer"
-                                    class="project-link" data-key="view_project_btn">
-                                    Voir le projet en ligne</a></p>
+                            <div class="project-tags"><span class="project-tag">UI/UX</span><span class="project-tag">3D</span><span class="project-tag">PWA</span></div>
+                            <p data-key="project_ia_desc">Une exploration immersive de l'IA : Histoire, Éthique, Galerie interactive (Visual Evidence), et générateur de Prompt (Prompt Crafter).</p>
+                            <p><a href="https://alexkoncept.github.io/ai-odyssey/" target="_blank" rel="noopener noreferrer" class="project-link" data-key="view_project_btn">Voir le projet en ligne</a></p>
                         </div>
                     </div>
 
@@ -1149,13 +1107,9 @@
                         <div class="project-visual"><img src="WorldPeaceToken.jpg" alt="World Peace Token"></div>
                         <div class="project-content">
                             <h2 data-key="project_wpt_title">World Peace Token (WPT)</h2>
-                            <div class="project-tags"><span class="project-tag">Blockchain</span><span
-                                    class="project-tag">Polygon</span><span class="project-tag">Crypto</span></div>
-                            <p data-key="project_wpt_desc">Crypto expérimentale lancée sur Polygon. Un projet utopiste, entre
-                                rêve et technologie.</p>
-                            <p><a href="https://polygonscan.com/address/0x0f6c9ec672c4851d9fb4518145f816d12543f48a#code"
-                                    target="_blank" rel="noopener noreferrer" data-key="view_polygonscan_btn">Voir sur
-                                    Polygonscan</a></p>
+                            <div class="project-tags"><span class="project-tag">Blockchain</span><span class="project-tag">Polygon</span><span class="project-tag">Crypto</span></div>
+                            <p data-key="project_wpt_desc">Crypto expérimentale lancée sur Polygon. Un projet utopiste, entre rêve et technologie.</p>
+                            <p><a href="https://polygonscan.com/address/0x0f6c9ec672c4851d9fb4518145f816d12543f48a#code" target="_blank" rel="noopener noreferrer" data-key="view_polygonscan_btn">Voir sur Polygonscan</a></p>
                         </div>
                     </div>
 
@@ -1163,12 +1117,9 @@
                         <div class="project-visual"><img src="OpticGardenKoncept.webp" alt="Opti Garden Koncept"></div>
                         <div class="project-content">
                             <h2>Optic Garden Koncept</h2>
-                            <div class="project-tags"><span class="project-tag">JavaScript</span><span
-                                    class="project-tag">Créatif</span></div>
-                            <p data-key="project_optic_desc">Générateur d’illusions visuelles interactives. Semez une idée,
-                                regardez-la éclore.</p>
-                            <p><a href="https://alexkoncept.github.io/optigardenkoncept/" target="_blank"
-                                    rel="noopener noreferrer" data-key="view_github_btn">Voir le projet GitHub</a></p>
+                            <div class="project-tags"><span class="project-tag">JavaScript</span><span class="project-tag">Créatif</span></div>
+                            <p data-key="project_optic_desc">Générateur d’illusions visuelles interactives. Semez une idée, regardez-la éclore.</p>
+                            <p><a href="https://alexkoncept.github.io/optigardenkoncept/" target="_blank" rel="noopener noreferrer" data-key="view_github_btn">Voir le projet GitHub</a></p>
                         </div>
                     </div>
 
@@ -1176,11 +1127,9 @@
                         <div class="project-visual"><img src="SolarEstateHub.webp" alt="Solar Estate Hub"></div>
                         <div class="project-content">
                             <h2>Solar Estate Hub</h2>
-                            <div class="project-tags"><span class="project-tag">React</span><span
-                                    class="project-tag">Three.js</span></div>
+                            <div class="project-tags"><span class="project-tag">React</span><span class="project-tag">Three.js</span></div>
                             <p data-key="project_solar_desc">Choisissez votre planète comme nouveau foyer.</p>
-                            <p><a href="https://alexkoncept.github.io/solarestatehub/" target="_blank" rel="noopener noreferrer"
-                                    data-key="view_live_project_btn">Voir le projet en direct</a></p>
+                            <p><a href="https://alexkoncept.github.io/solarestatehub/" target="_blank" rel="noopener noreferrer" data-key="view_live_project_btn">Voir le projet en direct</a></p>
                         </div>
                     </div>
 
@@ -1188,12 +1137,9 @@
                         <div class="project-visual"><img src="MDIYGA.webp" alt="Make DIY Great Again"></div>
                         <div class="project-content">
                             <h2>Make DIY Great Again </h2>
-                            <div class="project-tags"><span class="project-tag">React</span><span
-                                    class="project-tag">PWA</span></div>
-                            <p data-key="project_mdiyga_desc">Redonne vie à tes objets oubliés. Une app pensée pour bricoler
-                                malin, inspirer, et transmettre le plaisir du faire soi-même.</p>
-                            <p><a href="https://makediygreatagain.netlify.app/" target="_blank" rel="noopener noreferrer"
-                                    data-key="discover_app_btn">Découvrir l'app en ligne</a></p>
+                            <div class="project-tags"><span class="project-tag">React</span><span class="project-tag">PWA</span></div>
+                            <p data-key="project_mdiyga_desc">Redonne vie à tes objets oubliés. Une app pensée pour bricoler malin, inspirer, et transmettre le plaisir du faire soi-même.</p>
+                            <p><a href="https://makediygreatagain.netlify.app/" target="_blank" rel="noopener noreferrer" data-key="discover_app_btn">Découvrir l'app en ligne</a></p>
                         </div>
                     </div>
 
@@ -1201,27 +1147,19 @@
                         <div class="project-visual"><img src="AK001.webp" alt="AK 001 – Montre personnalisable"></div>
                         <div class="project-content">
                             <h2 data-key="project_ak001_title">AK 001 – Montre personnalisable </h2>
-                            <div class="project-tags"><span class="project-tag">3D</span><span
-                                    class="project-tag">Horlogerie</span><span class="project-tag">Design</span></div>
-                            <p data-key="project_ak001_desc"> Le premier modèle imaginé par Alex Koncept. Élégante, moderne, et
-                                100% personnalisable.</p>
-                            <p><a href="https://modele-ak001.netlify.app/" target="_blank" rel="noopener noreferrer"
-                                    data-key="discover_model_btn">Découvrir le modèle AK 001</a></p>
+                            <div class="project-tags"><span class="project-tag">3D</span><span class="project-tag">Horlogerie</span><span class="project-tag">Design</span></div>
+                            <p data-key="project_ak001_desc"> Le premier modèle imaginé par Alex Koncept. Élégante, moderne, et 100% personnalisable.</p>
+                            <p><a href="https://modele-ak001.netlify.app/" target="_blank" rel="noopener noreferrer" data-key="discover_model_btn">Découvrir le modèle AK 001</a></p>
                         </div>
                     </div>
 
                     <div class="project">
-                        <div class="project-visual"><img src="BodyKoncept.webp"
-                                alt="Vitrine web pour l'application Body Koncept"></div>
+                        <div class="project-visual"><img src="BodyKoncept.webp" alt="Vitrine web pour l'application Body Koncept"></div>
                         <div class="project-content">
                             <h2 data-key="project_bodykoncept_title">Body Koncept </h2>
-                            <div class="project-tags"><span class="project-tag">React</span><span
-                                    class="project-tag">Vite</span><span class="project-tag">IA</span><span
-                                    class="project-tag">PWA</span></div>
-                            <p data-key="project_bodykoncept_desc">Découvrez l'entraînement personnalisé par IA qui s'adapte à
-                                vos objectifs, votre morphologie et votre mode de vie.</p>
-                            <p><a href="https://alexkoncept.github.io/bodykoncept-officiel/" target="_blank"
-                                    rel="noopener noreferrer" data-key="view_live_btn">Voir le Projet en Ligne</a></p>
+                            <div class="project-tags"><span class="project-tag">React</span><span class="project-tag">Vite</span><span class="project-tag">IA</span><span class="project-tag">PWA</span></div>
+                            <p data-key="project_bodykoncept_desc">Découvrez l'entraînement personnalisé par IA qui s'adapte à vos objectifs, votre morphologie et votre mode de vie.</p>
+                            <p><a href="https://alexkoncept.github.io/bodykoncept-officiel/" target="_blank" rel="noopener noreferrer" data-key="view_live_btn">Voir le Projet en Ligne</a></p>
                         </div>
                     </div>
 
@@ -1229,16 +1167,9 @@
                         <div class="project-visual"><img src="AKULAB.webp" alt="AK Universe Lab"></div>
                         <div class="project-content">
                             <h2 data-key="project_akulab_title">AK Universe Lab<span class="badge-new">NEW</span></h2>
-                            <div class="project-tags">
-                                <span class="project-tag">UI/UX</span>
-                                <span class="project-tag">3D</span>
-                                <span class="project-tag">Créatif</span>
-                            </div>
-                            <p data-key="project_akulab_desc">AK Universe Lab est une vitrine immersive fusionnant logo, mode,
-                                technologie et expérimentation. Organisé en protocoles (vêtements, accessoires, objets), le site
-                                offre un design futuriste, un essayage virtuel par IA et une expérience interactive unique.</p>
-                            <p><a href="https://alexkoncept.github.io/ak-universe-lab/" target="_blank"
-                                    rel="noopener noreferrer" data-key="discover_site_btn">Découvrir le site en ligne</a></p>
+                            <div class="project-tags"><span class="project-tag">UI/UX</span><span class="project-tag">3D</span><span class="project-tag">Créatif</span></div>
+                            <p data-key="project_akulab_desc">AK Universe Lab est une vitrine immersive fusionnant logo, mode, technologie et expérimentation. Organisé en protocoles (vêtements, accessoires, objets), le site offre un design futuriste, un essayage virtuel par IA et une expérience interactive unique.</p>
+                            <p><a href="https://alexkoncept.github.io/ak-universe-lab/" target="_blank" rel="noopener noreferrer" data-key="discover_site_btn">Découvrir le site en ligne</a></p>
                         </div>
                     </div>
 
@@ -1248,23 +1179,12 @@
                         </div>
                         <div class="project-content">
                             <h2 data-key="project_tose_title">Timeline OS Evolution</h2>
-                            <div class="project-tags">
-                                <span class="project-tag">UI/UX</span>
-                                <span class="project-tag">Système</span>
-                                <span class="project-tag">Futuriste</span>
-                            </div>
+                            <div class="project-tags"><span class="project-tag">UI/UX</span><span class="project-tag">Système</span><span class="project-tag">Futuriste</span></div>
                             <p data-key="project_tose_desc">
-                                Projet interactif retraçant l’évolution des systèmes d’exploitation, de Windows 3.1 à macOS Big
-                                Sur, à travers une timeline web immersive.
-                                Chaque OS est fidèlement recréé pour célébrer l’histoire de l’informatique et introduire AK OS,
-                                la vision moderne et créative signée Alex Koncept.
+                                Projet interactif retraçant l’évolution des systèmes d’exploitation, de Windows 3.1 à macOS Big Sur, à travers une timeline web immersive.
+                                Chaque OS est fidèlement recréé pour célébrer l’histoire de l’informatique et introduire AK OS, la vision moderne et créative signée Alex Koncept.
                             </p>
-                            <p>
-                                <a href="https://timeline-os-evolution.netlify.app/" target="_blank" rel="noopener noreferrer"
-                                    data-key="discover_site_btn">
-                                    Découvrir le site en ligne
-                                </a>
-                            </p>
+                            <p><a href="https://timeline-os-evolution.netlify.app/" target="_blank" rel="noopener noreferrer" data-key="discover_site_btn">Découvrir le site en ligne</a></p>
                         </div>
                     </div>
 
@@ -1274,24 +1194,12 @@
                         </div>
                         <div class="project-content">
                             <h2 data-key="project_hsk_title">HSK — Hybrid Sound Koncept<span class="badge-new">NEW</span></h2>
-                            <div class="project-tags">
-                                <span class="project-tag">Musique</span>
-                                <span class="project-tag">IA</span>
-                                <span class="project-tag">Création numérique</span>
-                            </div>
+                            <div class="project-tags"><span class="project-tag">Musique</span><span class="project-tag">IA</span><span class="project-tag">Création numérique</span></div>
                             <p data-key="project_hsk_desc">
-                                HSK (Hybrid Sound Koncept) est un projet musical expérimental fusionnant des styles opposés
-                                grâce à l’intelligence artificielle.
-                                Créé avec ChatGPT, Suno et ElevenLabs, il donne vie à un artiste numérique capable de mêler
-                                funk, techno, reggae, metal et bien plus encore. Une exploration audacieuse où le groove humain
-                                rencontre la précision algorithmique.
+                                HSK (Hybrid Sound Koncept) est un projet musical expérimental fusionnant des styles opposés grâce à l’intelligence artificielle.
+                                Créé avec ChatGPT, Suno et ElevenLabs, il donne vie à un artiste numérique capable de mêler funk, techno, reggae, metal et bien plus encore. Une exploration audacieuse où le groove humain rencontre la précision algorithmique.
                             </p>
-                            <p>
-                                <a href="https://hsk-by-alexkoncept.netlify.app/" target="_blank" rel="noopener noreferrer"
-                                    data-key="discover_site_btn">
-                                    Découvrir le projet
-                                </a>
-                            </p>
+                            <p><a href="https://hsk-by-alexkoncept.netlify.app/" target="_blank" rel="noopener noreferrer" data-key="discover_site_btn">Découvrir le projet</a></p>
                         </div>
                     </div>
 
@@ -1299,8 +1207,7 @@
                         <div class="project-visual"><img src="AK_enTravaux.webp" alt="Prochain Koncept en développement"></div>
                         <div class="project-content">
                             <h2 data-key="project_next_title">Prochain Koncept en cours...</h2>
-                            <p data-key="project_next_desc">Un nouveau projet prend forme dans l’atelier AK, à très bientôt pour
-                                en découvrir plus.</p>
+                            <p data-key="project_next_desc">Un nouveau projet prend forme dans l’atelier AK, à très bientôt pour en découvrir plus.</p>
                         </div>
                     </div>
                 </div>
@@ -1314,17 +1221,15 @@
                     <h2 id="about-title" data-key="about_title">À propos</h2>
                     <div data-key="about_desc"></div>
                     <p class="contact-info">
-                        <span data-key="contact_label"></span>: <a
-                            href="mailto:contact@alexkoncept.com">contact@alexkoncept.com</a>
+                        <span data-key="contact_label"></span>: <a href="mailto:contact@alexkoncept.com">contact@alexkoncept.com</a>
                     </p>
-                    <button id="open-pdf-btn" class="action-btn" data-key="read_pdf_btn" aria-controls="pdf-modal">📄 Lire l'analyse du Portfolio
-                        (PDF)</button>
+                    <button id="open-pdf-btn" class="action-btn" data-key="read_pdf_btn" aria-controls="pdf-modal">📄 Lire l'analyse du Portfolio (PDF)</button>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Widget Annonce Flottant OrbaOS -->
+    <!-- Widget OrbaOS -->
     <aside id="orbaos-widget" class="orbaos-widget collapsed" aria-label="Annonce OrbaOS" role="complementary">
         <div class="orbaos-square-preview" id="orbaos-open-btn" aria-label="Découvrir OrbaOS" title="Cliquer pour agrandir OrbaOS">
             <span class="orbaos-mini-badge">NEW</span>
@@ -1384,7 +1289,6 @@
         </div>
     </aside>
 
-    <!-- Bouton de retour en haut -->
     <button id="back-to-top" class="common-toggle-button" aria-label="Retour en haut" data-key="back_to_top" title="Retour en haut">
         ↑
     </button>
@@ -1393,12 +1297,11 @@
         <span data-key="footer_text"></span>
     </footer>
 
-    <!-- BULLE D'ACCUEIL CHATBOT -->
-    <div id="alexbot-speech-container">
-        <div id="orba-speech"><span data-key="welcome_msg">Bonjour et bienvenue ! 👋 Prêt à explorer l'univers d'Alex ?</span></div>
+    <!-- Chatbot AlexBot (identique à ton code d'origine) -->
+    <div id="alexbot-speech-container" style="position: fixed; bottom: 90px; right: 20px; z-index: 10000;">
+        <div id="orba-speech"><span>Bonjour et bienvenue ! 👋 Prêt à explorer l'univers d'Alex ?</span></div>
     </div>
 
-    <!-- POINT D'ANCRAGE REACT DU CHATBOT -->
     <div id="root"></div>
     
     <!-- Script Module Import Map -->
@@ -1412,10 +1315,9 @@
       }
     }
     </script>
-    <!-- Le script Alexbot se charge directement pour garantir que son icône ne saute pas -->
     <script type="module" src="https://esm.sh/gh/alexkoncept/alexkoncept.github.io@main/chatbot/index.tsx"></script>
     
-    <!-- Bouton Toggle pour le Lecteur HSK -->
+    <!-- Lecteur HSK -->
     <div id="hsk-player-icon" role="button" tabindex="0" aria-label="Ouvrir le lecteur HSK"
         style="position: fixed; bottom: 20px; left: 20px; z-index: 10000; cursor: pointer; background: #00bcd4; border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 12px rgba(0, 188, 212, 0.7); transition: transform 0.3s ease;">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white"
@@ -1426,7 +1328,6 @@
         </svg>
     </div>
     
-    <!-- Lecteur Mini Audio HSK Flottant -->
     <div id="hsk-floating-player" role="dialog" aria-modal="true" aria-labelledby="hsk-title"
         style="display: none; flex-direction: column; width: 350px; max-width: 90vw; height: 500px; max-height: 70vh; background: rgba(10, 10, 15, 0.95); border: 1px solid #00bcd4; box-shadow: 0 8px 32px rgba(0, 188, 212, 0.4); border-radius: 16px; position: fixed; bottom: 20px; left: 20px; z-index: 10001; overflow: hidden; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);">
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 15px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); background: rgba(0, 0, 0, 0.4);">
@@ -1446,9 +1347,7 @@
 
         document.addEventListener('DOMContentLoaded', () => {
 
-            // =========================================================
-            // 1. DOCKING AUTOMATIQUE ORBAOS MOBILE
-            // =========================================================
+            // Docking automatique OrbaOS mobile
             const orbaWidgetElem = document.getElementById('orbaos-widget');
             const chatRootElem = document.getElementById('root');
             let lastScrollPos = window.scrollY;
@@ -1502,9 +1401,7 @@
 			
             window.scrollTo(0, 0);
 
-            // =========================================================
-            // 2. CURSEUR INTELLIGENT (ACTIF SUR SOURIS PC, MASQUÉ SUR SMARTPHONE)
-            // =========================================================
+            // Curseur PC avec désactivation sur tactile
             const customCursor = document.getElementById('custom-cursor');
             if (customCursor && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
                 window.addEventListener('mousemove', (e) => {
@@ -1522,9 +1419,7 @@
                 });
             }
 
-            // =========================================================
-            // 3. RETOUR EN HAUT
-            // =========================================================
+            // Bouton retour en haut
             const backToTopBtn = document.getElementById('back-to-top');
             window.addEventListener('scroll', () => {
                 if (window.scrollY > 300) {
@@ -1538,9 +1433,7 @@
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
 
-            // =========================================================
-            // 4. WIDGET ORBAOS & CARROUSEL 5S
-            // =========================================================
+            // Carrousel OrbaOS 5s
             const orbaWidget = document.getElementById('orbaos-widget');
             const orbaOpenBtn = document.getElementById('orbaos-open-btn');
             const orbaCloseBtn = document.getElementById('orbaos-close-btn');
@@ -1602,9 +1495,7 @@
 
             startSlideShow();
 
-            // =========================================================
-            // 5. GESTION DES MODALES ACCESSIBLES (AVEC ÉCHAP & RESTAURATION FOCUS)
-            // =========================================================
+            // Gestion des modales accessibles
             const ModalManager = {
                 activeModal: null,
                 previousActiveElement: null,
@@ -1657,9 +1548,7 @@
             document.getElementById('close-akrn-btn')?.addEventListener('click', () => ModalManager.close('akrn-modal'));
             document.getElementById('akrn-modal')?.addEventListener('click', (e) => { if (e.target.id === 'akrn-modal') ModalManager.close('akrn-modal'); });
 
-            // =========================================================
-            // 6. ANIMATIONS CANVAS (AVEC PAUSE ÉCONOMIQUE SUR ONGLETS MASQUÉS)
-            // =========================================================
+            // Canvas & Animations
             const matrixCanvas = document.getElementById('matrix-canvas');
             const matrixCtx = matrixCanvas ? matrixCanvas.getContext('2d') : null;
             let matrixReqId;
@@ -1757,12 +1646,11 @@
                 const horizon = h * 0.4;
                 for (let i = 0; i < 20; i++) {
                     const y = horizon + (h - horizon) * (i / 20) ** 2;
-                    const p = (y - horizon) / (h - horizon);
-                    const xOffset = w / 2 * (1 - p);
-                    viceCityCtx.beginPath();
-                    viceCityCtx.moveTo(xOffset, y);
-                    viceCityCtx.lineTo(w - xOffset, y);
-                    viceCityCtx.stroke();
+                    ctx = viceCityCtx;
+                    ctx.beginPath();
+                    ctx.moveTo(0, y);
+                    ctx.lineTo(w, y);
+                    ctx.stroke();
                 }
                 for (let i = -10; i <= 10; i++) {
                     const x = w / 2 + i * step;
@@ -1888,9 +1776,7 @@
                 localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
             });
 
-            // =========================================================
-            // 7. GESTION DES MODES KONCEPT ET OS DASHBOARD
-            // =========================================================
+            // Modes Koncept & OS
             const konceptModeToggle = document.getElementById('koncept-mode-toggle');
             const osModeToggle = document.getElementById('os-mode-toggle');
             const konceptModes = ['default', 'matrix-reloaded', 'space', 'vice-city', 'fallout'];
@@ -1970,9 +1856,7 @@
                 }, 500);
             });
 
-            // =========================================================
-            // 8. TRADUCTIONS ET LOCALISATION (AVEC GARANTIE SUR LES ICÔNES)
-            // =========================================================
+            // Traductions FR / EN avec préservation stricte des icônes
             const translations = {
                 fr: {
                     skip_link: "Aller au contenu principal",
@@ -1981,7 +1865,6 @@
                     theme_toggle_label: "Changer le thème",
                     header_subtitle: "Créateur indépendant – Tech, IA, Web, Design & Horlogerie",
                     intro_text: 'Bienvenue dans mon univers numérique. Chaque "Koncept" que je crée explore un futur possible, à travers l’horlogerie, le code, le design et l’imagination augmentée.<br><br><span class="chatbot-prompt">💬 Pour en savoir plus sur mon parcours ou la genèse d\'un projet, <strong>interrogez AlexBot</strong> en bas à droite !</span>',
-                    welcome_msg: "Bonjour et bienvenue ! 👋 Prêt à explorer l'univers d'Alex ?",
                     widget_orbaos_title: "OrbaOS — OS Cognitif Zero UI",
                     widget_orbaos_desc: "Expérimentez le futur de l'interaction : <strong>Zero UI</strong>, flux multimodal <strong>Gemini Live</strong>, vision <strong>Omni-Sight</strong> et écosystème de <strong>Micro-Apps</strong>.",
                     widget_orbaos_demo_btn: "🚀 Démo Live",
@@ -2056,7 +1939,6 @@
                     theme_toggle_label: "Change theme",
                     header_subtitle: "Independent Creator – Tech, AI, Web, Design & Watchmaking",
                     intro_text: 'Welcome to my digital universe. Each "Koncept" I create explores a possible future, through watchmaking, code, design, and augmented imagination.<br><br><span class="chatbot-prompt">💬 To learn more about my journey or the story behind a project, <strong>ask AlexBot</strong> at the bottom right!</span>',
-                    welcome_msg: "Hello and welcome! 👋 Ready to explore Alex's universe?",
                     widget_orbaos_title: "OrbaOS — Cognitive Zero UI OS",
                     widget_orbaos_desc: "Experience the future of interaction: <strong>Zero UI</strong>, <strong>Gemini Live</strong> multimodal stream, <strong>Omni-Sight</strong> vision, and instant <strong>Micro-Apps</strong> ecosystem.",
                     widget_orbaos_demo_btn: "🚀 Live Demo",
@@ -2135,7 +2017,6 @@
                 document.querySelectorAll('[data-key]').forEach(elem => {
                     const key = elem.getAttribute('data-key');
                     if (translations[lang] && translations[lang][key]) {
-                        // RÈGLE STRICTE : Si le bouton a un aria-label, on ne touche JAMAIS à son contenu HTML interne
                         if (elem.hasAttribute('aria-label')) { 
                             elem.setAttribute('aria-label', translations[lang][key]); 
                             if (elem.hasAttribute('title')) elem.setAttribute('title', translations[lang][key]);
@@ -2155,9 +2036,7 @@
             const initialLang = localStorage.getItem('language') || (navigator.language.startsWith('fr') ? 'fr' : 'en');
             setLanguage(initialLang);
 
-            // =========================================================
-            // 9. TRI DES PROJETS & INJECTION DES DONNÉES STRUCTURÉES SEO
-            // =========================================================
+            // Tri aléatoire des projets et injection Schema.org
             const projectsContainer = document.getElementById('projects-container');
             if (projectsContainer) {
                 const comingSoonProject = document.getElementById('coming-soon-project');
@@ -2176,7 +2055,7 @@
                 oldProjects.forEach(project => projectsContainer.appendChild(project));
                 if (comingSoonProject) { projectsContainer.appendChild(comingSoonProject); }
 
-                // Injection Schema.org ItemList pour booster Google
+                // Injection ItemList Schema.org
                 const itemList = {
                     "@context": "https://schema.org",
                     "@type": "ItemList",
@@ -2221,9 +2100,7 @@
             }, { threshold: 0.1 });
             document.querySelectorAll('.project').forEach(project => { observer.observe(project); });
 
-            // =========================================================
-            // 10. LECTEUR AUDIO HSK
-            // =========================================================
+            // Lecteur audio HSK
             const hskPlayerIcon = document.getElementById("hsk-player-icon");
             const hskPlayerContainer = document.getElementById("hsk-floating-player");
             const hskIframe = document.getElementById("hsk-iframe");
