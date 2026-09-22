@@ -1728,26 +1728,34 @@
             const langFrBtn = document.getElementById('lang-fr-btn');
             const langEnBtn = document.getElementById('lang-en-btn');
 
-            const setLanguage = (lang) => {
-                document.documentElement.lang = lang;
-                localStorage.setItem('language', lang);
-                document.querySelectorAll('[data-key]').forEach(elem => {
-                    const key = elem.getAttribute('data-key');
-                    if (translations[lang] && translations[lang][key]) {
-                        if (elem.hasAttribute('aria-label')) elem.setAttribute('aria-label', translations[lang][key]);
-                        elem.innerHTML = translations[lang][key];
-                    }
-                });
-                langFrBtn.setAttribute('aria-checked', lang === 'fr');
-                langEnBtn.setAttribute('aria-checked', lang === 'en');
-                if (lang === 'fr') { langFrBtn.classList.add('lang-active'); langEnBtn.classList.remove('lang-active'); }
-                else { langEnBtn.classList.add('lang-active'); langFrBtn.classList.remove('lang-active'); }
-            };
-
-            langFrBtn.addEventListener('click', () => setLanguage('fr'));
-            langEnBtn.addEventListener('click', () => setLanguage('en'));
-            const initialLang = localStorage.getItem('language') || (navigator.language.startsWith('fr') ? 'fr' : 'en');
-            setLanguage(initialLang);
+const setLanguage = (lang) => {
+    document.documentElement.lang = lang;
+    localStorage.setItem('language', lang);
+    document.querySelectorAll('[data-key]').forEach(elem => {
+        const key = elem.getAttribute('data-key');
+        if (translations[lang] && translations[lang][key]) {
+            // Si l'élément a un aria-label (ex: bouton icône), on met à jour aria-label et title SANS toucher à l'icône HTML
+            if (elem.hasAttribute('aria-label')) {
+                elem.setAttribute('aria-label', translations[lang][key]);
+                if (elem.hasAttribute('title')) {
+                    elem.setAttribute('title', translations[lang][key]);
+                }
+            } else {
+                // Sinon (titres, paragraphes, boutons texte), on met à jour le texte affiché
+                elem.innerHTML = translations[lang][key];
+            }
+        }
+    });
+    langFrBtn.setAttribute('aria-checked', lang === 'fr');
+    langEnBtn.setAttribute('aria-checked', lang === 'en');
+    if (lang === 'fr') { 
+        langFrBtn.classList.add('lang-active'); 
+        langEnBtn.classList.remove('lang-active'); 
+    } else { 
+        langEnBtn.classList.add('lang-active'); 
+        langFrBtn.classList.remove('lang-active'); 
+    }
+};
 
             // =========================================================
             // 7. TRI DES PROJETS & INJECTION DES DONNÉES STRUCTURÉES
