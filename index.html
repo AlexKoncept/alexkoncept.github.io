@@ -690,18 +690,30 @@
             right: 20px;
             z-index: 10000;
         }
-        #orba-speech {
-            background: rgba(15, 23, 42, 0.95);
-            border: 1px solid #00bcd4;
-            color: #fff;
-            font-size: 0.85rem;
-            padding: 12px 18px;
-            border-radius: 18px 18px 2px 18px;
-            backdrop-filter: blur(10px);
-            text-align: center;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
-            pointer-events: none;
-        }
+#orba-speech {
+    background: rgba(15, 23, 42, 0.95);
+    border: 1px solid #00bcd4;
+    color: #fff;
+    font-size: 0.85rem;
+    padding: 12px 18px;
+    border-radius: 18px 18px 2px 18px;
+    backdrop-filter: blur(10px);
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+    pointer-events: none;
+    
+    /* Animation douce d'apparition et disparition */
+    transform-origin: bottom right;
+    transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Classe déclenchée par JS pour la faire disparaître */
+#orba-speech.hidden {
+    opacity: 0;
+    transform: scale(0.5);
+}
 
         #root button:not([aria-label*="close"]):not([type="submit"]) {
             background-image: url('Alexbot.webp') !important;
@@ -1346,6 +1358,19 @@
         }
 
         document.addEventListener('DOMContentLoaded', () => {
+
+// Disparition automatique de la bulle AlexBot au bout de 6 secondes
+const speechBubble = document.getElementById('orba-speech');
+if (speechBubble) {
+    setTimeout(() => {
+        speechBubble.classList.add('hidden');
+        // Masque complètement le conteneur une fois l'animation finie
+        setTimeout(() => {
+            const container = document.getElementById('alexbot-speech-container');
+            if (container) container.style.display = 'none';
+        }, 500);
+    }, 6000); // 6000 ms = 6 secondes (le temps idéal pour lire le message)
+}
 
             // Docking automatique OrbaOS mobile
             const orbaWidgetElem = document.getElementById('orbaos-widget');
