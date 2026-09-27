@@ -64,6 +64,78 @@
     </script>
 
     <style>
+/* INFOBULLE UNIVERSELLE STYLE "KONCEPT" */
+        #universe-tooltip {
+            position: fixed;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 1000000;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(8px);
+            transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            background: rgba(10, 15, 25, 0.95);
+            border: 1px solid rgba(0, 229, 255, 0.5);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 7px 14px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 229, 255, 0.3);
+            white-space: nowrap;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+        }
+
+        #universe-tooltip.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .universe-tip-title {
+            font-family: var(--title-font, 'Orbitron', sans-serif);
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: 0.6px;
+            text-shadow: 0 0 8px rgba(0, 229, 255, 0.6);
+        }
+
+        .universe-tip-sub {
+            font-family: var(--main-font, 'Poppins', sans-serif);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: #00e5ff;
+        }
+
+        /* Flèche de l'infobulle */
+        #universe-tooltip .tip-arrow {
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-style: solid;
+        }
+
+        /* Flèche vers le haut (quand la bulle est sous le bouton) */
+        #universe-tooltip.arrow-top .tip-arrow {
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 0 6px 6px 6px;
+            border-color: transparent transparent rgba(0, 229, 255, 0.5) transparent;
+        }
+
+        /* Flèche vers le bas (quand la bulle est au-dessus du bouton, ex: retour en haut) */
+        #universe-tooltip.arrow-bottom .tip-arrow {
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 6px 6px 0 6px;
+            border-color: rgba(0, 229, 255, 0.5) transparent transparent transparent;
+        }	
         :root {
             --header-bg-start: rgba(0, 201, 255, 0.85);
             --header-bg-end: rgba(146, 254, 157, 0.85);
@@ -838,6 +910,119 @@
             .orbaos-widget.collapsed { width: 90px; height: 90px; }
             .orbaos-widget.is-docked { transform: translateX(calc(100% - 22px)) !important; opacity: 0.85; }
         }
+		/* Bouton Koncept AI (KAI) & Vidéo */
+        .kai-nav-btn {
+            position: relative;
+            padding: 0 !important;
+            overflow: visible !important;
+            text-decoration: none;
+            border: 2px solid #00e5ff !important;
+            box-shadow: 0 0 15px rgba(0, 229, 255, 0.4);
+        }
+
+        .kai-video-wrapper {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .kai-video-wrapper video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        /* Tooltip futuriste stylé au survol */
+        .kai-tooltip {
+            position: absolute;
+            top: calc(100% + 12px);
+            left: 50%;
+            transform: translateX(-50%) translateY(8px);
+            background: rgba(10, 15, 25, 0.95);
+            border: 1px solid rgba(0, 229, 255, 0.5);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 8px 14px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 229, 255, 0.25);
+            white-space: nowrap;
+            pointer-events: none;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s;
+            z-index: 10000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+        }
+
+        .kai-tooltip::before {
+            content: '';
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 6px;
+            border-style: solid;
+            border-color: transparent transparent rgba(0, 229, 255, 0.5) transparent;
+        }
+
+        .kai-tooltip-title {
+            font-family: var(--title-font, 'Orbitron', sans-serif);
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: 0.8px;
+            text-shadow: 0 0 8px rgba(0, 229, 255, 0.6);
+        }
+
+        .kai-tooltip-action {
+            font-family: var(--main-font, 'Poppins', sans-serif);
+            font-size: 0.72rem;
+            font-weight: 500;
+            color: #00e5ff;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .kai-arrow {
+            transition: transform 0.2s ease;
+        }
+
+        .kai-nav-btn:hover .kai-tooltip {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .kai-nav-btn:hover .kai-arrow {
+            transform: translateX(4px);
+        }
+
+        /* Ajustement de l'ancrage du tooltip sur smartphone pour éviter qu'il ne déborde de l'écran */
+        @media (max-width: 768px) {
+            .kai-tooltip {
+                left: auto;
+                right: 0;
+                transform: translateY(8px);
+            }
+            .kai-tooltip::before {
+                left: auto;
+                right: 14px;
+                transform: none;
+            }
+            .kai-nav-btn:hover .kai-tooltip {
+                transform: translateY(0);
+            }
+        }
     </style>
 </head>
 
@@ -880,7 +1065,7 @@
     <canvas id="vice-city-canvas" aria-hidden="true"></canvas>
     <canvas id="fallout-canvas" aria-hidden="true"></canvas>
 
-    <!-- COMMANDES DU HAUT -->
+<!-- COMMANDES DU HAUT -->
     <div class="top-left-controls">
         <button id="koncept-mode-toggle" class="common-toggle-button" aria-label="Changer le Koncept Mode" data-key="koncept_mode_label" title="Changer le thème visuel">
             <span class="koncept-mode-icon" aria-hidden="true">🎨</span>
@@ -888,6 +1073,18 @@
         <button id="os-mode-toggle" class="common-toggle-button" aria-label="Activer AK-OS Dashboard" title="Mode OS / Dashboard" aria-pressed="false">
             💻
         </button>
+
+        <!-- BOUTON KONCEPT AI -->
+        <a id="kai-trigger" href="https://konceptai-byalexkoncept.netlify.app/" target="_blank" rel="noopener noreferrer" class="common-toggle-button kai-nav-btn" aria-label="Koncept AI – Enter the Studio">
+            <div class="kai-video-wrapper">
+                <video src="kai.webm" autoplay loop muted playsinline aria-hidden="true"></video>
+            </div>
+            <div class="kai-tooltip">
+                <span class="kai-tooltip-title">Koncept AI</span>
+                <span class="kai-tooltip-action">Enter the Studio <span class="kai-arrow">→</span></span>
+            </div>
+        </a>
+
         <button id="akrn-trigger" class="common-toggle-button aknr-nav-btn" aria-label="Afficher AKNR Live" title="AKNR Live" aria-controls="akrn-modal"></button>
     </div>
 
@@ -898,12 +1095,10 @@
         </div>
         <button id="theme-toggle" class="theme-toggle common-toggle-button" aria-label="Changer le thème" data-key="theme_toggle_label" title="Changer le thème" aria-pressed="false"></button>
     </div>
-
-    <header id="main-header" role="banner">
+<header id="main-header" role="banner">
         <h1 id="header-title">Alex Koncept</h1>
         <p id="header-subtitle" data-key="header_subtitle">Créateur indépendant – Tech, IA, Web, Design & Horlogerie</p>
     </header>
-
     <!-- CONTENU PRINCIPAL SÉMANTIQUE -->
     <main id="main-content" role="main">
         <div class="container">
@@ -1358,7 +1553,113 @@
         }
 
         document.addEventListener('DOMContentLoaded', () => {
+// Système d'infobulles universel Koncept
+            if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+                // Création du conteneur de l'infobulle
+                const tooltipEl = document.createElement('div');
+                tooltipEl.id = 'universe-tooltip';
+                tooltipEl.innerHTML = '<span class="universe-tip-title"></span><span class="universe-tip-sub" style="display:none;"></span><div class="tip-arrow"></div>';
+                document.body.appendChild(tooltipEl);
 
+                const tipTitle = tooltipEl.querySelector('.universe-tip-title');
+                const tipSub = tooltipEl.querySelector('.universe-tip-sub');
+
+                // Remplacement automatique des title="" natifs par data-tooltip
+                const registerTooltips = () => {
+                    document.querySelectorAll('[title]:not(#kai-trigger)').forEach(el => {
+                        const text = el.getAttribute('title');
+                        if (text && text.trim()) {
+                            el.dataset.tooltip = text;
+                            el.removeAttribute('title'); // Empêche l'infobulle grise par défaut
+                        }
+                    });
+                };
+                registerTooltips();
+
+                let hideTimeout;
+
+                const showTooltip = (el) => {
+                    const tipText = el.dataset.tooltip;
+                    if (!tipText) return;
+
+                    clearTimeout(hideTimeout);
+
+                    // Supporte un format "Titre // Sous-titre" si vous voulez deux lignes
+                    if (tipText.includes('//')) {
+                        const parts = tipText.split('//');
+                        tipTitle.textContent = parts[0].trim();
+                        tipSub.textContent = parts[1].trim();
+                        tipSub.style.display = 'inline';
+                    } else {
+                        tipTitle.textContent = tipText;
+                        tipSub.style.display = 'none';
+                    }
+
+                    const rect = el.getBoundingClientRect();
+                    tooltipEl.classList.remove('arrow-top', 'arrow-bottom');
+
+                    // Calcul de la position (au-dessus ou en-dessous selon l'espace)
+                    const showAbove = rect.bottom > window.innerHeight - 80;
+                    tooltipEl.classList.add(showAbove ? 'arrow-bottom' : 'arrow-top');
+
+                    tooltipEl.classList.add('visible');
+
+                    const tipWidth = tooltipEl.offsetWidth;
+                    const tipHeight = tooltipEl.offsetHeight;
+
+                    // Centrage horizontal avec retenue dans les bords de l'écran
+                    let left = rect.left + (rect.width / 2) - (tipWidth / 2);
+                    left = Math.max(10, Math.min(left, window.innerWidth - tipWidth - 10));
+
+                    let top = showAbove ? rect.top - tipHeight - 10 : rect.bottom + 10;
+
+                    tooltipEl.style.left = `${left}px`;
+                    tooltipEl.style.top = `${top}px`;
+                };
+
+                const hideTooltip = () => {
+                    tooltipEl.classList.remove('visible');
+                };
+
+                // Écoute des événements sur toute la page
+                document.body.addEventListener('pointerover', (e) => {
+                    const target = e.target.closest('[data-tooltip]');
+                    if (target) showTooltip(target);
+                });
+
+                document.body.addEventListener('pointerout', (e) => {
+                    if (e.target.closest('[data-tooltip]')) hideTooltip();
+                });
+
+                window.addEventListener('scroll', hideTooltip, { passive: true });
+            }
+// Repositionnement dynamique : PC (Dashboard -> KAI -> AKNR) vs Mobile (Thème -> KAI -> AKNR)
+            const repositionControls = () => {
+                const kaiBtn = document.getElementById('kai-trigger');
+                const akrnBtn = document.getElementById('akrn-trigger');
+                const osBtn = document.getElementById('os-mode-toggle');
+                const themeBtn = document.getElementById('theme-toggle');
+
+                if (!kaiBtn || !akrnBtn) return;
+
+                if (window.innerWidth <= 768) {
+                    // Sur Mobile : placé à droite entre Thème et AKNR (Thème -> KAI -> AKNR)
+                    if (themeBtn) {
+                        themeBtn.after(kaiBtn);
+                        kaiBtn.after(akrnBtn);
+                    }
+                } else {
+                    // Sur PC : placé à gauche entre Dashboard et AKNR (Dashboard -> KAI -> AKNR)
+                    if (osBtn) {
+                        osBtn.after(kaiBtn);
+                        kaiBtn.after(akrnBtn);
+                    }
+                }
+            };
+
+            repositionControls();
+            window.addEventListener('resize', repositionControls);
+			
 // Disparition automatique de la bulle AlexBot au bout de 6 secondes
 const speechBubble = document.getElementById('orba-speech');
 if (speechBubble) {
