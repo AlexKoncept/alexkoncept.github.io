@@ -1613,6 +1613,45 @@
                             el.dataset.tooltip = text;
                             el.removeAttribute('title');
                         }
+						// --- AUTO-SCROLL INTELLIGENT ALEXBOT (AFFICHE LE HAUT DE LA RÉPONSE) ---
+const chatRootElement = document.getElementById('root');
+if (chatRootElement) {
+    let lastMsgCount = 0;
+
+    const chatScrollObserver = new MutationObserver(() => {
+        // Détecte la fenêtre ouverte du chat
+        const dialog = chatRootElement.querySelector('[role="dialog"]') || chatRootElement;
+        
+        // Trouve le conteneur avec l'ascenseur de défilement (scroll)
+        const scrollableContainer = Array.from(dialog.querySelectorAll('*')).find(el => {
+            const style = window.getComputedStyle(el);
+            return (style.overflowY === 'auto' || style.overflowY === 'scroll') && el.scrollHeight > el.clientHeight;
+        });
+
+        if (!scrollableContainer) return;
+
+        // Récupère les bulles de messages affichées
+        const messages = Array.from(scrollableContainer.children).filter(el => el.offsetHeight > 0);
+
+        // Si un nouveau message vient d'apparaître
+        if (messages.length > lastMsgCount) {
+            lastMsgCount = messages.length;
+            const latestMessage = messages[messages.length - 1];
+
+            // On attend 60 ms pour laisser le scroll natif "vers le bas" s'effectuer,
+            // puis on recale instantanément la vue sur le DÉBUT (le haut) du message !
+            setTimeout(() => {
+                latestMessage.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }, 60);
+        }
+    });
+
+    // Surveillance active de la bulle de chat
+    chatScrollObserver.observe(chatRootElement, { childList: true, subtree: true });
+}
                     });
                 };
                 registerTooltips();
