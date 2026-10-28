@@ -140,40 +140,6 @@
             border-color: rgba(0, 229, 255, 0.5) transparent transparent transparent;
         }	
 
-/* Optimisation du cadre de lecture PDF */
-.pdf-modal-content {
-    width: 94%;
-    max-width: 1250px;
-    height: 92vh; /* Utilise 92% de la hauteur de l'écran pour un confort maximal */
-}
-
-.pdf-external-btn {
-    font-family: var(--main-font, 'Poppins', sans-serif);
-    font-size: 0.78rem;
-    font-weight: 600;
-    color: #00e5ff;
-    text-decoration: none;
-    padding: 5px 12px;
-    border: 1px solid rgba(0, 229, 255, 0.4);
-    border-radius: 20px;
-    background: rgba(0, 229, 255, 0.08);
-    transition: all 0.2s ease;
-    white-space: nowrap;
-}
-
-.pdf-external-btn:hover {
-    background: #00e5ff;
-    color: #030712;
-    box-shadow: 0 0 12px rgba(0, 229, 255, 0.5);
-}
-
-@media (max-width: 768px) {
-    .pdf-modal-content {
-        width: 96%;
-        height: 88vh;
-    }
-}
-
         :root {
             --header-bg-start: rgba(0, 201, 255, 0.85);
             --header-bg-end: rgba(146, 254, 157, 0.85);
@@ -577,13 +543,90 @@
             right: 1.2rem;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             z-index: 1001;
         }
 
-        .lang-switcher { display: flex; gap: 6px; }
-        .lang-switcher button { opacity: 0.7; width: 38px; height: 38px; font-size: 0.85rem; }
-        .lang-switcher button.lang-active { opacity: 1; border: 2px solid var(--link-color); background: rgba(255, 255, 255, 0.25); }
+        /* BOUTON UNIQUE SLIDER DRAPEAU (FR ⇄ EN) */
+        .lang-slider-btn {
+            position: relative;
+            width: 72px;
+            height: 38px;
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            padding: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            overflow: hidden;
+            user-select: none;
+            flex-shrink: 0;
+        }
+
+        .lang-slider-btn:hover {
+            border-color: #00e5ff;
+            box-shadow: 0 0 16px rgba(0, 229, 255, 0.4);
+            transform: scale(1.05);
+        }
+
+        .lang-slider-thumb {
+            position: absolute;
+            top: 3px;
+            left: 4px;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(0, 229, 255, 0.35), rgba(0, 119, 204, 0.6));
+            border: 1.5px solid #00e5ff;
+            box-shadow: 0 0 10px rgba(0, 229, 255, 0.6);
+            transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.35s ease, border-color 0.35s ease;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .lang-slider-btn.is-en .lang-slider-thumb {
+            transform: translateX(33px);
+            border-color: #a855f7;
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.35), rgba(99, 102, 241, 0.6));
+            box-shadow: 0 0 10px rgba(168, 85, 247, 0.6);
+        }
+
+        .lang-flag-item {
+            position: relative;
+            z-index: 2;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            line-height: 1;
+            transition: opacity 0.25s ease, transform 0.25s ease, filter 0.25s ease;
+        }
+
+        .lang-slider-btn:not(.is-en) .lang-flag-item.fr {
+            transform: scale(1.15);
+            filter: drop-shadow(0 0 4px rgba(0, 229, 255, 0.6));
+        }
+        .lang-slider-btn:not(.is-en) .lang-flag-item.en {
+            opacity: 0.45;
+            filter: grayscale(60%);
+        }
+
+        .lang-slider-btn.is-en .lang-flag-item.en {
+            transform: scale(1.15);
+            filter: drop-shadow(0 0 4px rgba(168, 85, 247, 0.6));
+        }
+        .lang-slider-btn.is-en .lang-flag-item.fr {
+            opacity: 0.45;
+            filter: grayscale(60%);
+        }
 
         header {
             text-align: center;
@@ -691,7 +734,7 @@
             .top-right-controls {
                 top: 0.8rem !important;
                 right: 0.8rem !important;
-                gap: 6px !important;
+                gap: 8px !important;
             }
             .common-toggle-button {
                 width: 38px !important;
@@ -851,6 +894,37 @@
         .modal-close-btn { background: transparent; border: none; color: var(--text-color); font-size: 2rem; cursor: pointer; }
         .modal-body { flex: 1; width: 100%; background: #000; }
         .modal-body iframe { width: 100%; height: 100%; border: none; }
+
+        /* Optimisation du cadre de lecture PDF */
+        .pdf-modal-content {
+            width: 94%;
+            max-width: 1250px;
+            height: 92vh;
+        }
+        .pdf-external-btn {
+            font-family: var(--main-font, 'Poppins', sans-serif);
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: #00e5ff;
+            text-decoration: none;
+            padding: 5px 12px;
+            border: 1px solid rgba(0, 229, 255, 0.4);
+            border-radius: 20px;
+            background: rgba(0, 229, 255, 0.08);
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+        .pdf-external-btn:hover {
+            background: #00e5ff;
+            color: #030712;
+            box-shadow: 0 0 12px rgba(0, 229, 255, 0.5);
+        }
+        @media (max-width: 768px) {
+            .pdf-modal-content {
+                width: 96%;
+                height: 88vh;
+            }
+        }
 
         .action-btn { display: inline-flex; align-items: center; gap: 10px; color: #fff; background: linear-gradient(45deg, var(--link-color), #00c9ff); padding: 12px 28px; border-radius: 30px; text-decoration: none; font-weight: 600; box-shadow: 0 4px 15px rgba(0, 119, 204, 0.3); transition: all 0.3s ease; border: none; font-family: var(--main-font); font-size: 1rem; margin-top: 1.5rem; cursor: pointer; }
         .action-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0, 119, 204, 0.5); }
@@ -1085,7 +1159,7 @@
         }
 
         /* ============================================================
-           DRAWER CYBER AK-OS (MENU SANDWICH)
+           DRAWER CYBER AK-OS (MENU SANDWICH SANS LISERÉ)
            ============================================================ */
         .sandwich-icon {
             font-size: 1.3rem;
@@ -1101,140 +1175,41 @@
             z-index: 100010;
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.35s ease;
+            visibility: hidden;
+            transition: opacity 0.35s ease, visibility 0.35s ease;
         }
 
         .drawer-overlay.active {
             opacity: 1;
             pointer-events: all;
+            visibility: visible;
         }
 
- /* ============================================================
-   DRAWER CYBER TRANSPARENT & LUMINEUX
-   ============================================================ */
-.cyber-drawer {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 360px;
-    max-width: 88vw;
-    height: 100vh;
-    /* Transparence augmentée & effet verre acrylique dépoli */
-    background: rgba(13, 22, 38, 0.78) !important;
-    backdrop-filter: blur(28px) saturate(180%) !important;
-    -webkit-backdrop-filter: blur(28px) saturate(180%) !important;
-    border-right: 1.5px solid rgba(0, 229, 255, 0.35) !important;
-    box-shadow: 15px 0 50px rgba(0, 0, 0, 0.6), 0 0 25px rgba(0, 229, 255, 0.15) !important;
-    z-index: 100011;
-    transform: translateX(-100%);
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    display: flex;
-    flex-direction: column;
-    overflow-y: auto;
-}
-
-/* Logo officiel AK dans le menu */
-.drawer-logo-img {
-    width: 32px;
-    height: 32px;
-    object-fit: contain;
-    border-radius: 8px;
-    filter: drop-shadow(0 0 8px rgba(0, 229, 255, 0.75));
-    transition: transform 0.3s ease;
-}
-
-.drawer-brand:hover .drawer-logo-img {
-    transform: scale(1.12) rotate(6deg);
-}
-
-/* ============================================================
-   BOUTON UNIQUE SLIDER DRAPEAU (FR ⇄ EN)
-   ============================================================ */
-.lang-slider-btn {
-    position: relative;
-    width: 72px;
-    height: 38px;
-    border-radius: 50px;
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-    padding: 3px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    overflow: hidden;
-    user-select: none;
-    flex-shrink: 0;
-}
-
-.lang-slider-btn:hover {
-    border-color: #00e5ff;
-    box-shadow: 0 0 16px rgba(0, 229, 255, 0.4);
-    transform: scale(1.05);
-}
-
-/* Curseur animé qui glisse */
-.lang-slider-thumb {
-    position: absolute;
-    top: 3px;
-    left: 4px;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, rgba(0, 229, 255, 0.35), rgba(0, 119, 204, 0.6));
-    border: 1.5px solid #00e5ff;
-    box-shadow: 0 0 10px rgba(0, 229, 255, 0.6);
-    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.35s ease, border-color 0.35s ease;
-    z-index: 1;
-    pointer-events: none;
-}
-
-/* Position anglais (glissement à droite) */
-.lang-slider-btn.is-en .lang-slider-thumb {
-    transform: translateX(33px);
-    border-color: #a855f7;
-    background: linear-gradient(135deg, rgba(168, 85, 247, 0.35), rgba(99, 102, 241, 0.6));
-    box-shadow: 0 0 10px rgba(168, 85, 247, 0.6);
-}
-
-.lang-flag-item {
-    position: relative;
-    z-index: 2;
-    width: 30px;
-    height: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.1rem;
-    line-height: 1;
-    transition: opacity 0.25s ease, transform 0.25s ease, filter 0.25s ease;
-}
-
-/* Accentuation du drapeau actif / estompage du passif */
-.lang-slider-btn:not(.is-en) .lang-flag-item.fr {
-    transform: scale(1.15);
-    filter: drop-shadow(0 0 4px rgba(0, 229, 255, 0.6));
-}
-.lang-slider-btn:not(.is-en) .lang-flag-item.en {
-    opacity: 0.45;
-    filter: grayscale(60%);
-}
-
-.lang-slider-btn.is-en .lang-flag-item.en {
-    transform: scale(1.15);
-    filter: drop-shadow(0 0 4px rgba(168, 85, 247, 0.6));
-}
-.lang-slider-btn.is-en .lang-flag-item.fr {
-    opacity: 0.45;
-    filter: grayscale(60%);
-}
+        .cyber-drawer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 360px;
+            max-width: 88vw;
+            height: 100vh;
+            background: rgba(13, 22, 38, 0.78) !important;
+            backdrop-filter: blur(28px) saturate(180%) !important;
+            -webkit-backdrop-filter: blur(28px) saturate(180%) !important;
+            border-right: 1.5px solid rgba(0, 229, 255, 0.35) !important;
+            z-index: 100011;
+            transform: translateX(-100%);
+            visibility: hidden;
+            box-shadow: none !important;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s ease, box-shadow 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
 
         .cyber-drawer.active {
             transform: translateX(0);
+            visibility: visible;
+            box-shadow: 15px 0 50px rgba(0, 0, 0, 0.6), 0 0 25px rgba(0, 229, 255, 0.15) !important;
         }
 
         .drawer-header {
@@ -1249,13 +1224,20 @@
         .drawer-brand {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
 
-        .drawer-logo-glow {
-            color: #00e5ff;
-            font-size: 1.2rem;
-            animation: pop 2s infinite alternate;
+        .drawer-logo-img {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+            border-radius: 8px;
+            filter: drop-shadow(0 0 8px rgba(0, 229, 255, 0.75));
+            transition: transform 0.3s ease;
+        }
+
+        .drawer-brand:hover .drawer-logo-img {
+            transform: scale(1.12) rotate(6deg);
         }
 
         .drawer-brand h2 {
@@ -1402,6 +1384,13 @@
             background: rgba(255, 255, 255, 0.08);
             color: #00e5ff;
             border-color: rgba(0, 229, 255, 0.3);
+        }
+
+        /* Masquage du bouton Dashboard 2D sur smartphone */
+        @media (max-width: 768px) {
+            #drawer-btn-dashboard-2d {
+                display: none !important;
+            }
         }
 
         /* ============================================================
@@ -1555,6 +1544,35 @@
             pointer-events: none;
         }
 
+        /* Bouton Quitter Fixe en haut à droite */
+        .holo-close-fixed-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 100005;
+            background: rgba(239, 68, 68, 0.25);
+            border: 1.5px solid rgba(239, 68, 68, 0.6);
+            color: #fca5a5;
+            padding: 10px 18px;
+            border-radius: 30px;
+            font-family: var(--title-font, 'Orbitron', sans-serif);
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5), 0 0 12px rgba(239, 68, 68, 0.35);
+            transition: all 0.25s ease;
+        }
+
+        .holo-close-fixed-btn:hover {
+            background: rgba(239, 68, 68, 0.9);
+            color: #fff;
+            box-shadow: 0 0 20px rgba(239, 68, 68, 0.7);
+            transform: scale(1.05);
+        }
+
         .holo-hud-controls {
             position: absolute;
             bottom: 25px;
@@ -1597,18 +1615,6 @@
             transform: translateY(-2px);
         }
 
-        .holo-close-btn {
-            background: rgba(239, 68, 68, 0.2) !important;
-            border-color: rgba(239, 68, 68, 0.5) !important;
-            color: #fca5a5 !important;
-        }
-
-        .holo-close-btn:hover {
-            background: rgba(239, 68, 68, 0.85) !important;
-            color: #fff !important;
-            box-shadow: 0 0 15px rgba(239, 68, 68, 0.6) !important;
-        }
-
         .card-3d-node {
             width: 310px;
             min-height: 200px;
@@ -1622,6 +1628,7 @@
             flex-direction: column;
             justify-content: space-between;
             user-select: none;
+            pointer-events: auto !important;
         }
 
         .card-3d-node:hover {
@@ -1680,20 +1687,31 @@
             border-radius: 20px;
             text-decoration: none;
             box-shadow: 0 0 10px rgba(0, 201, 255, 0.3);
+            pointer-events: auto !important;
+            cursor: pointer !important;
+            touch-action: manipulation;
+            position: relative;
+            z-index: 100;
         }
 
         @media (max-width: 768px) {
+            .holo-close-fixed-btn {
+                top: 15px;
+                right: 15px;
+                padding: 7px 14px;
+                font-size: 0.78rem;
+            }
             .holo-hud-controls {
                 bottom: 15px;
-                padding: 6px 10px;
-                gap: 6px;
-                overflow-x: auto;
-                scrollbar-width: none;
+                padding: 5px 8px;
+                gap: 5px;
+                max-width: 96vw;
+                justify-content: center;
+                overflow-x: visible;
             }
-            .holo-hud-controls::-webkit-scrollbar { display: none; }
             .holo-hud-btn {
-                padding: 6px 11px;
-                font-size: 0.7rem;
+                padding: 6px 10px;
+                font-size: 0.68rem;
             }
             .card-3d-node {
                 width: 250px;
@@ -1718,24 +1736,23 @@
     <div id="warp-overlay"></div>
     <img id="custom-cursor" src="pointeur.webp" alt="" aria-hidden="true" />
 
-<!-- MODAL PDF -->
-<div id="pdf-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="pdf-modal-title" hidden>
-    <div class="modal-content pdf-modal-content">
-        <div class="modal-header">
-            <h3 id="pdf-modal-title" data-key="pdf_modal_title">Analyse du Koncept Universe</h3>
-            <div style="display: flex; align-items: center; gap: 15px;">
-                <a href="ALEX_KONCEPT_UNIVERSE.pdf" target="_blank" rel="noopener noreferrer" class="pdf-external-btn" title="Ouvrir en plein écran">
-                    ⛶ Plein écran ↗
-                </a>
-                <button id="close-pdf-btn" class="modal-close-btn" aria-label="Fermer la fenêtre PDF">&times;</button>
+    <!-- MODAL PDF -->
+    <div id="pdf-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="pdf-modal-title" hidden>
+        <div class="modal-content pdf-modal-content">
+            <div class="modal-header">
+                <h3 id="pdf-modal-title" data-key="pdf_modal_title">Analyse du Koncept Universe</h3>
+                <div style="display: flex; align-items: center; gap: 15px;">
+                    <a href="ALEX_KONCEPT_UNIVERSE.pdf" target="_blank" rel="noopener noreferrer" class="pdf-external-btn" title="Ouvrir en plein écran">
+                        ⛶ Plein écran ↗
+                    </a>
+                    <button id="close-pdf-btn" class="modal-close-btn" aria-label="Fermer la fenêtre PDF">&times;</button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <iframe data-src="ALEX_KONCEPT_UNIVERSE.pdf#view=Fit&toolbar=0&navpanes=0" title="PDF Analysis"></iframe>
             </div>
         </div>
-        <div class="modal-body">
-            <!-- view=Fit force l'affichage d'une page entière dans le cadre -->
-            <iframe data-src="ALEX_KONCEPT_UNIVERSE.pdf#view=Fit&toolbar=0&navpanes=0" title="PDF Analysis"></iframe>
-        </div>
     </div>
-</div>
 
     <!-- MODAL AKRN NEWS -->
     <div id="akrn-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="akrn-modal-title" hidden>
@@ -1754,15 +1771,27 @@
     <div id="drawer-overlay" class="drawer-overlay" aria-hidden="true"></div>
     <aside id="cyber-drawer" class="cyber-drawer" aria-label="Menu Principal" aria-hidden="true">
         <div class="drawer-header">
-<div class="drawer-brand">
-    <img src="AK-Universe_logo.png" alt="AK Universe Logo" class="drawer-logo-img" />
-    <h2>AK-OS // HUB</h2>
-</div>
+            <div class="drawer-brand">
+                <img src="AK-Universe_logo.png" alt="AK Universe Logo" class="drawer-logo-img" />
+                <h2>AK-OS // HUB</h2>
+            </div>
             <button id="close-drawer-btn" class="drawer-close" aria-label="Fermer le menu">✕</button>
         </div>
 
         <div class="drawer-content">
-            <!-- VUES & DASHBOARDS -->
+            <!-- 1. THÈMES VISUELS (EN PREMIER) -->
+            <div class="drawer-section">
+                <h3 data-key="menu_themes_title">Univers Visuels</h3>
+                <div class="theme-chips-list">
+                    <button class="theme-chip active" data-theme="default">⚡ Cyber Cyan</button>
+                    <button class="theme-chip" data-theme="matrix-reloaded">🟢 Matrix</button>
+                    <button class="theme-chip" data-theme="space">🌌 Deep Space</button>
+                    <button class="theme-chip" data-theme="vice-city">🌴 Vice City</button>
+                    <button class="theme-chip" data-theme="fallout">☢️ Fallout</button>
+                </div>
+            </div>
+
+            <!-- 2. VUES & DASHBOARDS -->
             <div class="drawer-section">
                 <h3 data-key="menu_dashboards_title">Vues & Dashboards</h3>
                 <div class="drawer-buttons-grid">
@@ -1783,19 +1812,7 @@
                 </div>
             </div>
 
-            <!-- THÈMES VISUELS -->
-            <div class="drawer-section">
-                <h3 data-key="menu_themes_title">Univers Visuels</h3>
-                <div class="theme-chips-list">
-                    <button class="theme-chip active" data-theme="default">⚡ Cyber Cyan</button>
-                    <button class="theme-chip" data-theme="matrix-reloaded">🟢 Matrix</button>
-                    <button class="theme-chip" data-theme="space">🌌 Deep Space</button>
-                    <button class="theme-chip" data-theme="vice-city">🌴 Vice City</button>
-                    <button class="theme-chip" data-theme="fallout">☢️ Fallout</button>
-                </div>
-            </div>
-
-            <!-- ACCÈS RAPIDES & LAB -->
+            <!-- 3. PASSERELLES & OUTILS -->
             <div class="drawer-section">
                 <h3 data-key="menu_links_title">Passerelles & Outils</h3>
                 <ul class="drawer-links">
@@ -1824,12 +1841,15 @@
 
     <!-- DASHBOARD 3D (HOLO-DECK) -->
     <div id="holo-3d-viewport" aria-hidden="true">
+        <button id="holo-close-fixed-btn" class="holo-close-fixed-btn" aria-label="Quitter le Dashboard 3D">
+            ✕ Quitter
+        </button>
+
         <div class="holo-hud-controls">
             <button class="holo-hud-btn active" id="btn-layout-sphere">🌐 Sphère</button>
             <button class="holo-hud-btn" id="btn-layout-helix">🧬 Hélice</button>
             <button class="holo-hud-btn" id="btn-layout-grid">📐 Grille</button>
             <button class="holo-hud-btn" id="btn-layout-ring">🔄 Anneau</button>
-            <button class="holo-hud-btn holo-close-btn" id="btn-close-holo">✕ Quitter</button>
         </div>
     </div>
 
@@ -1857,11 +1877,11 @@
     </div>
 
     <div class="top-right-controls">
- <button id="lang-slider-toggle" class="lang-slider-btn" role="switch" aria-checked="false" aria-label="Changer la langue" title="Langue // FR ⇄ EN">
-    <span class="lang-flag-item fr" aria-hidden="true">🇫🇷</span>
-    <span class="lang-flag-item en" aria-hidden="true">🇬🇧</span>
-    <span class="lang-slider-thumb" aria-hidden="true"></span>
-</button>
+        <button id="lang-slider-toggle" class="lang-slider-btn" role="switch" aria-checked="false" aria-label="Changer la langue" title="Langue // FR ⇄ EN">
+            <span class="lang-flag-item fr" aria-hidden="true">🇫🇷</span>
+            <span class="lang-flag-item en" aria-hidden="true">🇬🇧</span>
+            <span class="lang-slider-thumb" aria-hidden="true"></span>
+        </button>
         <button id="theme-toggle" class="theme-toggle common-toggle-button" aria-label="Changer le thème" data-key="theme_toggle_label" title="Changer le thème" aria-pressed="false"></button>
     </div>
 
@@ -3086,52 +3106,46 @@
                 }
             };
 
- /* ============================================================
-   GESTION DU BOUTON SLIDER DE LANGUE UNIQUE (FR ⇄ EN)
-   ============================================================ */
-const langSliderToggle = document.getElementById('lang-slider-toggle');
+            const langSliderToggle = document.getElementById('lang-slider-toggle');
 
-const setLanguage = (lang) => {
-    document.documentElement.lang = lang;
-    localStorage.setItem('language', lang);
+            const setLanguage = (lang) => {
+                document.documentElement.lang = lang;
+                localStorage.setItem('language', lang);
 
-    // Mise à jour de tous les textes bilingues
-    document.querySelectorAll('[data-key]').forEach(elem => {
-        const key = elem.getAttribute('data-key');
-        if (translations[lang] && translations[lang][key]) {
-            if (elem.hasAttribute('aria-label')) { 
-                elem.setAttribute('aria-label', translations[lang][key]); 
-                if (elem.hasAttribute('title')) elem.setAttribute('title', translations[lang][key]);
-            } else if (elem.hasAttribute('placeholder')) {
-                elem.setAttribute('placeholder', translations[lang][key]);
-            } else { 
-                elem.innerHTML = translations[lang][key]; 
-            }
-        }
-    });
+                document.querySelectorAll('[data-key]').forEach(elem => {
+                    const key = elem.getAttribute('data-key');
+                    if (translations[lang] && translations[lang][key]) {
+                        if (elem.hasAttribute('aria-label')) { 
+                            elem.setAttribute('aria-label', translations[lang][key]); 
+                            if (elem.hasAttribute('title')) elem.setAttribute('title', translations[lang][key]);
+                        } else if (elem.hasAttribute('placeholder')) {
+                            elem.setAttribute('placeholder', translations[lang][key]);
+                        } else { 
+                            elem.innerHTML = translations[lang][key]; 
+                        }
+                    }
+                });
 
-    // Animation de glissement du bouton
-    if (lang === 'en') {
-        langSliderToggle?.classList.add('is-en');
-        langSliderToggle?.setAttribute('aria-checked', 'true');
-        langSliderToggle?.setAttribute('aria-label', 'Switch to French');
-    } else {
-        langSliderToggle?.classList.remove('is-en');
-        langSliderToggle?.setAttribute('aria-checked', 'false');
-        langSliderToggle?.setAttribute('aria-label', 'Passer en Anglais');
-    }
-};
+                if (lang === 'en') {
+                    langSliderToggle?.classList.add('is-en');
+                    langSliderToggle?.setAttribute('aria-checked', 'true');
+                    langSliderToggle?.setAttribute('aria-label', 'Switch to French');
+                } else {
+                    langSliderToggle?.classList.remove('is-en');
+                    langSliderToggle?.setAttribute('aria-checked', 'false');
+                    langSliderToggle?.setAttribute('aria-label', 'Passer en Anglais');
+                }
+            };
 
-// Clic unique pour basculer d'une langue à l'autre
-langSliderToggle?.addEventListener('click', () => {
-    const currentLang = localStorage.getItem('language') || 'fr';
-    const nextLang = currentLang === 'fr' ? 'en' : 'fr';
-    setLanguage(nextLang);
-});
+            langSliderToggle?.addEventListener('click', () => {
+                const currentLang = localStorage.getItem('language') || 'fr';
+                const nextLang = currentLang === 'fr' ? 'en' : 'fr';
+                setLanguage(nextLang);
+            });
 
-// Initialisation au chargement
-const initialLang = localStorage.getItem('language') || (navigator.language.startsWith('fr') ? 'fr' : 'en');
-setLanguage(initialLang);
+            const initialLang = localStorage.getItem('language') || (navigator.language.startsWith('fr') ? 'fr' : 'en');
+            setLanguage(initialLang);
+
             // Tri aléatoire des projets et injection Schema.org
             const projectsContainer = document.getElementById('projects-container');
             if (projectsContainer) {
@@ -3394,6 +3408,21 @@ setLanguage(initialLang);
                             </div>
                         `;
 
+                        // Gestion tactile spécifique pour smartphone
+                        const linkBtn = card.querySelector('.card-3d-link');
+                        if (linkBtn) {
+                            ['touchstart', 'touchend', 'pointerdown', 'mousedown'].forEach(evt => {
+                                linkBtn.addEventListener(evt, (e) => {
+                                    e.stopPropagation();
+                                }, { passive: false });
+                            });
+
+                            linkBtn.addEventListener('touchend', (e) => {
+                                e.stopPropagation();
+                                window.open(link, '_blank', 'noopener,noreferrer');
+                            });
+                        }
+
                         const objectCSS = new THREE.CSS3DObject(card);
                         objectCSS.position.x = Math.random() * 4000 - 2000;
                         objectCSS.position.y = Math.random() * 4000 - 2000;
@@ -3528,7 +3557,7 @@ setLanguage(initialLang);
                         setActiveBtn(e.currentTarget);
                         this.transform(this.targets.ring);
                     };
-                    document.getElementById('btn-close-holo').onclick = () => {
+                    document.getElementById('holo-close-fixed-btn').onclick = () => {
                         this.close();
                     };
                 },
