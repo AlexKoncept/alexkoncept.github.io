@@ -45,6 +45,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Courier+Prime&family=Damion&family=Orbitron:wght@500;700&family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Poppins:wght@300;400;600&family=Rajdhani:wght@400;600;700&family=Special+Elite&display=swap" rel="stylesheet">
 
+    <!-- Moteur 3D CSS Three.js & Tween pour le Dashboard 3D -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/renderers/CSS3DRenderer.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/TrackballControls.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/18.6.4/tween.umd.js"></script>
+
     <link rel="stylesheet" href="chatbot/index.css" />
 
     <!-- Schema.org WebSite -->
@@ -133,6 +139,40 @@
             border-width: 6px 6px 0 6px;
             border-color: rgba(0, 229, 255, 0.5) transparent transparent transparent;
         }	
+
+/* Optimisation du cadre de lecture PDF */
+.pdf-modal-content {
+    width: 94%;
+    max-width: 1250px;
+    height: 92vh; /* Utilise 92% de la hauteur de l'écran pour un confort maximal */
+}
+
+.pdf-external-btn {
+    font-family: var(--main-font, 'Poppins', sans-serif);
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #00e5ff;
+    text-decoration: none;
+    padding: 5px 12px;
+    border: 1px solid rgba(0, 229, 255, 0.4);
+    border-radius: 20px;
+    background: rgba(0, 229, 255, 0.08);
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.pdf-external-btn:hover {
+    background: #00e5ff;
+    color: #030712;
+    box-shadow: 0 0 12px rgba(0, 229, 255, 0.5);
+}
+
+@media (max-width: 768px) {
+    .pdf-modal-content {
+        width: 96%;
+        height: 88vh;
+    }
+}
 
         :root {
             --header-bg-start: rgba(0, 201, 255, 0.85);
@@ -323,7 +363,7 @@
             --cursor-color: #76a9fa;
         }
 
-        /* Dashboard OS (Bento) */
+        /* Dashboard 2D OS (Bento) */
         body.koncept-os-dashboard {
             --body-bg: #eef2f6;
             --text-color: #334155;
@@ -472,10 +512,6 @@
         }
         body.koncept-os-dashboard footer { display: none !important; }
 
-        @media (max-width: 900px) {
-            #os-mode-toggle { display: none !important; }
-        }
-
         * { box-sizing: border-box; }
 
         *:focus-visible {
@@ -527,7 +563,7 @@
             left: 1.2rem;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             z-index: 1001;
         }
 
@@ -602,7 +638,7 @@
         header p { font-size: 1.1rem; max-width: 650px; margin: 0 auto; font-style: italic; opacity: 0.95; font-weight: 400; }
 
         .container { max-width: 1100px; margin: 2rem auto; padding: 0 2rem; perspective: 1000px; }
-        .intro { font-size: 1.25rem; margin-bottom: 4rem; text-align: center; max-width: 750px; margin-left: auto; margin-right: auto; line-height: 1.8; }
+        .intro { font-size: 1.25rem; margin-bottom: 2.5rem; text-align: center; max-width: 750px; margin-left: auto; margin-right: auto; line-height: 1.8; }
         .chatbot-prompt { display: inline-block; margin-top: 1.5rem; padding: 1rem 1.5rem; background: var(--glass-bg); backdrop-filter: blur(10px); border: var(--glass-border); border-left: 4px solid var(--project-border-color); border-radius: 12px; font-size: 1.1rem; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); }
 
         .project {
@@ -650,7 +686,7 @@
             .top-left-controls {
                 top: 0.8rem !important;
                 left: 0.8rem !important;
-                gap: 6px !important;
+                gap: 8px !important;
             }
             .top-right-controls {
                 top: 0.8rem !important;
@@ -818,13 +854,6 @@
 
         .action-btn { display: inline-flex; align-items: center; gap: 10px; color: #fff; background: linear-gradient(45deg, var(--link-color), #00c9ff); padding: 12px 28px; border-radius: 30px; text-decoration: none; font-weight: 600; box-shadow: 0 4px 15px rgba(0, 119, 204, 0.3); transition: all 0.3s ease; border: none; font-family: var(--main-font); font-size: 1rem; margin-top: 1.5rem; cursor: pointer; }
         .action-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0, 119, 204, 0.5); }
-
-        .aknr-nav-btn {
-            background-image: url('akrn_logo.png') !important;
-            background-size: cover !important;
-            background-position: center !important;
-            border: 2px solid #00bcd4 !important;
-        }
 
         #back-to-top {
             position: fixed;
@@ -1013,7 +1042,7 @@
             }
         }
 
-        /* NOUVEAU : BOUTON STILL FLOTTANT AVEC EFFET RESPIRATION */
+        /* BOUTON STILL FLOTTANT */
         #still-sphere-btn {
             position: fixed;
             bottom: 20px;
@@ -1051,11 +1080,632 @@
         }
 
         @keyframes stillFloat {
-            0%, 100% {
-                transform: translateY(0px) scale(1);
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-6px) scale(1.04); }
+        }
+
+        /* ============================================================
+           DRAWER CYBER AK-OS (MENU SANDWICH)
+           ============================================================ */
+        .sandwich-icon {
+            font-size: 1.3rem;
+            line-height: 1;
+        }
+
+        .drawer-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 100010;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.35s ease;
+        }
+
+        .drawer-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+ /* ============================================================
+   DRAWER CYBER TRANSPARENT & LUMINEUX
+   ============================================================ */
+.cyber-drawer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 360px;
+    max-width: 88vw;
+    height: 100vh;
+    /* Transparence augmentée & effet verre acrylique dépoli */
+    background: rgba(13, 22, 38, 0.78) !important;
+    backdrop-filter: blur(28px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(28px) saturate(180%) !important;
+    border-right: 1.5px solid rgba(0, 229, 255, 0.35) !important;
+    box-shadow: 15px 0 50px rgba(0, 0, 0, 0.6), 0 0 25px rgba(0, 229, 255, 0.15) !important;
+    z-index: 100011;
+    transform: translateX(-100%);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+/* Logo officiel AK dans le menu */
+.drawer-logo-img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    border-radius: 8px;
+    filter: drop-shadow(0 0 8px rgba(0, 229, 255, 0.75));
+    transition: transform 0.3s ease;
+}
+
+.drawer-brand:hover .drawer-logo-img {
+    transform: scale(1.12) rotate(6deg);
+}
+
+/* ============================================================
+   BOUTON UNIQUE SLIDER DRAPEAU (FR ⇄ EN)
+   ============================================================ */
+.lang-slider-btn {
+    position: relative;
+    width: 72px;
+    height: 38px;
+    border-radius: 50px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    padding: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    overflow: hidden;
+    user-select: none;
+    flex-shrink: 0;
+}
+
+.lang-slider-btn:hover {
+    border-color: #00e5ff;
+    box-shadow: 0 0 16px rgba(0, 229, 255, 0.4);
+    transform: scale(1.05);
+}
+
+/* Curseur animé qui glisse */
+.lang-slider-thumb {
+    position: absolute;
+    top: 3px;
+    left: 4px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(0, 229, 255, 0.35), rgba(0, 119, 204, 0.6));
+    border: 1.5px solid #00e5ff;
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.6);
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.35s ease, border-color 0.35s ease;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Position anglais (glissement à droite) */
+.lang-slider-btn.is-en .lang-slider-thumb {
+    transform: translateX(33px);
+    border-color: #a855f7;
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.35), rgba(99, 102, 241, 0.6));
+    box-shadow: 0 0 10px rgba(168, 85, 247, 0.6);
+}
+
+.lang-flag-item {
+    position: relative;
+    z-index: 2;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    line-height: 1;
+    transition: opacity 0.25s ease, transform 0.25s ease, filter 0.25s ease;
+}
+
+/* Accentuation du drapeau actif / estompage du passif */
+.lang-slider-btn:not(.is-en) .lang-flag-item.fr {
+    transform: scale(1.15);
+    filter: drop-shadow(0 0 4px rgba(0, 229, 255, 0.6));
+}
+.lang-slider-btn:not(.is-en) .lang-flag-item.en {
+    opacity: 0.45;
+    filter: grayscale(60%);
+}
+
+.lang-slider-btn.is-en .lang-flag-item.en {
+    transform: scale(1.15);
+    filter: drop-shadow(0 0 4px rgba(168, 85, 247, 0.6));
+}
+.lang-slider-btn.is-en .lang-flag-item.fr {
+    opacity: 0.45;
+    filter: grayscale(60%);
+}
+
+        .cyber-drawer.active {
+            transform: translateX(0);
+        }
+
+        .drawer-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 22px 20px;
+            border-bottom: 1px solid rgba(0, 229, 255, 0.2);
+            background: rgba(0, 229, 255, 0.05);
+        }
+
+        .drawer-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .drawer-logo-glow {
+            color: #00e5ff;
+            font-size: 1.2rem;
+            animation: pop 2s infinite alternate;
+        }
+
+        .drawer-brand h2 {
+            font-family: var(--title-font, 'Orbitron', sans-serif);
+            font-size: 1.1rem;
+            color: #fff;
+            margin: 0;
+            letter-spacing: 1.2px;
+        }
+
+        .drawer-close {
+            background: transparent;
+            border: none;
+            color: #00e5ff;
+            font-size: 1.4rem;
+            cursor: pointer;
+            padding: 4px 8px;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        .drawer-close:hover {
+            background: rgba(0, 229, 255, 0.15);
+        }
+
+        .drawer-content {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .drawer-section h3 {
+            font-family: var(--title-font, 'Orbitron', sans-serif);
+            font-size: 0.78rem;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0 0 12px 0;
+        }
+
+        .drawer-buttons-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .drawer-action-btn {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 14px;
+            color: #fff;
+            cursor: pointer;
+            text-align: left;
+            transition: all 0.25s ease;
+        }
+
+        .drawer-action-btn:hover {
+            background: rgba(0, 229, 255, 0.12);
+            border-color: #00e5ff;
+            transform: translateX(4px);
+        }
+
+        .drawer-action-btn.holo-btn-highlight {
+            border-color: rgba(0, 229, 255, 0.5);
+            background: linear-gradient(135deg, rgba(0, 229, 255, 0.1), rgba(147, 51, 234, 0.1));
+        }
+
+        .drawer-action-btn.holo-btn-highlight:hover {
+            box-shadow: 0 0 15px rgba(0, 229, 255, 0.35);
+        }
+
+        .btn-icon {
+            font-size: 1.5rem;
+        }
+
+        .btn-text strong {
+            display: block;
+            font-size: 0.9rem;
+            font-family: var(--title-font, 'Orbitron', sans-serif);
+        }
+
+        .btn-text small {
+            color: #94a3b8;
+            font-size: 0.72rem;
+        }
+
+        .theme-chips-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .theme-chip {
+            padding: 7px 14px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            color: #e2e8f0;
+            font-size: 0.78rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .theme-chip:hover, .theme-chip.active {
+            background: #00e5ff;
+            color: #030712;
+            border-color: #00e5ff;
+            font-weight: 700;
+            box-shadow: 0 0 10px rgba(0, 229, 255, 0.4);
+        }
+
+        .drawer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .drawer-link-item {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 14px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 0.82rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .drawer-link-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            color: #00e5ff;
+            border-color: rgba(0, 229, 255, 0.3);
+        }
+
+        /* ============================================================
+           FILTRES & BARRE DE RECHERCHE
+           ============================================================ */
+        .project-filters-wrap {
+            margin: 0 auto 3rem auto;
+            max-width: 820px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .search-bar-container {
+            position: relative;
+            width: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 18px;
+            font-size: 1.05rem;
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        #project-search-input {
+            width: 100%;
+            padding: 14px 44px 14px 50px;
+            background: var(--glass-bg);
+            border: 1px solid var(--project-border-color);
+            border-radius: 50px;
+            color: var(--text-color);
+            font-family: var(--main-font);
+            font-size: 0.95rem;
+            box-shadow: var(--glass-shadow);
+            backdrop-filter: blur(14px);
+            transition: all 0.3s ease;
+        }
+
+        #project-search-input:focus {
+            border-color: #00e5ff;
+            box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);
+            outline: none;
+        }
+
+        .clear-search-btn {
+            position: absolute;
+            right: 16px;
+            background: transparent;
+            border: none;
+            color: var(--text-color);
+            font-size: 1rem;
+            cursor: pointer;
+            opacity: 0.6;
+            padding: 4px;
+        }
+        .clear-search-btn:hover { opacity: 1; }
+
+        .category-pills {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cat-pill {
+            padding: 8px 18px;
+            background: var(--glass-bg);
+            border: 1px solid var(--project-border-color);
+            border-radius: 30px;
+            color: var(--text-color);
+            font-family: var(--main-font);
+            font-size: 0.82rem;
+            font-weight: 600;
+            cursor: pointer;
+            backdrop-filter: blur(8px);
+            transition: all 0.25s ease;
+        }
+
+        .cat-pill:hover {
+            transform: translateY(-2px);
+            border-color: #00e5ff;
+        }
+
+        .cat-pill.active {
+            background: linear-gradient(135deg, var(--link-color), #00c9ff);
+            color: #fff;
+            border-color: transparent;
+            box-shadow: 0 4px 15px rgba(0, 119, 204, 0.35);
+        }
+
+        .no-projects-msg {
+            text-align: center;
+            padding: 3rem 1rem;
+            background: var(--glass-bg);
+            border-radius: var(--card-radius);
+            border: 1px dashed var(--project-border-color);
+        }
+        .no-projects-icon { font-size: 2.5rem; display: block; margin-bottom: 8px; }
+
+        .project.filter-hidden {
+            display: none !important;
+        }
+
+        @media (max-width: 768px) {
+            .category-pills {
+                justify-content: flex-start;
+                overflow-x: auto;
+                padding-bottom: 6px;
+                scrollbar-width: none;
+                flex-wrap: nowrap;
             }
-            50% {
-                transform: translateY(-6px) scale(1.04);
+            .category-pills::-webkit-scrollbar { display: none; }
+            .cat-pill { white-space: nowrap; flex-shrink: 0; }
+        }
+
+        /* ============================================================
+           DASHBOARD 3D HOLO-DECK (Three.js CSS3D)
+           ============================================================ */
+        #holo-3d-viewport {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 99999;
+            background: radial-gradient(circle at center, #0a1128 0%, #030712 100%);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+            overflow: hidden;
+            touch-action: none;
+        }
+
+        #holo-3d-viewport.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        #holo-3d-viewport::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(0, 229, 255, 0.08) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 229, 255, 0.08) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+        }
+
+        .holo-hud-controls {
+            position: absolute;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            background: rgba(10, 15, 25, 0.9);
+            border: 1px solid rgba(0, 229, 255, 0.45);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            padding: 8px 16px;
+            border-radius: 50px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 229, 255, 0.25);
+            z-index: 100001;
+            max-width: 95vw;
+        }
+
+        .holo-hud-btn {
+            background: rgba(255, 255, 255, 0.06);
+            color: #e0f2fe;
+            border: 1px solid rgba(0, 229, 255, 0.3);
+            padding: 8px 15px;
+            border-radius: 25px;
+            font-family: var(--title-font, 'Orbitron', sans-serif);
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            white-space: nowrap;
+        }
+
+        .holo-hud-btn:hover,
+        .holo-hud-btn.active {
+            background: linear-gradient(135deg, rgba(0, 229, 255, 0.35), rgba(0, 188, 212, 0.7));
+            border-color: #00e5ff;
+            color: #fff;
+            box-shadow: 0 0 12px rgba(0, 229, 255, 0.6);
+            transform: translateY(-2px);
+        }
+
+        .holo-close-btn {
+            background: rgba(239, 68, 68, 0.2) !important;
+            border-color: rgba(239, 68, 68, 0.5) !important;
+            color: #fca5a5 !important;
+        }
+
+        .holo-close-btn:hover {
+            background: rgba(239, 68, 68, 0.85) !important;
+            color: #fff !important;
+            box-shadow: 0 0 15px rgba(239, 68, 68, 0.6) !important;
+        }
+
+        .card-3d-node {
+            width: 310px;
+            min-height: 200px;
+            background: rgba(12, 18, 32, 0.9);
+            border: 1.5px solid rgba(0, 229, 255, 0.45);
+            border-radius: 16px;
+            padding: 18px;
+            box-shadow: 0 0 25px rgba(0, 229, 255, 0.2);
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            user-select: none;
+        }
+
+        .card-3d-node:hover {
+            border-color: #00e5ff;
+            box-shadow: 0 0 35px rgba(0, 229, 255, 0.6);
+        }
+
+        .card-3d-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+
+        .card-3d-header img {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            object-fit: cover;
+            border: 1px solid rgba(0, 229, 255, 0.4);
+        }
+
+        .card-3d-title {
+            font-family: var(--title-font, 'Orbitron', sans-serif);
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #00e5ff;
+            margin: 0;
+            line-height: 1.2;
+        }
+
+        .card-3d-desc {
+            font-size: 0.72rem;
+            line-height: 1.4;
+            color: #cbd5e1;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            margin: 6px 0 10px 0;
+        }
+
+        .card-3d-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card-3d-link {
+            display: inline-block;
+            padding: 6px 12px;
+            background: linear-gradient(135deg, #00c9ff, #0077cc);
+            color: #fff;
+            font-size: 0.7rem;
+            font-weight: 700;
+            border-radius: 20px;
+            text-decoration: none;
+            box-shadow: 0 0 10px rgba(0, 201, 255, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .holo-hud-controls {
+                bottom: 15px;
+                padding: 6px 10px;
+                gap: 6px;
+                overflow-x: auto;
+                scrollbar-width: none;
+            }
+            .holo-hud-controls::-webkit-scrollbar { display: none; }
+            .holo-hud-btn {
+                padding: 6px 11px;
+                font-size: 0.7rem;
+            }
+            .card-3d-node {
+                width: 250px;
+                min-height: 170px;
+                padding: 14px;
+            }
+            .card-3d-title {
+                font-size: 0.82rem;
+            }
+            .card-3d-desc {
+                -webkit-line-clamp: 2;
+                font-size: 0.68rem;
             }
         }
     </style>
@@ -1068,18 +1718,24 @@
     <div id="warp-overlay"></div>
     <img id="custom-cursor" src="pointeur.webp" alt="" aria-hidden="true" />
 
-    <!-- MODAL PDF -->
-    <div id="pdf-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="pdf-modal-title" hidden>
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 id="pdf-modal-title" data-key="pdf_modal_title">Analyse du Koncept Universe</h3>
+<!-- MODAL PDF -->
+<div id="pdf-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="pdf-modal-title" hidden>
+    <div class="modal-content pdf-modal-content">
+        <div class="modal-header">
+            <h3 id="pdf-modal-title" data-key="pdf_modal_title">Analyse du Koncept Universe</h3>
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <a href="ALEX_KONCEPT_UNIVERSE.pdf" target="_blank" rel="noopener noreferrer" class="pdf-external-btn" title="Ouvrir en plein écran">
+                    ⛶ Plein écran ↗
+                </a>
                 <button id="close-pdf-btn" class="modal-close-btn" aria-label="Fermer la fenêtre PDF">&times;</button>
             </div>
-            <div class="modal-body">
-                <iframe src="ALEX_KONCEPT_UNIVERSE.pdf#toolbar=0&navpanes=0&scrollbar=0" title="PDF Analysis"></iframe>
-            </div>
+        </div>
+        <div class="modal-body">
+            <!-- view=Fit force l'affichage d'une page entière dans le cadre -->
+            <iframe data-src="ALEX_KONCEPT_UNIVERSE.pdf#view=Fit&toolbar=0&navpanes=0" title="PDF Analysis"></iframe>
         </div>
     </div>
+</div>
 
     <!-- MODAL AKRN NEWS -->
     <div id="akrn-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="akrn-modal-title" hidden>
@@ -1094,6 +1750,89 @@
         </div>
     </div>
 
+    <!-- DRAWER / MENU CYBER AK-OS -->
+    <div id="drawer-overlay" class="drawer-overlay" aria-hidden="true"></div>
+    <aside id="cyber-drawer" class="cyber-drawer" aria-label="Menu Principal" aria-hidden="true">
+        <div class="drawer-header">
+<div class="drawer-brand">
+    <img src="AK-Universe_logo.png" alt="AK Universe Logo" class="drawer-logo-img" />
+    <h2>AK-OS // HUB</h2>
+</div>
+            <button id="close-drawer-btn" class="drawer-close" aria-label="Fermer le menu">✕</button>
+        </div>
+
+        <div class="drawer-content">
+            <!-- VUES & DASHBOARDS -->
+            <div class="drawer-section">
+                <h3 data-key="menu_dashboards_title">Vues & Dashboards</h3>
+                <div class="drawer-buttons-grid">
+                    <button id="drawer-btn-dashboard-2d" class="drawer-action-btn">
+                        <span class="btn-icon">📊</span>
+                        <div class="btn-text">
+                            <strong data-key="menu_btn_2d">Dashboard 2D</strong>
+                            <small data-key="menu_sub_2d">Interface Bento OS</small>
+                        </div>
+                    </button>
+                    <button id="drawer-btn-dashboard-3d" class="drawer-action-btn holo-btn-highlight">
+                        <span class="btn-icon">🌐</span>
+                        <div class="btn-text">
+                            <strong data-key="menu_btn_3d">Dashboard 3D</strong>
+                            <small data-key="menu_sub_3d">Sphère & Matrice Holo</small>
+                        </div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- THÈMES VISUELS -->
+            <div class="drawer-section">
+                <h3 data-key="menu_themes_title">Univers Visuels</h3>
+                <div class="theme-chips-list">
+                    <button class="theme-chip active" data-theme="default">⚡ Cyber Cyan</button>
+                    <button class="theme-chip" data-theme="matrix-reloaded">🟢 Matrix</button>
+                    <button class="theme-chip" data-theme="space">🌌 Deep Space</button>
+                    <button class="theme-chip" data-theme="vice-city">🌴 Vice City</button>
+                    <button class="theme-chip" data-theme="fallout">☢️ Fallout</button>
+                </div>
+            </div>
+
+            <!-- ACCÈS RAPIDES & LAB -->
+            <div class="drawer-section">
+                <h3 data-key="menu_links_title">Passerelles & Outils</h3>
+                <ul class="drawer-links">
+                    <li>
+                        <button id="drawer-akrn-btn" class="drawer-link-item">
+                            <span>📡 AKNR Live</span>
+                            <span class="link-arrow">↗</span>
+                        </button>
+                    </li>
+                    <li>
+                        <button id="drawer-pdf-btn" class="drawer-link-item">
+                            <span>📄 Analyse Universe (PDF)</span>
+                            <span class="link-arrow">↗</span>
+                        </button>
+                    </li>
+                    <li>
+                        <a href="https://loraclemiroir-byalexkoncept.netlify.app/" target="_blank" rel="noopener noreferrer" class="drawer-link-item">
+                            <span>🔮 L'Oracle Miroir</span>
+                            <span class="link-arrow">↗</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </aside>
+
+    <!-- DASHBOARD 3D (HOLO-DECK) -->
+    <div id="holo-3d-viewport" aria-hidden="true">
+        <div class="holo-hud-controls">
+            <button class="holo-hud-btn active" id="btn-layout-sphere">🌐 Sphère</button>
+            <button class="holo-hud-btn" id="btn-layout-helix">🧬 Hélice</button>
+            <button class="holo-hud-btn" id="btn-layout-grid">📐 Grille</button>
+            <button class="holo-hud-btn" id="btn-layout-ring">🔄 Anneau</button>
+            <button class="holo-hud-btn holo-close-btn" id="btn-close-holo">✕ Quitter</button>
+        </div>
+    </div>
+
     <!-- CANVAS ARRIÈRE-PLAN -->
     <canvas id="matrix-canvas" aria-hidden="true"></canvas>
     <canvas id="space-canvas" aria-hidden="true"></canvas>
@@ -1102,14 +1841,10 @@
 
     <!-- COMMANDES DU HAUT -->
     <div class="top-left-controls">
-        <button id="koncept-mode-toggle" class="common-toggle-button" aria-label="Changer le Koncept Mode" data-key="koncept_mode_label" title="Changer le thème visuel">
-            <span class="koncept-mode-icon" aria-hidden="true">🎨</span>
-        </button>
-        <button id="os-mode-toggle" class="common-toggle-button" aria-label="Activer AK-OS Dashboard" title="Mode OS / Dashboard" aria-pressed="false">
-            💻
+        <button id="sandwich-menu-btn" class="common-toggle-button" aria-label="Menu Koncept OS" title="Menu // OS & Thèmes">
+            <span class="sandwich-icon">☰</span>
         </button>
 
-        <!-- BOUTON KONCEPT AI -->
         <a id="kai-trigger" href="https://konceptai-byalexkoncept.netlify.app/" target="_blank" rel="noopener noreferrer" class="common-toggle-button kai-nav-btn" aria-label="Koncept AI – Enter the Studio">
             <div class="kai-video-wrapper">
                 <video src="kai.webm" autoplay loop muted playsinline aria-hidden="true"></video>
@@ -1119,15 +1854,14 @@
                 <span class="kai-tooltip-action">Enter the Studio <span class="kai-arrow">→</span></span>
             </div>
         </a>
-
-        <button id="akrn-trigger" class="common-toggle-button aknr-nav-btn" aria-label="Afficher AKNR Live" title="AKNR Live" aria-controls="akrn-modal"></button>
     </div>
 
     <div class="top-right-controls">
-        <div class="lang-switcher" role="group" aria-label="Sélection de la langue">
-            <button id="lang-fr-btn" class="common-toggle-button" aria-label="Français" role="switch" aria-checked="true">FR</button>
-            <button id="lang-en-btn" class="common-toggle-button" aria-label="English" role="switch" aria-checked="false">EN</button>
-        </div>
+ <button id="lang-slider-toggle" class="lang-slider-btn" role="switch" aria-checked="false" aria-label="Changer la langue" title="Langue // FR ⇄ EN">
+    <span class="lang-flag-item fr" aria-hidden="true">🇫🇷</span>
+    <span class="lang-flag-item en" aria-hidden="true">🇬🇧</span>
+    <span class="lang-slider-thumb" aria-hidden="true"></span>
+</button>
         <button id="theme-toggle" class="theme-toggle common-toggle-button" aria-label="Changer le thème" data-key="theme_toggle_label" title="Changer le thème" aria-pressed="false"></button>
     </div>
 
@@ -1141,11 +1875,33 @@
         <div class="container">
             <p class="intro" data-key="intro_text"></p>
 
+            <!-- RECHERCHE ET FILTRES DES PROJETS -->
+            <div class="project-filters-wrap">
+                <div class="search-bar-container">
+                    <span class="search-icon" aria-hidden="true">🔍</span>
+                    <input type="text" id="project-search-input" placeholder="Rechercher un projet, une technologie..." data-key="search_placeholder" autocomplete="off" />
+                    <button id="clear-search-btn" class="clear-search-btn" aria-label="Effacer la recherche" style="display: none;">✕</button>
+                </div>
+
+                <div class="category-pills" role="tablist" aria-label="Filtrer les projets">
+                    <button class="cat-pill active" data-filter="all" data-key="filter_all">Tous</button>
+                    <button class="cat-pill" data-filter="ai" data-key="filter_ai">🧠 IA & Agents</button>
+                    <button class="cat-pill" data-filter="web" data-key="filter_web">🌐 Web & PWA</button>
+                    <button class="cat-pill" data-filter="watch3d" data-key="filter_watch3d">⌚ 3D & Horlogerie</button>
+                    <button class="cat-pill" data-filter="labs" data-key="filter_labs">🧪 Labs & Dystopie</button>
+                </div>
+
+                <div id="no-projects-found" class="no-projects-msg" style="display: none;">
+                    <span class="no-projects-icon">🛸</span>
+                    <p data-key="no_results">Aucun projet ne correspond à cette recherche.</p>
+                </div>
+            </div>
+
             <section id="projects" aria-labelledby="projects-title">
                 <h2 id="projects-title" class="visually-hidden" data-key="projects_section_title">Mes Projets</h2>
 
                 <div id="projects-container">
-                    <div class="project">
+                    <div class="project" data-category="ai web">
                         <div class="project-visual">
                             <img src="humank.webp" alt="Human Koncept — Plateforme d'Optimisation Cellulaire & Biohacking par Alex Koncept">
                         </div>
@@ -1175,7 +1931,7 @@
                         </div>
                     </div>
 
-                    <div class="project">
+                    <div class="project" data-category="ai web">
                         <div class="project-visual">
                             <img src="appbuilder.webp" alt="App Builder Hub- Créez et déployez vos applications web par l'IA">
                         </div>
@@ -1204,7 +1960,7 @@
                         </div>
                     </div>
 
-                    <div class="project">
+                    <div class="project" data-category="ai">
                         <div class="project-visual">
                             <img src="toe.webp" alt="The Orba Ecosystem - Intelligence Souveraine & Multimodale">
                         </div>
@@ -1233,7 +1989,7 @@
                         </div>
                     </div>
 
-                    <div class="project">
+                    <div class="project" data-category="ai">
                         <div class="project-visual">
                             <img src="KonceptCrew.webp" alt="KonceptCrew - Créez votre équipe d'experts IA personnalisés">
                         </div>
@@ -1259,7 +2015,7 @@
                         </div>
                     </div>
 
-                    <div class="project">
+                    <div class="project" data-category="ai web">
                         <div class="project-visual">
                             <img src="cn_logo.webp" alt="Ciné Secrets - Application IA pour les passionnés de cinéma et de séries">
                         </div>
@@ -1282,7 +2038,7 @@
                         </div>
                     </div>
 
-                    <div class="project">
+                    <div class="project" data-category="ai watch3d">
                         <div class="project-visual">
                             <img src="Orba_logo.webp" alt="Orba - Interface Cognitive Multimodale">
                         </div>
@@ -1307,7 +2063,7 @@
                         </div>
                     </div>
 
-                    <div class="project">
+                    <div class="project" data-category="watch3d">
                         <div class="project-visual"><img src="LogoAK.png" alt="Montres Alex Koncept"></div>
                         <div class="project-content">
                             <h2 data-key="project_watches_title">Montres Alex Koncept</h2>
@@ -1317,7 +2073,7 @@
                         </div>
                     </div>
 
-                    <div class="project">
+                    <div class="project" data-category="labs web">
                         <div class="project-visual"><img src="HyperNormalSites.webp" alt="HyperNormalSites"></div>
                         <div class="project-content">
                             <h2>HyperNormalSites</h2>
@@ -1327,7 +2083,7 @@
                         </div>
                     </div>
 
-                    <div class="project">
+                    <div class="project" data-category="labs web">
                         <div class="project-visual"><img src="Tamacodechi.webp" alt="Tamacodechi"></div>
                         <div class="project-content">
                             <h2 data-key="project_tamacodechi_title">Tamacodechi</h2>
@@ -1337,7 +2093,7 @@
                         </div>
                     </div>
 
-                    <div class="project">
+                    <div class="project" data-category="ai labs">
                         <div class="project-visual"><img src="ai_odyssey.webp" alt="IA Chatbot"></div>
                         <div class="project-content">
                             <h2 data-key="project_odyssey_title">AI Odyssey</h2>
@@ -1347,7 +2103,7 @@
                         </div>
                     </div>
 
-                    <div class="project">
+                    <div class="project" data-category="labs">
                         <div class="project-visual"><img src="WorldPeaceToken.jpg" alt="World Peace Token"></div>
                         <div class="project-content">
                             <h2 data-key="project_wpt_title">World Peace Token (WPT)</h2>
@@ -1357,7 +2113,7 @@
                         </div>
                     </div>
 
-                    <div class="project">
+                    <div class="project" data-category="labs">
                         <div class="project-visual"><img src="OpticGardenKoncept.webp" alt="Opti Garden Koncept"></div>
                         <div class="project-content">
                             <h2>Optic Garden Koncept</h2>
@@ -1367,7 +2123,7 @@
                         </div>
                     </div>
 
-                    <div class="project">
+                    <div class="project" data-category="watch3d labs">
                         <div class="project-visual"><img src="SolarEstateHub.webp" alt="Solar Estate Hub"></div>
                         <div class="project-content">
                             <h2>Solar Estate Hub</h2>
@@ -1377,7 +2133,7 @@
                         </div>
                     </div>
 
-                    <div class="project">
+                    <div class="project" data-category="web">
                         <div class="project-visual"><img src="MDIYGA.webp" alt="Make DIY Great Again"></div>
                         <div class="project-content">
                             <h2>Make DIY Great Again </h2>
@@ -1387,7 +2143,7 @@
                         </div>
                     </div>
 
-                    <div class="project">
+                    <div class="project" data-category="watch3d">
                         <div class="project-visual"><img src="AK001.webp" alt="AK 001 – Montre personnalisable"></div>
                         <div class="project-content">
                             <h2 data-key="project_ak001_title">AK 001 – Montre personnalisable </h2>
@@ -1397,7 +2153,7 @@
                         </div>
                     </div>
 
-                    <div class="project">
+                    <div class="project" data-category="ai web">
                         <div class="project-visual"><img src="BodyKoncept.webp" alt="Vitrine web pour l'application Body Koncept"></div>
                         <div class="project-content">
                             <h2 data-key="project_bodykoncept_title">Body Koncept </h2>
@@ -1407,7 +2163,7 @@
                         </div>
                     </div>
 
-                    <div class="project">
+                    <div class="project" data-category="watch3d labs">
                         <div class="project-visual"><img src="AKULAB.webp" alt="AK Universe Lab"></div>
                         <div class="project-content">
                             <h2 data-key="project_akulab_title">AK Universe Lab<span class="badge-new">NEW</span></h2>
@@ -1417,7 +2173,7 @@
                         </div>
                     </div>
 
-                    <div class="project">
+                    <div class="project" data-category="labs web">
                         <div class="project-visual">
                             <img src="TOSE.webp" alt="Timeline OS Evolution">
                         </div>
@@ -1432,7 +2188,7 @@
                         </div>
                     </div>
 
-                    <div class="project">
+                    <div class="project" data-category="ai labs">
                         <div class="project-visual">
                             <img src="HSK.webp" alt="HSK - Hybrid Sound Koncept">
                         </div>
@@ -1447,7 +2203,7 @@
                         </div>
                     </div>
 
-                    <div class="project" id="coming-soon-project">
+                    <div class="project" id="coming-soon-project" data-category="all labs">
                         <div class="project-visual"><img src="AK_enTravaux.webp" alt="Prochain Koncept en développement"></div>
                         <div class="project-content">
                             <h2 data-key="project_next_title">Prochain Koncept en cours...</h2>
@@ -1562,12 +2318,11 @@
     <script type="module" src="https://esm.sh/gh/alexkoncept/alexkoncept.github.io@main/chatbot/index.tsx"></script>
     
     <!-- BOUTONS FLOTTANTS BAS GAUCHE (HSK & STILL) -->
-<div id="hsk-player-icon" role="button" tabindex="0" aria-label="Ouvrir le lecteur HSK" title="HSK PLAYER // Musique & IA"
-    style="position: fixed; bottom: 20px; left: 20px; z-index: 10000; cursor: pointer; border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 14px rgba(0, 188, 212, 0.6); border: 2px solid #00e5ff; overflow: hidden; background: rgba(10, 15, 25, 0.9); transition: transform 0.3s ease;">
-    <img src="HSK.webp" alt="HSK Lecteur Audio" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%; display: block; pointer-events: none;" />
-</div>
+    <div id="hsk-player-icon" role="button" tabindex="0" aria-label="Ouvrir le lecteur HSK" title="HSK PLAYER // Musique & IA"
+        style="position: fixed; bottom: 20px; left: 20px; z-index: 10000; cursor: pointer; border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 14px rgba(0, 188, 212, 0.6); border: 2px solid #00e5ff; overflow: hidden; background: rgba(10, 15, 25, 0.9); transition: transform 0.3s ease;">
+        <img src="HSK.webp" alt="HSK Lecteur Audio" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%; display: block; pointer-events: none;" />
+    </div>
 
-    <!-- BOUTON STILL AVEC ORBE & RESPIRATION -->
     <a id="still-sphere-btn" href="https://stillwebsite-byalexkoncept.netlify.app/" target="_blank" rel="noopener noreferrer" aria-label="Découvrir Still" title="STILL // Less noise. More you.">
         <img src="still_orbe.webp" alt="STILL Orbe" />
     </a>
@@ -1666,32 +2421,7 @@
                 window.addEventListener('scroll', hideTooltip, { passive: true });
             }
 
-            // Repositionnement dynamique
-            const repositionControls = () => {
-                const kaiBtn = document.getElementById('kai-trigger');
-                const akrnBtn = document.getElementById('akrn-trigger');
-                const osBtn = document.getElementById('os-mode-toggle');
-                const themeBtn = document.getElementById('theme-toggle');
-
-                if (!kaiBtn || !akrnBtn) return;
-
-                if (window.innerWidth <= 768) {
-                    if (themeBtn) {
-                        themeBtn.after(kaiBtn);
-                        kaiBtn.after(akrnBtn);
-                    }
-                } else {
-                    if (osBtn) {
-                        osBtn.after(kaiBtn);
-                        kaiBtn.after(akrnBtn);
-                    }
-                }
-            };
-
-            repositionControls();
-            window.addEventListener('resize', repositionControls);
-			
-            // Disparition automatique de la bulle AlexBot au bout de 6 secondes
+            // Disparition automatique de la bulle AlexBot
             const speechBubble = document.getElementById('orba-speech');
             if (speechBubble) {
                 setTimeout(() => {
@@ -1768,7 +2498,7 @@
                 window.addEventListener('mousedown', () => document.body.classList.add('clicking'));
                 window.addEventListener('mouseup', () => document.body.classList.remove('clicking'));
 
-                const interactiveElements = document.querySelectorAll('a, button, .project, #back-to-top, #hsk-player-icon, #close-hsk-player-btn, #orbaos-open-btn, #orbaos-close-btn, .orbaos-dot, .orbaos-btn, .orbaos-widget, #still-sphere-btn');
+                const interactiveElements = document.querySelectorAll('a, button, .project, #back-to-top, #hsk-player-icon, #close-hsk-player-btn, #orbaos-open-btn, #orbaos-close-btn, .orbaos-dot, .orbaos-btn, .orbaos-widget, #still-sphere-btn, .theme-chip, .cat-pill');
                 interactiveElements.forEach(el => {
                     el.addEventListener('mouseenter', () => document.body.classList.add('hovered'));
                     el.addEventListener('mouseleave', () => document.body.classList.remove('hovered'));
@@ -1900,7 +2630,6 @@
             document.getElementById('close-pdf-btn')?.addEventListener('click', () => ModalManager.close('pdf-modal'));
             document.getElementById('pdf-modal')?.addEventListener('click', (e) => { if (e.target.id === 'pdf-modal') ModalManager.close('pdf-modal'); });
 
-            document.getElementById('akrn-trigger')?.addEventListener('click', (e) => ModalManager.open('akrn-modal', e.currentTarget));
             document.getElementById('close-akrn-btn')?.addEventListener('click', () => ModalManager.close('akrn-modal'));
             document.getElementById('akrn-modal')?.addEventListener('click', (e) => { if (e.target.id === 'akrn-modal') ModalManager.close('akrn-modal'); });
 
@@ -2132,18 +2861,17 @@
                 localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
             });
 
-            // Modes Koncept & OS
-            const konceptModeToggle = document.getElementById('koncept-mode-toggle');
-            const osModeToggle = document.getElementById('os-mode-toggle');
+            // Modes Koncept & Dashboards
             const konceptModes = ['default', 'matrix-reloaded', 'space', 'vice-city', 'fallout'];
-            let currentKonceptModeIndex = 0;
-            let isOsModeActive = false;
 
             const applyKonceptMode = (modeName) => {
                 konceptModes.forEach(m => {
                     if (m !== 'default') body.classList.remove(`koncept-${m}`);
                 });
-                body.classList.remove('koncept-os-dashboard');
+
+                if (modeName !== 'os-dashboard') {
+                    body.classList.remove('koncept-os-dashboard');
+                }
 
                 stopMatrixAnimation();
                 stopSpaceAnimation();
@@ -2157,7 +2885,9 @@
                     case 'fallout': startFalloutAnimation(); break;
                 }
 
-                if (modeName && modeName !== 'default') {
+                if (modeName === 'os-dashboard') {
+                    body.classList.add('koncept-os-dashboard');
+                } else if (modeName && modeName !== 'default') {
                     body.classList.add(`koncept-${modeName}`);
                 }
                 localStorage.setItem('konceptMode', modeName);
@@ -2165,59 +2895,18 @@
 
             let storedKonceptMode = localStorage.getItem('konceptMode');
             if (storedKonceptMode === 'os-dashboard') {
-                if (window.innerWidth > 768) {
-                    isOsModeActive = true;
-                    currentKonceptModeIndex = 0; 
-                    applyKonceptMode('os-dashboard');
-                } else {
-                    applyKonceptMode('default');
-                }
+                applyKonceptMode('os-dashboard');
             } else if (storedKonceptMode && konceptModes.includes(storedKonceptMode)) {
-                currentKonceptModeIndex = konceptModes.indexOf(storedKonceptMode);
                 applyKonceptMode(storedKonceptMode);
             } else {
                 applyKonceptMode('default');
             }
 
-            konceptModeToggle.addEventListener('click', () => {
-                document.body.classList.add('warping');
-                isOsModeActive = false; 
-                window.scrollTo({ top: 0, behavior: 'instant' }); 
-
-                setTimeout(() => {
-                    currentKonceptModeIndex = (currentKonceptModeIndex + 1) % konceptModes.length;
-                    applyKonceptMode(konceptModes[currentKonceptModeIndex]);
-                }, 250);
-
-                setTimeout(() => {
-                    document.body.classList.remove('warping');
-                }, 500);
-            });
-
-            osModeToggle.addEventListener('click', () => {
-                document.body.classList.add('warping');
-                window.scrollTo({ top: 0, behavior: 'instant' }); 
-
-                setTimeout(() => {
-                    isOsModeActive = !isOsModeActive;
-                    if (isOsModeActive) {
-                        applyKonceptMode('os-dashboard');
-                    } else {
-                        applyKonceptMode(konceptModes[currentKonceptModeIndex]);
-                    }
-                }, 250);
-
-                setTimeout(() => {
-                    document.body.classList.remove('warping');
-                }, 500);
-            });
-
-// Traductions FR / EN
+            // Traductions FR / EN
             const translations = {
                 fr: {
                     skip_link: "Aller au contenu principal",
                     projects_section_title: "Mes Projets",
-                    koncept_mode_label: "Changer le Koncept Mode",
                     theme_toggle_label: "Changer le thème",
                     header_subtitle: "Créateur indépendant – Tech, IA, Web, Design & Horlogerie",
                     intro_text: 'Bienvenue dans mon univers numérique. Chaque "Koncept" que je crée explore un futur possible, à travers l’horlogerie, le code, le design et l’imagination augmentée.<br><br><span class="chatbot-prompt">💬 Pour en savoir plus sur mon parcours ou la genèse d\'un projet, <strong>interrogez AlexBot</strong> en bas à droite !</span>',
@@ -2225,6 +2914,23 @@
                     widget_orbaos_desc: "Expérimentez le futur de l'interaction : <strong>Zero UI</strong>, flux multimodal <strong>Gemini Live</strong>, vision <strong>Omni-Sight</strong> et écosystème de <strong>Micro-Apps</strong>.",
                     widget_orbaos_demo_btn: "🚀 Démo Live",
                     widget_orbaos_video_btn: "🎥 Vidéo YouTube",
+                    
+                    menu_dashboards_title: "Vues & Dashboards",
+                    menu_btn_2d: "Dashboard 2D",
+                    menu_sub_2d: "Interface Bento OS",
+                    menu_btn_3d: "Dashboard 3D",
+                    menu_sub_3d: "Sphère & Matrice Holo",
+                    menu_themes_title: "Univers Visuels",
+                    menu_links_title: "Passerelles & Outils",
+                    
+                    search_placeholder: "Rechercher un projet, une technologie...",
+                    filter_all: "Tous",
+                    filter_ai: "🧠 IA & Agents",
+                    filter_web: "🌐 Web & PWA",
+                    filter_watch3d: "⌚ 3D & Horlogerie",
+                    filter_labs: "🧪 Labs & Dystopie",
+                    no_results: "Aucun projet ne correspond à cette recherche.",
+
                     project_humankoncept_title: "Human Koncept <span class=\"badge-new\">NEW</span>",
                     project_humankoncept_desc: "Human Koncept est une application de biohacking et d'optimisation cellulaire animée par l'IA HK-OS (v2.6) avec synthèse vocale. Conçue pour accompagner le bien-être physique et cognitif, elle intègre un cockpit circadien gamifié, un profil biologique personnalisé (Identité Sapiens), des outils de concentration (test Dual N-Back, ondes binaurales), un minuteur de jeûne en temps réel et un guide de cohérence cardiaque. Un module d'export PDF permet de générer un bilan complet de votre profil.",
                     discover_humankoncept_btn: "Découvrir Human Koncept",
@@ -2291,7 +2997,6 @@
                 en: {
                     skip_link: "Skip to main content",
                     projects_section_title: "My Projects",
-                    koncept_mode_label: "Change Koncept Mode",
                     theme_toggle_label: "Change theme",
                     header_subtitle: "Independent Creator – Tech, AI, Web, Design & Watchmaking",
                     intro_text: 'Welcome to my digital universe. Each "Koncept" I create explores a possible future, through watchmaking, code, design, and augmented imagination.<br><br><span class="chatbot-prompt">💬 To learn more about my journey or the story behind a project, <strong>ask AlexBot</strong> at the bottom right!</span>',
@@ -2299,6 +3004,23 @@
                     widget_orbaos_desc: "Experience the future of interaction: <strong>Zero UI</strong>, <strong>Gemini Live</strong> multimodal stream, <strong>Omni-Sight</strong> vision, and instant <strong>Micro-Apps</strong> ecosystem.",
                     widget_orbaos_demo_btn: "🚀 Live Demo",
                     widget_orbaos_video_btn: "🎥 YouTube Video",
+                    
+                    menu_dashboards_title: "Views & Dashboards",
+                    menu_btn_2d: "2D Dashboard",
+                    menu_sub_2d: "Bento OS Interface",
+                    menu_btn_3d: "3D Dashboard",
+                    menu_sub_3d: "Holo Sphere & Matrix",
+                    menu_themes_title: "Visual Themes",
+                    menu_links_title: "Gateways & Tools",
+
+                    search_placeholder: "Search project, technology, keyword...",
+                    filter_all: "All",
+                    filter_ai: "🧠 AI & Agents",
+                    filter_web: "🌐 Web & PWA",
+                    filter_watch3d: "⌚ 3D & Watches",
+                    filter_labs: "🧪 Labs & Dystopia",
+                    no_results: "No project matches this search.",
+
                     project_humankoncept_title: "Human Koncept <span class=\"badge-new\">NEW</span>",
                     project_humankoncept_desc: "Human Koncept is a biohacking and cellular optimization app powered by the HK-OS (v2.6) AI with built-in voice synthesis. Designed to support physical and cognitive well-being, it features a gamified circadian cockpit, a personalized biological profile (Sapiens Identity), concentration tools (Dual N-Back test, binaural beats), a real-time fasting timer, and a heart rate coherence guide. An integrated PDF export module allows you to generate a comprehensive report of your profile.",
                     discover_humankoncept_btn: "Discover Human Koncept",
@@ -2364,34 +3086,52 @@
                 }
             };
 
-            const langFrBtn = document.getElementById('lang-fr-btn');
-            const langEnBtn = document.getElementById('lang-en-btn');
-            
-            const setLanguage = (lang) => {
-                document.documentElement.lang = lang;
-                localStorage.setItem('language', lang);
-                document.querySelectorAll('[data-key]').forEach(elem => {
-                    const key = elem.getAttribute('data-key');
-                    if (translations[lang] && translations[lang][key]) {
-                        if (elem.hasAttribute('aria-label')) { 
-                            elem.setAttribute('aria-label', translations[lang][key]); 
-                            if (elem.hasAttribute('title')) elem.setAttribute('title', translations[lang][key]);
-                        } else { 
-                            elem.innerHTML = translations[lang][key]; 
-                        }
-                    }
-                });
-                langFrBtn.setAttribute('aria-checked', lang === 'fr');
-                langEnBtn.setAttribute('aria-checked', lang === 'en');
-                if (lang === 'fr') { langFrBtn.classList.add('lang-active'); langEnBtn.classList.remove('lang-active'); }
-                else { langEnBtn.classList.add('lang-active'); langFrBtn.classList.remove('lang-active'); }
-            };
+ /* ============================================================
+   GESTION DU BOUTON SLIDER DE LANGUE UNIQUE (FR ⇄ EN)
+   ============================================================ */
+const langSliderToggle = document.getElementById('lang-slider-toggle');
 
-            langFrBtn.addEventListener('click', () => setLanguage('fr'));
-            langEnBtn.addEventListener('click', () => setLanguage('en'));
-            const initialLang = localStorage.getItem('language') || (navigator.language.startsWith('fr') ? 'fr' : 'en');
-            setLanguage(initialLang);
+const setLanguage = (lang) => {
+    document.documentElement.lang = lang;
+    localStorage.setItem('language', lang);
 
+    // Mise à jour de tous les textes bilingues
+    document.querySelectorAll('[data-key]').forEach(elem => {
+        const key = elem.getAttribute('data-key');
+        if (translations[lang] && translations[lang][key]) {
+            if (elem.hasAttribute('aria-label')) { 
+                elem.setAttribute('aria-label', translations[lang][key]); 
+                if (elem.hasAttribute('title')) elem.setAttribute('title', translations[lang][key]);
+            } else if (elem.hasAttribute('placeholder')) {
+                elem.setAttribute('placeholder', translations[lang][key]);
+            } else { 
+                elem.innerHTML = translations[lang][key]; 
+            }
+        }
+    });
+
+    // Animation de glissement du bouton
+    if (lang === 'en') {
+        langSliderToggle?.classList.add('is-en');
+        langSliderToggle?.setAttribute('aria-checked', 'true');
+        langSliderToggle?.setAttribute('aria-label', 'Switch to French');
+    } else {
+        langSliderToggle?.classList.remove('is-en');
+        langSliderToggle?.setAttribute('aria-checked', 'false');
+        langSliderToggle?.setAttribute('aria-label', 'Passer en Anglais');
+    }
+};
+
+// Clic unique pour basculer d'une langue à l'autre
+langSliderToggle?.addEventListener('click', () => {
+    const currentLang = localStorage.getItem('language') || 'fr';
+    const nextLang = currentLang === 'fr' ? 'en' : 'fr';
+    setLanguage(nextLang);
+});
+
+// Initialisation au chargement
+const initialLang = localStorage.getItem('language') || (navigator.language.startsWith('fr') ? 'fr' : 'en');
+setLanguage(initialLang);
             // Tri aléatoire des projets et injection Schema.org
             const projectsContainer = document.getElementById('projects-container');
             if (projectsContainer) {
@@ -2476,6 +3216,354 @@
                 hskPlayerIcon.style.display = "flex";
             });
 
+            /* ============================================================
+               1. GESTION DU MENU SANDWICH (CYBER DRAWER)
+               ============================================================ */
+            const drawer = document.getElementById('cyber-drawer');
+            const drawerOverlay = document.getElementById('drawer-overlay');
+            const openDrawerBtn = document.getElementById('sandwich-menu-btn');
+            const closeDrawerBtn = document.getElementById('close-drawer-btn');
+
+            const openCyberDrawer = () => {
+                drawer.classList.add('active');
+                drawerOverlay.classList.add('active');
+                drawer.setAttribute('aria-hidden', 'false');
+                drawerOverlay.setAttribute('aria-hidden', 'false');
+            };
+
+            const closeCyberDrawer = () => {
+                drawer.classList.remove('active');
+                drawerOverlay.classList.remove('active');
+                drawer.setAttribute('aria-hidden', 'true');
+                drawerOverlay.setAttribute('aria-hidden', 'true');
+            };
+
+            openDrawerBtn?.addEventListener('click', openCyberDrawer);
+            closeDrawerBtn?.addEventListener('click', closeCyberDrawer);
+            drawerOverlay?.addEventListener('click', closeCyberDrawer);
+
+            window.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && drawer.classList.contains('active')) {
+                    closeCyberDrawer();
+                }
+            });
+
+            /* ============================================================
+               2. DASHBOARD 2D (BENTO OS) & 3D (HOLO-DECK)
+               ============================================================ */
+            document.getElementById('drawer-btn-dashboard-2d')?.addEventListener('click', () => {
+                closeCyberDrawer();
+                const isCurrently2D = document.body.classList.contains('koncept-os-dashboard');
+                if (isCurrently2D) {
+                    applyKonceptMode('default');
+                } else {
+                    applyKonceptMode('os-dashboard');
+                }
+            });
+
+            document.getElementById('drawer-btn-dashboard-3d')?.addEventListener('click', () => {
+                closeCyberDrawer();
+                HoloDashboard.open();
+            });
+
+            document.getElementById('drawer-akrn-btn')?.addEventListener('click', (e) => {
+                closeCyberDrawer();
+                ModalManager.open('akrn-modal', e.currentTarget);
+            });
+
+            document.getElementById('drawer-pdf-btn')?.addEventListener('click', (e) => {
+                closeCyberDrawer();
+                ModalManager.open('pdf-modal', e.currentTarget);
+            });
+
+            const themeChips = document.querySelectorAll('.theme-chip');
+            themeChips.forEach(chip => {
+                chip.addEventListener('click', () => {
+                    themeChips.forEach(c => c.classList.remove('active'));
+                    chip.classList.add('active');
+                    const theme = chip.dataset.theme;
+                    applyKonceptMode(theme);
+                });
+            });
+
+            /* ============================================================
+               3. MOTEUR DE RECHERCHE & FILTRAGE INSTANTANÉ
+               ============================================================ */
+            const searchInput = document.getElementById('project-search-input');
+            const clearSearchBtn = document.getElementById('clear-search-btn');
+            const catPills = document.querySelectorAll('.cat-pill');
+            const noProjectsMsg = document.getElementById('no-projects-found');
+            let activeCategory = 'all';
+
+            function filterProjects() {
+                const query = searchInput.value.toLowerCase().trim();
+                const currentCards = document.querySelectorAll('#projects-container .project:not(#coming-soon-project)');
+                let visibleCount = 0;
+
+                currentCards.forEach(card => {
+                    const title = card.querySelector('h2')?.textContent.toLowerCase() || '';
+                    const desc = card.querySelector('p[data-key]')?.textContent.toLowerCase() || '';
+                    const tags = Array.from(card.querySelectorAll('.project-tag')).map(t => t.textContent.toLowerCase()).join(' ');
+                    const categories = card.dataset.category || '';
+
+                    const matchesQuery = !query || title.includes(query) || desc.includes(query) || tags.includes(query);
+                    const matchesCategory = activeCategory === 'all' || categories.includes(activeCategory);
+
+                    if (matchesQuery && matchesCategory) {
+                        card.classList.remove('filter-hidden');
+                        visibleCount++;
+                    } else {
+                        card.classList.add('filter-hidden');
+                    }
+                });
+
+                if (noProjectsMsg) {
+                    noProjectsMsg.style.display = visibleCount === 0 ? 'block' : 'none';
+                }
+            }
+
+            searchInput?.addEventListener('input', () => {
+                clearSearchBtn.style.display = searchInput.value ? 'block' : 'none';
+                filterProjects();
+            });
+
+            clearSearchBtn?.addEventListener('click', () => {
+                searchInput.value = '';
+                clearSearchBtn.style.display = 'none';
+                searchInput.focus();
+                filterProjects();
+            });
+
+            catPills.forEach(pill => {
+                pill.addEventListener('click', () => {
+                    catPills.forEach(p => p.classList.remove('active'));
+                    pill.classList.add('active');
+                    activeCategory = pill.dataset.filter;
+                    filterProjects();
+                });
+            });
+
+            /* ============================================================
+               4. MOTEUR DASHBOARD 3D (Three.js CSS3DRenderer)
+               ============================================================ */
+            const HoloDashboard = {
+                viewport: document.getElementById('holo-3d-viewport'),
+                camera: null,
+                scene: null,
+                renderer: null,
+                controls: null,
+                objects: [],
+                targets: { sphere: [], helix: [], grid: [], ring: [] },
+                isInitialized: false,
+                isActive: false,
+                animFrameId: null,
+
+                init() {
+                    if (this.isInitialized) return;
+
+                    const w = window.innerWidth;
+                    const h = window.innerHeight;
+                    const isMobile = w <= 768;
+
+                    this.camera = new THREE.PerspectiveCamera(50, w / h, 1, 10000);
+                    this.camera.position.z = isMobile ? 2400 : 1800;
+
+                    this.scene = new THREE.Scene();
+
+                    const projects = Array.from(document.querySelectorAll('#projects-container .project:not(#coming-soon-project)'));
+
+                    projects.forEach((projEl, i) => {
+                        const title = projEl.querySelector('h2')?.innerText.replace('NEW', '').trim() || 'Projet';
+                        const desc = projEl.querySelector('p[data-key]')?.innerText || '';
+                        const img = projEl.querySelector('img')?.src || 'LogoAK.png';
+                        const link = projEl.querySelector('a')?.href || '#';
+
+                        const card = document.createElement('div');
+                        card.className = 'card-3d-node';
+                        card.innerHTML = `
+                            <div>
+                                <div class="card-3d-header">
+                                    <img src="${img}" alt="${title}">
+                                    <h3 class="card-3d-title">${title}</h3>
+                                </div>
+                                <p class="card-3d-desc">${desc}</p>
+                            </div>
+                            <div class="card-3d-footer">
+                                <span style="font-size:0.68rem; color: #00e5ff; font-weight:bold;">NODE #${i + 1}</span>
+                                <a href="${link}" target="_blank" rel="noopener noreferrer" class="card-3d-link">Ouvrir ↗</a>
+                            </div>
+                        `;
+
+                        const objectCSS = new THREE.CSS3DObject(card);
+                        objectCSS.position.x = Math.random() * 4000 - 2000;
+                        objectCSS.position.y = Math.random() * 4000 - 2000;
+                        objectCSS.position.z = Math.random() * 4000 - 2000;
+                        this.scene.add(objectCSS);
+                        this.objects.push(objectCSS);
+                    });
+
+                    const total = this.objects.length;
+                    const vector = new THREE.Vector3();
+
+                    // Cible 1 : Sphère
+                    const sphereRadius = isMobile ? 750 : 850;
+                    for (let i = 0; i < total; i++) {
+                        const phi = Math.acos(-1 + (2 * i) / total);
+                        const theta = Math.sqrt(total * Math.PI) * phi;
+                        const target = new THREE.Object3D();
+
+                        target.position.setFromSphericalCoords(sphereRadius, phi, theta);
+                        vector.copy(target.position).multiplyScalar(2);
+                        target.lookAt(vector);
+                        this.targets.sphere.push(target);
+                    }
+
+                    // Cible 2 : Hélice
+                    for (let i = 0; i < total; i++) {
+                        const theta = i * 0.35 + Math.PI;
+                        const y = -(i * (isMobile ? 55 : 65)) + 450;
+                        const target = new THREE.Object3D();
+
+                        target.position.setFromCylindricalCoords(isMobile ? 750 : 900, theta, y);
+                        vector.x = target.position.x * 2;
+                        vector.y = target.position.y;
+                        vector.z = target.position.z * 2;
+                        target.lookAt(vector);
+                        this.targets.helix.push(target);
+                    }
+
+                    // Cible 3 : Grille 3D
+                    const cols = isMobile ? 2 : 4;
+                    const stepX = isMobile ? 290 : 380;
+                    const stepY = isMobile ? 220 : 280;
+                    for (let i = 0; i < total; i++) {
+                        const target = new THREE.Object3D();
+                        target.position.x = ((i % cols) * stepX) - (cols === 2 ? 145 : 570);
+                        target.position.y = (-(Math.floor(i / cols) % 3) * stepY) + 280;
+                        target.position.z = (Math.floor(i / (cols * 3))) * -600;
+                        this.targets.grid.push(target);
+                    }
+
+                    // Cible 4 : Anneau
+                    const ringRadius = isMobile ? 850 : 1050;
+                    for (let i = 0; i < total; i++) {
+                        const angle = (i / total) * Math.PI * 2;
+                        const target = new THREE.Object3D();
+                        target.position.x = Math.sin(angle) * ringRadius;
+                        target.position.z = Math.cos(angle) * ringRadius;
+                        target.position.y = 0;
+                        target.lookAt(new THREE.Vector3(0, 0, 0));
+                        this.targets.ring.push(target);
+                    }
+
+                    this.renderer = new THREE.CSS3DRenderer();
+                    this.renderer.setSize(w, h);
+                    this.viewport.appendChild(this.renderer.domElement);
+
+                    this.controls = new THREE.TrackballControls(this.camera, this.renderer.domElement);
+                    this.controls.rotateSpeed = isMobile ? 2.0 : 1.2;
+                    this.controls.minDistance = 300;
+                    this.controls.maxDistance = 4000;
+                    this.controls.noPan = isMobile;
+
+                    window.addEventListener('resize', () => {
+                        if (!this.isActive) return;
+                        const width = window.innerWidth;
+                        const height = window.innerHeight;
+                        this.camera.aspect = width / height;
+                        this.camera.updateProjectionMatrix();
+                        this.renderer.setSize(width, height);
+                        this.controls.handleResize();
+                    });
+
+                    this.setupButtons();
+                    this.isInitialized = true;
+                },
+
+                transform(targets, duration = 1200) {
+                    TWEEN.removeAll();
+                    for (let i = 0; i < this.objects.length; i++) {
+                        const object = this.objects[i];
+                        const target = targets[i];
+
+                        new TWEEN.Tween(object.position)
+                            .to({ x: target.position.x, y: target.position.y, z: target.position.z }, Math.random() * duration + duration)
+                            .easing(TWEEN.Easing.Exponential.InOut)
+                            .start();
+
+                        new TWEEN.Tween(object.rotation)
+                            .to({ x: target.rotation.x, y: target.rotation.y, z: target.rotation.z }, Math.random() * duration + duration)
+                            .easing(TWEEN.Easing.Exponential.InOut)
+                            .start();
+                    }
+                },
+
+                animate(time) {
+                    if (!this.isActive) return;
+                    this.animFrameId = requestAnimationFrame((t) => this.animate(t));
+                    TWEEN.update();
+                    this.controls.update();
+                    this.renderer.render(this.scene, this.camera);
+                },
+
+                setupButtons() {
+                    const setActiveBtn = (btn) => {
+                        document.querySelectorAll('.holo-hud-btn').forEach(b => b.classList.remove('active'));
+                        btn.classList.add('active');
+                    };
+
+                    document.getElementById('btn-layout-sphere').onclick = (e) => {
+                        setActiveBtn(e.currentTarget);
+                        this.transform(this.targets.sphere);
+                    };
+                    document.getElementById('btn-layout-helix').onclick = (e) => {
+                        setActiveBtn(e.currentTarget);
+                        this.transform(this.targets.helix);
+                    };
+                    document.getElementById('btn-layout-grid').onclick = (e) => {
+                        setActiveBtn(e.currentTarget);
+                        this.transform(this.targets.grid);
+                    };
+                    document.getElementById('btn-layout-ring').onclick = (e) => {
+                        setActiveBtn(e.currentTarget);
+                        this.transform(this.targets.ring);
+                    };
+                    document.getElementById('btn-close-holo').onclick = () => {
+                        this.close();
+                    };
+                },
+
+                open() {
+                    this.init();
+                    this.isActive = true;
+                    this.viewport.classList.add('active');
+                    this.viewport.setAttribute('aria-hidden', 'false');
+                    
+                    document.body.style.overflow = 'hidden';
+
+                    const isMobile = window.innerWidth <= 768;
+                    this.camera.position.set(0, 0, isMobile ? 2400 : 1800);
+                    this.controls.reset();
+                    
+                    this.transform(this.targets.sphere, 1000);
+                    this.animate();
+                },
+
+                close() {
+                    this.isActive = false;
+                    if (this.animFrameId) cancelAnimationFrame(this.animFrameId);
+                    
+                    this.viewport.classList.remove('active');
+                    this.viewport.setAttribute('aria-hidden', 'true');
+
+                    document.body.classList.remove('koncept-os-dashboard');
+                    document.body.style.overflow = '';
+                    
+                    if (localStorage.getItem('konceptMode') === 'os-dashboard') {
+                        localStorage.setItem('konceptMode', 'default');
+                    }
+                }
+            };
         });
     </script>
 </body>
