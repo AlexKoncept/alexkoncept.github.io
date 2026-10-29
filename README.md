@@ -1,5 +1,7 @@
 # Alex Koncept — Universe (Interactive Web OS & Portfolio)
 
+[![Live Demo](https://img.shields.io/badge/Demo-alexkoncept.github.io-00f0ff?style=for-the-badge&logo=googlechrome&logoColor=white)](https://alexkoncept.github.io/)
+[![Three.js](https://img.shields.io/badge/Three.js-r128%20CSS3D-black?style=for-the-badge&logo=threedotjs)](https://threejs.org/)
 [![Three.js](https://img.shields.io/badge/Three.js-r128%20CSS3D-black?style=for-the-badge&logo=threedotjs)](https://threejs.org/)
 [![React](https://img.shields.io/badge/React-19-blue?style=for-the-badge&logo=react)](https://react.dev/)
 [![PWA](https://img.shields.io/badge/PWA-Ready-5A0FC8?style=for-the-badge&logo=pwa)](https://alexkoncept.github.io/)
