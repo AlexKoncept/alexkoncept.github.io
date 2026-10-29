@@ -45,11 +45,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Courier+Prime&family=Damion&family=Orbitron:wght@500;700&family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Poppins:wght@300;400;600&family=Rajdhani:wght@400;600;700&family=Special+Elite&display=swap" rel="stylesheet">
 
-    <!-- Moteur 3D CSS Three.js & Tween pour le Dashboard 3D -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/renderers/CSS3DRenderer.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/TrackballControls.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/18.6.4/tween.umd.js"></script>
+    <!-- NOTE OPTI 1 : Les 4 scripts Three.js et Tween sont désormais chargés à la demande (lazy loaded) -->
 
     <link rel="stylesheet" href="chatbot/index.css" />
 
@@ -158,6 +154,7 @@
             --main-font: 'Poppins', sans-serif;
             --title-font: 'Orbitron', sans-serif;
             --cursor-color: #00e5ff;
+            --header-logo: url('LogoAK/Logo1.webp'); /* OPTI 3 : variable par défaut */
         }
 
         body.dark-mode {
@@ -660,6 +657,7 @@
             width: 150px;
             height: 150px;
             transform: translate(-50%, -50%);
+            background-image: var(--header-logo); /* OPTI 3 : injecté dynamiquement sans re-créer de style */
             background-position: center;
             background-repeat: no-repeat;
             background-size: contain;
@@ -1779,7 +1777,7 @@
         </div>
 
         <div class="drawer-content">
-            <!-- 1. THÈMES VISUELS (EN PREMIER) -->
+            <!-- 1. THÈMES VISUELS -->
             <div class="drawer-section">
                 <h3 data-key="menu_themes_title">Univers Visuels</h3>
                 <div class="theme-chips-list">
@@ -2365,8 +2363,25 @@
             history.scrollRestoration = 'manual';
         }
 
+        // OPTI 1 : Helper de chargement dynamique pour Three.js et Tween
+        function loadScript(src) {
+            return new Promise((resolve, reject) => {
+                if (document.querySelector(`script[src="${src}"]`)) {
+                    return resolve();
+                }
+                const s = document.createElement('script');
+                s.src = src;
+                s.async = true;
+                s.onload = resolve;
+                s.onerror = reject;
+                document.head.appendChild(s);
+            });
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             // Système d'infobulles universel Koncept
+            let hideTooltip = () => {};
+
             if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
                 const tooltipEl = document.createElement('div');
                 tooltipEl.id = 'universe-tooltip';
@@ -2425,7 +2440,7 @@
                     tooltipEl.style.top = `${top}px`;
                 };
 
-                const hideTooltip = () => {
+                hideTooltip = () => {
                     tooltipEl.classList.remove('visible');
                 };
 
@@ -2437,8 +2452,6 @@
                 document.body.addEventListener('pointerout', (e) => {
                     if (e.target.closest('[data-tooltip]')) hideTooltip();
                 });
-
-                window.addEventListener('scroll', hideTooltip, { passive: true });
             }
 
             // Disparition automatique de la bulle AlexBot
@@ -2453,10 +2466,9 @@
                 }, 6000);
             }
 
-            // Docking automatique OrbaOS mobile
+            // Éléments pour le docking OrbaOS mobile
             const orbaWidgetElem = document.getElementById('orbaos-widget');
             const chatRootElem = document.getElementById('root');
-            let lastScrollPos = window.scrollY;
             let isChatbotOpened = false;
 
             if (chatRootElem) {
@@ -2474,27 +2486,6 @@
                 const chatObserver = new MutationObserver(checkChatbot);
                 chatObserver.observe(chatRootElem, { childList: true, subtree: true });
             }
-
-            window.addEventListener('scroll', () => {
-                if (window.innerWidth > 900 || !orbaWidgetElem) return;
-
-                const currentScrollPos = window.scrollY;
-                if (isChatbotOpened) {
-                    orbaWidgetElem.classList.add('is-docked');
-                    return;
-                }
-
-                if (currentScrollPos > lastScrollPos && currentScrollPos > 120) {
-                    if (!orbaWidgetElem.classList.contains('collapsed')) {
-                        orbaWidgetElem.classList.add('collapsed');
-                    }
-                    orbaWidgetElem.classList.add('is-docked');
-                } else if (currentScrollPos < lastScrollPos || currentScrollPos <= 60) {
-                    orbaWidgetElem.classList.remove('is-docked');
-                }
-
-                lastScrollPos = currentScrollPos;
-            }, { passive: true });
 
             if (orbaWidgetElem) {
                 orbaWidgetElem.addEventListener('click', (e) => {
@@ -2525,17 +2516,8 @@
                 });
             }
 
-            // Bouton retour en haut
             const backToTopBtn = document.getElementById('back-to-top');
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 300) {
-                    backToTopBtn.classList.add('active');
-                } else {
-                    backToTopBtn.classList.remove('active');
-                }
-            }, { passive: true });
-
-            backToTopBtn.addEventListener('click', () => {
+            backToTopBtn?.addEventListener('click', () => {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
 
@@ -2751,11 +2733,11 @@
                 const horizon = h * 0.4;
                 for (let i = 0; i < 20; i++) {
                     const y = horizon + (h - horizon) * (i / 20) ** 2;
-                    ctx = viceCityCtx;
-                    ctx.beginPath();
-                    ctx.moveTo(0, y);
-                    ctx.lineTo(w, y);
-                    ctx.stroke();
+                    // OPTI 2 : suppression du 'ctx = viceCityCtx' non déclaré (fuite globale)
+                    viceCityCtx.beginPath();
+                    viceCityCtx.moveTo(0, y);
+                    viceCityCtx.lineTo(w, y);
+                    viceCityCtx.stroke();
                 }
                 for (let i = -10; i <= 10; i++) {
                     const x = w / 2 + i * step;
@@ -2777,10 +2759,17 @@
                 if (viceCityCtx) viceCityCtx.clearRect(0, 0, viceCityCanvas.width, viceCityCanvas.height);
             };
 
+            // OPTI 2 : Animation Fallout sans fuite mémoire (tampon alloué une seule fois)
             const startFalloutAnimation = () => {
                 if (falloutReqId || !falloutCanvas) return;
                 falloutCanvas.width = window.innerWidth;
                 falloutCanvas.height = window.innerHeight;
+
+                const w = falloutCanvas.width;
+                const h = falloutCanvas.height;
+                const imageData = falloutCtx.createImageData(w, h);
+                const buffer32 = new Uint32Array(imageData.data.buffer);
+                const len = buffer32.length;
 
                 let lastTime = 0;
                 const draw = (time) => {
@@ -2788,14 +2777,14 @@
                     if (document.hidden) return;
                     if (time - lastTime < 90) return;
                     lastTime = time;
-                    const w = falloutCanvas.width, h = falloutCanvas.height;
-                    const imageData = falloutCtx.createImageData(w, h);
-                    const buffer32 = new Uint32Array(imageData.data.buffer);
-                    let len = buffer32.length;
-                    while (len--) {
-                        if (Math.random() < 0.92) continue;
-                        const gray = Math.random() * 255;
-                        buffer32[len] = (255 << 24) | (gray << 16) | (gray << 8) | gray;
+
+                    for (let i = 0; i < len; i++) {
+                        if (Math.random() < 0.92) {
+                            buffer32[i] = 0;
+                        } else {
+                            const gray = (Math.random() * 255) | 0;
+                            buffer32[i] = (255 << 24) | (gray << 16) | (gray << 8) | gray;
+                        }
                     }
                     falloutCtx.putImageData(imageData, 0, 0);
                 };
@@ -2807,13 +2796,11 @@
                 if (falloutCtx) falloutCtx.clearRect(0, 0, falloutCanvas.width, falloutCanvas.height);
             };
 
+            // OPTI 3 : Injection propre du logo aléatoire via variable CSS native
             const setRandomHeaderLogo = () => {
                 const logoCount = 20;
                 const randomIndex = Math.floor(Math.random() * logoCount) + 1;
-                const imagePath = `LogoAK/Logo${randomIndex}.webp`;
-                const styleSheet = document.createElement("style");
-                styleSheet.innerText = `header::before { background-image: url('${imagePath}'); }`;
-                document.head.appendChild(styleSheet);
+                document.documentElement.style.setProperty('--header-logo', `url('LogoAK/Logo${randomIndex}.webp')`);
             };
             setRandomHeaderLogo();
 
@@ -2822,27 +2809,57 @@
             const header = document.getElementById('main-header');
 
             let lastScrollY = window.scrollY;
-            let ticking = false;
+            let scrollTicking = false;
 
+            // OPTI 4 : Boucle scroll unique unifiée (Back to top + Header + Orba Docking + Tooltip)
             window.addEventListener('scroll', () => {
-                if (!ticking) {
+                if (!scrollTicking) {
                     window.requestAnimationFrame(() => {
                         const scrollY = window.scrollY;
                         const isMobile = window.innerWidth <= 768;
 
+                        // 1. Gestion du Header
                         if (!isMobile) {
-                            if (header.classList.contains('header-compact')) {
-                                header.classList.remove('header-compact');
-                            }
+                            header.classList.remove('header-compact');
                         } else {
                             header.classList.remove('header-compact');
-                            if (lastScrollY < scrollY && scrollY > 100) header.classList.add('header-hidden');
-                            else header.classList.remove('header-hidden');
+                            if (lastScrollY < scrollY && scrollY > 100) {
+                                header.classList.add('header-hidden');
+                            } else {
+                                header.classList.remove('header-hidden');
+                            }
                         }
+
+                        // 2. Bouton Back to Top
+                        if (backToTopBtn) {
+                            if (scrollY > 300) {
+                                backToTopBtn.classList.add('active');
+                            } else {
+                                backToTopBtn.classList.remove('active');
+                            }
+                        }
+
+                        // 3. OrbaOS Widget Docking Mobile
+                        if (window.innerWidth <= 900 && orbaWidgetElem) {
+                            if (isChatbotOpened) {
+                                orbaWidgetElem.classList.add('is-docked');
+                            } else if (scrollY > lastScrollY && scrollY > 120) {
+                                if (!orbaWidgetElem.classList.contains('collapsed')) {
+                                    orbaWidgetElem.classList.add('collapsed');
+                                }
+                                orbaWidgetElem.classList.add('is-docked');
+                            } else if (scrollY < lastScrollY || scrollY <= 60) {
+                                orbaWidgetElem.classList.remove('is-docked');
+                            }
+                        }
+
+                        // 4. Masquer le tooltip
+                        hideTooltip();
+
                         lastScrollY = scrollY;
-                        ticking = false;
+                        scrollTicking = false;
                     });
-                    ticking = true;
+                    scrollTicking = true;
                 }
             }, { passive: true });
 
@@ -3146,13 +3163,14 @@
             const initialLang = localStorage.getItem('language') || (navigator.language.startsWith('fr') ? 'fr' : 'en');
             setLanguage(initialLang);
 
-            // Tri aléatoire des projets et injection Schema.org
+            // OPTI 5 : Tri des projets SANS destruction du DOM (pas de 'innerHTML = ""' -> aucun layout shift)
             const projectsContainer = document.getElementById('projects-container');
             if (projectsContainer) {
                 const comingSoonProject = document.getElementById('coming-soon-project');
                 const allProjects = Array.from(projectsContainer.querySelectorAll('.project:not(#coming-soon-project)'));
                 const newProjects = allProjects.filter(p => p.querySelector('.badge-new'));
                 const oldProjects = allProjects.filter(p => !p.querySelector('.badge-new'));
+                
                 const shuffleArray = (array) => {
                     for (let i = array.length - 1; i > 0; i--) {
                         const j = Math.floor(Math.random() * (i + 1));
@@ -3160,7 +3178,8 @@
                     }
                 };
                 shuffleArray(oldProjects);
-                projectsContainer.innerHTML = '';
+
+                // Déplacement direct et fluide des éléments existants
                 newProjects.forEach(project => projectsContainer.appendChild(project));
                 oldProjects.forEach(project => projectsContainer.appendChild(project));
                 if (comingSoonProject) { projectsContainer.appendChild(comingSoonProject); }
@@ -3216,7 +3235,7 @@
             const closeHskBtn = document.getElementById("close-hsk-player-btn");
             let isHskLaunched = false;
 
-            hskPlayerIcon.addEventListener("click", () => {
+            hskPlayerIcon?.addEventListener("click", () => {
                 if (!isHskLaunched) {
                     hskIframe.src = hskIframe.getAttribute("data-src");
                     isHskLaunched = true;
@@ -3225,12 +3244,12 @@
                 hskPlayerIcon.style.display = "none";
             });
 
-            closeHskBtn.addEventListener("click", () => {
+            closeHskBtn?.addEventListener("click", () => {
                 hskPlayerContainer.style.display = "none";
                 hskPlayerIcon.style.display = "flex";
             });
-
-            /* ============================================================
+			
+			/* ============================================================
                1. GESTION DU MENU SANDWICH (CYBER DRAWER)
                ============================================================ */
             const drawer = document.getElementById('cyber-drawer');
@@ -3275,8 +3294,24 @@
                 }
             });
 
-            document.getElementById('drawer-btn-dashboard-3d')?.addEventListener('click', () => {
+            // OPTI 1 : Téléchargement dynamique de Three.js & Tween uniquement lors du clic
+            document.getElementById('drawer-btn-dashboard-3d')?.addEventListener('click', async () => {
                 closeCyberDrawer();
+                if (!window.THREE || !window.THREE.CSS3DRenderer) {
+                    try {
+                        // Chargement du cœur Three.js en premier
+                        await loadScript('https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js');
+                        // Puis chargement en parallèle des plugins et de Tween
+                        await Promise.all([
+                            loadScript('https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/renderers/CSS3DRenderer.js'),
+                            loadScript('https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/TrackballControls.js'),
+                            loadScript('https://cdnjs.cloudflare.com/ajax/libs/tween.js/18.6.4/tween.umd.js')
+                        ]);
+                    } catch (err) {
+                        console.error("Échec du chargement du moteur 3D :", err);
+                        return;
+                    }
+                }
                 HoloDashboard.open();
             });
 
