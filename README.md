@@ -77,11 +77,15 @@ Ce projet intègre plusieurs optimisations de performance front-end (*Performanc
 
 ---
 
-👤 Auteur
-Alex Koncept
-Créateur indépendant — Informatique, IA, Design, Horlogerie & DIY.
-🌐 Portfolio : alexkoncept.github.io
-🐙 GitHub : @AlexKoncept
-✉️ Contact : contact@alexkoncept.com
+## 👤 Auteur
 
-« Vivre. Apprendre. Créer. »
+**Alex Koncept**  
+*Créateur indépendant — Informatique, IA, Design, Horlogerie & DIY.*
+
+- 🌐 **Portfolio :** [alexkoncept.github.io](https://alexkoncept.github.io/)
+- 🐙 **GitHub :** [@AlexKoncept](https://github.com/AlexKoncept)
+- ✉️ **Contact :** [contact@alexkoncept.com](mailto:contact@alexkoncept.com)
+
+---
+
+> *« Vivre. Apprendre. Créer. »*
