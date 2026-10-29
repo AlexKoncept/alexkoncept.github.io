@@ -48,5 +48,6 @@ Ce dépôt héberge le cœur de l'écosystème **Alex Koncept**. Plus qu'un simp
 📬 Contact & Connexion
 🌐 Site web : alexkoncept.github.io
 🐙 GitHub : @AlexKoncept
-💼 LinkedIn / Contact : (Ajoute ton lien ici)
+
+Alex aka Alex Koncept
 « Vivre. Apprendre. Créer. »
