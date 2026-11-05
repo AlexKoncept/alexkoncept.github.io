@@ -625,29 +625,49 @@
             filter: grayscale(60%);
         }
 
+/* HEADER EN MODE ÎLOT FLOTTANT & BORDS ARRONDIS */
         header {
             text-align: center;
-            padding: 2rem 1rem;
+            /* Dégagement latéral pour laisser respirer les boutons d'angles */
+            padding: 1.6rem 120px;
             background: linear-gradient(135deg, var(--header-bg-start) 0%, var(--header-bg-end) 100%);
             backdrop-filter: blur(20px) saturate(180%);
             -webkit-backdrop-filter: blur(20px) saturate(180%);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            
+            /* Bords arrondis & contour lumineux 360° */
+            border-radius: var(--card-radius, 24px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
             color: var(--header-text-color);
-            position: sticky;
-            top: 0;
+            
+            /* Positionnement en survol (centré avec marge autour) */
+            position: fixed;
+            top: 0.9rem;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            width: calc(100% - 2.4rem);
+            max-width: 1100px; /* Aligné sur la largeur de tes projets */
             z-index: 999;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            margin-bottom: 2rem;
+            
+            /* Ombre 3D flottante + halo néon */
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25), 0 0 20px rgba(0, 229, 255, 0.15);
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+        }
+
+        /* Micro-élévation supplémentaire au survol */
+        header:hover {
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35), 0 0 28px rgba(0, 229, 255, 0.3);
+            border-color: rgba(0, 229, 255, 0.4);
         }
 
         @media (min-width: 769px) {
-            header { position: fixed; width: 100%; top: 0; left: 0; }
-            body { padding-top: 200px; }
+            body { padding-top: 190px; }
         }
 
-        header.header-hidden { transform: translateY(-150%); }
+        header.header-hidden { 
+            transform: translateY(-160%); 
+        }
 
         header::before {
             content: '';
@@ -715,14 +735,19 @@
         .badge-new { background: linear-gradient(135deg, #ff6b6b, #e74c3c); color: white; font-size: 0.7rem; padding: 4px 10px; border-radius: 12px; margin-left: 10px; vertical-align: middle; font-weight: 700; box-shadow: 0 2px 10px rgba(231, 76, 60, 0.4); animation: pop 1.5s ease-out infinite alternate; }
         @keyframes pop { from { transform: scale(1); } to { transform: scale(1.1); } }
 
-        @media (max-width: 768px) {
-            header { 
-                padding-top: 5.5rem !important; 
-                padding-bottom: 2rem !important;
+@media (max-width: 768px) {
+            body {
+                padding-top: 175px !important;
             }
-            header::before {
-                width: 200px !important;
-                height: 200px !important;
+            header { 
+                position: fixed !important;
+                width: calc(100% - 1.2rem) !important;
+                top: 0.6rem !important;
+                border-radius: 18px !important;
+                padding-top: 4.6rem !important; 
+                padding-bottom: 1.4rem !important;
+                padding-left: 1rem !important;
+                padding-right: 1rem !important;
             }
             .top-left-controls {
                 top: 0.8rem !important;
@@ -1724,6 +1749,111 @@
                 font-size: 0.68rem;
             }
         }
+		/* ============================================================
+           EASTER EGG : TITAN / NASA DRAGONFLY
+           ============================================================ */
+        .footer-easter-egg {
+            margin-top: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .titan-secret-btn {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px dashed rgba(0, 229, 255, 0.35);
+            color: var(--footer-text-color);
+            font-family: var(--title-font, 'Orbitron', monospace);
+            font-size: 0.72rem;
+            letter-spacing: 1.5px;
+            padding: 6px 14px;
+            border-radius: 20px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(8px);
+        }
+
+        .titan-secret-btn:hover {
+            color: #00e5ff;
+            border-style: solid;
+            border-color: #00e5ff;
+            background: rgba(0, 229, 255, 0.1);
+            box-shadow: 0 0 15px rgba(0, 229, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .titan-secret-btn .titan-icon {
+            font-size: 0.9rem;
+            transition: transform 0.4s ease;
+        }
+
+        .titan-secret-btn:hover .titan-icon {
+            transform: rotate(20deg) scale(1.2);
+        }
+
+        /* Modale Boarding Pass */
+        .titan-modal-content {
+            max-width: 850px;
+            height: auto;
+            max-height: 90vh;
+        }
+
+        .titan-modal-body {
+            background: radial-gradient(circle at center, #0b1528 0%, #030712 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            overflow-y: auto;
+            gap: 15px;
+        }
+
+        .titan-countdown-bar {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0, 229, 255, 0.08);
+            border: 1px solid rgba(0, 229, 255, 0.3);
+            border-radius: 12px;
+            padding: 8px 16px;
+            font-family: var(--title-font, 'Orbitron', monospace);
+            font-size: 0.78rem;
+            color: #e0f2fe;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .titan-badge {
+            background: linear-gradient(135deg, #0284c7, #00e5ff);
+            color: #030712;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-weight: 800;
+            font-size: 0.7rem;
+            letter-spacing: 0.5px;
+        }
+
+        .titan-ticket-wrapper {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 0;
+        }
+
+        .titan-ticket-img {
+            max-width: 100%;
+            height: auto;
+            max-height: 65vh;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 0 25px rgba(0, 229, 255, 0.25);
+            border: 1px solid rgba(0, 229, 255, 0.4);
+            object-fit: contain;
+        }
     </style>
 </head>
 
@@ -1761,6 +1891,25 @@
             </div>
             <div class="modal-body">
                 <iframe id="akrn-iframe" data-src="https://akrn-live.netlify.app/" title="AKNR Live"></iframe>
+            </div>
+        </div>
+    </div>
+	
+	<!-- MODAL TITAN / NASA DRAGONFLY EASTER EGG -->
+    <div id="titan-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="titan-modal-title" hidden>
+        <div class="modal-content titan-modal-content">
+            <div class="modal-header">
+                <h3 id="titan-modal-title">🪐 NASA Dragonfly // Mission Titan 2034</h3>
+                <button id="close-titan-btn" class="modal-close-btn" aria-label="Fermer le Boarding Pass">&times;</button>
+            </div>
+            <div class="modal-body titan-modal-body">
+                <div class="titan-countdown-bar">
+                    <span class="titan-badge">OCTOCOPTER ROTORCRAFT</span>
+                    <span id="titan-countdown-timer">⏳ Calcul du temps de transit...</span>
+                </div>
+                <div class="titan-ticket-wrapper">
+                    <img src="boarding-pass-Alex-Koncept.jpeg" alt="NASA Dragonfly Boarding Pass - Alex Koncept" class="titan-ticket-img" loading="lazy" />
+                </div>
             </div>
         </div>
     </div>
@@ -2311,8 +2460,14 @@
         ↑
     </button>
 
-    <footer role="contentinfo">
+<footer role="contentinfo">
         <span data-key="footer_text"></span>
+        <div class="footer-easter-egg">
+            <button id="titan-secret-btn" class="titan-secret-btn" aria-label="Coordonnées Titan" title="NASA Dragonfly // Destination : Titan (2034) 🪐">
+                <span class="titan-icon">🪐</span>
+                <span>[ 1.4B km • Saturn VI • 9.5 AU ]</span>
+            </button>
+        </div>
     </footer>
 
     <!-- Chatbot AlexBot -->
@@ -2634,7 +2789,35 @@
 
             document.getElementById('close-akrn-btn')?.addEventListener('click', () => ModalManager.close('akrn-modal'));
             document.getElementById('akrn-modal')?.addEventListener('click', (e) => { if (e.target.id === 'akrn-modal') ModalManager.close('akrn-modal'); });
+// Déclencheurs Modal Titan / Dragonfly
+            document.getElementById('titan-secret-btn')?.addEventListener('click', (e) => {
+                ModalManager.open('titan-modal', e.currentTarget);
+                updateTitanCountdown();
+            });
+            document.getElementById('close-titan-btn')?.addEventListener('click', () => ModalManager.close('titan-modal'));
+            document.getElementById('titan-modal')?.addEventListener('click', (e) => { 
+                if (e.target.id === 'titan-modal') ModalManager.close('titan-modal'); 
+            });
 
+            // Compte à rebours dynamique jusqu'à l'atterrissage estimé (Juillet 2034)
+            function updateTitanCountdown() {
+                const targetDate = new Date('2034-07-01T00:00:00Z').getTime();
+                const now = new Date().getTime();
+                const diff = targetDate - now;
+
+                if (diff <= 0) {
+                    const timerEl = document.getElementById('titan-countdown-timer');
+                    if (timerEl) timerEl.textContent = "Atterrissage sur Titan en cours...";
+                    return;
+                }
+
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const timerEl = document.getElementById('titan-countdown-timer');
+                if (timerEl) {
+                    timerEl.textContent = `Arrivée estimée : ~${days.toLocaleString()} jours (${hours}h)`;
+                }
+            }
             // Canvas & Animations
             const matrixCanvas = document.getElementById('matrix-canvas');
             const matrixCtx = matrixCanvas ? matrixCanvas.getContext('2d') : null;
