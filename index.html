@@ -736,18 +736,34 @@
         @keyframes pop { from { transform: scale(1); } to { transform: scale(1.1); } }
 
 @media (max-width: 768px) {
-            body {
-                padding-top: 175px !important;
+            body { 
+                padding-top: 200px !important; 
             }
             header { 
-                position: fixed !important;
-                width: calc(100% - 1.2rem) !important;
-                top: 0.6rem !important;
-                border-radius: 18px !important;
-                padding-top: 4.6rem !important; 
-                padding-bottom: 1.4rem !important;
-                padding-left: 1rem !important;
-                padding-right: 1rem !important;
+                position: fixed !important; 
+                width: calc(100% - 1.2rem) !important; 
+                top: 0.6rem !important; 
+                border-radius: 18px !important; 
+                padding-top: 3.6rem !important;  /* Dégagé juste sous les boutons d'angles */
+                padding-bottom: 0.9rem !important; 
+                padding-left: 1rem !important; 
+                padding-right: 1rem !important; 
+            }
+
+            header h1 { 
+                font-size: 1.75rem !important; 
+                margin-bottom: 0.25rem !important;
+            }
+
+            header p {
+                font-size: 0.9rem !important;
+                line-height: 1.4 !important;
+                max-width: 90% !important;
+                margin: 0 auto !important;
+            }
+
+            .intro {
+                margin-top: 1rem !important;
             }
             .top-left-controls {
                 top: 0.8rem !important;
@@ -799,9 +815,6 @@
             }
             .project-tags { 
                 justify-content: center !important; 
-            }
-            header h1 { 
-                font-size: 2.2rem !important; 
             }
             .about-container { 
                 flex-direction: column !important; 
