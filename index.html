@@ -2738,17 +2738,36 @@ if (chatRootElem) {
                 });
             });
 
+// 1. Clic sur le bouton carré de prévisualisation (Ouverture totale en 1 clic)
             if (orbaOpenBtn && orbaWidget) {
                 orbaOpenBtn.addEventListener('click', (e) => {
                     e.stopPropagation();
+                    // On retire les DEUX classes d'un coup : il sort à gauche ET s'ouvre !
+                    orbaWidget.classList.remove('is-docked');
                     orbaWidget.classList.remove('collapsed');
                 });
             }
 
+            // 2. Clic de secours sur le widget lui-même s'il est docké
+            if (orbaWidgetElem) {
+                orbaWidgetElem.addEventListener('click', (e) => {
+                    if (orbaWidgetElem.classList.contains('is-docked')) {
+                        e.stopPropagation();
+                        orbaWidgetElem.classList.remove('is-docked');
+                        orbaWidgetElem.classList.remove('collapsed');
+                    }
+                });
+            }
+
+            // 3. Clic sur la croix de fermeture ✕ (Re-docking automatique sur smartphone)
             if (orbaCloseBtn && orbaWidget) {
                 orbaCloseBtn.addEventListener('click', (e) => {
                     e.stopPropagation();
                     orbaWidget.classList.add('collapsed');
+                    // Sur smartphone, se refermer le remet directement collé sur le bord droit
+                    if (window.innerWidth <= 900) {
+                        orbaWidget.classList.add('is-docked');
+                    }
                 });
             }
 
