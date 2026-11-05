@@ -2423,7 +2423,7 @@
     </main>
 
     <!-- Widget OrbaOS -->
-    <aside id="orbaos-widget" class="orbaos-widget collapsed" aria-label="Annonce OrbaOS" role="complementary">
+<aside id="orbaos-widget" class="orbaos-widget collapsed is-docked" aria-label="Annonce OrbaOS" role="complementary">
         <div class="orbaos-square-preview" id="orbaos-open-btn" aria-label="Découvrir OrbaOS" title="Cliquer pour agrandir OrbaOS">
             <span class="orbaos-mini-badge">NEW</span>
             <div class="orbaos-mini-carousel">
@@ -2652,16 +2652,12 @@
             const chatRootElem = document.getElementById('root');
             let isChatbotOpened = false;
 
-            if (chatRootElem) {
+if (chatRootElem) {
                 const checkChatbot = () => {
                     isChatbotOpened = chatRootElem.querySelector('[role="dialog"]') !== null;
-                    if (isChatbotOpened) {
-                        if (orbaWidgetElem) {
-                            orbaWidgetElem.classList.add('collapsed');
-                            orbaWidgetElem.classList.add('is-docked');
-                        }
-                    } else if (window.scrollY < 120 && orbaWidgetElem) {
-                        orbaWidgetElem.classList.remove('is-docked');
+                    if (isChatbotOpened && orbaWidgetElem) {
+                        orbaWidgetElem.classList.add('collapsed');
+                        orbaWidgetElem.classList.add('is-docked');
                     }
                 };
                 const chatObserver = new MutationObserver(checkChatbot);
@@ -3048,17 +3044,13 @@
                             }
                         }
 
-                        // 3. OrbaOS Widget Docking Mobile
+// 3. OrbaOS Widget Docking Mobile (reste rétracté, se replie si on scrolle)
                         if (window.innerWidth <= 900 && orbaWidgetElem) {
-                            if (isChatbotOpened) {
-                                orbaWidgetElem.classList.add('is-docked');
-                            } else if (scrollY > lastScrollY && scrollY > 120) {
+                            if (isChatbotOpened || (scrollY > lastScrollY && scrollY > 80)) {
                                 if (!orbaWidgetElem.classList.contains('collapsed')) {
                                     orbaWidgetElem.classList.add('collapsed');
                                 }
                                 orbaWidgetElem.classList.add('is-docked');
-                            } else if (scrollY < lastScrollY || scrollY <= 60) {
-                                orbaWidgetElem.classList.remove('is-docked');
                             }
                         }
 
